@@ -61,11 +61,11 @@ for version, renumbering in reversed(list(RENUMBERINGS.items())):
     print("...", " ".join(old + "↦" + new for old, new in new_order[i:-j+1]), "...")
 
 with open("rules.py", encoding="utf-8") as f:
-  RULES = eval(f.read())
+  CLAUSES = eval(f.read())
 
 for version, rules in TABLE_5_BY_COLUMNS.items():
   expected_rules = tuple(rule for rule in rules if rule)
-  actual_rules = tuple(RULES[version].keys())
+  actual_rules = tuple(key[2:] for  key in CLAUSES[version].keys() if key.startswith("LB"))
   if set(actual_rules) != set(expected_rules):
     print(pretty_version(version))
     for e in expected_rules:
@@ -74,7 +74,7 @@ for version, rules in TABLE_5_BY_COLUMNS.items():
     for e in actual_rules:
       if e not in expected_rules:
         print(e, "in UAX but not in table")
-    raise KeyError(f"Inconsistency between table 5 and Version {pretty_version(version)}")
+    print("Inconsistency between table 5 and Version", pretty_version(version))
 
 SHOW_CHANGES = False
 SHOW_EDITORIAL_CHANGES = False
@@ -103,7 +103,7 @@ deleted_rules = []
 
 trivial_versions = set()
 
-for version, rules in RULES.items():
+for version, rules in CLAUSES.items():
   new_rules = {}
   rules_updated = set()
   text_changed_in_version = False
@@ -112,8 +112,10 @@ for version, rules in RULES.items():
     relevant_issue = False
     if not description:
       raise ValueError(rule_number)
-    if version in RENUMBERINGS:
-      old_rule_number = dict(RENUMBERINGS[version]).get(rule_number)
+    if version in RENUMBERINGS and rule_number.startswith("LB"):
+      old_rule_number = dict(RENUMBERINGS[version]).get(rule_number[2:])
+      if old_rule_number:
+        old_rule_number = "LB"+old_rule_number
       history = copy.deepcopy(last_rules.get(old_rule_number, None))
       if old_rule_number:
         rules_updated.add(old_rule_number)
@@ -128,7 +130,7 @@ for version, rules in RULES.items():
         history.issues.setdefault(version, []).append(issue)
         relevant_issue = True
     version_class = "-".join(str(v) for v in version)
-    rule_text_changed_in_version |= history.number.add_version(version_class, re.split(r"(?<=\d)(?!\d)", "LB" + rule_number))
+    rule_text_changed_in_version |= history.number.add_version(version_class, re.split(r"(?<=\d)(?!\d)", rule_number))
     rule_text_changed_in_version |= history.description.add_version(version_class, re.split(r"(?:\b|(?=ing)|(?<=\W)(?=\W))", description))
     old_formulæ = [(i, f.current_text()) for i, f in enumerate(history.formulæ) if f.current_text()]
     operations = SequenceMatcher(None, [f for _, f in old_formulæ], formulæ).get_opcodes()
@@ -191,7 +193,13 @@ for version, rules in RULES.items():
 
 rule_history = list(last_rules.items())
 
-DELETED_RULE_LOCATIONS = {"30": "30a", "18b": "26", "7a": "9"}
+DELETED_RULE_LOCATIONS = {
+    "LB30": "LB30a",
+    "LB18b": "LB26",
+    "LB7a": "LB9",
+    "H4FinallyJoinAlphabeticLettersAndBreakEverythingElse": "LB28",
+    "LB6": "H2Algorithm",
+}
 
 for rule_number, history in deleted_rules:
   rule_history.insert(
@@ -228,10 +236,11 @@ else:
   f = sys.stdout
 
 nontrivial_versions = tuple(
-    version for version in RULES.keys() if not version in trivial_versions)
+    version for version in CLAUSES.keys() if not version in trivial_versions)
 
 print("<html>", file=f)
 print("<head>", file=f)
+print('<meta charset="utf-8">', file=f)
 print("<title>Annotated Line Breaking Algorithm</title>", file=f)
 print("<style>", file=f)
 print("a { color: inherit; }", file=f)
