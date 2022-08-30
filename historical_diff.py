@@ -1,6 +1,7 @@
 import difflib
 import html
 import re
+from typing import Optional, Sequence, Tuple
 
 class History:
   def remove(self, version):
@@ -36,14 +37,14 @@ class AtomHistory(History):
 class SequenceHistory(History):
   def __init__(self, junk=lambda x: x.isspace(), element_history=AtomHistory):
     self.element_history = element_history
-    self.elements : list[History] = []
+    self.elements : list[Tuple[Sequence[int], History]] = []
     self.junk = junk
 
   def current_text(self):
-    return "".join(c.value() for c in self.elements if c.present())
+    return "".join(c.value() for _, c in self.elements if c.present())
 
   def present(self):
-    return any(c.present() for c in self.elements)
+    return any(c.present() for _, c in self.elements)
 
   def absent(self):
     return not self.present()
@@ -52,21 +53,21 @@ class SequenceHistory(History):
     self.add_version(version, [])
 
   def value(self):
-    return "".join(c.value() for c in self.elements if c.present())
+    return "".join(c.value() for _, c in self.elements if c.present())
 
   def add_version(self, version, new_text):
-    indexing = []
+    indexing : Sequence[Tuple[Optional[int], Tuple[Sequence[int], History]]] = []
     i = 0
-    for c in self.elements:
+    for n, c in self.elements:
       if c.present():
-        indexing.append((i, c))
+        indexing.append((i, (n, c)))
         i += 1
       else:
-        indexing.append((None, c))
+        indexing.append((None, (n, c)))
 
     diff = difflib.SequenceMatcher(
       self.junk,
-      [c.value() for c in self.elements if c.present()],
+      [c.value() for _, c in self.elements if c.present()],
       [self.element_history(version, element).value() for element in new_text]).get_opcodes()
     text_changed = False
     for instruction in diff:
@@ -74,7 +75,7 @@ class SequenceHistory(History):
       if operation == "equal":
         continue
       elif operation == "replace":
-        if (isinstance(self.elements[0], SequenceHistory) and
+        if (isinstance(self.elements[0][1], SequenceHistory) and
             old_end - old_begin == new_end - new_begin):
           elementary_instructions = [instruction]
         else:
@@ -86,7 +87,7 @@ class SequenceHistory(History):
       for operation, old_begin, old_end, new_begin, new_end in elementary_instructions:
         if operation == "delete":
           text_changed = True
-          for old_index, c in indexing:
+          for old_index, (n, c) in indexing:
             if old_index is None:
               continue
             elif old_index >= old_end:
@@ -95,24 +96,45 @@ class SequenceHistory(History):
               c.remove(version)
         elif operation == "insert":
           text_changed = True
-          inserted = [(None, self.element_history(version, c))
-                      for c in new_text[new_begin:new_end]]
+          inserted_histories = [self.element_history(version, c)
+                                for c in new_text[new_begin:new_end]]
           if new_begin == 0:
+            if indexing:
+              first_number = indexing[0][1][0]
+              if first_number[-1] != 1:
+                raise IndexError(first_number)
+              inserted = [(None, ((*first_number[:-1], 0, 1 + i) , c)) for i, c in enumerate(inserted_histories)]
+            else:
+              inserted = [(None, ((1 + i,) , c)) for i, c in enumerate(inserted_histories)]
             indexing = inserted + indexing
           else:
-            for i, (old_index, c) in enumerate(indexing):
+            for i, (old_index, (n, c)) in enumerate(indexing):
               if old_index is None:
                 continue
               elif old_index + 1 == old_begin:
                 before = indexing[:i+1]
                 after = indexing[i+1:]
+                previous_number = before[-1][1][0]
+                next_number = after[0][1][0] if after else None
+                if not next_number or len(previous_number) == len(next_number) + 1:
+                  prefix = previous_number[:-1]
+                  offset = previous_number[-1] + 1
+                elif len(previous_number) == len(next_number):
+                  prefix = previous_number
+                  offset = 1
+                elif next_number[-1] == 1:
+                  prefix = (*next_number[:-1], 0)
+                  offset = 1
+                else:
+                  raise IndexError(previous_number, next_number)
+                inserted = [(None, ((*prefix, offset + i) , c)) for i, c in enumerate(inserted_histories)]
                 indexing = before + inserted + after
                 break
             else:
               raise Exception("Failed to insert")
         elif operation == "replace":
           i = new_begin
-          for old_index, c in indexing:
+          for old_index, (_, c) in indexing:
             if old_index is None:
               continue
             elif old_index >= old_end:
@@ -129,7 +151,7 @@ class SequenceHistory(History):
     removed = None
     versions = set()
     text = ""
-    for c in self.elements:
+    for _, c in self.elements:
       if not c.value:
         continue
       versions.add(c.added)
