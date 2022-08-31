@@ -1,5 +1,6 @@
 import difflib
 import html
+import itertools
 import re
 from typing import Optional, Sequence, Tuple
 
@@ -26,6 +27,8 @@ class AtomHistory(History):
     return self.text
 
   def remove(self, version):
+    if self.added == version:
+      print("ERROR:", self.text, "added and removed in", version)
     self.removed = version
 
   def present(self):
@@ -33,6 +36,22 @@ class AtomHistory(History):
 
   def absent(self):
     return not self.present()
+
+def get_inserted_paragraph_number(
+    previous_number: Sequence[int],
+    next_number: Optional[Sequence[int]]) -> Tuple[Sequence[int], int]:
+  if not next_number or len(previous_number) == len(next_number) + 1:
+    prefix = previous_number[:-1]
+    offset = previous_number[-1] + 1
+  elif len(previous_number) == len(next_number):
+    prefix = previous_number
+    offset = 1
+  elif next_number[-1] == 1:
+    prefix = (*next_number[:-1], 0)
+    offset = 1
+  else:
+    raise IndexError(previous_number, next_number)
+  return (prefix, offset)
 
 class SequenceHistory(History):
   def __init__(self, junk=lambda x: x.isspace(), element_history=AtomHistory):
@@ -112,22 +131,25 @@ class SequenceHistory(History):
               if old_index is None:
                 continue
               elif old_index + 1 == old_begin:
+                # We are inserting after paragraph n.
+                previous_number = indexing[i][1][0]
+                next_number = indexing[i+1][1][0] if i + 1 < len(indexing) else None
+                prefix, offset = get_inserted_paragraph_number(previous_number, next_number)
+                # Instead of inserting immediately after paragraph n, see if we 
+                # can insert at a higher level by skipping some deleted paragraphs.
+                for j in itertools.count(i+1):
+                  if j == len(indexing) or indexing[j][1][1].present():
+                    break
+                  previous_number = indexing[j][1][0]
+                  next_number = indexing[j+1][1][0] if j+1 < len(indexing) else None
+                  p, o = get_inserted_paragraph_number(previous_number, next_number)
+                  if len(prefix) >= len(p):
+                    prefix, offset = p, o
+                    i = j
+
+                inserted = [(None, ((*prefix, offset + i) , c)) for i, c in enumerate(inserted_histories)]
                 before = indexing[:i+1]
                 after = indexing[i+1:]
-                previous_number = before[-1][1][0]
-                next_number = after[0][1][0] if after else None
-                if not next_number or len(previous_number) == len(next_number) + 1:
-                  prefix = previous_number[:-1]
-                  offset = previous_number[-1] + 1
-                elif len(previous_number) == len(next_number):
-                  prefix = previous_number
-                  offset = 1
-                elif next_number[-1] == 1:
-                  prefix = (*next_number[:-1], 0)
-                  offset = 1
-                else:
-                  raise IndexError(previous_number, next_number)
-                inserted = [(None, ((*prefix, offset + i) , c)) for i, c in enumerate(inserted_histories)]
                 indexing = before + inserted + after
                 break
             else:
