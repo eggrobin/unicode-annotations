@@ -21,7 +21,10 @@ splits = set()
 creations = set()
 deletions = set()
 
-reorderings = set()
+REORDERINGS = {
+  (4, 0, 0): [("13", "11b"), ("15b", "18b")],
+  (5, 0, 0): [("11b", "11"), ("13", "12")]
+}
 
 for version, renumbering in reversed(list(RENUMBERINGS.items())):
   mapping = dict(renumbering)
@@ -47,7 +50,6 @@ for version, renumbering in reversed(list(RENUMBERINGS.items())):
   old_order = sorted(common, key=lambda x: re.sub(r"^(\d)(?!\d)", r"0\1", x[0]))
   new_order = sorted(common, key=lambda x: re.sub(r"^(\d)(?!\d)", r"0\1", x[1]))
   if new_order != old_order:
-    reorderings.add(version)
     print("REORDERING in", pretty_version(version))
     for i in range(len(old_order)):
       if new_order[i] != old_order[i]:
@@ -57,20 +59,36 @@ for version, renumbering in reversed(list(RENUMBERINGS.items())):
         break
     print("...", " ".join(old + "↦" + new for old, new in old_order[i:-j+1]), "...")
     print("...", " ".join(old + "↦" + new for old, new in new_order[i:-j+1]), "...")
+    if version in REORDERINGS:
+      for old, new in REORDERINGS[version]:
+        old_order.remove((old, new))
+        new_order.remove((old, new))
+      if old_order != new_order:
+        print("INCORRECTLY DESCRIBED")
+    else:
+      print("UNEXPECTED")
 
 
 with open("rules.py", encoding="utf-8") as f:
   VERSIONS = eval(f.read())
 
 def make_sequence_history(v, s):
-  h = historical_diff.SequenceHistory()
+  h = historical_diff.SequenceHistory(junk=lambda w: w.isspace() or w in ".,;:" or w in ("of", "and", "between"))
   h.add_version(v, s)
   return h
 
 history = historical_diff.SequenceHistory(element_history=make_sequence_history)
 
 PRESERVED_PARAGRAPHS = {
-  (4, 0, 0): [(3,), (27,)],
+  (3, 1, 0): {(10,): "", (84,): ""},
+  (4, 0, 0): {(3,): "", (27,): ""},
+  (4, 1, 0): {(33, 3): "LB 6", (39,): "LB 7a", (84,): ""},
+  (5, 0, 0): {(3,): "", (6,): "", (9, 1): "", (10,): "", (11,): "", (33, 2, 1): "", (39, 1): "", (40, 7): ""},
+  (5, 1, 0): {(40, 13): "", (40, 18): "The following", (101, 3): "LB30"},
+  (5, 2, 0): {(101, 3): "LB30"},
+  (6, 0, 0): {(33,): ""},
+  (9, 0, 0): {(82, 4): "(PR | PO)"},
+  (11, 0, 0): {(33, 1, 4): "A ZWJ"},
 }
 
 for version, clauses in VERSIONS.items():
@@ -87,17 +105,23 @@ for version, clauses in VERSIONS.items():
       if version in RENUMBERINGS:
         old_number = None
         for new, old in RENUMBERINGS[version]:
-          if new == match.group(1) and (version, new) not in splits and (version, new) not in creations:
+          if new == match.group(1) and (
+              (version, new) not in splits and
+              (version, new) not in creations and
+              (old, new) not in REORDERINGS.get(version, [])):
             old_number = old
       else:
         old_number = match.group(1)
       if old_number:
         new_rule_descriptions[old_number] = paragraph
   old_paragraphs = dict(history.elements)
-  for paragraph_number in PRESERVED_PARAGRAPHS.get(version, []):
+  for paragraph_number, hint in PRESERVED_PARAGRAPHS.get(version, {}).items():
     print("Preserving", paragraph_number, "in", version)
     old_paragraph = old_paragraphs[paragraph_number].value()
-    new_paragraph = max(paragraphs, key = lambda p: SequenceMatcher(None, "".join(p), old_paragraph).ratio())
+    hinted_paragraphs = (p for p in paragraphs if "".join(p).startswith(hint)) if hint else paragraphs
+    new_paragraph = max(hinted_paragraphs, key = lambda p: SequenceMatcher(None, "".join(p), old_paragraph).ratio())
+    if not hinted_paragraphs:
+      print("ERROR: no paragraph matching hint", hint)
     old_paragraphs[paragraph_number].add_version(version_class, new_paragraph)
   for paragraph_number, paragraph in history.elements:
     if paragraph.present():
@@ -119,6 +143,7 @@ TOL_LIGHT_COLOURS = [
 ]
 
 with open("dumb_diff.html", "w", encoding="utf-8") as f:
+  print("<!DOCTYPE html>", file=f)
   print("<html>", file=f)
   print("<head>", file=f)
   print('<meta charset="utf-8">', file=f)
@@ -146,15 +171,35 @@ with open("dumb_diff.html", "w", encoding="utf-8") as f:
   print("<script>", file=f)
   print("""
     function older_or_equal(v1, v2) {
-      return v1[0] < v2[0] || (v1[0] == v2[0] && (v1[1] < v2[1] || (v1[1] == v2[1] && v1[2] <= v2[2])))
+      return v1[0] < v2[0] || (v1[0] == v2[0] && (v1[1] < v2[1] || (v1[1] == v2[1] && v1[2] <= v2[2])));
     }
     function older(v1, v2) {
-      return v1[0] < v2[0] || (v1[0] == v2[0] && (v1[1] < v2[1] || (v1[1] == v2[1] && v1[2] < v2[2])))
+      return v1[0] < v2[0] || (v1[0] == v2[0] && (v1[1] < v2[1] || (v1[1] == v2[1] && v1[2] < v2[2])));
+    }
+    function show_version_diff(version) {
+      chosen_oldest = null;
+      for (var input of document.getElementsByTagName("input")) {
+        if (input.name != "oldest") {
+          continue;
+        }
+        input_version = input.value.split("-").map(x => parseInt(x));
+        chosen_oldest_version = chosen_oldest?.value.split("-").map(x => parseInt(x));
+        if (older(input_version, version.split("-").map(x => parseInt(x))) && 
+            (chosen_oldest_version == null || older(chosen_oldest_version, input_version))) {
+          chosen_oldest = input;
+        }
+      }
+      if (!chosen_oldest) {
+        chosen_oldest = document.querySelector('input[name="oldest"][value="' + version + '"]')
+      }
+      chosen_oldest.checked = true;
+      document.querySelector('input[name="newest"][value="' + version + '"]').checked = true;
+      meow();
     }
     function meow() {
       oldest = document.querySelector('input[name="oldest"]:checked').value.split("-").map(x => parseInt(x));
       newest = document.querySelector('input[name="newest"]:checked').value.split("-").map(x => parseInt(x));
-      for (var label of document.getElementsByTagName("label")) {
+      for (var label of document.getElementsByTagName("button")) {
         version = label.className.split("-").slice(-3).map(x => parseInt(x));
         if (older_or_equal(version, oldest)) {
           label.style = "color:black;background:white;";
@@ -189,6 +234,10 @@ with open("dumb_diff.html", "w", encoding="utf-8") as f:
       for (var input of document.getElementsByTagName("input")) {
         input.onclick = meow;
       }
+      for (var button of document.getElementsByTagName("button")) {
+        const version = button.value;
+        button.onclick = function() { show_version_diff(version); };
+      }
       meow();
     }
   """, file=f)
@@ -206,7 +255,7 @@ with open("dumb_diff.html", "w", encoding="utf-8") as f:
     print("</td><td>", file=f)
     print(f'<input type="radio" id="newest-{hyphenated}" name="newest" value="{hyphenated}"{"checked" if i == len(VERSIONS) - 1 else ""}>', file=f)
     print("</td><td>", file=f)
-    print(f'<label for="newest-{hyphenated}" class="changed-in-{hyphenated}">Unicode Version {pretty_version(version)}</label>', file=f)
+    print(f'<button class="changed-in-{hyphenated}" value="{hyphenated}">Unicode Version {pretty_version(version)}</button>', file=f)
     print("</td></tr>", file=f)
   print("</tbody>", file=f)
   print("</table>", file=f)
