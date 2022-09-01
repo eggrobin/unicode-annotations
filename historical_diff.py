@@ -54,10 +54,17 @@ def get_inserted_paragraph_number(
   return (prefix, offset)
 
 class SequenceHistory(History):
-  def __init__(self, junk=lambda x: x.isspace(), element_history=AtomHistory):
+  def __init__(
+      self,
+      junk=lambda x: x.isspace(),
+      element_history=AtomHistory,
+      check_and_get_elements=lambda x, h, version, *context: x,
+      number_nicely=False):
     self.element_history = element_history
     self.elements : list[Tuple[Sequence[int], History]] = []
+    self.check_and_get_elements = check_and_get_elements
     self.junk = junk
+    self.number_nicely = number_nicely
 
   def current_text(self):
     return "".join(c.value() for _, c in self.elements if c.present())
@@ -68,13 +75,14 @@ class SequenceHistory(History):
   def absent(self):
     return not self.present()
 
-  def remove(self, version):
-    self.add_version(version, [])
+  def remove(self, version, *context):
+    self.add_version(version, [], *context)
 
   def value(self):
     return "".join(c.value() for _, c in self.elements if c.present())
 
-  def add_version(self, version, new_text):
+  def add_version(self, version, new_text, *context):
+    new_text = self.check_and_get_elements(new_text, self, version, *context)
     indexing : Sequence[Tuple[Optional[int], Tuple[Sequence[int], History]]] = []
     i = 0
     for n, c in self.elements:
@@ -135,17 +143,18 @@ class SequenceHistory(History):
                 previous_number = indexing[i][1][0]
                 next_number = indexing[i+1][1][0] if i + 1 < len(indexing) else None
                 prefix, offset = get_inserted_paragraph_number(previous_number, next_number)
-                # Instead of inserting immediately after paragraph n, see if we 
-                # can insert at a higher level by skipping some deleted paragraphs.
-                for j in itertools.count(i+1):
-                  if j == len(indexing) or indexing[j][1][1].present():
-                    break
-                  previous_number = indexing[j][1][0]
-                  next_number = indexing[j+1][1][0] if j+1 < len(indexing) else None
-                  p, o = get_inserted_paragraph_number(previous_number, next_number)
-                  if len(prefix) >= len(p):
-                    prefix, offset = p, o
-                    i = j
+                if self.number_nicely:
+                  # Instead of inserting immediately after paragraph n, see if we 
+                  # can insert at a higher level by skipping some deleted paragraphs.
+                  for j in itertools.count(i+1):
+                    if j == len(indexing) or indexing[j][1][1].present():
+                      break
+                    previous_number = indexing[j][1][0]
+                    next_number = indexing[j+1][1][0] if j+1 < len(indexing) else None
+                    p, o = get_inserted_paragraph_number(previous_number, next_number)
+                    if len(prefix) >= len(p):
+                      prefix, offset = p, o
+                      i = j
 
                 inserted = [(None, ((*prefix, offset + i) , c)) for i, c in enumerate(inserted_histories)]
                 before = indexing[:i+1]
@@ -156,13 +165,13 @@ class SequenceHistory(History):
               raise Exception("Failed to insert")
         elif operation == "replace":
           i = new_begin
-          for old_index, (_, c) in indexing:
+          for old_index, (n, c) in indexing:
             if old_index is None:
               continue
             elif old_index >= old_end:
               break
             elif old_index >= old_begin:
-              c.add_version(version, new_text[i])
+              c.add_version(version, new_text[i], *context, n)
               i += 1
           
     self.elements = [c for _, c in indexing]
@@ -194,7 +203,7 @@ class SequenceHistory(History):
         added = c.added
         if added:
           text += f'<ins class="changed-in-{added}">'
-      text += html.escape(c.value())
+      text += html.escape(c.value())#.replace('\u2028', '<br>')
     if added:
       text += "</ins>"
     if removed:

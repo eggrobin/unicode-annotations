@@ -1,6 +1,8 @@
 ﻿import csv
 from difflib import SequenceMatcher
+from typing import Sequence, Tuple
 import historical_diff
+from document import Paragraph, Heading, Rule, Formula, Table
 import re
 
 def parse_version(s):
@@ -68,16 +70,33 @@ for version, renumbering in reversed(list(RENUMBERINGS.items())):
     else:
       print("UNEXPECTED")
 
+METAMORPHOSES = {
+  "4-1-0": [(Paragraph, (84,), Formula)],
+}
 
-with open("rules.py", encoding="utf-8") as f:
-  VERSIONS = eval(f.read())
+with open("paragraphs.py", encoding="utf-8") as f:
+  VERSIONS : dict[Tuple[int, int, int], Sequence[Paragraph]] = eval(f.read())
 
-def make_sequence_history(v, s):
-  h = historical_diff.SequenceHistory(junk=lambda w: w.isspace() or w in ".,;:" or w in ("of", "and", "between"))
-  h.add_version(v, s)
+def get_words(p: Paragraph, h: historical_diff.SequenceHistory, version, *context):
+  if not p:
+    return p
+  if type(h.tag) != type(p):
+    if version not in METAMORPHOSES or (type(h.tag), *context, type(p)) not in METAMORPHOSES[version]:
+      print("ERROR:", type(h.tag).__name__, *context, "becomes", type(p).__name__, "in", version)
+      print("ERROR:", h.value())
+      print("ERROR:", p.contents)
+    h.tag = p
+  return p.words()
+
+def make_sequence_history(v, p: Paragraph):
+  h = historical_diff.SequenceHistory(
+        junk=lambda w: w.isspace() or w in ".,;:" or w in ("of", "and", "between", "the", "is", "that", "ing"),
+        check_and_get_elements=get_words)
+  h.tag = p
+  h.add_version(v, p)
   return h
 
-history = historical_diff.SequenceHistory(element_history=make_sequence_history)
+history = historical_diff.SequenceHistory(element_history=make_sequence_history, number_nicely=True)
 
 PRESERVED_PARAGRAPHS = {
   (3, 1, 0): {(10,): "", (84,): ""},
@@ -87,20 +106,19 @@ PRESERVED_PARAGRAPHS = {
   (5, 1, 0): {(40, 13): "", (40, 18): "The following", (101, 3): "LB30"},
   (5, 2, 0): {(101, 3): "LB30"},
   (6, 0, 0): {(33,): ""},
-  (9, 0, 0): {(82, 4): "(PR | PO)"},
+  (6, 1, 0): {(13, 2): ""},
+  (9, 0, 0): {(82, 4): "(PR | PO)", (101, 11) : "sot (RI RI)*"},
   (11, 0, 0): {(33, 1, 4): "A ZWJ"},
+  (13, 0, 0): {(73,): "× IN"},
 }
 
-for version, clauses in VERSIONS.items():
-  paragraphs = []
-  for title, subclauses in clauses.values():
-    paragraphs.append(re.split(r"\b|(?<=\W)(?=\W)", title))
-    paragraphs.extend(re.split(r"\b|(?<=\W)(?=\W)", s) for s in subclauses)
+for version, paragraphs in VERSIONS.items():
+  print(version)
   version_class = "-".join(str(v) for v in version)
 
   new_rule_descriptions = {}
   for paragraph in paragraphs:
-    match = re.match(r"LB\s*(\d+[a-z]?)", "".join(paragraph))
+    match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.contents)
     if match:
       if version in RENUMBERINGS:
         old_number = None
@@ -118,16 +136,16 @@ for version, clauses in VERSIONS.items():
   for paragraph_number, hint in PRESERVED_PARAGRAPHS.get(version, {}).items():
     print("Preserving", paragraph_number, "in", version)
     old_paragraph = old_paragraphs[paragraph_number].value()
-    hinted_paragraphs = (p for p in paragraphs if "".join(p).startswith(hint)) if hint else paragraphs
-    new_paragraph = max(hinted_paragraphs, key = lambda p: SequenceMatcher(None, "".join(p), old_paragraph).ratio())
+    hinted_paragraphs = (p for p in paragraphs if p.contents.startswith(hint)) if hint else paragraphs
+    new_paragraph = max(hinted_paragraphs, key = lambda p: SequenceMatcher(None, p.contents, old_paragraph).ratio())
     if not hinted_paragraphs:
       print("ERROR: no paragraph matching hint", hint)
-    old_paragraphs[paragraph_number].add_version(version_class, new_paragraph)
+    old_paragraphs[paragraph_number].add_version(version_class, new_paragraph, paragraph_number)
   for paragraph_number, paragraph in history.elements:
     if paragraph.present():
       match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value())
       if match and match.group(1) in new_rule_descriptions:
-        paragraph.add_version(version_class, new_rule_descriptions[match.group(1)])
+        paragraph.add_version(version_class, new_rule_descriptions[match.group(1)], paragraph_number)
   history.add_version(version_class, paragraphs)
 
 TOL_LIGHT_COLOURS = [
@@ -151,6 +169,13 @@ with open("dumb_diff.html", "w", encoding="utf-8") as f:
   print("<style>", file=f)
   print("div.paranum { float:left; font-size: 64%; width: 2.8em; margin-left: -0.4em; margin-right: -3em; margin-top: 0.2em; }", file=f)
   print("p { margin-left: 3em }", file=f)
+  print("h1 { margin-left: 3em }", file=f)
+  print("h2 { margin-left: 3em }", file=f)
+  print("h3 { margin-left: 3em }", file=f)
+  print("h4 { margin-left: 3em }", file=f)
+  print("table { margin-left: 3em }", file=f)
+  print(".rule { font-style: italic }", file=f)
+  print(".formula { margin-left: 5em }", file=f)
   print("a { color: inherit; }", file=f)
   print(".sources { text-decoration: none; }", file=f)
   for i, version in enumerate(VERSIONS):
@@ -164,6 +189,10 @@ with open("dumb_diff.html", "w", encoding="utf-8") as f:
               colour),
           file=f)
     print("ins.changed-in-%s { background-color:%s; text-decoration: none; color: black; }" % (
+              '-'.join(str(v) for v in version),
+              colour),
+          file=f)
+    print("table.changed-in-%s { background:%s; color: black; }" % (
               '-'.join(str(v) for v in version),
               colour),
           file=f)
@@ -219,6 +248,19 @@ with open("dumb_diff.html", "w", encoding="utf-8") as f:
           ins.style = "";
         }
       }
+      for (var table of document.getElementsByTagName("table")) {
+        if (!table.className.startsWith("changed-in")) {
+          continue;
+        }
+        version = table.className.split("-").slice(-3).map(x => parseInt(x));
+        if (older_or_equal(version, oldest)) {
+          table.style = "color:black;text-decoration:none;background-color:white;";
+        } else if (older(newest, version)) {
+          table.style = "display:none";
+        } else {
+          table.style = "";
+        }
+      }
       for (var del of document.getElementsByTagName("del")) {
         version = del.className.split("-").slice(-3).map(x => parseInt(x));
         if (older_or_equal(version, oldest)) {
@@ -260,13 +302,22 @@ with open("dumb_diff.html", "w", encoding="utf-8") as f:
   print("</tbody>", file=f)
   print("</table>", file=f)
   for paragraph_number, paragraph in history.elements:
+    paragraph: historical_diff.SequenceHistory
     print("<div class=paranum>", file=f)
     print(".".join(str(n) for n in paragraph_number), file=f)
     print("</div>", file=f)
     print("</p>", file=f)
-    print("<p>", file=f)
-    print(paragraph.html(), file=f)
-    print("&nbsp;", file=f)
-    print("</p>", file=f)
+    if type(paragraph.tag) == Table:
+      for _, t in paragraph.elements:
+        t: historical_diff.AtomHistory
+        if t.removed:
+          print(f"<del class=changed-in-{t.removed}>", file=f)
+        table_contents = t.value().replace("\u2028", "<br>")
+        print(f"<table class=changed-in-{t.added}>{table_contents}</table>", file=f)
+        if t.removed:
+          print(f"</del>", file=f)
+      print(f"<p>&nbsp;</p>", file=f)
+    else:
+      print(paragraph.tag.html(paragraph.html() + "&nbsp;"), file=f)
   print("</body>", file=f)
   print("</html>", file=f)
