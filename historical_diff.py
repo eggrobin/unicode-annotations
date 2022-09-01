@@ -82,7 +82,8 @@ class SequenceHistory(History):
     return "".join(c.value() for _, c in self.elements if c.present())
 
   def last_changed(self):
-    return max(c.last_changed() for _, c in self.elements)
+    # TODO(egg): we should reify the version, this is getting silly.
+    return max(tuple(int(v) for v in c.last_changed().split("-")) for _, c in self.elements)
 
   def add_version(self, version, new_text, *context):
     new_text = self.check_and_get_elements(new_text, self, version, *context)

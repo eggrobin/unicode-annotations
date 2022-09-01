@@ -161,7 +161,7 @@ for version, paragraphs in VERSIONS.items():
                         if issue.version == version and
                            (rule_number in issue.target_rules or
                             rule_number in issue.affected_rules)]
-    if paragraph.last_changed() == "-".join(str(v) for v in version):
+    if paragraph.last_changed() == version:
       paragraph.issues += current_issues
     
 
@@ -177,7 +177,7 @@ TOL_LIGHT_COLOURS = [
     "#DDDDDD",
 ]
 
-with open("dumb_diff.html", "w", encoding="utf-8") as f:
+with open("alba.html", "w", encoding="utf-8") as f:
   print("<!DOCTYPE html>", file=f)
   print("<html>", file=f)
   print("<head>", file=f)
