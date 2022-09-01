@@ -1,9 +1,11 @@
 ﻿import csv
 from difflib import SequenceMatcher
 from typing import Sequence, Tuple
-import historical_diff
-from document import Paragraph, Heading, Rule, Formula, Table
 import re
+
+from annotations import ISSUES
+from document import Paragraph, Heading, Rule, Formula, Table
+import historical_diff
 
 def parse_version(s):
   match = re.match(r"(?:Unicode )?(\d+)\.(\d)\.(\d)", s)
@@ -93,6 +95,7 @@ def make_sequence_history(v, p: Paragraph):
         junk=lambda w: w.isspace() or w in ".,;:" or w in ("of", "and", "between", "the", "is", "that", "ing"),
         check_and_get_elements=get_words)
   h.tag = p
+  h.issues = []
   h.add_version(v, p)
   return h
 
@@ -148,6 +151,20 @@ for version, paragraphs in VERSIONS.items():
         paragraph.add_version(version_class, new_rule_descriptions[match.group(1)], paragraph_number)
   history.add_version(version_class, paragraphs)
 
+  rule_number = None
+  current_issues = []
+  for paragraph_number, paragraph in history.elements:
+    match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value())
+    if match:
+      rule_number = "LB" + match.group(1)
+      current_issues = [issue for issue in ISSUES
+                        if issue.version == version and
+                           (rule_number in issue.target_rules or
+                            rule_number in issue.affected_rules)]
+    if paragraph.last_changed() == "-".join(str(v) for v in version):
+      paragraph.issues += current_issues
+    
+
 TOL_LIGHT_COLOURS = [
     "#77AADD",
     "#99DDFF",
@@ -168,7 +185,9 @@ with open("dumb_diff.html", "w", encoding="utf-8") as f:
   print("<title>Annotated Line Breaking Algorithm</title>", file=f)
   print("<style>", file=f)
   print("div.paranum { float:left; font-size: 64%; width: 2.8em; margin-left: -0.4em; margin-right: -3em; margin-top: 0.2em; }", file=f)
-  print("p { margin-left: 3em }", file=f)
+  print("div.sources { float:right; font-size: 80%; }", file=f)
+  print("p { margin-left: 3em; }", file=f)
+  #print("p.sources { margin-block-end: 0 }", file=f)
   print("h1 { margin-left: 3em }", file=f)
   print("h2 { margin-left: 3em }", file=f)
   print("h3 { margin-left: 3em }", file=f)
@@ -306,7 +325,25 @@ with open("dumb_diff.html", "w", encoding="utf-8") as f:
     print("<div class=paranum>", file=f)
     print(".".join(str(n) for n in paragraph_number), file=f)
     print("</div>", file=f)
-    print("</p>", file=f)
+
+    if paragraph.issues:
+      print("<div class=sources>", file=f)
+    for issue in paragraph.issues:
+      hyphenated = '-'.join(str(v) for v in issue.version)
+      print(f'<ins class="changed-in-{hyphenated} sources">', file=f)
+      print("{", file=f)
+      print(pretty_version(issue.version) + ":", file=f)
+      print(", ".join(f'<a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?{l2ref}">{l2ref}</a>' for l2ref in issue.l2_refs),
+            file=f)
+      if issue.l2_refs and issue.l2_docs:
+        print("; ", file=f)
+      print(", ".join(f'<a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?{l2doc}">{l2doc}</a>' for l2doc in issue.l2_docs),
+            file=f)
+      print("} ", file=f)
+      print('</ins>', file=f)
+    if paragraph.issues:
+      print("</div>", file=f)
+
     if type(paragraph.tag) == Table:
       for _, t in paragraph.elements:
         t: historical_diff.AtomHistory

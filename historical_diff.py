@@ -17,6 +17,9 @@ class History:
   def absent(self):
     return not self.present()
 
+  def last_changed(self):
+    return None
+
 class AtomHistory(History):
   def __init__(self, version, c):
     self.text = c
@@ -34,8 +37,8 @@ class AtomHistory(History):
   def present(self):
     return self.added and not self.removed
 
-  def absent(self):
-    return not self.present()
+  def last_changed(self):
+    return self.removed or self.added
 
 def get_inserted_paragraph_number(
     previous_number: Sequence[int],
@@ -72,14 +75,14 @@ class SequenceHistory(History):
   def present(self):
     return any(c.present() for _, c in self.elements)
 
-  def absent(self):
-    return not self.present()
-
   def remove(self, version, *context):
     self.add_version(version, [], *context)
 
   def value(self):
     return "".join(c.value() for _, c in self.elements if c.present())
+
+  def last_changed(self):
+    return max(c.last_changed() for _, c in self.elements)
 
   def add_version(self, version, new_text, *context):
     new_text = self.check_and_get_elements(new_text, self, version, *context)
@@ -203,7 +206,7 @@ class SequenceHistory(History):
         added = c.added
         if added:
           text += f'<ins class="changed-in-{added}">'
-      text += html.escape(c.value())#.replace('\u2028', '<br>')
+      text += html.escape(c.value()).replace('\u2028', '<br>')
     if added:
       text += "</ins>"
     if removed:
