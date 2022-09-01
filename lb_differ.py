@@ -115,6 +115,8 @@ PRESERVED_PARAGRAPHS = {
   (13, 0, 0): {(73,): "× IN"},
 }
 
+nontrivial_versions = []
+
 for version, paragraphs in VERSIONS.items():
   print(version)
   version_class = "-".join(str(v) for v in version)
@@ -151,6 +153,7 @@ for version, paragraphs in VERSIONS.items():
         paragraph.add_version(version_class, new_rule_descriptions[match.group(1)], paragraph_number)
   history.add_version(version_class, paragraphs)
 
+  any_change = False
   rule_number = None
   current_issues = []
   for paragraph_number, paragraph in history.elements:
@@ -161,9 +164,13 @@ for version, paragraphs in VERSIONS.items():
                         if issue.version == version and
                            (rule_number in issue.target_rules or
                             rule_number in issue.affected_rules)]
+
     if paragraph.last_changed() == version:
+      any_change = True
       paragraph.issues += current_issues
-    
+  if any_change:
+    nontrivial_versions.append(version)
+
 
 TOL_LIGHT_COLOURS = [
     "#77AADD",
@@ -197,7 +204,7 @@ with open("alba.html", "w", encoding="utf-8") as f:
   print(".formula { margin-left: 5em }", file=f)
   print("a { color: inherit; }", file=f)
   print(".sources { text-decoration: none; }", file=f)
-  for i, version in enumerate(VERSIONS):
+  for i, version in enumerate(nontrivial_versions):
     colour = TOL_LIGHT_COLOURS[i % len(TOL_LIGHT_COLOURS)]
     print(".changed-in-%s { background-color:%s; }" % (
               '-'.join(str(v) for v in version),
@@ -308,13 +315,13 @@ with open("alba.html", "w", encoding="utf-8") as f:
   print('<table style="background:white;position:fixed;right:0;top:0">', file=f)
   print("<thead><tr><th>Base</th><th>Head</th></tr></thead>", file=f)
   print("<tbody>", file=f)
-  for i, version in enumerate(VERSIONS):
+  for i, version in enumerate(nontrivial_versions):
     hyphenated = '-'.join(str(v) for v in version)
     print("<tr><td>", file=f)
     print(f'<input type="radio" id="oldest-{hyphenated}" name="oldest" value="{hyphenated}"{"checked" if version == (5,0,0) else ""}>', file=f)
     #print(f'<label for="oldest-{hyphenated}" class="changed-in-{hyphenated}">Unicode Version {pretty_version(version)}</label>', file=f)
     print("</td><td>", file=f)
-    print(f'<input type="radio" id="newest-{hyphenated}" name="newest" value="{hyphenated}"{"checked" if i == len(VERSIONS) - 1 else ""}>', file=f)
+    print(f'<input type="radio" id="newest-{hyphenated}" name="newest" value="{hyphenated}"{"checked" if i == len(nontrivial_versions) - 1 else ""}>', file=f)
     print("</td><td>", file=f)
     print(f'<button class="changed-in-{hyphenated}" value="{hyphenated}">Unicode Version {pretty_version(version)}</button>', file=f)
     print("</td></tr>", file=f)
