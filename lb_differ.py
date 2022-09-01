@@ -117,6 +117,7 @@ PRESERVED_PARAGRAPHS = {
 
 nontrivial_versions = []
 
+previous_version = None
 for version, paragraphs in VERSIONS.items():
   print(version)
   version_class = "-".join(str(v) for v in version)
@@ -160,16 +161,26 @@ for version, paragraphs in VERSIONS.items():
     match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value())
     if match:
       rule_number = "LB" + match.group(1)
+      previous_rule_number = None
+      if previous_version:
+        match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value_at(previous_version))
+        if match:
+          previous_rule_number = "LB" + match.group(1)
       current_issues = [issue for issue in ISSUES
                         if issue.version == version and
                            (rule_number in issue.target_rules or
                             rule_number in issue.affected_rules)]
+      current_issues += [issue for issue in ISSUES
+                         if issue.version == version and
+                            previous_rule_number in issue.deleted_rules]
 
     if paragraph.last_changed() == version:
       any_change = True
       paragraph.issues += current_issues
   if any_change:
     nontrivial_versions.append(version)
+
+  previous_version = version
 
 
 TOL_LIGHT_COLOURS = [
@@ -192,7 +203,7 @@ with open("alba.html", "w", encoding="utf-8") as f:
   print("<title>Annotated Line Breaking Algorithm</title>", file=f)
   print("<style>", file=f)
   print("div.paranum { float:left; font-size: 64%; width: 2.8em; margin-left: -0.4em; margin-right: -3em; margin-top: 0.2em; }", file=f)
-  print("div.sources { float:right; font-size: 80%; }", file=f)
+  print("div.sources { float:right; font-size: 80%; max-width:50%; text-align:right; }", file=f)
   print("p { margin-left: 3em; }", file=f)
   #print("p.sources { margin-block-end: 0 }", file=f)
   print("h1 { margin-left: 3em }", file=f)
@@ -203,7 +214,7 @@ with open("alba.html", "w", encoding="utf-8") as f:
   print(".rule { font-style: italic }", file=f)
   print(".formula { margin-left: 5em }", file=f)
   print("a { color: inherit; }", file=f)
-  print(".sources { text-decoration: none; }", file=f)
+  print("ins.sources { text-decoration: none; white-space:nowrap; }", file=f)
   for i, version in enumerate(nontrivial_versions):
     colour = TOL_LIGHT_COLOURS[i % len(TOL_LIGHT_COLOURS)]
     print(".changed-in-%s { background-color:%s; }" % (
@@ -233,7 +244,7 @@ with open("alba.html", "w", encoding="utf-8") as f:
     }
     function show_version_diff(version) {
       chosen_oldest = null;
-      for (var input of document.getElementsByTagName("input")) {
+      for (var input of document.querySelectorAll('input[name="oldest"]')) {
         if (input.name != "oldest") {
           continue;
         }
@@ -274,10 +285,7 @@ with open("alba.html", "w", encoding="utf-8") as f:
           ins.style = "";
         }
       }
-      for (var table of document.getElementsByTagName("table")) {
-        if (!table.className.startsWith("changed-in")) {
-          continue;
-        }
+      for (var table of document.querySelectorAll("table[class^=changed-in-]")) {
         version = table.className.split("-").slice(-3).map(x => parseInt(x));
         if (older_or_equal(version, oldest)) {
           table.style = "color:black;text-decoration:none;background-color:white;";
@@ -338,15 +346,14 @@ with open("alba.html", "w", encoding="utf-8") as f:
     for issue in paragraph.issues:
       hyphenated = '-'.join(str(v) for v in issue.version)
       print(f'<ins class="changed-in-{hyphenated} sources">', file=f)
-      print("{", file=f)
-      print(pretty_version(issue.version) + ":", file=f)
-      print(", ".join(f'<a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?{l2ref}">{l2ref}</a>' for l2ref in issue.l2_refs),
+      print("{" + pretty_version(issue.version) + ": " +
+            ", ".join(f'<a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?{l2ref}">{l2ref}</a>'
+                      for l2ref in issue.l2_refs) +
+            ("" if not issue.l2_refs or not issue.l2_docs else
+             "; " + ",".join(f'<a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?{l2doc}">{l2doc}</a>'
+                             for l2doc in issue.l2_docs)) +
+            "}",
             file=f)
-      if issue.l2_refs and issue.l2_docs:
-        print("; ", file=f)
-      print(", ".join(f'<a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?{l2doc}">{l2doc}</a>' for l2doc in issue.l2_docs),
-            file=f)
-      print("} ", file=f)
       print('</ins>', file=f)
     if paragraph.issues:
       print("</div>", file=f)

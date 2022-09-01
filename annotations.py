@@ -11,12 +11,14 @@ class Issue:
       l2_refs: Sequence[str],
       l2_docs: Sequence[str] = [],
       affected_rules: Sequence[str] = [],
+      deleted_rules: Sequence[str] = [],
       reason: Optional[str] = None) -> None:
     self.version = version
     self.target_rules = target_rules
     self.l2_refs = l2_refs
     self.l2_docs = l2_docs
     self.affected_rules = affected_rules
+    self.deleted_rules = deleted_rules
     self.reason = reason
 
 
@@ -76,8 +78,9 @@ ISSUES = (
           affected_rules=["LB13", "LB16", "LB25"]),
     # Removed LB30.
     Issue((5, 1, 0),
-          ["x30"],
-          ["114-C30"]),
+          [],
+          ["114-C30"],
+          deleted_rules=["LB30"]),
     # Split 12a from 12.
     Issue((5, 1, 0),
           ["LB12a"],
@@ -93,12 +96,14 @@ ISSUES = (
           ["105-C6"]),
     # Splits 6 into 18b and 18c (4), removes 18b (5).
     Issue((4, 1, 0),
-          ["LB18b", "LB18c", "x18b"],
-          ["100-C40"]),
+          ["LB18b", "LB18c"],
+          ["100-C40"],
+          deleted_rules=["LB6", "LB18b"]),
     # Removes 7a.
     Issue((4, 1, 0),
-          ["x7a"],
-          ["100-M2"]),
+          [],
+          ["100-M2"],
+          deleted_rules=["LB7a"]),
     Issue((4, 1, 0),
           ["LB7b"],
           ["102-C23"]),

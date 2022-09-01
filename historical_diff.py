@@ -11,6 +11,9 @@ class History:
   def value(self):
     return ""
 
+  def value_at(self, version):
+    return ""
+
   def present(self):
     return False
 
@@ -28,6 +31,9 @@ class AtomHistory(History):
 
   def value(self):
     return self.text
+
+  def value_at(self, version):
+    return self.text if version >= tuple(int(v) for v in self.added.split("-")) and (not self.removed or version < tuple(int(v) for v in self.removed.split("-"))) else ""
 
   def remove(self, version):
     if self.added == version:
@@ -80,6 +86,9 @@ class SequenceHistory(History):
 
   def value(self):
     return "".join(c.value() for _, c in self.elements if c.present())
+
+  def value_at(self, version):
+    return "".join(c.value_at(version) for _, c in self.elements)
 
   def last_changed(self):
     # TODO(egg): we should reify the version, this is getting silly.
