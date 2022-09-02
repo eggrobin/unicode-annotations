@@ -1,8 +1,32 @@
 import difflib
+from functools import total_ordering
 import html
 import itertools
 import re
 from typing import Optional, Sequence, Tuple
+
+@total_ordering
+class Version:
+  def __init__(self, *components: Sequence[int]):
+    self.components = tuple(components)
+
+  def __hash__(self):
+    return hash(self.components)
+
+  def __eq__(self, other):
+    return isinstance(other, Version) and self.components == other.components
+
+  def __lt__(self, other):
+    return self.components < other.components
+
+  def __repr__(self):
+    return f"Version({', '.join(str(v) for v in self.components)})"
+
+  def __str__(self):
+    return ".".join(str(v) for v in self.components)
+
+  def html_class(self):
+    return "-".join(str(v) for v in self.components)
 
 class History:
   def remove(self, version):
@@ -33,7 +57,7 @@ class AtomHistory(History):
     return self.text
 
   def value_at(self, version):
-    return self.text if version >= tuple(int(v) for v in self.added.split("-")) and (not self.removed or version < tuple(int(v) for v in self.removed.split("-"))) else ""
+    return self.text if version >= self.added and (not self.removed or version < self.removed) else ""
 
   def remove(self, version):
     if self.added == version:
@@ -91,8 +115,7 @@ class SequenceHistory(History):
     return "".join(c.value_at(version) for _, c in self.elements)
 
   def last_changed(self):
-    # TODO(egg): we should reify the version, this is getting silly.
-    return max(tuple(int(v) for v in c.last_changed().split("-")) for _, c in self.elements)
+    return max(c.last_changed() for _, c in self.elements)
 
   def add_version(self, version, new_text, *context):
     new_text = self.check_and_get_elements(new_text, self, version, *context)
@@ -209,13 +232,13 @@ class SequenceHistory(History):
           text += "</del>"
         removed = c.removed
         if removed:
-          text += f'<del class="changed-in-{removed}">'
+          text += f'<del class="changed-in-{removed.html_class()}">'
       if c.added != added:
         if added:
           text += "</ins>"
         added = c.added
         if added:
-          text += f'<ins class="changed-in-{added}">'
+          text += f'<ins class="changed-in-{added.html_class()}">'
       text += html.escape(c.value()).replace('\u2028', '<br>')
     if added:
       text += "</ins>"

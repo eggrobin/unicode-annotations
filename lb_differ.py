@@ -5,15 +5,13 @@ import re
 
 from annotations import ISSUES
 from document import Paragraph, Heading, Rule, Formula, Table
+from historical_diff import Version
 import historical_diff
 
 def parse_version(s):
   match = re.match(r"(?:Unicode )?(\d+)\.(\d)\.(\d)", s)
   if match:
-    return tuple(int(v) for v in match.groups())
-
-def pretty_version(version):
-  return ".".join(str(v) for v in version)
+    return Version(*(int(v) for v in match.groups()))
 
 with open('renumberings.tsv') as f:
   rows = csv.reader(f, delimiter="\t")
@@ -26,8 +24,8 @@ creations = set()
 deletions = set()
 
 REORDERINGS = {
-  (4, 0, 0): [("13", "11b"), ("15b", "18b")],
-  (5, 0, 0): [("11b", "11"), ("13", "12")]
+  Version(4, 0, 0): [("13", "11b"), ("15b", "18b")],
+  Version(5, 0, 0): [("11b", "11"), ("13", "12")]
 }
 
 for version, renumbering in reversed(list(RENUMBERINGS.items())):
@@ -39,22 +37,22 @@ for version, renumbering in reversed(list(RENUMBERINGS.items())):
         reverse.setdefault(old, set()).add(new)
       else:
         deletions.add((version, old))
-        print (f"RULE DELETION: {old} in {pretty_version(version)}")
+        print (f"RULE DELETION: {old} in {version}")
     elif new:
       creations.add((version, new))
-      print (f"RULE CREATION: {new} in {pretty_version(version)}")
+      print (f"RULE CREATION: {new} in {version}")
 
   for old, new in reverse.items():
     if len(new) > 1:
       for n in new:
         splits.add((version, n))
-      print (f"RULE SPLIT: {old} into ({', '.join(sorted(new))}) in {pretty_version(version)}")
+      print (f"RULE SPLIT: {old} into ({', '.join(sorted(new))}) in {version}")
 
   common = [(old, tuple(new)[0]) for old, new, in reverse.items() if len(new) == 1]
   old_order = sorted(common, key=lambda x: re.sub(r"^(\d)(?!\d)", r"0\1", x[0]))
   new_order = sorted(common, key=lambda x: re.sub(r"^(\d)(?!\d)", r"0\1", x[1]))
   if new_order != old_order:
-    print("REORDERING in", pretty_version(version))
+    print("REORDERING in", version)
     for i in range(len(old_order)):
       if new_order[i] != old_order[i]:
         break
@@ -77,7 +75,7 @@ METAMORPHOSES = {
 }
 
 with open("paragraphs.py", encoding="utf-8") as f:
-  VERSIONS : dict[Tuple[int, int, int], Sequence[Paragraph]] = eval(f.read())
+  VERSIONS : dict[Version, Sequence[Paragraph]] = eval(f.read())
 
 def get_words(p: Paragraph, h: historical_diff.SequenceHistory, version, *context):
   if not p:
@@ -102,17 +100,17 @@ def make_sequence_history(v, p: Paragraph):
 history = historical_diff.SequenceHistory(element_history=make_sequence_history, number_nicely=True)
 
 PRESERVED_PARAGRAPHS = {
-  (3, 1, 0): {(10,): "", (84,): ""},
-  (4, 0, 0): {(3,): "", (27,): ""},
-  (4, 1, 0): {(33, 3): "LB 6", (39,): "LB 7a", (84,): ""},
-  (5, 0, 0): {(3,): "", (6,): "", (9, 1): "", (10,): "", (11,): "", (33, 2, 1): "", (39, 1): "", (40, 7): ""},
-  (5, 1, 0): {(40, 13): "", (40, 18): "The following", (101, 3): "LB30"},
-  (5, 2, 0): {(101, 3): "LB30"},
-  (6, 0, 0): {(33,): ""},
-  (6, 1, 0): {(13, 2): ""},
-  (9, 0, 0): {(82, 4): "(PR | PO)", (101, 11) : "sot (RI RI)*"},
-  (11, 0, 0): {(33, 1, 4): "A ZWJ"},
-  (13, 0, 0): {(73,): "× IN"},
+  Version(3, 1, 0): {(10,): "", (84,): ""},
+  Version(4, 0, 0): {(3,): "", (27,): ""},
+  Version(4, 1, 0): {(33, 3): "LB 6", (39,): "LB 7a", (84,): ""},
+  Version(5, 0, 0): {(3,): "", (6,): "", (9, 1): "", (10,): "", (11,): "", (33, 2, 1): "", (39, 1): "", (40, 7): ""},
+  Version(5, 1, 0): {(40, 13): "", (40, 18): "The following", (101, 3): "LB30"},
+  Version(5, 2, 0): {(101, 3): "LB30"},
+  Version(6, 0, 0): {(33,): ""},
+  Version(6, 1, 0): {(13, 2): ""},
+  Version(9, 0, 0): {(82, 4): "(PR | PO)", (101, 11) : "sot (RI RI)*"},
+  Version(11, 0, 0): {(33, 1, 4): "A ZWJ"},
+  Version(13, 0, 0): {(73,): "× IN"},
 }
 
 nontrivial_versions = []
@@ -120,7 +118,6 @@ nontrivial_versions = []
 previous_version = None
 for version, paragraphs in VERSIONS.items():
   print(version)
-  version_class = "-".join(str(v) for v in version)
 
   new_rule_descriptions = {}
   for paragraph in paragraphs:
@@ -146,13 +143,13 @@ for version, paragraphs in VERSIONS.items():
     new_paragraph = max(hinted_paragraphs, key = lambda p: SequenceMatcher(None, p.contents, old_paragraph).ratio())
     if not hinted_paragraphs:
       print("ERROR: no paragraph matching hint", hint)
-    old_paragraphs[paragraph_number].add_version(version_class, new_paragraph, paragraph_number)
+    old_paragraphs[paragraph_number].add_version(version, new_paragraph, paragraph_number)
   for paragraph_number, paragraph in history.elements:
     if paragraph.present():
       match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value())
       if match and match.group(1) in new_rule_descriptions:
-        paragraph.add_version(version_class, new_rule_descriptions[match.group(1)], paragraph_number)
-  history.add_version(version_class, paragraphs)
+        paragraph.add_version(version, new_rule_descriptions[match.group(1)], paragraph_number)
+  history.add_version(version, paragraphs)
 
   any_change = False
   rule_number = None
@@ -218,19 +215,19 @@ with open("alba.html", "w", encoding="utf-8") as f:
   for i, version in enumerate(nontrivial_versions):
     colour = TOL_LIGHT_COLOURS[i % len(TOL_LIGHT_COLOURS)]
     print(".changed-in-%s { background-color:%s; }" % (
-              '-'.join(str(v) for v in version),
+              version.html_class(),
               colour),
           file=f)
     print("del.changed-in-%s { color:%s; text-decoration-thickness: .3ex; }" % (
-              '-'.join(str(v) for v in version),
+              version.html_class(),
               colour),
           file=f)
     print("ins.changed-in-%s { background-color:%s; text-decoration: none; color: black; }" % (
-              '-'.join(str(v) for v in version),
+              version.html_class(),
               colour),
           file=f)
     print("table.changed-in-%s { background:%s; color: black; }" % (
-              '-'.join(str(v) for v in version),
+              version.html_class(),
               colour),
           file=f)
   print("</style>", file=f)
@@ -324,14 +321,13 @@ with open("alba.html", "w", encoding="utf-8") as f:
   print("<thead><tr><th>Base</th><th>Head</th></tr></thead>", file=f)
   print("<tbody>", file=f)
   for i, version in enumerate(nontrivial_versions):
-    hyphenated = '-'.join(str(v) for v in version)
     print("<tr><td>", file=f)
-    print(f'<input type="radio" id="oldest-{hyphenated}" name="oldest" value="{hyphenated}"{"checked" if version == (5,0,0) else ""}>', file=f)
-    #print(f'<label for="oldest-{hyphenated}" class="changed-in-{hyphenated}">Unicode Version {pretty_version(version)}</label>', file=f)
+    print(f'<input type="radio" id="oldest-{version.html_class()}" name="oldest" value="{version.html_class()}"{"checked" if version == Version(5,0,0) else ""}>', file=f)
+    #print(f'<label for="oldest-{version.html_class()}" class="changed-in-{version.html_class()}">Unicode Version {version}</label>', file=f)
     print("</td><td>", file=f)
-    print(f'<input type="radio" id="newest-{hyphenated}" name="newest" value="{hyphenated}"{"checked" if i == len(nontrivial_versions) - 1 else ""}>', file=f)
+    print(f'<input type="radio" id="newest-{version.html_class()}" name="newest" value="{version.html_class()}"{"checked" if i == len(nontrivial_versions) - 1 else ""}>', file=f)
     print("</td><td>", file=f)
-    print(f'<button class="changed-in-{hyphenated}" value="{hyphenated}">Unicode Version {pretty_version(version)}</button>', file=f)
+    print(f'<button class="changed-in-{version.html_class()}" value="{version.html_class()}">Unicode Version {version}</button>', file=f)
     print("</td></tr>", file=f)
   print("</tbody>", file=f)
   print("</table>", file=f)
@@ -344,9 +340,8 @@ with open("alba.html", "w", encoding="utf-8") as f:
     if paragraph.issues:
       print("<div class=sources>", file=f)
     for issue in paragraph.issues:
-      hyphenated = '-'.join(str(v) for v in issue.version)
-      print(f'<ins class="changed-in-{hyphenated} sources">', file=f)
-      print("{" + pretty_version(issue.version) + ": " +
+      print(f'<ins class="changed-in-{issue.version.html_class()} sources">', file=f)
+      print("{" + str(issue.version) + ": " +
             ", ".join(f'<a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?{l2ref}">{l2ref}</a>'
                       for l2ref in issue.l2_refs) +
             ("" if not issue.l2_refs or not issue.l2_docs else

@@ -1,4 +1,5 @@
 ﻿from collections import Counter
+from historical_diff import Version
 from document import Paragraph, Heading, Rule, Formula, Table
 import glob
 import html
@@ -13,10 +14,7 @@ revisions = {int(re.search(r"-(\d+).html", filename).group(1)): filename
 def parse_version(s):
   match = re.match(r"(?:Unicode )?(\d+)\.(\d)\.(\d)", s)
   if match:
-    return tuple(int(v) for v in match.groups())
-
-def pretty_version(version):
-  return ".".join(str(v) for v in version)
+    return Version(*(int(v) for v in match.groups()))
 
 ID_REMAPPINGS = {
   "Line Breaking Algorithm": "Algorithm",
@@ -90,7 +88,7 @@ class TR14Parser(HTMLParser):
       if self.line_tag.startswith("h"):
         tag = self.line_tag
         id = self.line_id
-        if self.line_tag == "h4" and not id and self.version <= (4, 0, 1):
+        if self.line_tag == "h4" and not id and self.version <= Version(4, 0, 1):
           tag = "h3"
           id = "BreakingRules"
         self.paragraphs.append(
@@ -124,10 +122,10 @@ paragraphs = {}
 for revision, filename in sorted(revisions.items()):
   print(filename)
   with open(filename, encoding=('cp1252' if revision < 10 else'utf-8')) as f:
-    parser = TR14Parser(version=(3,0,0) if revision == 6 else None)
+    parser = TR14Parser(Version(3,0,0) if revision == 6 else None)
     parser.feed(f.read())
     paragraphs[parser.version] = parser.paragraphs
-    print(f"Unicode Version {pretty_version(parser.version)}, {len(parser.paragraphs)} paragraphs")
+    print(f"Unicode Version {parser.version}, {len(parser.paragraphs)} paragraphs")
 
 args = dict(arg[2:].split("=", 1) for arg in sys.argv[1:] if arg.startswith("--"))
 if "out" in args:
