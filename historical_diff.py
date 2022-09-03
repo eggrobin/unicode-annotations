@@ -3,12 +3,12 @@ from functools import total_ordering
 import html
 import itertools
 import re
-from typing import Optional, Sequence, Tuple
+from typing import Optional, Sequence, Tuple, Union
 
 @total_ordering
 class Version:
-  def __init__(self, *components: Sequence[int]):
-    self.components = tuple(components)
+  def __init__(self, *components: int):
+    self.components = components
 
   def __hash__(self):
     return hash(self.components)
@@ -27,6 +27,65 @@ class Version:
 
   def html_class(self):
     return "-".join(str(v) for v in self.components)
+
+@total_ordering
+class ParagraphNumber:
+  def __init__(self, *components: Union[int, str]):
+    self.main: list[int] = []
+    self.annotation: list[Union[str, int]] = []
+    for component in components:
+      if self.annotation:
+        if not isinstance(component, int):
+          raise TypeError("Unexpected type %s in annotation part of paragraph number %r" % (type(component), components))
+        self.annotation.append(component)
+      elif isinstance(component, str):
+        if len(component) > 1 or component < 'a' or component > 'z':
+          raise ValueError("Unexpected %s in paragraph number %r" % (component, components))
+        self.annotation.append(component)
+      else:
+        if not isinstance(component, int):
+          raise TypeError("Unexpected type %s in paragraph number %r" % (type(component), components))
+        self.main.append(component)
+    self.main = tuple(self.main)
+    self.annotation = tuple(self.annotation)
+
+  def insertion(self, insertion_number):
+    return ParagraphNumber(*self.main, *self.annotation, insertion_number)
+
+  def __hash__(self):
+    return hash((self.main, self.annotation))
+
+  def __eq__(self, other):
+    return (isinstance(other, ParagraphNumber) and
+            self.main == other.main and
+            self.annotation == other.annotation)
+
+  def __lt__(self, other):
+    return (self.main, self.annotation) < (other.main, other.annotation)
+
+  def __repr__(self):
+    return f"ParagraphNumber({', '.join(repr(n) for part in (self.main, self.annotation) for n in part)})"
+
+  def __str__(self):
+    return ".".join(str(n) for part in (self.main, self.annotation) for n in part)
+
+def get_inserted_paragraph_number(
+    previous_number: ParagraphNumber,
+    next_number: Optional[ParagraphNumber]) -> Tuple[ParagraphNumber, int]:
+  if (previous_number.annotation) or (next_number and next_number.annotation):
+    raise IndexError("Inserting between annotations %s and %s" % (previous_number,  next_number))
+  if not next_number or len(previous_number.main) == len(next_number.main) + 1:
+    prefix = previous_number.main[:-1]
+    offset = previous_number.main[-1] + 1
+  elif len(previous_number.main) == len(next_number.main):
+    prefix = previous_number.main
+    offset = 1
+  elif next_number.main[-1] == 1:
+    prefix = (*next_number.main[:-1], 0)
+    offset = 1
+  else:
+    raise IndexError(previous_number, next_number)
+  return (ParagraphNumber(*prefix), offset)
 
 class History:
   def remove(self, version):
@@ -70,22 +129,6 @@ class AtomHistory(History):
   def last_changed(self):
     return self.removed or self.added
 
-def get_inserted_paragraph_number(
-    previous_number: Sequence[int],
-    next_number: Optional[Sequence[int]]) -> Tuple[Sequence[int], int]:
-  if not next_number or len(previous_number) == len(next_number) + 1:
-    prefix = previous_number[:-1]
-    offset = previous_number[-1] + 1
-  elif len(previous_number) == len(next_number):
-    prefix = previous_number
-    offset = 1
-  elif next_number[-1] == 1:
-    prefix = (*next_number[:-1], 0)
-    offset = 1
-  else:
-    raise IndexError(previous_number, next_number)
-  return (prefix, offset)
-
 class SequenceHistory(History):
   def __init__(
       self,
@@ -94,7 +137,7 @@ class SequenceHistory(History):
       check_and_get_elements=lambda x, h, version, *context: x,
       number_nicely=False):
     self.element_history = element_history
-    self.elements : list[Tuple[Sequence[int], History]] = []
+    self.elements : list[Tuple[ParagraphNumber, History]] = []
     self.check_and_get_elements = check_and_get_elements
     self.junk = junk
     self.number_nicely = number_nicely
@@ -119,7 +162,7 @@ class SequenceHistory(History):
 
   def add_version(self, version, new_text, *context):
     new_text = self.check_and_get_elements(new_text, self, version, *context)
-    indexing : Sequence[Tuple[Optional[int], Tuple[Sequence[int], History]]] = []
+    indexing : Sequence[Tuple[Optional[int], Tuple[ParagraphNumber, History]]] = []
     i = 0
     for n, c in self.elements:
       if c.present():
@@ -164,11 +207,13 @@ class SequenceHistory(History):
           if new_begin == 0:
             if indexing:
               first_number = indexing[0][1][0]
-              if first_number[-1] != 1:
+              if first_number.main[-1] != 1:
                 raise IndexError(first_number)
-              inserted = [(None, ((*first_number[:-1], 0, 1 + i) , c)) for i, c in enumerate(inserted_histories)]
+              inserted = [(None, (first_number.insertion(0).insertion(1 + i) , c))
+                          for i, c in enumerate(inserted_histories)]
             else:
-              inserted = [(None, ((1 + i,) , c)) for i, c in enumerate(inserted_histories)]
+              inserted = [(None, (ParagraphNumber(1 + i) , c))
+                          for i, c in enumerate(inserted_histories)]
             indexing = inserted + indexing
           else:
             for i, (old_index, (n, c)) in enumerate(indexing):
@@ -188,11 +233,12 @@ class SequenceHistory(History):
                     previous_number = indexing[j][1][0]
                     next_number = indexing[j+1][1][0] if j+1 < len(indexing) else None
                     p, o = get_inserted_paragraph_number(previous_number, next_number)
-                    if len(prefix) >= len(p):
+                    if len(prefix.main) >= len(p.main):
                       prefix, offset = p, o
                       i = j
 
-                inserted = [(None, ((*prefix, offset + i) , c)) for i, c in enumerate(inserted_histories)]
+                inserted = [(None, (prefix.insertion(offset + i) , c))
+                            for i, c in enumerate(inserted_histories)]
                 before = indexing[:i+1]
                 after = indexing[i+1:]
                 indexing = before + inserted + after

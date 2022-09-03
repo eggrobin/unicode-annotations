@@ -5,7 +5,7 @@ import re
 
 from annotations import ISSUES
 from document import Paragraph, Heading, Rule, Formula, Table
-from historical_diff import Version
+from historical_diff import Version, ParagraphNumber
 import historical_diff
 
 def parse_version(s):
@@ -71,7 +71,7 @@ for version, renumbering in reversed(list(RENUMBERINGS.items())):
       print("UNEXPECTED")
 
 METAMORPHOSES = {
-  "4-1-0": [(Paragraph, (84,), Formula)],
+  "4-1-0": [(Paragraph, ParagraphNumber(84,), Formula)],
 }
 
 with open("paragraphs.py", encoding="utf-8") as f:
@@ -100,17 +100,31 @@ def make_sequence_history(v, p: Paragraph):
 history = historical_diff.SequenceHistory(element_history=make_sequence_history, number_nicely=True)
 
 PRESERVED_PARAGRAPHS = {
-  Version(3, 1, 0): {(10,): "", (84,): ""},
-  Version(4, 0, 0): {(3,): "", (27,): ""},
-  Version(4, 1, 0): {(33, 3): "LB 6", (39,): "LB 7a", (84,): ""},
-  Version(5, 0, 0): {(3,): "", (6,): "", (9, 1): "", (10,): "", (11,): "", (33, 2, 1): "", (39, 1): "", (40, 7): ""},
-  Version(5, 1, 0): {(40, 13): "", (40, 18): "The following", (101, 3): "LB30"},
-  Version(5, 2, 0): {(101, 3): "LB30"},
-  Version(6, 0, 0): {(33,): ""},
-  Version(6, 1, 0): {(13, 2): ""},
-  Version(9, 0, 0): {(82, 4): "(PR | PO)", (101, 11) : "sot (RI RI)*"},
-  Version(11, 0, 0): {(33, 1, 4): "A ZWJ"},
-  Version(13, 0, 0): {(73,): "× IN"},
+  Version(3, 1, 0): {ParagraphNumber(10): "",
+                     ParagraphNumber(84): ""},
+  Version(4, 0, 0): {ParagraphNumber(3): "",
+                     ParagraphNumber(27): ""},
+  Version(4, 1, 0): {ParagraphNumber(33, 3): "LB 6",
+                     ParagraphNumber(39): "LB 7a",
+                     ParagraphNumber(84): ""},
+  Version(5, 0, 0): {ParagraphNumber(3): "",
+                     ParagraphNumber(6): "",
+                     ParagraphNumber(9, 1): "",
+                     ParagraphNumber(10,): "",
+                     ParagraphNumber(11): "",
+                     ParagraphNumber(33, 2, 1): "",
+                     ParagraphNumber(39, 1): "",
+                     ParagraphNumber(40, 7): ""},
+  Version(5, 1, 0): {ParagraphNumber(40, 13): "",
+                     ParagraphNumber(40, 18): "The following",
+                     ParagraphNumber(101, 3): "LB30"},
+  Version(5, 2, 0): {ParagraphNumber(101, 3): "LB30"},
+  Version(6, 0, 0): {ParagraphNumber(33): ""},
+  Version(6, 1, 0): {ParagraphNumber(13, 2): ""},
+  Version(9, 0, 0): {ParagraphNumber(82, 4): "(PR | PO)",
+                     ParagraphNumber(101, 11) : "sot (RI RI)*"},
+  Version(11, 0, 0): {ParagraphNumber(33, 1, 4): "A ZWJ"},
+  Version(13, 0, 0): {ParagraphNumber(73): "× IN"},
 }
 
 nontrivial_versions = []
@@ -175,9 +189,20 @@ for version, paragraphs in VERSIONS.items():
       any_change = True
       paragraph.issues += current_issues
   if any_change:
-    nontrivial_versions.append(version)
-
+      nontrivial_versions.append(version)
   previous_version = version
+
+for issue in ISSUES:
+  for annotation in issue.annotations:
+    print("adding annotation %s" % annotation.number)
+    for i, (paragraph_number, paragraph) in enumerate(history.elements):
+      if annotation.number < paragraph_number:
+        break
+    annotation_history = make_sequence_history(issue.version, annotation)
+    history.elements.insert(i,
+                            (annotation.number,
+                             annotation_history))
+    annotation_history.issues = [issue]
 
 
 TOL_LIGHT_COLOURS = [
@@ -199,17 +224,22 @@ with open("alba.html", "w", encoding="utf-8") as f:
   print('<meta charset="utf-8">', file=f)
   print("<title>Annotated Line Breaking Algorithm</title>", file=f)
   print("<style>", file=f)
+  print(".version-selector {background:white;position:fixed;right:0;top:0; }", file=f)
+  print("body { margin-right:15em; }", file=f)
   print("div.paranum { float:left; font-size: 64%; width: 2.8em; margin-left: -0.4em; margin-right: -3em; margin-top: 0.2em; }", file=f)
-  print("div.sources { float:right; font-size: 80%; max-width:50%; text-align:right; }", file=f)
-  print("p { margin-left: 3em; }", file=f)
-  #print("p.sources { margin-block-end: 0 }", file=f)
+  print("div.sources { float:right; font-size: 80%; margin-left: 1em; text-align:right; }", file=f)
+  print("@media (max-width:80em) { div.sources { width:min-content; } }", file=f)
+  print("@media print { body { column-count:2; margin-right:initial; font-size:8pt; } .version-selector { display:none } }", file=f)
+  print("p { margin-left: 3em; text-align: justify; hyphens: auto; }", file=f)
+  print('p::after { content: ""; display: block; clear: both; }', file=f)
   print("h1 { margin-left: 3em }", file=f)
   print("h2 { margin-left: 3em }", file=f)
   print("h3 { margin-left: 3em }", file=f)
   print("h4 { margin-left: 3em }", file=f)
   print("table { margin-left: 3em }", file=f)
+  print(".annotation { font-size:80%; margin-left:5em; }", file=f)
   print(".rule { font-style: italic }", file=f)
-  print(".formula { margin-left: 5em }", file=f)
+  print(".formula { margin-left: 5em; text-align: left; white-space:nowrap; margin-top:0; margin-bottom:0; }", file=f)
   print("a { color: inherit; }", file=f)
   print("ins.sources { text-decoration: none; white-space:nowrap; }", file=f)
   for i, version in enumerate(nontrivial_versions):
@@ -316,8 +346,8 @@ with open("alba.html", "w", encoding="utf-8") as f:
   """, file=f)
   print("</script>", file=f)
   print("</head>", file=f)
-  print('<body style="margin-right:15em">', file=f)
-  print('<table style="background:white;position:fixed;right:0;top:0">', file=f)
+  print('<body lang="en-US">', file=f)
+  print('<table class="version-selector">', file=f)
   print("<thead><tr><th>Base</th><th>Head</th></tr></thead>", file=f)
   print("<tbody>", file=f)
   for i, version in enumerate(nontrivial_versions):
@@ -333,9 +363,7 @@ with open("alba.html", "w", encoding="utf-8") as f:
   print("</table>", file=f)
   for paragraph_number, paragraph in history.elements:
     paragraph: historical_diff.SequenceHistory
-    print("<div class=paranum>", file=f)
-    print(".".join(str(n) for n in paragraph_number), file=f)
-    print("</div>", file=f)
+    print(f"<div class=paranum>{paragraph_number}</div>", file=f)
 
     if paragraph.issues:
       print("<div class=sources>", file=f)
@@ -357,9 +385,9 @@ with open("alba.html", "w", encoding="utf-8") as f:
       for _, t in paragraph.elements:
         t: historical_diff.AtomHistory
         if t.removed:
-          print(f"<del class=changed-in-{t.removed}>", file=f)
+          print(f"<del class=changed-in-{t.removed.html_class()}>", file=f)
         table_contents = t.value().replace("\u2028", "<br>")
-        print(f"<table class=changed-in-{t.added}>{table_contents}</table>", file=f)
+        print(f"<table class=changed-in-{t.added.html_class()}>{table_contents}</table>", file=f)
         if t.removed:
           print(f"</del>", file=f)
       print(f"<p>&nbsp;</p>", file=f)
