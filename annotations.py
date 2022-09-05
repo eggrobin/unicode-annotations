@@ -15,8 +15,8 @@ class Annotation(Paragraph):
   def kind(self) -> str:
     raise TypeError("Annotation without a type", self.number, self.text)
 
-  def html(self, inner):
-    return f"<p class=annotation><b>{self.kind()}: </b>{inner}</p>"
+  def html(self, inner, version:Optional[Version]=None):
+    return f"<p class=annotation><ins class=changed-in-{version.html_class()}><b>{self.kind()}: </b></ins>{inner}</p>"
 
 class Reason(Annotation):
   def kind(self):
@@ -84,9 +84,26 @@ ISSUES = (
                 " the last space."),
         ]),
 
-    Issue(Version(14, 0, 0),
-          ["LB30b"],
-          ["168-C8"]),
+    Issue(
+        Version(14, 0, 0),
+        ["LB30b"],
+        ["167-A94", "168-C8", "167-C7"],
+        [
+            Reason(
+                (101, 15, 'a'),
+                "The property-based rule provides some degree of"
+                " future-proofing, by preventing implementations running"
+                " earlier of Unicode from breaking emoji sequences encoded"
+                " in later versions.  Any future emoji will be encoded in the"
+                " space preallocated as \p{Extended_Pictographic} in Unicode"
+                " Version 13.0.0, see 167-C7."),
+            Ramification(
+                (101, 15, 'b'),
+                "As emoji get encoded, new line break opportunities may appear"
+                " between those that did not turn out to be an emoji base and"
+                " subsequent (dangling) emoji modifiers."),
+        ]
+        ),
     Issue(Version(14, 0, 0),
           ["LB27"],
           ["163-A70"]),
@@ -99,6 +116,20 @@ ISSUES = (
     Issue(Version(11, 0, 0),
           ["LB8a"],
           ["149-A53"],
+          [
+            Ramification(
+                (40, 11, 'a'),
+                "ZWJ and WJ behave identically for line breaking."),
+            Proof(
+                (40, 11, 'b'),
+                "ZWJ × is LB8a. LB9 implies X × ZWJ, where the exceptions for X"
+                " are Y such that Y ! or Y ÷ by that point."),
+            Discussion(
+                (40, 7, 'a'),
+                "This rule has no effect on ZWJ: breaks on either side of it"
+                " have already been resolved by LB8a and LB9, and AL does not"
+                " provide context at a distance in the rules below."),
+          ],
           l2_docs=["L2/17-074"]),
     # Creates 8a.  The original proposal targets LB23 and LB24, but the relevant
     # parts become LB23a per the next issue.

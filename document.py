@@ -7,7 +7,7 @@ class Paragraph:
   def __repr__(self):
     return f"{type(self).__name__}({', '.join(f'{key}={value!r}' for key, value, in self.__dict__.items())})"
 
-  def html(self, inner):
+  def html(self, inner, version=None):
     return f"<p>{inner}</p>"
 
   def words(self):
@@ -19,19 +19,19 @@ class Heading(Paragraph):
     self.level = level
     super(Heading, self).__init__(contents)
 
-  def html(self, inner):
+  def html(self, inner, version=None):
     return f"<h{self.level}>{inner}</h{self.level}>"
 
 class Rule(Paragraph):
-  def html(self, inner):
+  def html(self, inner, version=None):
     return f"<p class=rule>{inner}</p>"
 
 class Formula(Paragraph):
-  def html(self, inner):
+  def html(self, inner, version=None):
     return f"<p class=formula>{inner}</p>"
 
 class Table(Paragraph):
-  def html(self, inner):
+  def html(self, inner, version=None):
     raise NotImplementedError()
 
   def words(self):

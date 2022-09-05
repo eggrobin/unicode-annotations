@@ -71,7 +71,7 @@ for version, renumbering in reversed(list(RENUMBERINGS.items())):
       print("UNEXPECTED")
 
 METAMORPHOSES = {
-  "4-1-0": [(Paragraph, ParagraphNumber(84,), Formula)],
+  Version(4, 1, 0): [(Paragraph, ParagraphNumber(84), Formula)],
 }
 
 with open("paragraphs.py", encoding="utf-8") as f:
@@ -101,11 +101,14 @@ history = historical_diff.SequenceHistory(element_history=make_sequence_history,
 
 PRESERVED_PARAGRAPHS = {
   Version(3, 1, 0): {ParagraphNumber(10): "",
+                     ParagraphNumber(67): "× NS",
                      ParagraphNumber(84): ""},
   Version(4, 0, 0): {ParagraphNumber(3): "",
                      ParagraphNumber(27): ""},
   Version(4, 1, 0): {ParagraphNumber(33, 3): "LB 6",
                      ParagraphNumber(39): "LB 7a",
+                     ParagraphNumber(40, 3): "",
+                     ParagraphNumber(40, 4): "",
                      ParagraphNumber(84): ""},
   Version(5, 0, 0): {ParagraphNumber(3): "",
                      ParagraphNumber(6): "",
@@ -230,16 +233,16 @@ with open("alba.html", "w", encoding="utf-8") as f:
   print("div.sources { float:right; font-size: 80%; margin-left: 1em; text-align:right; }", file=f)
   print("@media (max-width:80em) { div.sources { width:min-content; } }", file=f)
   print("@media print { body { column-count:2; margin-right:initial; font-size:8pt; } .version-selector { display:none } }", file=f)
-  print("p { margin-left: 3em; text-align: justify; hyphens: auto; }", file=f)
+  print("p { margin-left: 3rem; text-align: justify; hyphens: auto; margin-top:0; margin-bottom:0.5ex; }", file=f)
   print('p::after { content: ""; display: block; clear: both; }', file=f)
-  print("h1 { margin-left: 3em }", file=f)
-  print("h2 { margin-left: 3em }", file=f)
-  print("h3 { margin-left: 3em }", file=f)
-  print("h4 { margin-left: 3em }", file=f)
+  print("h1 { margin-left: 3rem; margin-top:0; }", file=f)
+  print("h2 { margin-left: 3rem; margin-top:0; }", file=f)
+  print("h3 { margin-left: 3rem; margin-top:0; }", file=f)
+  print("h4 { margin-left: 3rem; margin-top:0; }", file=f)
   print("table { margin-left: 3em }", file=f)
   print(".annotation { font-size:80%; margin-left:5em; }", file=f)
   print(".rule { font-style: italic }", file=f)
-  print(".formula { margin-left: 5em; text-align: left; white-space:nowrap; margin-top:0; margin-bottom:0; }", file=f)
+  print(".formula { margin-left: 5em; text-align: left; white-space:nowrap; }", file=f)
   print("a { color: inherit; }", file=f)
   print("ins.sources { text-decoration: none; white-space:nowrap; }", file=f)
   for i, version in enumerate(nontrivial_versions):
@@ -260,6 +263,8 @@ with open("alba.html", "w", encoding="utf-8") as f:
               version.html_class(),
               colour),
           file=f)
+  print("ins.paranum { background-color:initial }", file=f)
+  print("del.paranum { background-color:initial }", file=f)
   print("</style>", file=f)
   print("<script>", file=f)
   print("""
@@ -328,6 +333,8 @@ with open("alba.html", "w", encoding="utf-8") as f:
           del.style = "display:none";
         } else if (older(newest, version)) {
           del.style = "text-decoration:none";
+        } else if (del.classList.contains("paranum")) {
+          del.style = "display:none";
         } else {
           del.style = "";
         }
@@ -363,7 +370,15 @@ with open("alba.html", "w", encoding="utf-8") as f:
   print("</table>", file=f)
   for paragraph_number, paragraph in history.elements:
     paragraph: historical_diff.SequenceHistory
-    print(f"<div class=paranum>{paragraph_number}</div>", file=f)
+    revision_number = ""
+    versions_changed = paragraph.versions_changed()
+    for new, old in zip(versions_changed[1:], versions_changed[:-1]):
+      if old == Version(3, 0, 0):
+        continue
+      revision_number += f'<del class="paranum changed-in-{new.html_class()}"><ins class="paranum changed-in-{old.html_class()}">/{old.short()}</ins></del>'
+    if versions_changed[-1] != Version(3, 0, 0):
+      revision_number += f'<ins class="paranum changed-in-{versions_changed[-1].html_class()}">/{versions_changed[-1].short()}</ins>'
+    print(f"<div class=paranum>{paragraph_number}{revision_number}</div>", file=f)
 
     if paragraph.issues:
       print("<div class=sources>", file=f)
@@ -392,6 +407,6 @@ with open("alba.html", "w", encoding="utf-8") as f:
           print(f"</del>", file=f)
       print(f"<p>&nbsp;</p>", file=f)
     else:
-      print(paragraph.tag.html(paragraph.html() + "&nbsp;"), file=f)
+      print(paragraph.tag.html(paragraph.html() + "&nbsp;", paragraph.version_added()), file=f)
   print("</body>", file=f)
   print("</html>", file=f)

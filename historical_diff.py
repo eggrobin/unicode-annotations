@@ -25,6 +25,12 @@ class Version:
   def __str__(self):
     return ".".join(str(v) for v in self.components)
 
+  def short(self):
+    significant_components = list(self.components)
+    while significant_components[-1] == 0:
+      significant_components.pop()
+    return ".".join(str(v) for v in significant_components)
+
   def html_class(self):
     return "-".join(str(v) for v in self.components)
 
@@ -159,6 +165,13 @@ class SequenceHistory(History):
 
   def last_changed(self):
     return max(c.last_changed() for _, c in self.elements)
+
+  def version_added(self):
+    return min(c.added for _, c in self.elements)
+
+  def versions_changed(self):
+    return sorted(set(c.added for _, c in self.elements).union(
+                      c.removed for _, c in self.elements if c.removed))
 
   def add_version(self, version, new_text, *context):
     new_text = self.check_and_get_elements(new_text, self, version, *context)
