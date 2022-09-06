@@ -129,7 +129,7 @@ ISSUES = (
             Discussion(
                 (40, 11, 'c'),
                 "In contrast to SP CM which is either deprecated or anomalous,"
-                " SP ZWJ has a practical use, and SP ÷ ZWJ is desired; a"
+                " SP ZWJ can occur in practice, and SP ÷ ZWJ is desired; a"
                 " leading ZWJ can be used to force a leading medial or final"
                 " form, such as this final alif: ‍ا (contrast the isolated ا)."),
             Discussion(
