@@ -227,24 +227,6 @@ with open("alba.html", "w", encoding="utf-8") as f:
   print('<meta charset="utf-8">', file=f)
   print("<title>Annotated Line Breaking Algorithm</title>", file=f)
   print("<style>", file=f)
-  print(".version-selector {background:white;position:fixed;right:0;top:0; }", file=f)
-  print("body { margin-right:15em; }", file=f)
-  print("div.paranum { float:left; font-size: 64%; width: 2.8em; margin-left: -0.4em; margin-right: -3em; margin-top: 0.2em; }", file=f)
-  print("div.sources { float:right; font-size: 80%; margin-left: 1em; text-align:right; }", file=f)
-  print("@media (max-width:80em) { div.sources { width:min-content; } }", file=f)
-  print("@media print { body { column-count:2; margin-right:initial; font-size:8pt; } .version-selector { display:none } }", file=f)
-  print("p { margin-left: 3rem; text-align: justify; hyphens: auto; margin-top:0; margin-bottom:0.5ex; }", file=f)
-  print('p::after { content: ""; display: block; clear: both; }', file=f)
-  print("h1 { margin-left: 3rem; margin-top:0; }", file=f)
-  print("h2 { margin-left: 3rem; margin-top:0; }", file=f)
-  print("h3 { margin-left: 3rem; margin-top:0; }", file=f)
-  print("h4 { margin-left: 3rem; margin-top:0; }", file=f)
-  print("table { margin-left: 3em }", file=f)
-  print(".annotation { font-size:80%; margin-left:5em; }", file=f)
-  print(".rule { font-style: italic }", file=f)
-  print(".formula { margin-left: 5em; text-align: left; white-space:nowrap; }", file=f)
-  print("a { color: inherit; }", file=f)
-  print("ins.sources { text-decoration: none; white-space:nowrap; }", file=f)
   for i, version in enumerate(nontrivial_versions):
     colour = TOL_LIGHT_COLOURS[i % len(TOL_LIGHT_COLOURS)]
     print(".changed-in-%s { background-color:%s; }" % (
@@ -263,98 +245,17 @@ with open("alba.html", "w", encoding="utf-8") as f:
               version.html_class(),
               colour),
           file=f)
-  print("ins.paranum { background-color:initial }", file=f)
-  print("del.paranum { background-color:initial }", file=f)
+  with open("alba.css") as css:
+    print(css.read(), file=f)
   print("</style>", file=f)
   print("<script>", file=f)
-  print("""
-    function older_or_equal(v1, v2) {
-      return v1[0] < v2[0] || (v1[0] == v2[0] && (v1[1] < v2[1] || (v1[1] == v2[1] && v1[2] <= v2[2])));
-    }
-    function older(v1, v2) {
-      return v1[0] < v2[0] || (v1[0] == v2[0] && (v1[1] < v2[1] || (v1[1] == v2[1] && v1[2] < v2[2])));
-    }
-    function show_version_diff(version) {
-      chosen_oldest = null;
-      for (var input of document.querySelectorAll('input[name="oldest"]')) {
-        if (input.name != "oldest") {
-          continue;
-        }
-        input_version = input.value.split("-").map(x => parseInt(x));
-        chosen_oldest_version = chosen_oldest?.value.split("-").map(x => parseInt(x));
-        if (older(input_version, version.split("-").map(x => parseInt(x))) && 
-            (chosen_oldest_version == null || older(chosen_oldest_version, input_version))) {
-          chosen_oldest = input;
-        }
-      }
-      if (!chosen_oldest) {
-        chosen_oldest = document.querySelector('input[name="oldest"][value="' + version + '"]')
-      }
-      chosen_oldest.checked = true;
-      document.querySelector('input[name="newest"][value="' + version + '"]').checked = true;
-      meow();
-    }
-    function meow() {
-      oldest = document.querySelector('input[name="oldest"]:checked').value.split("-").map(x => parseInt(x));
-      newest = document.querySelector('input[name="newest"]:checked').value.split("-").map(x => parseInt(x));
-      for (var label of document.getElementsByTagName("button")) {
-        version = label.className.split("-").slice(-3).map(x => parseInt(x));
-        if (older_or_equal(version, oldest)) {
-          label.style = "color:black;background:white;";
-        } else if (older(newest, version)) {
-          label.style = "color:black;background:white;border:dashed";
-        } else {
-          label.style = "";
-        }
-      }
-      for (var ins of document.getElementsByTagName("ins")) {
-        version = ins.className.split("-").slice(-3).map(x => parseInt(x));
-        if (older_or_equal(version, oldest)) {
-          ins.style = "color:black;text-decoration:none;background-color:white;";
-        } else if (older(newest, version)) {
-          ins.style = "display:none";
-        } else {
-          ins.style = "";
-        }
-      }
-      for (var table of document.querySelectorAll("table[class^=changed-in-]")) {
-        version = table.className.split("-").slice(-3).map(x => parseInt(x));
-        if (older_or_equal(version, oldest)) {
-          table.style = "color:black;text-decoration:none;background-color:white;";
-        } else if (older(newest, version)) {
-          table.style = "display:none";
-        } else {
-          table.style = "";
-        }
-      }
-      for (var del of document.getElementsByTagName("del")) {
-        version = del.className.split("-").slice(-3).map(x => parseInt(x));
-        if (older_or_equal(version, oldest)) {
-          del.style = "display:none";
-        } else if (older(newest, version)) {
-          del.style = "text-decoration:none";
-        } else if (del.classList.contains("paranum")) {
-          del.style = "display:none";
-        } else {
-          del.style = "";
-        }
-      }
-    }
-    window.onload = function () {
-      for (var input of document.getElementsByTagName("input")) {
-        input.onclick = meow;
-      }
-      for (var button of document.getElementsByTagName("button")) {
-        const version = button.value;
-        button.onclick = function() { show_version_diff(version); };
-      }
-      meow();
-    }
-  """, file=f)
+  with open("alba.js") as js:
+    print(js.read(), file=f)
   print("</script>", file=f)
   print("</head>", file=f)
   print('<body lang="en-US">', file=f)
-  print('<table class="version-selector">', file=f)
+  print('<nav>', file=f)
+  print('<table>', file=f)
   print("<thead><tr><th>Base</th><th>Head</th></tr></thead>", file=f)
   print("<tbody>", file=f)
   for i, version in enumerate(nontrivial_versions):
@@ -368,10 +269,16 @@ with open("alba.html", "w", encoding="utf-8") as f:
     print("</td></tr>", file=f)
   print("</tbody>", file=f)
   print("</table>", file=f)
+  print('<div><input type="checkbox" name="show-future" id="show-future">', file=f)
+  print('<label for="show-future">Show future paragraphs</label></div>', file=f)
+  print('<div><input type="checkbox" name="show-deleted" id="show-deleted" checked>', file=f)
+  print('<label for="show-deleted">Show deleted paragraphs</label></div>', file=f)
+  print('</nav>', file=f)
   for paragraph_number, paragraph in history.elements:
     paragraph: historical_diff.SequenceHistory
     revision_number = ""
     versions_changed = paragraph.versions_changed()
+    print(f'<div class="paragraph added-in-{versions_changed[0].html_class()}{(" removed-in-" + versions_changed[-1].html_class()) if paragraph.absent() else ""}">', file=f)
     for new, old in zip(versions_changed[1:], versions_changed[:-1]):
       if old == Version(3, 0, 0):
         continue
@@ -408,5 +315,6 @@ with open("alba.html", "w", encoding="utf-8") as f:
       print(f"<p>&nbsp;</p>", file=f)
     else:
       print(paragraph.tag.html(paragraph.html() + "&nbsp;", paragraph.version_added()), file=f)
+    print("</div>", file=f)
   print("</body>", file=f)
   print("</html>", file=f)

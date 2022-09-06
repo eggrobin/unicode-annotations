@@ -87,7 +87,7 @@ ISSUES = (
     Issue(
         Version(14, 0, 0),
         ["LB30b"],
-        ["167-A94", "168-C8", "167-C7"],
+        ["167-A94", "168-C7", "168-C8"],
         [
             Reason(
                 (101, 15, 'a'),
@@ -96,7 +96,7 @@ ISSUES = (
                 " earlier of Unicode from breaking emoji sequences encoded"
                 " in later versions.  Any future emoji will be encoded in the"
                 " space preallocated as \p{Extended_Pictographic} in Unicode"
-                " Version 13.0.0, see 167-C7."),
+                " Version 13.0.0, see 168-C7."),
             Ramification(
                 (101, 15, 'b'),
                 "As emoji get encoded, new line break opportunities may appear"
@@ -119,16 +119,25 @@ ISSUES = (
           [
             Ramification(
                 (40, 11, 'a'),
-                "ZWJ and WJ behave identically for line breaking."),
+                "ZWJ and WJ differ in line breaking only when preceded by SP"
+                " (and in the absence of ZW). This resolves to SP ÷ ZWJ by LB18"
+                " unless LB14 applies."),
             Proof(
                 (40, 11, 'b'),
                 "ZWJ × is LB8a. LB9 implies X × ZWJ, where the exceptions for X"
-                " are Y such that Y ! or Y ÷ by that point."),
+                " are SP or Y such that Y ! or Y ÷ by that point."),
+            Discussion(
+                (40, 11, 'c'),
+                "SP ZWJ can occur in practice, and SP ÷ ZWJ is desired; a"
+                " leading ZWJ can be used to force a leading medial or final"
+                " form, such as this final alif: ‍ا (contrast the isolated ا)."),
             Discussion(
                 (40, 7, 'a'),
-                "This rule has no effect on ZWJ: breaks on either side of it"
-                " have already been resolved by LB8a and LB9, and AL does not"
-                " provide context at a distance in the rules below."),
+                "Absent tailoring, this rule has no effect in the case of ZWJ."
+                " The breaks on both sides of ZWJ have already been resolved"
+                " except in SP ZWJ, which gets resolved at the latest in LB18"
+                " without class AL being involved.  The rule is written like"
+                " this for consistency with combining marks following LB9."),
           ],
           l2_docs=["L2/17-074"]),
     # Creates 8a.  The original proposal targets LB23 and LB24, but the relevant
@@ -190,9 +199,21 @@ ISSUES = (
     Issue(Version(6, 1, 0),
           ["LB1"],
           ["129-C2"]),  # Rationale is in the review note https://www.unicode.org/reports/tr14/tr14-27d2.html#NS.
-    Issue(Version(6, 0, 0),
-          ["LB8"],
-          ["121-C5"]),
+    Issue(
+        Version(6, 0, 0),
+        ["LB8"],
+        ["121-C5"],
+        [
+            Discussion(
+                (33, 'a'),
+                "The zero width space is a hint to the line breaking algorithm,"
+                " hinting a break. Its inverse is the word joiner, see LB11."
+                " When they contradict each other, the zero width space wins."
+                " However, this rule needs to be more complicated than LB11: "
+                " if it were simply ZW ÷ before LB7, it would allow for spaces"
+                " at the beginning of a line.  Instead it acts through any"
+                " sequence of spaces following it."),
+        ]),
     # Re-added LB30.
     Issue(Version(5, 2, 0),
           ["LB30"],

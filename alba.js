@@ -1,0 +1,110 @@
+function older_or_equal(v1, v2) {
+  return v1[0] < v2[0] || (v1[0] == v2[0] && (v1[1] < v2[1] || (v1[1] == v2[1] && v1[2] <= v2[2])));
+}
+function older(v1, v2) {
+  return v1[0] < v2[0] || (v1[0] == v2[0] && (v1[1] < v2[1] || (v1[1] == v2[1] && v1[2] < v2[2])));
+}
+function show_version_diff(version) {
+  chosen_oldest = null;
+  for (var input of document.querySelectorAll('input[name="oldest"]')) {
+    if (input.name != "oldest") {
+      continue;
+    }
+    input_version = input.value.split("-").map(x => parseInt(x));
+    chosen_oldest_version = chosen_oldest?.value.split("-").map(x => parseInt(x));
+    if (older(input_version, version.split("-").map(x => parseInt(x))) &&
+      (chosen_oldest_version == null || older(chosen_oldest_version, input_version))) {
+      chosen_oldest = input;
+    }
+  }
+  if (!chosen_oldest) {
+    chosen_oldest = document.querySelector('input[name="oldest"][value="' + version + '"]')
+  }
+  chosen_oldest.checked = true;
+  document.querySelector('input[name="newest"][value="' + version + '"]').checked = true;
+  meow();
+}
+function meow() {
+  oldest = document.querySelector('input[name="oldest"]:checked').value.split("-").map(x => parseInt(x));
+  newest = document.querySelector('input[name="newest"]:checked').value.split("-").map(x => parseInt(x));
+  for (var label of document.getElementsByTagName("button")) {
+    version = label.className.split("-").slice(-3).map(x => parseInt(x));
+    if (older_or_equal(version, oldest)) {
+      label.style = "color:black;background:white;";
+    } else if (older(newest, version)) {
+      label.style = "color:black;background:white;border:dashed";
+    } else {
+      label.style = "";
+    }
+  }
+  for (var ins of document.getElementsByTagName("ins")) {
+    version = ins.className.split("-").slice(-3).map(x => parseInt(x));
+    if (older_or_equal(version, oldest)) {
+      ins.style = "color:black;text-decoration:none;background-color:white;";
+    } else if (older(newest, version)) {
+      ins.style = "display:none";
+    } else {
+      ins.style = "";
+    }
+  }
+  for (var table of document.querySelectorAll("table[class^=changed-in-]")) {
+    version = table.className.split("-").slice(-3).map(x => parseInt(x));
+    if (older_or_equal(version, oldest)) {
+      table.style = "color:black;text-decoration:none;background-color:white;";
+    } else if (older(newest, version)) {
+      table.style = "display:none";
+    } else {
+      table.style = "";
+    }
+  }
+  for (var del of document.getElementsByTagName("del")) {
+    version = del.className.split("-").slice(-3).map(x => parseInt(x));
+    if (older_or_equal(version, oldest)) {
+      del.style = "display:none";
+    } else if (older(newest, version)) {
+      del.style = "text-decoration:none";
+    } else if (del.classList.contains("paranum")) {
+      del.style = "display:none";
+    } else {
+      del.style = "";
+    }
+  }
+  show_future_paragraphs = document.querySelector('input[name="show-future"]').checked;
+  show_deleted_paragraphs = document.querySelector('input[name="show-deleted"]').checked;
+  for (var div of document.querySelectorAll("div.paragraph")) {
+    version_added = null;
+    version_removed = null;
+    for (var c of div.classList) {
+      if (c.startsWith("added-in-")) {
+        version_added = c.split("-").slice(-3).map(x => parseInt(x));
+      } else if (c.startsWith("removed-in-")) {
+        version_removed = c.split("-").slice(-3).map(x => parseInt(x));
+      }
+    }
+    if (version_added && older(newest, version_added)) {
+      if (show_future_paragraphs) {
+        div.style = "";
+      } else {
+        div.style = "display:none";
+      }
+    } else if (version_removed && older_or_equal(version_removed, oldest)) {
+      if (show_deleted_paragraphs) {
+        div.style = "";
+      } else {
+        div.style = "display:none";
+      }
+    } else {
+      div.style = "";
+    }
+  }
+}
+window.onload = function () {
+  for (var input of document.getElementsByTagName("input")) {
+    input.onclick = meow;
+  }
+  for (var button of document.getElementsByTagName("button")) {
+    const version = button.value;
+    button.onclick = function () { show_version_diff(version); };
+  }
+  meow();
+}
