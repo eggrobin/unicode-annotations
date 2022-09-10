@@ -146,6 +146,13 @@ ISSUES = (
     Issue(Version(9, 0, 0),
           ["LB8a", "LB9", "LB10", "LB22", "LB23a", "LB30a", "LB30b"],
           ["146-A46", "147-C26"]),
+    # Drops the pair table.  See the PRI comments which say it can’t implement
+    # the new rules, and the review note which says it wasn’t updated.
+    Issue(
+        Version(10, 0, 0),
+        [], # TODO(egg): ParagraphNumber(3)
+        ["147-A79"],
+        ),
     # Creates LB23a.
     Issue(
         Version(9, 0, 0),

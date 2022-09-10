@@ -108,6 +108,10 @@ def make_sequence_history(v, p: Paragraph, *context):
 
 history = SequenceHistory(element_history=make_sequence_history, number_nicely=True)
 
+DELETED_PARAGRAPHS = {
+  Version(4, 0, 0): [ParagraphNumber(22)],
+}
+
 PRESERVED_PARAGRAPHS = {
   Version(3, 1, 0): {ParagraphNumber(10): "",
                      ParagraphNumber(38): "",
@@ -156,7 +160,8 @@ ANCESTRIES = {
                      ParagraphNumber(87, 5): ParagraphNumber(96),
                      ParagraphNumber(87, 6): ParagraphNumber(89),
                      ParagraphNumber(87, 7): ParagraphNumber(91),},
-  Version(4, 0, 0): {ParagraphNumber(40, 1): ParagraphNumber(38, 1),
+  Version(4, 0, 0): {ParagraphNumber(21, 1, 2): ParagraphNumber(22),
+                     ParagraphNumber(40, 1): ParagraphNumber(38, 1),
                      ParagraphNumber(40, 3): ParagraphNumber(37),
                      ParagraphNumber(40, 4): ParagraphNumber(35),
                      ParagraphNumber(53, 4): ParagraphNumber(58),
@@ -206,6 +211,9 @@ for version, paragraphs in VERSIONS.items():
       if old_number:
         new_rule_descriptions[old_number] = paragraph
   old_paragraphs = dict(history.elements)
+  for paragraph_number in DELETED_PARAGRAPHS.get(version, []):
+    print("Deleting", paragraph_number, "in", version)
+    old_paragraphs[paragraph_number].remove(version, paragraph_number)
   for paragraph_number, hint in PRESERVED_PARAGRAPHS.get(version, {}).items():
     print("Preserving", paragraph_number, "in", version)
     old_paragraph = old_paragraphs[paragraph_number].value()
@@ -219,9 +227,8 @@ for version, paragraphs in VERSIONS.items():
       match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value())
       if match and match.group(1) in new_rule_descriptions:
         paragraph.add_version(version, new_rule_descriptions[match.group(1)], paragraph_number)
-  history.add_version(version, paragraphs)
 
-  paragraphs_by_number : dict[ParagraphNumber, SequenceHistory] = dict(history.elements)
+  history.add_version(version, paragraphs)
 
   any_change = False
   rule_number = None
