@@ -165,6 +165,10 @@ ANCESTRIES = {
                      ParagraphNumber(98, 1): ParagraphNumber(69),
                      ParagraphNumber(98, 2): ParagraphNumber(70),
                      ParagraphNumber(98, 3): ParagraphNumber(71),},
+  Version(4, 1, 0): {ParagraphNumber(98, 5): ParagraphNumber(33, 2),
+                     ParagraphNumber(98, 10): ParagraphNumber(33, 2),
+                     ParagraphNumber(98, 6): ParagraphNumber(33, 3),
+                     ParagraphNumber(98, 11): ParagraphNumber(33, 3),},
   Version(5, 1, 0): {ParagraphNumber(40, 20): ParagraphNumber(40, 13),
                      ParagraphNumber(40, 21): ParagraphNumber(40, 14),
                      ParagraphNumber(40, 22): ParagraphNumber(40, 16),},
@@ -215,13 +219,15 @@ for version, paragraphs in VERSIONS.items():
   current_issues = []
   for paragraph_number, paragraph in history.elements:
     match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value())
+    rule_number = None
+    previous_rule_number = None
     if match:
       rule_number = "LB" + match.group(1)
-      previous_rule_number = None
-      if previous_version:
-        match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value_at(previous_version))
-        if match:
-          previous_rule_number = "LB" + match.group(1)
+    if previous_version:
+      match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value_at(previous_version))
+      if match:
+        previous_rule_number = "LB" + match.group(1)
+    if rule_number or previous_rule_number:
       current_issues = [issue for issue in ISSUES
                         if issue.version == version and
                            (rule_number in issue.target_rules or

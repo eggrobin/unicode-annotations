@@ -156,7 +156,7 @@ ISSUES = (
                 (82, 5, 'a'),
                 "This rule forbids breaking within currency symbols such as "
                 " CA$ or JP¥, as well as stylized artist names such as “Travi$"
-                " Scott”, “Ke$ha”, “Curren$y”, and “A$AP Rocky”"),
+                " Scott”, “Ke$ha”, “Curren$y”, and “A$AP Rocky”."),
         ]),
     # Creates LB21b.
     Issue(

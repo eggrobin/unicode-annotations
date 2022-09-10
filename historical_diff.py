@@ -193,10 +193,11 @@ class SequenceHistory(History):
       self.ancestor = ancestor
       ancestor[2].descendants.setdefault(version, []).append(*context)
       for n, c in ancestor[2].elements:
-        h = AtomHistory(c.added, c.text)
-        if c.removed and c.removed != version:
-          h.remove(c.removed)
-        self.elements.append((n, h))
+        if c.added < version:
+          h = AtomHistory(c.added, c.text)
+          if c.removed and c.removed != version:
+            h.remove(c.removed)
+          self.elements.append((n, h))
 
     i = 0
     for n, c in self.elements:
