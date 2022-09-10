@@ -174,14 +174,16 @@ class SequenceHistory(History):
     return "".join(c.value_at(version) for _, c in self.elements)
 
   def last_changed(self):
-    return max(c.last_changed() for _, c in self.elements)
+    return max(max(c.last_changed() for _, c in self.elements),
+               self.version_added())
 
   def version_added(self):
     return self.ancestor[0] if self.ancestor else min(c.added for _, c in self.elements)
 
   def versions_changed(self):
     return sorted(set(c.added for _, c in self.elements).union(
-                      c.removed for _, c in self.elements if c.removed))
+                      c.removed for _, c in self.elements if c.removed).union(
+                      set((self.version_added(),))))
 
   def add_version(self, version, new_text, *context):
     new_text = self.check_and_get_elements(new_text, self, version, *context)

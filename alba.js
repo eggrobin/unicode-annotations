@@ -69,7 +69,6 @@ function meow() {
       del.style = "";
     }
   }
-  show_future_paragraphs = document.querySelector('input[name="show-future"]').checked;
   show_deleted_paragraphs = document.querySelector('input[name="show-deleted"]').checked;
   for (var div of document.querySelectorAll("div.paragraph")) {
     version_added = null;
@@ -82,11 +81,7 @@ function meow() {
       }
     }
     if (version_added && older(newest, version_added)) {
-      if (show_future_paragraphs) {
-        div.style = "";
-      } else {
-        div.style = "display:none";
-      }
+      div.style = "display:none";
     } else if (version_removed && older_or_equal(version_removed, oldest)) {
       if (show_deleted_paragraphs) {
         div.style = "";
@@ -95,6 +90,16 @@ function meow() {
       }
     } else {
       div.style = "";
+    }
+  }
+  for (var div of document.querySelectorAll(".diff-comment")) {
+    for (var c of div.classList) {
+      if (c.startsWith("changed-in-")) {
+        version = c.split("-").slice(-3).map(x => parseInt(x));
+      }
+    }
+    if (older_or_equal(version, oldest) && !show_deleted_paragraphs) {
+      div.style = "display:none";
     }
   }
 }
