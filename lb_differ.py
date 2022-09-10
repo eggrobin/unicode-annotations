@@ -407,7 +407,7 @@ with open("alba.html", "w", encoding="utf-8") as f:
           print(f"</del>", file=f)
       print(f"<p>&nbsp;</p>", file=f)
     else:
-      print(paragraph.tag.html(paragraph.html() + "&nbsp;", paragraph.version_added()), file=f)
+      print(paragraph.tag.html(paragraph.html(), paragraph.version_added()), file=f)
     print("</div>", file=f)
   print("</body>", file=f)
   print("</html>", file=f)

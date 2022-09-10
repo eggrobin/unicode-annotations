@@ -321,16 +321,16 @@ class SequenceHistory(History):
     for version, descendants in self.descendants.items():
       if self.absent() and self.last_changed() == version:
         if len(descendants) == 1:
-          deletion_note = f'<ins class="diff-comment changed-in-{version.html_class()}">This paragraph was moved to §{descendants[0]}. </ins>'
+          deletion_note = f'<ins class="deletion-comment changed-in-{version.html_class()}">This paragraph was moved to §{descendants[0]}. </ins>'
         else:
-          deletion_note = f'<ins class="diff-comment changed-in-{version.html_class()}">This paragraph was split into §§{oxford_list(descendants)}. </ins>'
+          deletion_note = f'<ins class="deletion-comment changed-in-{version.html_class()}">This paragraph was split into §§{oxford_list(descendants)}. </ins>'
       else:
         if len(descendants) == 1:
           text += f'<ins class="diff-comment changed-in-{version.html_class()}">Part of this paragraph was moved to §{descendants[0]}. </ins>'
         else:
           text += f'<ins class="diff-comment changed-in-{version.html_class()}">Parts of this paragraph were split into §§{oxford_list(descendants)}. </ins>'
     if self.absent() and not deletion_note:
-        deletion_note = f'<ins class="diff-comment changed-in-{self.last_changed().html_class()}">This paragraph was deleted. </ins>'
+        deletion_note = f'<ins class="deletion-comment changed-in-{self.last_changed().html_class()}">This paragraph was deleted. </ins>'
     text += deletion_note
     previous_added = None
     for _, c in self.elements:

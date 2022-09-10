@@ -98,7 +98,7 @@ function meow() {
         version = c.split("-").slice(-3).map(x => parseInt(x));
       }
     }
-    if (older_or_equal(version, oldest) && !show_deleted_paragraphs) {
+    if (older_or_equal(version, oldest)) {
       div.style = "display:none";
     }
   }
