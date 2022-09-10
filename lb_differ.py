@@ -169,9 +169,18 @@ ANCESTRIES = {
                      ParagraphNumber(98, 10): ParagraphNumber(33, 2),
                      ParagraphNumber(98, 6): ParagraphNumber(33, 3),
                      ParagraphNumber(98, 11): ParagraphNumber(33, 3),},
+  Version(5, 0, 0): {ParagraphNumber(20, 1): ParagraphNumber(27, 1),
+                     ParagraphNumber(82, 2): ParagraphNumber(87, 8),
+                     ParagraphNumber(82, 3): ParagraphNumber(87, 6),
+                     ParagraphNumber(87, 1, 2): ParagraphNumber(87, 5),
+                     ParagraphNumber(87, 1, 6): ParagraphNumber(90),
+                     ParagraphNumber(87, 1, 7): ParagraphNumber(88),},
   Version(5, 1, 0): {ParagraphNumber(40, 20): ParagraphNumber(40, 13),
                      ParagraphNumber(40, 21): ParagraphNumber(40, 14),
                      ParagraphNumber(40, 22): ParagraphNumber(40, 16),},
+  Version(9, 0, 0): {ParagraphNumber(82, 0, 1): ParagraphNumber(82, 1),
+                     ParagraphNumber(82, 0, 2): ParagraphNumber(82, 2),
+                     ParagraphNumber(82, 0, 3): ParagraphNumber(80, 1),},
 }
 
 nontrivial_versions = []
