@@ -229,7 +229,8 @@ ISSUES = (
     Issue(Version(5, 2, 0),
           ["LB30"],
           ["114-A86, 120-M1"],
-          affected_rules=["LB13", "LB16", "LB25"]),
+          affected_rules=["LB13", "LB16", "LB25"],
+          paragraphs=[ParagraphNumber(84)]),
     # Removed LB30.
     Issue(Version(5, 1, 0),
           [],
