@@ -10,6 +10,7 @@ div.sources { float:right; font-size: 80%; margin-left: 1em; text-align:right; }
 p { text-align: justify; hyphens: auto; margin-bottom: 0; }
 div.paragraph { clear: both; }
 .annotation { font-size:80%; margin-left:5em; margin-top:0; }
+.diff-comment { font-size:80%; font-style:italic; }
 .rule { font-style: italic }
 .formula { margin-left: 5rem; text-align: left; display:table; width:max-content; max-width:calc(100% - 5rem); margin-top:0; }
 a { color: inherit; }

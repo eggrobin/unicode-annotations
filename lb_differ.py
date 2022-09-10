@@ -5,7 +5,7 @@ import re
 
 from annotations import ISSUES
 from document import Paragraph, Heading, Rule, Formula, Table
-from historical_diff import Version, ParagraphNumber
+from historical_diff import Version, ParagraphNumber, SequenceHistory, AtomHistory
 import historical_diff
 
 def parse_version(s):
@@ -77,7 +77,15 @@ METAMORPHOSES = {
 with open("paragraphs.py", encoding="utf-8") as f:
   VERSIONS : dict[Version, Sequence[Paragraph]] = eval(f.read())
 
-def get_words(p: Paragraph, h: historical_diff.SequenceHistory, version, *context):
+def get_ancestor(version: Version, p: ParagraphNumber):
+  if version in ANCESTRIES and p in ANCESTRIES[version]:
+    ancestor = ANCESTRIES[version][p]
+    ancestor_history = dict(history.elements)[ancestor]
+    return (version, ancestor, ancestor_history)
+  else:
+    return None
+
+def get_words(p: Paragraph, h: SequenceHistory, version, *context):
   if not p:
     return p
   if type(h.tag) != type(p):
@@ -88,16 +96,17 @@ def get_words(p: Paragraph, h: historical_diff.SequenceHistory, version, *contex
     h.tag = p
   return p.words()
 
-def make_sequence_history(v, p: Paragraph):
-  h = historical_diff.SequenceHistory(
+def make_sequence_history(v, p: Paragraph, *context):
+  h = SequenceHistory(
         junk=lambda w: w.isspace() or w in ".,;:" or w in ("of", "and", "between", "the", "is", "that", "ing"),
-        check_and_get_elements=get_words)
+        check_and_get_elements=get_words,
+        get_ancestor=get_ancestor)
   h.tag = p
   h.issues = []
-  h.add_version(v, p)
+  h.add_version(v, p, *context)
   return h
 
-history = historical_diff.SequenceHistory(element_history=make_sequence_history, number_nicely=True)
+history = SequenceHistory(element_history=make_sequence_history, number_nicely=True)
 
 PRESERVED_PARAGRAPHS = {
   Version(3, 1, 0): {ParagraphNumber(10): "",
@@ -128,6 +137,16 @@ PRESERVED_PARAGRAPHS = {
                      ParagraphNumber(101, 11) : "sot (RI RI)*"},
   Version(11, 0, 0): {ParagraphNumber(33, 1, 4): "A ZWJ"},
   Version(13, 0, 0): {ParagraphNumber(73): "× IN"},
+}
+
+ANCESTRIES = {
+  Version(3, 1, 0): {ParagraphNumber(9, 1): ParagraphNumber(11),
+                     ParagraphNumber(21, 3): ParagraphNumber(23),
+                     ParagraphNumber(21, 2): ParagraphNumber(24),
+                     ParagraphNumber(21, 1): ParagraphNumber(25),},
+  Version(5, 1, 0): {ParagraphNumber(40, 20): ParagraphNumber(40, 13),
+                     ParagraphNumber(40, 21): ParagraphNumber(40, 14),
+                     ParagraphNumber(40, 22): ParagraphNumber(40, 16),},
 }
 
 nontrivial_versions = []
@@ -168,6 +187,8 @@ for version, paragraphs in VERSIONS.items():
         paragraph.add_version(version, new_rule_descriptions[match.group(1)], paragraph_number)
   history.add_version(version, paragraphs)
 
+  paragraphs_by_number : dict[ParagraphNumber, SequenceHistory] = dict(history.elements)
+
   any_change = False
   rule_number = None
   current_issues = []
@@ -201,7 +222,7 @@ for issue in ISSUES:
     for i, (paragraph_number, paragraph) in enumerate(history.elements):
       if annotation.number < paragraph_number:
         break
-    annotation_history = make_sequence_history(issue.version, annotation)
+    annotation_history = make_sequence_history(issue.version, annotation, annotation.number)
     history.elements.insert(i,
                             (annotation.number,
                              annotation_history))
@@ -275,16 +296,18 @@ with open("alba.html", "w", encoding="utf-8") as f:
   print('<label for="show-deleted">Show deleted paragraphs</label></div>', file=f)
   print('</nav>', file=f)
   for paragraph_number, paragraph in history.elements:
-    paragraph: historical_diff.SequenceHistory
+    paragraph: SequenceHistory
     revision_number = ""
     versions_changed = paragraph.versions_changed()
-    print(f'<div class="paragraph added-in-{versions_changed[0].html_class()}{(" removed-in-" + versions_changed[-1].html_class()) if paragraph.absent() else ""}">', file=f)
+    version_added = paragraph.version_added()
+    last_changed = paragraph.last_changed()
+    print(f'<div class="paragraph added-in-{version_added.html_class()}{(" removed-in-" + last_changed.html_class()) if paragraph.absent() else ""}">', file=f)
     for new, old in zip(versions_changed[1:], versions_changed[:-1]):
       if old == Version(3, 0, 0):
         continue
       revision_number += f'<del class="paranum changed-in-{new.html_class()}"><ins class="paranum changed-in-{old.html_class()}">/{old.short()}</ins></del>'
     if versions_changed[-1] != Version(3, 0, 0):
-      revision_number += f'<ins class="paranum changed-in-{versions_changed[-1].html_class()}">/{versions_changed[-1].short()}</ins>'
+      revision_number += f'<ins class="paranum changed-in-{last_changed.html_class()}">/{last_changed.short()}</ins>'
     print(f"<div class=paranum>{paragraph_number}{revision_number}</div>", file=f)
 
     if paragraph.issues:

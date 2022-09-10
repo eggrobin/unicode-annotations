@@ -5,6 +5,12 @@ import itertools
 import re
 from typing import Optional, Sequence, Tuple, Union
 
+def oxford_list(elements: Sequence[str]):
+  if len(elements) == 2:
+    return f"{elements[0]} and {elements[1]}"
+  else:
+    return f"{', '.join(str(e) for e in elements[:-1])}, and elements[-1]"
+
 @total_ordering
 class Version:
   def __init__(self, *components: int):
@@ -113,7 +119,7 @@ class History:
     return None
 
 class AtomHistory(History):
-  def __init__(self, version, c):
+  def __init__(self, version, c, *context):
     self.text = c
     self.added = version
     self.removed = None
@@ -124,7 +130,7 @@ class AtomHistory(History):
   def value_at(self, version):
     return self.text if version >= self.added and (not self.removed or version < self.removed) else ""
 
-  def remove(self, version):
+  def remove(self, version, *context):
     if self.added == version:
       print("ERROR:", self.text, "added and removed in", version)
     self.removed = version
@@ -141,12 +147,16 @@ class SequenceHistory(History):
       junk=lambda x: x.isspace(),
       element_history=AtomHistory,
       check_and_get_elements=lambda x, h, version, *context: x,
-      number_nicely=False):
+      number_nicely=False,
+      get_ancestor=lambda version, *context: None):
     self.element_history = element_history
     self.elements : list[Tuple[ParagraphNumber, History]] = []
     self.check_and_get_elements = check_and_get_elements
     self.junk = junk
     self.number_nicely = number_nicely
+    self.get_ancestor = get_ancestor
+    self.ancestor : Optional[Tuple[Version, ParagraphNumber, SequenceHistory]] = None
+    self.descendants : dict[Version, list[ParagraphNumber]] = {}
 
   def current_text(self):
     return "".join(c.value() for _, c in self.elements if c.present())
@@ -167,7 +177,7 @@ class SequenceHistory(History):
     return max(c.last_changed() for _, c in self.elements)
 
   def version_added(self):
-    return min(c.added for _, c in self.elements)
+    return self.ancestor[0] if self.ancestor else min(c.added for _, c in self.elements)
 
   def versions_changed(self):
     return sorted(set(c.added for _, c in self.elements).union(
@@ -176,6 +186,18 @@ class SequenceHistory(History):
   def add_version(self, version, new_text, *context):
     new_text = self.check_and_get_elements(new_text, self, version, *context)
     indexing : Sequence[Tuple[Optional[int], Tuple[ParagraphNumber, History]]] = []
+    ancestor : Tuple[Version, ParagraphNumber, SequenceHistory] = self.get_ancestor(version, *context)
+    if ancestor: 
+      if self.elements:
+        raise ValueError("Old paragraph %s cannot be moved from %s in %s" % (context, ancestor[1], version))
+      self.ancestor = ancestor
+      ancestor[2].descendants.setdefault(version, []).append(*context)
+      for n, c in ancestor[2].elements:
+        h = AtomHistory(c.added, c.text)
+        if c.removed and c.removed != version:
+          h.remove(c.removed)
+        self.elements.append((n, h))
+
     i = 0
     for n, c in self.elements:
       if c.present():
@@ -187,7 +209,7 @@ class SequenceHistory(History):
     diff = difflib.SequenceMatcher(
       self.junk,
       [c.value() for _, c in self.elements if c.present()],
-      [self.element_history(version, element).value() for element in new_text]).get_opcodes()
+      [self.element_history(version, element, None).value() for element in new_text]).get_opcodes()
     text_changed = False
     for instruction in diff:
       (operation, old_begin, old_end, new_begin, new_end) = instruction
@@ -212,21 +234,24 @@ class SequenceHistory(History):
             elif old_index >= old_end:
               break
             elif old_index >= old_begin:
-              c.remove(version)
+              c.remove(version, n)
         elif operation == "insert":
           text_changed = True
-          inserted_histories = [self.element_history(version, c)
-                                for c in new_text[new_begin:new_end]]
+          inserted_elements = new_text[new_begin:new_end]
           if new_begin == 0:
             if indexing:
               first_number = indexing[0][1][0]
               if first_number.main[-1] != 1:
                 raise IndexError(first_number)
-              inserted = [(None, (first_number.insertion(0).insertion(1 + i) , c))
-                          for i, c in enumerate(inserted_histories)]
+              inserted = [(None,
+                           (first_number.insertion(0).insertion(1 + i),
+                            self.element_history(version, c, first_number.insertion(0).insertion(1 + i))))
+                          for i, c in enumerate(inserted_elements)]
             else:
-              inserted = [(None, (ParagraphNumber(1 + i) , c))
-                          for i, c in enumerate(inserted_histories)]
+              inserted = [(None,
+                           (ParagraphNumber(1 + i),
+                            self.element_history(version, c, ParagraphNumber(1 + i))))
+                          for i, c in enumerate(inserted_elements)]
             indexing = inserted + indexing
           else:
             for i, (old_index, (n, c)) in enumerate(indexing):
@@ -250,8 +275,10 @@ class SequenceHistory(History):
                       prefix, offset = p, o
                       i = j
 
-                inserted = [(None, (prefix.insertion(offset + i) , c))
-                            for i, c in enumerate(inserted_histories)]
+                inserted = [(None,
+                             (prefix.insertion(offset + i),
+                              self.element_history(version, c, prefix.insertion(offset + i))))
+                            for i, c in enumerate(inserted_elements)]
                 before = indexing[:i+1]
                 after = indexing[i+1:]
                 indexing = before + inserted + after
@@ -277,6 +304,27 @@ class SequenceHistory(History):
     removed = None
     versions = set()
     text = ""
+    if self.ancestor:
+      version, paragraph, ancestor = self.ancestor
+      if len(ancestor.descendants[version]) == 1 and ancestor.absent() and ancestor.last_changed() == version:
+        text += f'<ins class="diff-comment changed-in-{self.ancestor[0].html_class()}">Moved from §{self.ancestor[1]}. </ins>'
+      else:
+        text += f'<ins class="diff-comment changed-in-{self.ancestor[0].html_class()}">Split from §{self.ancestor[1]}. </ins>'
+    deletion_note = ""
+    for version, descendants in self.descendants.items():
+      if self.absent() and self.last_changed() == version:
+        if len(descendants) == 1:
+          deletion_note = f'<ins class="diff-comment changed-in-{version.html_class()}">This paragraph was moved to §{descendants[0]}. </ins>'
+        else:
+          deletion_note = f'<ins class="diff-comment changed-in-{version.html_class()}">This paragraph was split into §§{oxford_list(descendants)}. </ins>'
+      else:
+        if len(descendants) == 1:
+          text += f'<ins class="diff-comment changed-in-{version.html_class()}">Part of this paragraph was moved to §{descendants[0]}. </ins>'
+        else:
+          text += f'<ins class="diff-comment changed-in-{version.html_class()}">Parts of this paragraph were split into §{oxford_list(descendants)}. </ins>'
+    if self.absent() and not deletion_note:
+        deletion_note = f'<ins class="diff-comment changed-in-{self.last_changed().html_class()}">This paragraph was deleted. </ins>'
+    text += deletion_note
     for _, c in self.elements:
       if not c.value:
         continue

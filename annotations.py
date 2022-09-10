@@ -135,7 +135,7 @@ ISSUES = (
             Discussion(
                 (40, 7, 'a'),
                 "Absent tailoring, this rule has no effect in the case of ZWJ."
-                " The breaks on both sides of ZWJ have already been resolved"
+                " The breaks on both sides of ZWJ have already been resolved,"
                 " except in SP ZWJ, which gets resolved at the latest in LB18"
                 " without class AL being involved.  The rule is written like"
                 " this for consistency with combining marks following LB9."),
