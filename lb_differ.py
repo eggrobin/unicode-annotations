@@ -259,13 +259,13 @@ for version, paragraphs in VERSIONS.items():
 
   any_change = False
   rule_number = None
-  current_issues = []
+  rule_issues = []
   for paragraph_number, paragraph in history.elements:
+    paragraph_issues = [issue for issue in ISSUES
+                        if issue.version == version and paragraph_number in issue.paragraphs]
     match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value())
     rule_number = None
     previous_rule_number = None
-    current_issues += [issue for issue in ISSUES
-                      if issue.version == version and paragraph_number in issue.paragraphs]
     if match:
       rule_number = "LB" + match.group(1)
     if previous_version:
@@ -273,17 +273,17 @@ for version, paragraphs in VERSIONS.items():
       if match:
         previous_rule_number = "LB" + match.group(1)
     if rule_number or previous_rule_number:
-      current_issues += [issue for issue in ISSUES
+      rule_issues = [issue for issue in ISSUES
                         if issue.version == version and
                            (rule_number in issue.target_rules or
                             rule_number in issue.affected_rules)]
-      current_issues += [issue for issue in ISSUES
+      rule_issues += [issue for issue in ISSUES
                          if issue.version == version and
                             previous_rule_number in issue.deleted_rules]
 
     if paragraph.last_changed() == version:
       any_change = True
-      paragraph.references += current_issues
+      paragraph.references += paragraph_issues + rule_issues
   if any_change:
       nontrivial_versions.append(version)
   previous_version = version
