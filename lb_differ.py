@@ -85,6 +85,16 @@ def get_ancestor(version: Version, p: ParagraphNumber):
   else:
     return None
 
+def is_default_junk(w):
+  return w.isspace() or w in ".,;:" or w in ("of", "and", "between", "the", "is", "that", "ing")
+
+def get_junk_override(version: Version, p: ParagraphNumber):
+  if version in JUNK and p in JUNK[version]:
+    junk = JUNK[version][p]
+    return lambda w: is_default_junk(w) or w in junk
+  else:
+    return None
+
 def get_words(p: Paragraph, h: SequenceHistory, version, *context):
   if not p:
     return p
@@ -98,11 +108,11 @@ def get_words(p: Paragraph, h: SequenceHistory, version, *context):
 
 def make_sequence_history(v, p: Paragraph, *context):
   h = SequenceHistory(
-        junk=lambda w: w.isspace() or w in ".,;:" or w in ("of", "and", "between", "the", "is", "that", "ing"),
+        junk=is_default_junk,
         check_and_get_elements=get_words,
-        get_ancestor=get_ancestor)
+        get_ancestor=get_ancestor,
+        get_junk_override=get_junk_override)
   h.tag = p
-  h.issues = []
   h.add_version(v, p, *context)
   return h
 
@@ -110,6 +120,7 @@ history = SequenceHistory(element_history=make_sequence_history, number_nicely=T
 
 DELETED_PARAGRAPHS = {
   Version(4, 0, 0): [ParagraphNumber(22)],
+  Version(4, 1, 0): [ParagraphNumber(53, 5), ParagraphNumber(53, 6)],
 }
 
 PRESERVED_PARAGRAPHS = {
@@ -123,6 +134,7 @@ PRESERVED_PARAGRAPHS = {
                      ParagraphNumber(39): "LB 7a",
                      ParagraphNumber(40, 3): "",
                      ParagraphNumber(40, 4): "",
+                     ParagraphNumber(53, 4): "",
                      ParagraphNumber(84): ""},
   Version(5, 0, 0): {ParagraphNumber(3): "",
                      ParagraphNumber(6): "",
@@ -170,12 +182,22 @@ ANCESTRIES = {
                      ParagraphNumber(98, 1): ParagraphNumber(69),
                      ParagraphNumber(98, 2): ParagraphNumber(70),
                      ParagraphNumber(98, 3): ParagraphNumber(71),},
-  Version(4, 1, 0): {ParagraphNumber(98, 5): ParagraphNumber(33, 2),
+  Version(4, 1, 0): {ParagraphNumber(56, 3): ParagraphNumber(53, 4),
+                     ParagraphNumber(56, 4): ParagraphNumber(53, 5),
+                     ParagraphNumber(56, 5): ParagraphNumber(53, 6),
+                     ParagraphNumber(98, 5): ParagraphNumber(33, 2),
                      ParagraphNumber(98, 10): ParagraphNumber(33, 2),
                      ParagraphNumber(98, 6): ParagraphNumber(33, 3),
                      ParagraphNumber(98, 11): ParagraphNumber(33, 3),},
   Version(5, 0, 0): {ParagraphNumber(20, 1): ParagraphNumber(27, 1),
-                     ParagraphNumber(82, 2): ParagraphNumber(87, 8),
+                     ParagraphNumber(40, 8): ParagraphNumber(53, 3),
+                     ParagraphNumber(40, 9): ParagraphNumber(53, 4),
+                     ParagraphNumber(40, 10): ParagraphNumber(53, 7),
+                     ParagraphNumber(40, 11): ParagraphNumber(53, 8),
+                     ParagraphNumber(40, 12): ParagraphNumber(56, 2),
+                     ParagraphNumber(40, 13): ParagraphNumber(56, 3),
+                     ParagraphNumber(40, 14): ParagraphNumber(56, 4),
+                     ParagraphNumber(40, 15): ParagraphNumber(56, 5),
                      ParagraphNumber(82, 3): ParagraphNumber(87, 6),
                      ParagraphNumber(87, 1, 2): ParagraphNumber(87, 5),
                      ParagraphNumber(87, 1, 6): ParagraphNumber(90),
@@ -186,6 +208,11 @@ ANCESTRIES = {
   Version(9, 0, 0): {ParagraphNumber(82, 0, 1): ParagraphNumber(82, 1),
                      ParagraphNumber(82, 0, 2): ParagraphNumber(82, 2),
                      ParagraphNumber(82, 0, 3): ParagraphNumber(80, 1),},
+}
+
+JUNK = {
+  Version(9, 0, 0): {ParagraphNumber(101,10): ["break"],},
+  Version(13, 0, 0): {ParagraphNumber(73): ["IN"],},
 }
 
 nontrivial_versions = []
@@ -254,7 +281,7 @@ for version, paragraphs in VERSIONS.items():
 
     if paragraph.last_changed() == version:
       any_change = True
-      paragraph.issues += current_issues
+      paragraph.references += current_issues
   if any_change:
       nontrivial_versions.append(version)
   previous_version = version
@@ -269,7 +296,7 @@ for issue in ISSUES:
     history.elements.insert(i,
                             (annotation.number,
                              annotation_history))
-    annotation_history.issues = [issue]
+    annotation_history.references = [issue]
 
 
 TOL_LIGHT_COLOURS = [
@@ -349,11 +376,11 @@ with open("alba.html", "w", encoding="utf-8") as f:
       revision_number += f'<del class="paranum changed-in-{new.html_class()}"><ins class="paranum changed-in-{old.html_class()}">/{old.short()}</ins></del>'
     if versions_changed[-1] != Version(3, 0, 0):
       revision_number += f'<ins class="paranum changed-in-{last_changed.html_class()}">/{last_changed.short()}</ins>'
-    print(f"<div class=paranum>{paragraph_number}{revision_number}</div>", file=f)
+    print(f"<div class=paranum><a id=p{paragraph_number} href=#p{paragraph_number}>{paragraph_number}{revision_number}</a></div>", file=f)
 
-    if paragraph.issues:
+    if paragraph.references:
       print("<div class=sources>", file=f)
-    for issue in paragraph.issues:
+    for issue in paragraph.references:
       print(f'<ins class="changed-in-{issue.version.html_class()} sources">', file=f)
       print("{" + str(issue.version) + ": " +
             ", ".join(f'<a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?{l2ref}">{l2ref}</a>'
@@ -364,7 +391,7 @@ with open("alba.html", "w", encoding="utf-8") as f:
             "}",
             file=f)
       print('</ins>', file=f)
-    if paragraph.issues:
+    if paragraph.references:
       print("</div>", file=f)
 
     if type(paragraph.tag) == Table:

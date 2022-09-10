@@ -148,15 +148,18 @@ class SequenceHistory(History):
       element_history=AtomHistory,
       check_and_get_elements=lambda x, h, version, *context: x,
       number_nicely=False,
-      get_ancestor=lambda version, *context: None):
+      get_ancestor=lambda version, *context: None,
+      get_junk_override=lambda version, *context: None):
     self.element_history = element_history
     self.elements : list[Tuple[ParagraphNumber, History]] = []
     self.check_and_get_elements = check_and_get_elements
     self.junk = junk
     self.number_nicely = number_nicely
     self.get_ancestor = get_ancestor
+    self.get_junk_override = get_junk_override
     self.ancestor : Optional[Tuple[Version, ParagraphNumber, SequenceHistory]] = None
     self.descendants : dict[Version, list[ParagraphNumber]] = {}
+    self.references = []
 
   def current_text(self):
     return "".join(c.value() for _, c in self.elements if c.present())
@@ -189,12 +192,14 @@ class SequenceHistory(History):
     new_text = self.check_and_get_elements(new_text, self, version, *context)
     indexing : Sequence[Tuple[Optional[int], Tuple[ParagraphNumber, History]]] = []
     ancestor : Tuple[Version, ParagraphNumber, SequenceHistory] = self.get_ancestor(version, *context)
-    if ancestor: 
-      if self.elements:
-        raise ValueError("Old paragraph %s cannot be moved from %s in %s" % (context, ancestor[1], version))
+    if ancestor:
       self.ancestor = ancestor
-      ancestor[2].descendants.setdefault(version, []).append(*context)
-      for n, c in ancestor[2].elements:
+      _, ancestor_number, ancestor_history = ancestor
+      if self.elements:
+        raise ValueError("Old paragraph %s cannot be moved from %s in %s" % (context, ancestor_number, version))
+      self.references = ancestor_history.references.copy()
+      ancestor_history.descendants.setdefault(version, []).append(*context)
+      for n, c in ancestor_history.elements:
         if c.added < version:
           h = AtomHistory(c.added, c.text)
           if c.removed and c.removed != version:
@@ -210,7 +215,7 @@ class SequenceHistory(History):
         indexing.append((None, (n, c)))
 
     diff = difflib.SequenceMatcher(
-      self.junk,
+      self.get_junk_override(version, *context) or self.junk,
       [c.value() for _, c in self.elements if c.present()],
       [self.element_history(version, element, None).value() for element in new_text]).get_opcodes()
     text_changed = False
@@ -323,7 +328,7 @@ class SequenceHistory(History):
         if len(descendants) == 1:
           text += f'<ins class="diff-comment changed-in-{version.html_class()}">Part of this paragraph was moved to §{descendants[0]}. </ins>'
         else:
-          text += f'<ins class="diff-comment changed-in-{version.html_class()}">Parts of this paragraph were split into §{oxford_list(descendants)}. </ins>'
+          text += f'<ins class="diff-comment changed-in-{version.html_class()}">Parts of this paragraph were split into §§{oxford_list(descendants)}. </ins>'
     if self.absent() and not deletion_note:
         deletion_note = f'<ins class="diff-comment changed-in-{self.last_changed().html_class()}">This paragraph was deleted. </ins>'
     text += deletion_note
