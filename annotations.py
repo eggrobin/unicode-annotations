@@ -236,6 +236,30 @@ ISSUES = (
           [],
           ["114-C30"],
           deleted_rules=["LB30"]),
+    Issue(Version(5, 1, 0),
+          ["LB15"],
+          [],
+          [
+              Reason(
+                  (51, 1, 'a'),
+                  "This rule is equivalent to “Treat QU as OP in QU SP* × OP”;"
+                  " it can be seen as a heuristic for resolving QU in"
+                  " constructs such as the following:"
+                  " « [La Loi] doit être la même pour tous, soit qu'elle"
+                  " protège, soit qu'elle punisse. »"),
+              Discussion(
+                  (51, 1, 'b'),
+                  "This rule has no effect in the absence of a space between"
+                  " the QU and the OP: in that case LB18 would not apply, and"
+                  " LB19 would forbid the break.  While it works for the"
+                  " opening quotation mark in the above example, it should be"
+                  " noted that quotation marks with inner spaces « like this,"
+                  " as in French » are generally improperly handled by this"
+                  " algorithm, unless they have been resolved to OP and CL, or"
+                  " unless no-break space is used.  Further, this rule may"
+                  " forbid desired breaks in cases where a quotation is"
+                  " followed by a parenthetical."),
+          ]),
     # Split 12a from 12.
     Issue(Version(5, 1, 0),
           ["LB12a"],
