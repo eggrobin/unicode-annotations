@@ -44,6 +44,7 @@ class Issue:
       target_rules: Sequence[str],
       l2_refs: Sequence[str],
       annotations: Sequence[Annotation] = [],
+      paragraphs: Sequence[ParagraphNumber] = [],
       l2_docs: Sequence[str] = [],
       affected_rules: Sequence[str] = [],
       deleted_rules: Sequence[str] = []) -> None:
@@ -51,6 +52,7 @@ class Issue:
     self.target_rules = target_rules
     self.l2_refs = l2_refs
     self.l2_docs = l2_docs
+    self.paragraphs = paragraphs
     self.affected_rules = affected_rules
     self.deleted_rules = deleted_rules
     self.annotations = annotations
@@ -150,8 +152,9 @@ ISSUES = (
     # the new rules, and the review note which says it wasn’t updated.
     Issue(
         Version(10, 0, 0),
-        [], # TODO(egg): ParagraphNumber(3)
+        [],
         ["147-A79"],
+        paragraphs=[ParagraphNumber(3)],
         ),
     # Creates LB23a.
     Issue(

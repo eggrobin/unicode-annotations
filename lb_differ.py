@@ -264,6 +264,8 @@ for version, paragraphs in VERSIONS.items():
     match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value())
     rule_number = None
     previous_rule_number = None
+    current_issues += [issue for issue in ISSUES
+                      if issue.version == version and paragraph_number in issue.paragraphs]
     if match:
       rule_number = "LB" + match.group(1)
     if previous_version:
@@ -271,7 +273,7 @@ for version, paragraphs in VERSIONS.items():
       if match:
         previous_rule_number = "LB" + match.group(1)
     if rule_number or previous_rule_number:
-      current_issues = [issue for issue in ISSUES
+      current_issues += [issue for issue in ISSUES
                         if issue.version == version and
                            (rule_number in issue.target_rules or
                             rule_number in issue.affected_rules)]
