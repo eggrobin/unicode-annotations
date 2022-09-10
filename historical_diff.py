@@ -305,7 +305,6 @@ class SequenceHistory(History):
   def html(self):
     added = None
     removed = None
-    versions = set()
     text = ""
     if self.ancestor:
       version, paragraph, ancestor = self.ancestor
@@ -328,24 +327,26 @@ class SequenceHistory(History):
     if self.absent() and not deletion_note:
         deletion_note = f'<ins class="diff-comment changed-in-{self.last_changed().html_class()}">This paragraph was deleted. </ins>'
     text += deletion_note
+    previous_added = None
     for _, c in self.elements:
       if not c.value:
         continue
-      versions.add(c.added)
-      if c.removed:
-        versions.add(c.removed)
       if c.removed != removed:
         if added:
           text += "</ins>"
+          previous_added = added
           added = None
         if removed:
           text += "</del>"
         removed = c.removed
         if removed:
+          if previous_added == removed:
+            text += "<wbr>"
           text += f'<del class="changed-in-{removed.html_class()}">'
       if c.added != added:
         if added:
           text += "</ins>"
+        previous_added = added
         added = c.added
         if added:
           text += f'<ins class="changed-in-{added.html_class()}">'
