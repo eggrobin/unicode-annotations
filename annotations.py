@@ -13,10 +13,13 @@ class Annotation(Paragraph):
       raise IndexError("%s is not an annotation number" % self.number)
 
   def kind(self) -> str:
-    raise TypeError("Annotation without a type", self.number, self.text)
+    return None
 
   def html(self, inner, version:Optional[Version]=None):
-    return f"<p class=annotation><ins class=changed-in-{version.html_class()}><b>{self.kind()}: </b></ins>{inner}</p>"
+    title = (
+        f"<ins class=changed-in-{version.html_class()}><b>{self.kind()}: </b></ins>"
+        if self.kind() else "")
+    return f"<p class=annotation>{title}{inner}</p>"
 
 class Reason(Annotation):
   def kind(self):
@@ -236,30 +239,46 @@ ISSUES = (
           [],
           ["114-C30"],
           deleted_rules=["LB30"]),
-    #Issue(Version(5, 1, 0),
-    #      ["LB15"],
-    #      [],
-    #      [
-    #          Reason(
-    #              (51, 1, 'a'),
-    #              "This rule is equivalent to “Treat QU as OP in QU SP* × OP”;"
-    #              " it can be seen as a heuristic for resolving QU in"
-    #              " constructs such as the following:"
-    #              " « [La Loi] doit être la même pour tous, soit qu'elle"
-    #              " protège, soit qu'elle punisse. »"),
-    #          Discussion(
-    #              (51, 1, 'b'),
-    #              "This rule has no effect in the absence of a space between"
-    #              " the QU and the OP: in that case LB18 would not apply, and"
-    #              " LB19 would forbid the break.  While it works for the"
-    #              " opening quotation mark in the above example, it should be"
-    #              " noted that quotation marks with inner spaces « like this,"
-    #              " as in French » are generally improperly handled by this"
-    #              " algorithm, unless they have been resolved to OP and CL, or"
-    #              " unless no-break space is used.  Further, this rule may"
-    #              " forbid desired breaks in cases where a quotation is"
-    #              " followed by a parenthetical."),
-    #      ]),
+    Issue(Version(5, 1, 0),
+          ["LB15"],
+          [],
+          [
+              Discussion(
+                  (51, 1, 'a'),
+                  "When a quote is known to be opening or closing, OP and CL"
+                  " should respectively be used.  Class QU (for ambiguous"
+                  " quotation marks) is a Unicode innovation compared to the"
+                  " ancestor standard JIS X 4051, necessitated by the variety"
+                  " of quotation mark styles across languages; see The Unicode"
+                  " Standard, Chapter 6."),
+              Ramification(
+                  (51, 1, 'b'),
+                  "The rules pertaining to class QU in the algorithm may be"
+                  " expressed as heuristics for its resolution into OP and CL,"
+                  " as follows, where treating a quotation mark as both OP and"
+                  " CL means disallowing breaks according to both"
+                  " interpretations:"),
+              Annotation(
+                  (51, 1, 'c'),
+                  "Treat QU as OP in QU SP+ OP. (LB15)"),
+              Annotation(
+                  (51, 1, 'd'),
+                  "Treat QU as OP in QU [^SP]. (LB19)"),
+              Annotation(
+                  (51, 1, 'e'),
+                  "Treat QU as CL in [^SP] QU. (LB19)"),
+              Discussion(
+                  (51, 1, 'f'),
+                  "While the latter two heuristics are self-explanatory, the"
+                  " first one (LB15) is weird.  It applies to cases such"
+                  " as the opening quotation mark in « [Le livre] tuera"
+                  " [l’édifice] », but not to the closing quotation mark."
+                  " Generally, whereas the algorithm correctly deals with"
+                  " spaces before French !?:;, it does not prevent break"
+                  " opportunities inside of French quotation marks, unless"
+                  " no-break space is used."),
+              
+          ]),
     # Split 12a from 12.
     Issue(Version(5, 1, 0),
           ["LB12a"],
