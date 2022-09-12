@@ -273,6 +273,10 @@ ISSUES = (
                   " first one (LB15) is weird.  It applies to cases such"
                   " as the opening quotation mark in « [Le livre] tuera"
                   " [l’édifice] », but not to the closing quotation mark."
+                  " It can misfire, as in “All Gaul is divided into three"
+                  " parts” ×(Caes. BGall. 1.1.1)."),
+              Annotation(
+                  (51, 1, 'g'),
                   " Generally, whereas the algorithm correctly deals with"
                   " spaces before French !?:;, it does not prevent break"
                   " opportunities inside of French quotation marks, unless"
