@@ -9,7 +9,7 @@ def oxford_list(elements: Sequence[str]):
   if len(elements) == 2:
     return f"{elements[0]} and {elements[1]}"
   else:
-    return f"{', '.join(str(e) for e in elements[:-1])}, and elements[-1]"
+    return f"{', '.join(str(e) for e in elements[:-1])}, and {elements[-1]}"
 
 @total_ordering
 class Version:
