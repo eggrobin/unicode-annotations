@@ -78,15 +78,65 @@ ISSUES = (
                 " interesting ramifications of the rules and interactions among"
                 " the rules (interesting to Unicode maintainers, that is). (The"
                 " text you are reading now is an annotation.)"),
+            Annotation(
+                (1, 'b'),
+                "The structure of this document is heavily inspired by that of"
+                " the Annotated Ada Reference Manual.  For a description of the"
+                " various kinds of annotations, see paragraphs 1(2.dd) through"
+                " 1(2.ll) in that document."),
+            Annotation(
+                (1, 'c'),
+                "A version number of the form /v[.v[.v]] follows the paragraph"
+                " number for any paragraph that has been modified from the"
+                " original Unicode Line Breaking Algorithm (Unicode"
+                " Version 3.0.0)."
+                " Paragraph numbers are of the form pp{.nn}, where pp is a"
+                " sequential numbering of the paragraphs of Version 3.0.0,"
+                " and the nn are insertion numbers. For instance, the first"
+                " paragraph inserted after paragraph 3 is numbered 3.1, the"
+                " second is numbered 8.2, etc. A paragraph inserted between"
+                " paragraphs 8.1 and 8.2 is numbered 8.1.1, a paragraph"
+                " inserted between paragraphs 8 and 8.1 is numbered 8.0.1."
+                " Inserted text is indicated by highlighting, and deleted text"
+                " is indicated by strikethroughs. Colour is used to indicate"
+                " the version of the change."
+                " Deleted paragraphs are indicated by the text “This paragraph"
+                " was deleted.”, or by a description of the new location of"
+                " any text retained. Compare the Annotated Ada 2012 Reference"
+                " Manual, Introduction (77.5)."),
+            Annotation(
+                (1, 'd'),
+                "Annotations are numbered similarly, except that the first"
+                " insertion number is alphabetic rather than numeric."),
+            Discussion(
+                (1, 'e'),
+                "This document is available as an interactive web page; the bar"
+                " on the right-hand side of the document allows for the"
+                " selection of the base version from which changes are shown"
+                " and the “head” version which determines the most recent"
+                " changes shown.  Paragraph deleted by the base version or"
+                " by earlier versions may be suppressed.  Clicking on a version"
+                " number sets the head to that version and the base to the"
+                " preceding version, thus showing the changes from that"
+                " version.  These settings are reflected as URL parameters."),
             Ramification(
                 (31, 'a'),
                 "Lines do not start with spaces, except after a hard line break"
                 " or at the start of text."),
             Ramification(
                 (31, 'b'),
-                "A sequence of spaces is unbreakable; prohibited breaks are"
-                " expressed in subsequent rules by disallowing the break after"
-                " the last space."),
+                "A sequence of spaces is unbreakable; a prohibited break after"
+                " X is expressed in subsequent rules by disallowing the break"
+                " after any spaces following X (X SP* ×), and a prohibited break"
+                " by disallowing the break before X (× X)."),
+            Reason(
+                (47, 'a'),
+                "× EX and × IS accomodate French typographical conventions in"
+                " cases where a normal space (rather than NBSP or NNBSP, class"
+                " GL) is used before the exclamation or question marks, or the"
+                " colon and semicolon. × CL likewise caters to French"
+                " « quotation marks » if QU has been resolved for French."
+                " See [Suign98]."),
         ]),
 
     Issue(
