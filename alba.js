@@ -24,9 +24,39 @@ function show_version_diff(version) {
   document.querySelector('input[name="newest"][value="' + version + '"]').checked = true;
   meow();
 }
-function meow() {
+
+function update_from_query() {
+  params = (new URL(document.location)).searchParams;
+  if (params.has("v")) {
+    const v = params.get("v").replaceAll(".", "-");
+    document.querySelector('input[name="newest"][value="' + v + '"]').checked = true
+    if (params.has("base")) {
+      document.querySelector('input[name="oldest"][value="' + params.get("base").replaceAll(".", "-") + '"]').checked = true
+    } else {
+      document.querySelector('input[name="oldest"][value="' + v + '"]').checked = true
+    }
+  }
+  if (params.has("show_deleted")) {
+    document.querySelector('input[name="show-deleted"]').checked = params.get("show_deleted");
+  }
+  meow(false);
+}
+
+function meow(push_history = true) {
   oldest = document.querySelector('input[name="oldest"]:checked').value.split("-").map(x => parseInt(x));
   newest = document.querySelector('input[name="newest"]:checked').value.split("-").map(x => parseInt(x));
+  show_deleted_paragraphs = document.querySelector('input[name="show-deleted"]').checked;
+  if (push_history) {
+    let query = [`v=${newest.join(".")}`];
+    if (older(oldest, newest)) {
+      query.push(`base=${oldest.join(".")}`);
+    }
+    if (!show_deleted_paragraphs) {
+      query.push(`show_deleted=${show_deleted_paragraphs}`);
+    }
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + query.join("&");
+    window.history.pushState({ path: newurl }, '', newurl);
+  }
   for (var label of document.getElementsByTagName("button")) {
     version = label.className.split("-").slice(-3).map(x => parseInt(x));
     if (older_or_equal(version, oldest)) {
@@ -69,7 +99,6 @@ function meow() {
       del.style = "";
     }
   }
-  show_deleted_paragraphs = document.querySelector('input[name="show-deleted"]').checked;
   for (var div of document.querySelectorAll("div.paragraph")) {
     version_added = null;
     version_removed = null;
@@ -111,5 +140,6 @@ window.onload = function () {
     const version = button.value;
     button.onclick = function () { show_version_diff(version); };
   }
-  meow();
+  update_from_query();
 }
+addEventListener('popstate', update_from_query);
