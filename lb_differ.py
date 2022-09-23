@@ -119,6 +119,7 @@ def make_sequence_history(v, p: Paragraph, *context):
 history = SequenceHistory(element_history=make_sequence_history, number_nicely=True)
 
 DELETED_PARAGRAPHS = {
+  Version(3, 1, 0): [ParagraphNumber(65), ParagraphNumber(67)],
   Version(4, 0, 0): [ParagraphNumber(22)],
   Version(4, 1, 0): [ParagraphNumber(53, 5), ParagraphNumber(53, 6)],
 }
@@ -126,7 +127,7 @@ DELETED_PARAGRAPHS = {
 PRESERVED_PARAGRAPHS = {
   Version(3, 1, 0): {ParagraphNumber(10): "",
                      ParagraphNumber(38): "",
-                     ParagraphNumber(67): "× NS",
+                     #ParagraphNumber(67): "× NS",
                      ParagraphNumber(84): ""},
   Version(4, 0, 0): {ParagraphNumber(3): "",
                      ParagraphNumber(27): ""},
@@ -162,6 +163,8 @@ ANCESTRIES = {
                      ParagraphNumber(21, 2): ParagraphNumber(24),
                      ParagraphNumber(21, 1): ParagraphNumber(25),
                      ParagraphNumber(45, 1): ParagraphNumber(47),
+                     ParagraphNumber(67, 1): ParagraphNumber(65),
+                     ParagraphNumber(65, 1): ParagraphNumber(67),
                      ParagraphNumber(72, 1): ParagraphNumber(75),
                      ParagraphNumber(72, 2): ParagraphNumber(76),
                      ParagraphNumber(80, 1): ParagraphNumber(83),
@@ -188,7 +191,8 @@ ANCESTRIES = {
                      ParagraphNumber(98, 5): ParagraphNumber(33, 2),
                      ParagraphNumber(98, 10): ParagraphNumber(33, 2),
                      ParagraphNumber(98, 6): ParagraphNumber(33, 3),
-                     ParagraphNumber(98, 11): ParagraphNumber(33, 3),},
+                     ParagraphNumber(98, 11): ParagraphNumber(33, 3),
+                     ParagraphNumber(98, 15): ParagraphNumber(33, 2),},
   Version(5, 0, 0): {ParagraphNumber(20, 1): ParagraphNumber(27, 1),
                      ParagraphNumber(40, 8): ParagraphNumber(53, 3),
                      ParagraphNumber(40, 9): ParagraphNumber(53, 4),
@@ -213,6 +217,11 @@ ANCESTRIES = {
 JUNK = {
   Version(9, 0, 0): {ParagraphNumber(101,10): ["break"],},
   Version(13, 0, 0): {ParagraphNumber(73): ["IN"],},
+  Version(3, 1, 0): {ParagraphNumber(11): ["The", "each", "rule"],
+                     ParagraphNumber(35): ["CM"]},
+  Version(4, 1, 0): {ParagraphNumber(98, 5): ["Syllable", "Blocks", "for"],
+                     ParagraphNumber(98, 10): ["Hangul", "syllable", "block"],
+                     ParagraphNumber(98, 15): ["Korean", "are", "for", "line", "break", "class", "ID"]},
 }
 
 nontrivial_versions = []
