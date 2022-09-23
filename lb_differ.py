@@ -222,6 +222,7 @@ JUNK = {
   Version(4, 1, 0): {ParagraphNumber(98, 5): ["Syllable", "Blocks", "for"],
                      ParagraphNumber(98, 10): ["Hangul", "syllable", "block"],
                      ParagraphNumber(98, 15): ["Korean", "are", "for", "line", "break", "class", "ID"]},
+  Version(5, 1, 0): {ParagraphNumber(40, 20): ["after"]},
 }
 
 nontrivial_versions = []
