@@ -76,9 +76,9 @@ ISSUES = (
         [],  # TODO(egg): if this annotation thing ever makes it to the UTC, put an AI here.
         [
             Discussion(
-                (1, 'a'),
+                (11, 'a'),
                 "This Annotated Line Breaking Algorithm contains the entire"
-                " text of Section 6 of Unicode Standard Annex #14, Unicode Line"
+                " text of Unicode Standard Annex #14, Unicode Line"
                 " Breaking Algorithm, plus certain annotations. The annotations"
                 " give a more in-depth analysis of the algorithm. They describe"
                 " the reason for each nonobvious rule, and point out"
@@ -86,13 +86,13 @@ ISSUES = (
                 " the rules (interesting to Unicode maintainers, that is). (The"
                 " text you are reading now is an annotation.)"),
             Annotation(
-                (1, 'b'),
+                (11, 'b'),
                 "The structure of this document is heavily inspired by that of"
                 " the Annotated Ada Reference Manual.  For a description of the"
                 " various kinds of annotations, see paragraphs 1(2.dd) through"
                 " 1(2.ll) in that document."),
             Annotation(
-                (1, 'c'),
+                (11, 'c'),
                 "A version number of the form /v[.v[.v]] follows the paragraph"
                 " number for any paragraph that has been modified from the"
                 " original Unicode Line Breaking Algorithm (Unicode"
@@ -112,11 +112,11 @@ ISSUES = (
                 " any text retained. Compare the Annotated Ada 2012 Reference"
                 " Manual, Introduction (77.5)."),
             Annotation(
-                (1, 'd'),
+                (SECTION_6 + 1, 'd'),
                 "Annotations are numbered similarly, except that the first"
                 " insertion number is alphabetic rather than numeric."),
             Discussion(
-                (1, 'e'),
+                (SECTION_6 + 1, 'e'),
                 "This document is available as an interactive web page; the bar"
                 " on the right-hand side of the document allows for the"
                 " selection of the base version from which changes are shown"
@@ -127,17 +127,17 @@ ISSUES = (
                 " preceding version, thus showing the changes from that"
                 " version.  These settings are reflected as URL parameters."),
             Ramification(
-                (31, 'a'),
+                (SECTION_6 + 31, 'a'),
                 "Lines do not start with spaces, except after a hard line break"
                 " or at the start of text."),
             Ramification(
-                (31, 'b'),
+                (SECTION_6 + 31, 'b'),
                 "A sequence of spaces is unbreakable; a prohibited break after"
                 " X is expressed in subsequent rules by disallowing the break"
                 " after any spaces following X (X SP* ×), and a prohibited break"
                 " by disallowing the break before X (× X)."),
             Reason(
-                (47, 'a'),
+                (SECTION_6 + 47, 'a'),
                 "× EX and × IS accomodate French typographical conventions in"
                 " cases where a normal space (rather than NBSP or NNBSP, class"
                 " GL) is used before the exclamation or question marks, or the"
@@ -152,7 +152,7 @@ ISSUES = (
         ["167-A94", "168-C7", "168-C8"],
         [
             Reason(
-                (101, 15, 'a'),
+                (SECTION_6 + 101, 15, 'a'),
                 "The property-based rule provides some degree of"
                 " future-proofing, by preventing implementations running"
                 " earlier of Unicode from breaking emoji sequences encoded"
@@ -160,7 +160,7 @@ ISSUES = (
                 " space preallocated as \p{Extended_Pictographic} in Unicode"
                 " Version 13.0.0, see 168-C7."),
             Ramification(
-                (101, 15, 'b'),
+                (SECTION_6 + 101, 15, 'b'),
                 "As emoji get encoded, new line break opportunities may appear"
                 " between those that did not turn out to be an emoji base and"
                 " subsequent (dangling) emoji modifiers."),
@@ -202,22 +202,22 @@ ISSUES = (
           ["149-A53"],
           [
             Ramification(
-                (40, 11, 'a'),
+                (SECTION_6 + 40, 11, 'a'),
                 "ZWJ and WJ differ in line breaking only when preceded by SP"
                 " (and in the absence of ZW). This resolves to SP ÷ ZWJ by LB18"
                 " unless LB14 applies."),
             Proof(
-                (40, 11, 'b'),
+                (SECTION_6 + 40, 11, 'b'),
                 "ZWJ × is LB8a. LB9 implies X × ZWJ, where the exceptions for X"
                 " are SP or Y such that Y ! or Y ÷ by that point."),
             Discussion(
-                (40, 11, 'c'),
+                (SECTION_6 + 40, 11, 'c'),
                 "In contrast to SP CM which is either deprecated or anomalous,"
                 " SP ZWJ can occur in practice, and SP ÷ ZWJ is desired; a"
                 " leading ZWJ can be used to force a leading medial or final"
                 " form, such as this final alif: ‍ا (contrast the isolated ا)."),
             Discussion(
-                (40, 7, 'a'),
+                (SECTION_6 + 40, 7, 'a'),
                 "Absent tailoring, this rule has no effect in the case of ZWJ."
                 " The breaks on both sides of ZWJ have already been resolved,"
                 " except in SP ZWJ, which gets resolved at the latest in LB18"
@@ -270,7 +270,7 @@ ISSUES = (
         ["143-A4", "146-C19"],
         [
             Reason(
-                (82, 5, 'a'),
+                (SECTION_6 + 82, 5, 'a'),
                 "This rule forbids breaking within currency symbols such as "
                 " CA$ or JP¥, as well as stylized artist names such as “Travi$"
                 " Scott”, “Ke$ha”, “Curren$y”, and “A$AP Rocky”."),
@@ -294,7 +294,7 @@ ISSUES = (
         ["137-C9"],
         [
             Reason(
-                (71, 4, 'a'),
+                (SECTION_6 + 71, 4, 'a'),
                 "From CLDR.  “Hebrew makes extensive use of the / character to"
                 " create gender-neutral verb forms, with the feminine suffix"
                 " coming after the slash. […] It is quite rare in Hebrew to use a"
@@ -326,10 +326,10 @@ ISSUES = (
         ["125-A99"],  # Discussed in https://www.unicode.org/L2/L2011/11116-pre.htm#:~:text=Segmentation%20and%20Linebreak, approved in 129-A147.
         [
             Reason(
-                (71, 2, 'a'),
+                (SECTION_6 + 71, 2, 'a'),
                 "“With <hebrew hyphen non-hebrew>, there is no break on either side of the hyphen.”"),
             Discussion(
-                (71, 2, 'b'),
+                (SECTION_6 + 71, 2, 'b'),
                 "The Hebrew ICU “and” list format with a non-Hebrew last element"
                 " provides an example of such a sequence: ⁧John ו-Michael⁩; with"
                 " a Hebrew last word, the letter ו is prefixed to the word:"
@@ -368,7 +368,7 @@ ISSUES = (
         ["121-C5"],
         [
             Discussion(
-                (33, 'a'),
+                (SECTION_6 + 33, 'a'),
                 "The zero width space is a hint to the line breaking algorithm,"
                 " hinting a break. Its inverse is the word joiner, see LB11."
                 " When they contradict each other, the zero width space wins."
@@ -413,7 +413,7 @@ ISSUES = (
           [],
           [
               Discussion(
-                  (51, 1, 'a'),
+                  (SECTION_6 + 51, 1, 'a'),
                   "When a quote is known to be opening or closing, OP and CL"
                   " should respectively be used.  Class QU (for ambiguous"
                   " quotation marks) is a Unicode innovation compared to the"
@@ -421,23 +421,23 @@ ISSUES = (
                   " of quotation mark styles across languages; see The Unicode"
                   " Standard, Chapter 6."),
               Ramification(
-                  (51, 1, 'b'),
+                  (SECTION_6 + 51, 1, 'b'),
                   "The rules pertaining to class QU in the algorithm may be"
                   " expressed as heuristics for its resolution into OP and CL,"
                   " as follows, where treating a quotation mark as both OP and"
                   " CL means disallowing breaks according to both"
                   " interpretations:"),
               Annotation(
-                  (51, 1, 'c'),
+                  (SECTION_6 + 51, 1, 'c'),
                   "Treat QU as OP in QU SP+ OP. (LB15)"),
               Annotation(
-                  (51, 1, 'd'),
+                  (SECTION_6 + 51, 1, 'd'),
                   "Treat QU as OP in QU [^SP]. (LB19)"),
               Annotation(
-                  (51, 1, 'e'),
+                  (SECTION_6 + 51, 1, 'e'),
                   "Treat QU as CL in [^SP] QU. (LB19)"),
               Discussion(
-                  (51, 1, 'f'),
+                  (SECTION_6 + 51, 1, 'f'),
                   "While the latter two heuristics are self-explanatory, the"
                   " first one (LB15) is weird.  It applies to cases such"
                   " as the opening quotation mark in « [Le livre] tuera"
@@ -445,7 +445,7 @@ ISSUES = (
                   " It can misfire, as in “All Gaul is divided into three"
                   " parts” ×(Caes. BGall. 1.1.1)."),
               Annotation(
-                  (51, 1, 'g'),
+                  (SECTION_6 + 51, 1, 'g'),
                   " Generally, whereas the algorithm correctly deals with"
                   " spaces before French !?:;, it does not prevent break"
                   " opportunities inside of French quotation marks, unless"
@@ -477,7 +477,7 @@ ISSUES = (
           ["105-C37"],
           [
               ToBeHonest(
-                  (11, 3, 'a'),
+                  (SECTION_6 + 11, 3, 'a'),
                   "Implementations are not required to support the vertical"
                   " tabulation in class BK, nor to support the singleton class"
                   " NL.")
