@@ -87,6 +87,7 @@ div.sources { float:right; font-size: 80%; margin-left: 1em; text-align:right; }
 @media (max-width:80em) { div.sources { width:min-content; } }
 p { text-align: justify; hyphens: auto; margin-bottom: 0; }
 div.paragraph { clear: both; }
+.paragraph table {table-layout: fixed; width: 20em}
 .annotation { font-size:80%; margin-left:5em; margin-top:0; }
 .diff-comment, .deletion-comment { font-size:80%; font-style:italic; }
 .rule { font-style: italic }
@@ -532,90 +533,49 @@ addEventListener('popstate', update_from_query);
 <p><ins class="changed-in-5-0-0">In the absence of such criteria</ins><ins class="changed-in-6-1-0"> all characters with a specific combination of original class and General_Category property value are</ins><wbr><del class="changed-in-6-1-0"><ins class="changed-in-5-0-0">, it is recommended that classes AI, SA, SG, and XX be</ins></del><ins class="changed-in-5-0-0"> resolved </ins><ins class="changed-in-6-1-0">as follows:</ins><wbr><del class="changed-in-6-1-0"><ins class="changed-in-5-0-0">to AL, except that characters of class SA that have General_Category Mn or Mc be resolved to CM (see SA). Unresolved class CB is handled in rule LB20.</ins></del></p>
 </div>
 <div class="paragraph added-in-6-1-0">
-<div class=paranum><a id=p13.3 href=#p13.3>13.3<del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><ins class="paranum changed-in-8-0-0">/8</ins></a></div>
+<div class=paranum><a id=p13.3 href=#p13.3>13.3<ins class="paranum changed-in-6-1-0">/6.1</ins></a></div>
 <div class=sources>
 <ins class="changed-in-6-1-0 sources">
 {6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?129-C2">129-C2</a>}
 </ins>
 </div>
-<table class=changed-in-8-0-0>
-			<tr >
-				<th >Resolved</th>
-				<th >Original</th>
-				<th >General_Category</th>
-			</tr>
-			<tr >
-				<td >AL</td>
-				<td >AI, SG, XX</td>
-				<td >Any</td>
-			</tr>
-			<tr >
-				<td >CM</td>
-				<td >SA</td>
-				<td >Only Mn or Mc</td>
-			</tr>
-			<tr >
-				<td >AL</td>
-				<td >SA</td>
-				<td >Any except Mn and Mc</td>
-			</tr>
-			<tr >
-				<td >NS</td>
-				<td >CJ</td>
-				<td >Any</td>
-			</tr>
-		</table>
-<del class=changed-in-8-0-0>
-<table class=changed-in-6-1-0>
-			<tr >
-				<td valign='top'>Resolved<br>
-				</td>
-				<td >Original</td>
-				<td >General_Category</td>
-			</tr>
-			<tr >
-				<td valign='top'>
-				
-				AL</td>
-				<td >
-				
-				AI,
-				
-				SG,
-				
-				XX</td>
-				<td >Any</td>
-			</tr>
-			<tr >
-				<td valign='top'>
-				
-				CM</td>
-				<td >
-				
-				SA</td>
-				<td >Only Mn or Mc</td>
-			</tr>
-			<tr >
-				<td valign='top'>
-				
-				AL</td>
-				<td >
-				
-				SA</td>
-				<td >Any except Mn and Mc</td>
-			</tr>
-			<tr >
-				<td valign='top'>
-				
-				NS</td>
-				<td >
-				
-				CJ</td>
-				<td >Any</td>
-			</tr>
-		</table>
-</del>
-<p>&nbsp;</p>
+<table><tr><td><ins class="changed-in-6-1-0">Resolved</ins></td><td><ins class="changed-in-6-1-0">Original</ins></td><td><ins class="changed-in-6-1-0">General_Category</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-6-1-0">
+<div class=paranum><a id=p13.4 href=#p13.4>13.4<ins class="paranum changed-in-6-1-0">/6.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-6-1-0 sources">
+{6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?129-C2">129-C2</a>}
+</ins>
+</div>
+<table><tr><td><ins class="changed-in-6-1-0">AL</ins></td><td><ins class="changed-in-6-1-0">AI, SG, XX</ins></td><td><ins class="changed-in-6-1-0">Any</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-6-1-0">
+<div class=paranum><a id=p13.5 href=#p13.5>13.5<ins class="paranum changed-in-6-1-0">/6.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-6-1-0 sources">
+{6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?129-C2">129-C2</a>}
+</ins>
+</div>
+<table><tr><td><ins class="changed-in-6-1-0">CM</ins></td><td><ins class="changed-in-6-1-0">SA</ins></td><td><ins class="changed-in-6-1-0">Only Mn or Mc</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-6-1-0">
+<div class=paranum><a id=p13.6 href=#p13.6>13.6<ins class="paranum changed-in-6-1-0">/6.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-6-1-0 sources">
+{6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?129-C2">129-C2</a>}
+</ins>
+</div>
+<table><tr><td><ins class="changed-in-6-1-0">AL</ins></td><td><ins class="changed-in-6-1-0">SA</ins></td><td><ins class="changed-in-6-1-0">Any except Mn and Mc</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-6-1-0">
+<div class=paranum><a id=p13.7 href=#p13.7>13.7<ins class="paranum changed-in-6-1-0">/6.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-6-1-0 sources">
+{6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?129-C2">129-C2</a>}
+</ins>
+</div>
+<table><tr><td><ins class="changed-in-6-1-0">NS</ins></td><td><ins class="changed-in-6-1-0">CJ</ins></td><td><ins class="changed-in-6-1-0">Any</ins></td></tr></table>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p14 href=#p14>14</a></div>
@@ -2595,17 +2555,16 @@ addEventListener('popstate', update_from_query);
 {13.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?160-A75">160-A75</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?161-A47">161-A47</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?162-A42">162-A42</a>}
 </ins>
 </div>
-<table class=changed-in-13-0-0>
-      <tr >
-        <th >Preferred</th>
-        <th >Bad Break</th>
-      </tr>
-		  <tr >
-        <td >日中韓統合漢字拡張G<br>「ユニコード」</td>
-        <td >日中韓統合漢字拡張<br>G「ユニコード」</td>
-      </tr>
-    </table>
-<p>&nbsp;</p>
+<table><tr><td><ins class="changed-in-13-0-0">Preferred</ins></td><td><ins class="changed-in-13-0-0">Bad Break</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-13-0-0">
+<div class=paranum><a id=p101.9.3 href=#p101.9.3>101.9.3<ins class="paranum changed-in-13-0-0">/13</ins></a></div>
+<div class=sources>
+<ins class="changed-in-13-0-0 sources">
+{13.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?160-A75">160-A75</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?161-A47">161-A47</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?162-A42">162-A42</a>}
+</ins>
+</div>
+<table><tr><td><ins class="changed-in-13-0-0">日中韓統合漢字拡張G 「ユニコード」</ins></td><td><ins class="changed-in-13-0-0">日中韓統合漢字拡張 G「ユニコード」</ins></td></tr></table>
 </div>
 <div class="paragraph added-in-6-2-0">
 <div class=paranum><a id=p101.10 href=#p101.10>101.10<del class="paranum changed-in-9-0-0"><ins class="paranum changed-in-6-2-0">/6.2</ins></del><ins class="paranum changed-in-9-0-0">/9</ins></a></div>

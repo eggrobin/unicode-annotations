@@ -12,7 +12,7 @@ class Paragraph:
 
   def words(self):
     # TODO(egg): Look at UAX #29.
-    return re.split(r"\b|(?<=\W)(?=\W)|(?=ing\b)", self.contents)
+    return re.split(r"\b|(?<=\W)(?=\W)|(?=ing\b)|(?<=\uE000)|(?=\uE000)", self.contents)
 
 class Heading(Paragraph):
   def __init__(self, level: int, contents: str):
@@ -30,9 +30,6 @@ class Formula(Paragraph):
   def html(self, inner, version=None):
     return f"<p class=formula>{inner}</p>"
 
-class Table(Paragraph):
+class TableRow(Paragraph):
   def html(self, inner, version=None):
-    raise NotImplementedError()
-
-  def words(self):
-    return [self.contents]
+    return f"<table><tr><td>{inner}</td></tr></table>"

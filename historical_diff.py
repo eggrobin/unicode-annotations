@@ -308,8 +308,6 @@ class SequenceHistory(History):
     return text_changed
 
   def html(self):
-    added = None
-    removed = None
     text = ""
     if self.ancestor:
       version, paragraph, ancestor = self.ancestor
@@ -333,9 +331,22 @@ class SequenceHistory(History):
         deletion_note = f'<ins class="deletion-comment changed-in-{self.last_changed().html_class()}">This paragraph was deleted. </ins>'
     text += deletion_note
     previous_added = None
+    added = None
+    removed = None
     for _, c in self.elements:
       if not c.value:
         continue
+      if c.value() == "\uE000":
+        if added:
+          text += "</ins>"
+          previous_added = None
+          added = None
+        if removed:
+          text += "</del>"
+          removed = None
+        text += "</td><td>"
+        continue
+
       if c.removed != removed:
         if added:
           text += "</ins>"

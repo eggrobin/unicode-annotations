@@ -4,7 +4,7 @@ from typing import Sequence, Tuple
 import re
 
 from annotations import ISSUES
-from document import Paragraph, Heading, Rule, Formula, Table
+from document import Paragraph, Heading, Rule, Formula, TableRow
 from historical_diff import Version, ParagraphNumber, SequenceHistory, AtomHistory
 import historical_diff
 
@@ -406,18 +406,7 @@ with open("alba.html", "w", encoding="utf-8") as f:
     if paragraph.references:
       print("</div>", file=f)
 
-    if type(paragraph.tag) == Table:
-      for _, t in paragraph.elements:
-        t: historical_diff.AtomHistory
-        if t.removed:
-          print(f"<del class=changed-in-{t.removed.html_class()}>", file=f)
-        table_contents = t.value().replace("\u2028", "<br>")
-        print(f"<table class=changed-in-{t.added.html_class()}>{table_contents}</table>", file=f)
-        if t.removed:
-          print(f"</del>", file=f)
-      print(f"<p>&nbsp;</p>", file=f)
-    else:
-      print(paragraph.tag.html(paragraph.html(), paragraph.version_added()), file=f)
+    print(paragraph.tag.html(paragraph.html(), paragraph.version_added()), file=f)
     print("</div>", file=f)
   print("</body>", file=f)
   print("</html>", file=f)

@@ -1,6 +1,6 @@
 ﻿from collections import Counter
 from historical_diff import Version
-from document import Paragraph, Heading, Rule, Formula, Table
+from document import Paragraph, Heading, Rule, Formula, TableRow
 import glob
 import html
 from html.parser import HTMLParser
@@ -30,7 +30,6 @@ class TR14Parser(HTMLParser):
     self.line_tag = None
     self.line_id = None
     self.line = ""
-    self.table_html = ""
     self.line_is_all_bold = True
     self.bold = False
     self.centred = False
@@ -38,16 +37,18 @@ class TR14Parser(HTMLParser):
     self.version = version
 
   def handle_starttag(self, tag, attrs):
+    if tag == "tr":
+      self.end_line()
+      self.line_tag = tag
     if tag == "br":
       self.handle_data("\u2028")
-      return
-    if self.line_tag == "table" and tag in ("tr", "th", "td"):
-      self.table_html += f"<{tag} {' '.join(f'{key}={value!r}' for key, value in attrs)}>"
       return
     attrs = dict(attrs)
     if tag == "b":
       self.bold = True
-    if tag in ("p", "table") or re.match(r"h\d", tag):
+    if tag in ("td", "th") and self.line.strip():
+      self.line = self.line.rstrip() + '\uE000'
+    if tag == "p" or re.match(r"h\d", tag):
       self.end_line()
       self.line_tag = tag
       if (("align", "center") in attrs.items() or
@@ -58,24 +59,22 @@ class TR14Parser(HTMLParser):
       self.line_id = ID_REMAPPINGS.get(self.line_id) or self.line_id
 
   def handle_endtag(self, tag):
-    if self.line_tag == "table" and tag in ("tr", "th", "td"):
-      self.table_html += f"</{tag}>"
-      return
     if tag == "b":
       self.bold = False
     if tag == "h2":
       self.in_algorithm = "algorithm" in self.line.casefold()
-    if tag in ("p", "table") or re.match(r"h\d", tag):
+    if tag == "p" or re.match(r"h\d", tag):
       self.end_line()
 
   def handle_data(self, data):
-    if self.line_tag == "table":
-      self.table_html += html.escape(data)
     if not self.version:
       self.version = parse_version(data)
     if data.strip() and not self.bold:
       self.line_is_all_bold = False
-    self.line += data
+    if self.line.endswith("\uE000"):
+      self.line += data.lstrip()
+    else:
+      self.line += data
 
   def end_line(self):
     self.line = re.sub(r'\s+', ' ', self.line.strip())
@@ -85,7 +84,9 @@ class TR14Parser(HTMLParser):
     if self.in_algorithm:
       if not self.line_tag:
         raise ValueError("Stray text: %s" % self.line)
-      if self.line_tag.startswith("h"):
+      if self.line_tag == "tr":
+        self.paragraphs.append(TableRow(self.line))
+      elif self.line_tag.startswith("h"):
         tag = self.line_tag
         id = self.line_id
         if self.line_tag == "h4" and not id and self.version <= Version(4, 0, 1):
@@ -101,8 +102,6 @@ class TR14Parser(HTMLParser):
       elif self.line.startswith("LB"):
         self.paragraphs.append(
           Rule(self.line))
-      elif self.line_tag == "table":
-        self.paragraphs.append(Table(self.table_html))
       elif self.centred:
         self.paragraphs.append(
           Formula(self.line))
@@ -113,7 +112,6 @@ class TR14Parser(HTMLParser):
     self.line_tag = None
     self.line_is_all_bold = True
     self.centred = False
-    self.table_html = ""
 
 
 
