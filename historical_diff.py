@@ -132,7 +132,7 @@ class AtomHistory(History):
 
   def remove(self, version, *context):
     if self.added == version:
-      print("ERROR:", self.text, "added and removed in", version)
+      print("ERROR:", self.text, "added and removed in", version, context)
     self.removed = version
 
   def present(self):

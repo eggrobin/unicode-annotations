@@ -1,3 +1,4 @@
+import inspect
 from typing import Tuple, Union
 from typing import Sequence
 from typing import Optional
@@ -53,6 +54,7 @@ class Issue:
       l2_docs: Sequence[str] = [],
       affected_rules: Sequence[str] = [],
       deleted_rules: Sequence[str] = []) -> None:
+    self.source_line = inspect.getframeinfo(inspect.stack()[1][0]).lineno
     self.version = version
     self.target_rules = target_rules
     self.l2_refs = l2_refs
@@ -61,6 +63,9 @@ class Issue:
     self.affected_rules = affected_rules
     self.deleted_rules = deleted_rules
     self.annotations = annotations
+
+  def __repr__(self):
+    return "(Issue in %s, l. %s)" % (self.version, self.source_line)
 
 
 
@@ -143,7 +148,7 @@ ISSUES = (
 
     Issue(
         Version(14, 0, 0),
-        ["LB30b"],
+        [],
         ["167-A94", "168-C7", "168-C8"],
         [
             Reason(
@@ -159,19 +164,41 @@ ISSUES = (
                 "As emoji get encoded, new line break opportunities may appear"
                 " between those that did not turn out to be an emoji base and"
                 " subsequent (dangling) emoji modifiers."),
+        ],
+        paragraphs=[
+            ParagraphNumber(SECTION_6 + 101, 13),
+            ParagraphNumber(SECTION_6 + 101, 15),
         ]
         ),
     Issue(Version(14, 0, 0),
-          ["LB27"],
-          ["163-A70"]),
+          [],
+          ["163-A70"],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 98, 12),
+          ]),
     Issue(Version(13, 0, 0),
-          ["LB30"],
-          ["160-A75", "161-A47", "162-A42"]),
+          [],
+          ["160-A75", "161-A47", "162-A42"],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 101, 7),
+              ParagraphNumber(SECTION_6 + 101, 8),
+              ParagraphNumber(SECTION_6 + 101, 9, 1),
+              ParagraphNumber(SECTION_6 + 101, 9, 2),
+              ParagraphNumber(SECTION_6 + 101, 9, 3),
+          ]),
     Issue(Version(13, 0, 0),
-          ["LB22"],
-          ["142-A23", "160-A56"]),
+          [],
+          ["142-A23", "160-A56"],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 72),
+              ParagraphNumber(SECTION_6 + 72, 1),
+              ParagraphNumber(SECTION_6 + 72, 1, 1),
+              ParagraphNumber(SECTION_6 + 72, 2),
+              ParagraphNumber(SECTION_6 + 73),
+              ParagraphNumber(SECTION_6 + 74),
+          ]),
     Issue(Version(11, 0, 0),
-          ["LB8a"],
+          [],
           ["149-A53"],
           [
             Ramification(
@@ -197,12 +224,37 @@ ISSUES = (
                 " without class AL being involved.  The rule is written like"
                 " this for consistency with combining marks following LB9."),
           ],
-          l2_docs=["L2/17-074"]),
+          l2_docs=["L2/17-074"],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 33, 1, 2),
+              ParagraphNumber(SECTION_6 + 33, 1, 3),
+              ParagraphNumber(SECTION_6 + 33, 1, 4),
+              ParagraphNumber(SECTION_6 + 33, 1, 5),
+          ]),
     # Creates 8a.  The original proposal targets LB23 and LB24, but the relevant
     # parts become LB23a per the next issue.
     Issue(Version(9, 0, 0),
-          ["LB8a", "LB9", "LB10", "LB22", "LB23a", "LB30a", "LB30b"],
-          ["146-A46", "147-C26"]),
+          [],
+          ["146-A46", "147-C26"],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 33, 1, 2),
+              ParagraphNumber(SECTION_6 + 33, 1, 3),
+              ParagraphNumber(SECTION_6 + 33, 1, 4),
+              ParagraphNumber(SECTION_6 + 33, 1, 5),
+              ParagraphNumber(SECTION_6 + 40, 2),
+              ParagraphNumber(SECTION_6 + 40, 3),
+              ParagraphNumber(SECTION_6 + 40, 5),
+              ParagraphNumber(SECTION_6 + 40, 6),
+              ParagraphNumber(SECTION_6 + 72, 2),
+              ParagraphNumber(SECTION_6 + 82, 0, 1),
+              ParagraphNumber(SECTION_6 + 82, 0, 2),
+              ParagraphNumber(SECTION_6 + 82, 0, 3),
+              ParagraphNumber(SECTION_6 + 101, 10),
+              ParagraphNumber(SECTION_6 + 101, 11),
+              ParagraphNumber(SECTION_6 + 101, 12),
+              ParagraphNumber(SECTION_6 + 101, 13),
+              ParagraphNumber(SECTION_6 + 101, 14),
+          ]),
     # Drops the pair table.  See the PRI comments which say it can’t implement
     # the new rules, and the review note which says it wasn’t updated.
     Issue(
@@ -214,7 +266,7 @@ ISSUES = (
     # Creates LB23a.
     Issue(
         Version(9, 0, 0),
-        ["LB23", "LB23a", "LB24"],
+        [],
         ["143-A4", "146-C19"],
         [
             Reason(
@@ -222,11 +274,23 @@ ISSUES = (
                 "This rule forbids breaking within currency symbols such as "
                 " CA$ or JP¥, as well as stylized artist names such as “Travi$"
                 " Scott”, “Ke$ha”, “Curren$y”, and “A$AP Rocky”."),
+        ],
+        paragraphs=[
+            ParagraphNumber(SECTION_6 + 80),
+            ParagraphNumber(SECTION_6 + 80, 1),
+            ParagraphNumber(SECTION_6 + 82, 0, 1),
+            ParagraphNumber(SECTION_6 + 82, 0, 2),
+            ParagraphNumber(SECTION_6 + 82, 0, 3),
+            ParagraphNumber(SECTION_6 + 82, 1),
+            ParagraphNumber(SECTION_6 + 82, 2),
+            ParagraphNumber(SECTION_6 + 82, 3),
+            ParagraphNumber(SECTION_6 + 82, 4),
+            ParagraphNumber(SECTION_6 + 82, 5),
         ]),
     # Creates LB21b.
     Issue(
         Version(8, 0, 0),
-        ["LB21b"],
+        [],
         ["137-C9"],
         [
             Reason(
@@ -235,18 +299,30 @@ ISSUES = (
                 " create gender-neutral verb forms, with the feminine suffix"
                 " coming after the slash. […] It is quite rare in Hebrew to use a"
                 " slash other than in this context.” See CLDR-6616."),
+        ],
+        paragraphs=[
+            ParagraphNumber(SECTION_6 + 71, 3),
+            ParagraphNumber(SECTION_6 + 71, 4),
         ]),
     Issue(Version(8, 0, 0),
-          ["LB22"],
-          ["142-C3"]),
+          [],
+          ["142-C3"],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 72),
+              ParagraphNumber(SECTION_6 + 72, 1, 1),
+          ]),
     # Added LB30a.
     Issue(Version(6, 2, 0),
-          ["LB30a"],
-          ["131-C16", "132-C33"]),
+          [],
+          ["131-C16", "132-C33"],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 101, 10),
+              ParagraphNumber(SECTION_6 + 101, 11),
+          ]),
     # Added LB21a.
     Issue(
         Version(6, 1, 0),
-        ["LB21a"],
+        [],
         ["125-A99"],  # Discussed in https://www.unicode.org/L2/L2011/11116-pre.htm#:~:text=Segmentation%20and%20Linebreak, approved in 129-A147.
         [
             Reason(
@@ -261,13 +337,34 @@ ISSUES = (
                 " See ICU-21016."),
         ],
         l2_docs=["L2/11-141R"],
-        affected_rules=["LB22", "LB23", "LB24", "LB28", "LB29", "LB30"]),
+        paragraphs=[
+            ParagraphNumber(SECTION_6 + 71, 1),
+            ParagraphNumber(SECTION_6 + 71, 2),
+            ParagraphNumber(SECTION_6 + 72, 1),
+            ParagraphNumber(SECTION_6 + 81),
+            ParagraphNumber(SECTION_6 + 82),
+            ParagraphNumber(SECTION_6 + 82, 3),
+            ParagraphNumber(SECTION_6 + 82, 4),
+            ParagraphNumber(SECTION_6 + 101),
+            ParagraphNumber(SECTION_6 + 101, 2),
+            ParagraphNumber(SECTION_6 + 101, 7),
+            ParagraphNumber(SECTION_6 + 101, 8),
+        ]),
     Issue(Version(6, 1, 0),
-          ["LB1"],
-          ["129-C2"]),  # Rationale is in the review note https://www.unicode.org/reports/tr14/tr14-27d2.html#NS.
+          [],
+          ["129-C2"],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 13),
+              ParagraphNumber(SECTION_6 + 13, 2),
+              ParagraphNumber(SECTION_6 + 13, 3),
+              ParagraphNumber(SECTION_6 + 13, 4),
+              ParagraphNumber(SECTION_6 + 13, 5),
+              ParagraphNumber(SECTION_6 + 13, 6),
+              ParagraphNumber(SECTION_6 + 13, 7),
+        ]),  # Rationale is in the review note https://www.unicode.org/reports/tr14/tr14-27d2.html#NS.
     Issue(
         Version(6, 0, 0),
-        ["LB8"],
+        [],
         ["121-C5"],
         [
             Discussion(
@@ -279,20 +376,40 @@ ISSUES = (
                 " if it were simply ZW ÷ before LB7, it would allow for spaces"
                 " at the beginning of a line.  Instead it acts through any"
                 " sequence of spaces following it."),
+        ],
+        paragraphs=[
+            ParagraphNumber(SECTION_6 + 32),
+            ParagraphNumber(SECTION_6 + 33),
+            ParagraphNumber(SECTION_6 + 33, 1, 1),
         ]),
     # Re-added LB30.
     Issue(Version(5, 2, 0),
-          ["LB30"],
+          [],
           ["114-A86", "120-M1"],
-          affected_rules=["LB13", "LB16", "LB25"],
-          paragraphs=[ParagraphNumber(SECTION_6 + 84)]),
+          paragraphs=[
+            ParagraphNumber(SECTION_6 + 84),
+            ParagraphNumber(SECTION_6 + 44, 1),
+            ParagraphNumber(SECTION_6 + 53),
+            ParagraphNumber(SECTION_6 + 87, 1, 0, 1),
+            ParagraphNumber(SECTION_6 + 87, 1, 1, 1),
+            ParagraphNumber(SECTION_6 + 98, 5),
+            ParagraphNumber(SECTION_6 + 101, 3),
+            ParagraphNumber(SECTION_6 + 101, 7),
+            ParagraphNumber(SECTION_6 + 101, 8),
+            ParagraphNumber(SECTION_6 + 101, 9),
+        ]),
     # Removed LB30.
     Issue(Version(5, 1, 0),
           [],
           ["114-C30"],
-          deleted_rules=["LB30"]),
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 101, 3),
+              ParagraphNumber(SECTION_6 + 101, 4),
+              ParagraphNumber(SECTION_6 + 101, 5),
+              ParagraphNumber(SECTION_6 + 101, 6),
+          ]),
     Issue(Version(5, 1, 0),
-          ["LB15"],
+          [],
           [],
           [
               Discussion(
@@ -334,16 +451,29 @@ ISSUES = (
                   " opportunities inside of French quotation marks, unless"
                   " no-break space is used."),
               
+          ],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 51, 1),
           ]),
     # Split 12a from 12.
     Issue(Version(5, 1, 0),
-          ["LB12a"],
+          [],
           ["110-C17"],
-          affected_rules=["LB12"]),
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 40, 13),
+              ParagraphNumber(SECTION_6 + 40, 14),
+              ParagraphNumber(SECTION_6 + 40, 16),
+              ParagraphNumber(SECTION_6 + 40, 18),
+              ParagraphNumber(SECTION_6 + 40, 19),
+              ParagraphNumber(SECTION_6 + 40, 20),
+              ParagraphNumber(SECTION_6 + 40, 21),
+              ParagraphNumber(SECTION_6 + 40, 22),
+              ParagraphNumber(SECTION_6 + 42),
+          ]),
     # Added LB30 (2); changes LB18 (3), but that one gets split into LB24 and LB25.
     # Changes to discusssions of tailoring are from (5).
     Issue(Version(5, 0, 0),
-          ["LB30", "LB24", "LB25"],
+          [],
           ["105-C37"],
           [
               ToBeHonest(
@@ -351,52 +481,194 @@ ISSUES = (
                   "Implementations are not required to support the vertical"
                   " tabulation in class BK, nor to support the singleton class"
                   " NL.")
+          ],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 82, 1),
+              ParagraphNumber(SECTION_6 + 82, 2),
+              ParagraphNumber(SECTION_6 + 82, 3),
+              ParagraphNumber(SECTION_6 + 82, 4),
+              ParagraphNumber(SECTION_6 + 84),
+              ParagraphNumber(SECTION_6 + 86),
+              ParagraphNumber(SECTION_6 + 87),
+              ParagraphNumber(SECTION_6 + 87, 1, 1),
+              ParagraphNumber(SECTION_6 + 87, 1, 2),
+              ParagraphNumber(SECTION_6 + 87, 1, 3),
+              ParagraphNumber(SECTION_6 + 87, 1, 4),
+              ParagraphNumber(SECTION_6 + 87, 1, 5),
+              ParagraphNumber(SECTION_6 + 87, 1, 6),
+              ParagraphNumber(SECTION_6 + 87, 1, 7),
+              ParagraphNumber(SECTION_6 + 87, 5),
+              ParagraphNumber(SECTION_6 + 87, 6),
+              ParagraphNumber(SECTION_6 + 87, 7),
+              ParagraphNumber(SECTION_6 + 87, 8),
+              ParagraphNumber(SECTION_6 + 88),
+              ParagraphNumber(SECTION_6 + 90),
+              ParagraphNumber(SECTION_6 + 98),
+              ParagraphNumber(SECTION_6 + 98, 5),
+              ParagraphNumber(SECTION_6 + 101, 3),
+              ParagraphNumber(SECTION_6 + 101, 4),
+              ParagraphNumber(SECTION_6 + 101, 5),
+              ParagraphNumber(SECTION_6 + 101, 6),
           ]),
     # Splits 18 into 24 and 25.
     Issue(Version(5, 0, 0),
-          ["LB24", "LB25"],
-          ["105-C6"]),
+          [],
+          ["105-C6"],
+          paragraphs=[
+            ParagraphNumber(SECTION_6 + 82, 1),
+            ParagraphNumber(SECTION_6 + 82, 2),
+            ParagraphNumber(SECTION_6 + 82, 3),
+            ParagraphNumber(SECTION_6 + 82, 4),
+            ParagraphNumber(SECTION_6 + 84),
+            ParagraphNumber(SECTION_6 + 86),
+            ParagraphNumber(SECTION_6 + 87),
+            ParagraphNumber(SECTION_6 + 87, 1, 1),
+            ParagraphNumber(SECTION_6 + 87, 1, 2),
+            ParagraphNumber(SECTION_6 + 87, 1, 3),
+            ParagraphNumber(SECTION_6 + 87, 1, 4),
+            ParagraphNumber(SECTION_6 + 87, 1, 5),
+            ParagraphNumber(SECTION_6 + 87, 1, 6),
+            ParagraphNumber(SECTION_6 + 87, 1, 7),
+            ParagraphNumber(SECTION_6 + 87, 5),
+            ParagraphNumber(SECTION_6 + 87, 6),
+            ParagraphNumber(SECTION_6 + 87, 7),
+            ParagraphNumber(SECTION_6 + 87, 8),
+            ParagraphNumber(SECTION_6 + 88),
+            ParagraphNumber(SECTION_6 + 90),
+            ParagraphNumber(SECTION_6 + 98),
+            ParagraphNumber(SECTION_6 + 98, 5),
+        ]),
     # Splits 6 into 18b and 18c (4), removes 18b (5).
     Issue(Version(4, 1, 0),
-          ["LB18b", "LB18c"],
+          [],
           ["100-C40"],
-          deleted_rules=["LB6", "LB18b"]),
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 33, 3),
+              ParagraphNumber(SECTION_6 + 33, 4),
+              ParagraphNumber(SECTION_6 + 33, 5),
+              ParagraphNumber(SECTION_6 + 34),
+              ParagraphNumber(SECTION_6 + 98, 1),
+              ParagraphNumber(SECTION_6 + 98, 2),
+              ParagraphNumber(SECTION_6 + 98, 3),
+              ParagraphNumber(SECTION_6 + 98, 4),
+              ParagraphNumber(SECTION_6 + 98, 5),
+              ParagraphNumber(SECTION_6 + 98, 6),
+              ParagraphNumber(SECTION_6 + 98, 6),
+              ParagraphNumber(SECTION_6 + 98, 7),
+              ParagraphNumber(SECTION_6 + 98, 7),
+              ParagraphNumber(SECTION_6 + 98, 8),
+              ParagraphNumber(SECTION_6 + 98, 8),
+              ParagraphNumber(SECTION_6 + 98, 9),
+              ParagraphNumber(SECTION_6 + 98, 9),
+              ParagraphNumber(SECTION_6 + 98, 10),
+              ParagraphNumber(SECTION_6 + 98, 10),
+              ParagraphNumber(SECTION_6 + 98, 11),
+              ParagraphNumber(SECTION_6 + 98, 11),
+              ParagraphNumber(SECTION_6 + 98, 12),
+              ParagraphNumber(SECTION_6 + 98, 12),
+              ParagraphNumber(SECTION_6 + 98, 13),
+              ParagraphNumber(SECTION_6 + 98, 13),
+              ParagraphNumber(SECTION_6 + 98, 14),
+              ParagraphNumber(SECTION_6 + 98, 14),
+              ParagraphNumber(SECTION_6 + 98, 15),
+              ParagraphNumber(SECTION_6 + 98, 15),
+          ]),
     # Removes 7a.
     Issue(Version(4, 1, 0),
           [],
           ["100-M2"],
-          deleted_rules=["LB7a"]),
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 39),
+              ParagraphNumber(SECTION_6 + 39, 1),
+              ParagraphNumber(SECTION_6 + 40),
+              ParagraphNumber(SECTION_6 + 40, 1),
+          ]),
     Issue(Version(4, 1, 0),
-          ["LB7b"],
-          ["102-C23"]),
+          [],
+          ["102-C23"],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 40, 2),
+              ParagraphNumber(SECTION_6 + 40, 3),
+              ParagraphNumber(SECTION_6 + 40, 3, 1),
+              ParagraphNumber(SECTION_6 + 40, 4),
+          ]),
     # Splits 13 from 11b.
     Issue(Version(4, 1, 0),
-          ["LB11b", "LB13"],
-          ["94-M3"]),
+          [],
+          ["94-M3"],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 53, 4),
+              ParagraphNumber(SECTION_6 + 53, 5),
+              ParagraphNumber(SECTION_6 + 53, 6),
+              ParagraphNumber(SECTION_6 + 53, 7),
+              ParagraphNumber(SECTION_6 + 53, 8),
+              ParagraphNumber(SECTION_6 + 56, 3),
+              ParagraphNumber(SECTION_6 + 56, 4),
+              ParagraphNumber(SECTION_6 + 56, 5),
+          ]),
     # Creates 19b.
     Issue(Version(4, 0, 1),
-          ["LB19b"],
-          ["97-C25"]),
+          [],
+          ["97-C25"],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 101, 1),
+              ParagraphNumber(SECTION_6 + 101, 2),
+          ]),
     # Splits 3b from 3a.
     Issue(Version(4, 0, 0),
-          ["LB3a", "LB3b"],
+          [],
           ["94-M2"],
-          affected_rules=["LB3c"]),
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 21, 1, 1),
+              ParagraphNumber(SECTION_6 + 21, 1, 2),
+              ParagraphNumber(SECTION_6 + 22),
+              ParagraphNumber(SECTION_6 + 25, 1),
+              ParagraphNumber(SECTION_6 + 26),
+              ParagraphNumber(SECTION_6 + 27),
+              ParagraphNumber(SECTION_6 + 27, 1),
+          ]),
     # Moves 15b to 18b (A).  Separate from the one below because the motion is 
     # only about 18b.
     Issue(Version(4, 0, 0),
-          ["LB18b"],
-          ["92-A64", "93-A96", "94-M4"]),
+          [],
+          ["92-A64", "93-A96", "94-M4"],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 98, 1),
+              ParagraphNumber(SECTION_6 + 98, 2),
+              ParagraphNumber(SECTION_6 + 98, 3),
+          ]),
     # Adds 14a (F), adds 7c (J), moves 13 to 11b (K).
     Issue(Version(4, 0, 0),
-          ["LB14a", "LB7c", "LB11b"],
-          ["92-A64", "93-A96"]),
+          [],
+          ["92-A64", "93-A96"],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 40, 5),
+              ParagraphNumber(SECTION_6 + 40, 6),
+              ParagraphNumber(SECTION_6 + 40, 7),
+              ParagraphNumber(SECTION_6 + 53, 4),
+              ParagraphNumber(SECTION_6 + 53, 5),
+              ParagraphNumber(SECTION_6 + 53, 6),
+              ParagraphNumber(SECTION_6 + 63, 1),
+              ParagraphNumber(SECTION_6 + 63, 2),
+              ParagraphNumber(SECTION_6 + 63, 3),
+              ParagraphNumber(SECTION_6 + 63, 4),
+          ]),
     # Splits 7b from 6.
     Issue(Version(4, 0, 0),
-          ["LB6", "LB7b"],
-          ["94-C6"]),
+          [],
+          ["94-C6"],
+          paragraphs=[
+              ParagraphNumber(SECTION_6 + 33, 3),
+              ParagraphNumber(SECTION_6 + 33, 4),
+              ParagraphNumber(SECTION_6 + 33, 5),
+              ParagraphNumber(SECTION_6 + 35),
+              ParagraphNumber(SECTION_6 + 40, 2),
+              ParagraphNumber(SECTION_6 + 40, 3),
+              ParagraphNumber(SECTION_6 + 40, 4),
+          ]),
     Issue(Version(3, 2, 0),
-          ["LB13"],
+          [],
           ["81-M6", "85-M7"],
+          paragraphs=[ParagraphNumber(SECTION_6 + 58)],
           l2_docs=["L2/00-258"])
 )

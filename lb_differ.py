@@ -102,9 +102,9 @@ def get_words(p: Paragraph, h: SequenceHistory, version, *context):
     return p
   if type(h.tag) != type(p):
     if version not in METAMORPHOSES or (type(h.tag), *context, type(p)) not in METAMORPHOSES[version]:
-      print("ERROR:", type(h.tag).__name__, *context, "becomes", type(p).__name__, "in", version)
-      print("ERROR:", h.value())
-      print("ERROR:", p.contents)
+      print("METAMORPHOSIS:", type(h.tag).__name__, *context, "becomes", type(p).__name__, "in", version)
+      print("METAMORPHOSIS:", h.value())
+      print("METAMORPHOSIS:", p.contents)
     h.tag = p
   return p.words()
 
@@ -122,41 +122,61 @@ history = SequenceHistory(element_history=make_sequence_history, number_nicely=T
 
 DELETED_PARAGRAPHS = {
   Version(3, 1, 0): [ParagraphNumber(SECTION_6 + 65), ParagraphNumber(SECTION_6 + 67)],
-  Version(4, 0, 0): [ParagraphNumber(SECTION_6 + 22)],
+  Version(4, 0, 0): [ParagraphNumber(SECTION_6 + 22), ParagraphNumber(SECTION_6 + 37), ParagraphNumber(SECTION_6 + 38)],
   Version(4, 1, 0): [ParagraphNumber(SECTION_6 + 53, 5), ParagraphNumber(SECTION_6 + 53, 6)],
 }
 
 PRESERVED_PARAGRAPHS = {
   Version(3, 1, 0): {ParagraphNumber(SECTION_6 + 10): "",
                      ParagraphNumber(SECTION_6 + 38): "",
+                     ParagraphNumber(SECTION_6 + 39): "",
+                     ParagraphNumber(SECTION_6 + 64): "",
                      #ParagraphNumber(SECTION_6 + 67): "× NS",
                      ParagraphNumber(SECTION_6 + 84): ""},
   Version(4, 0, 0): {ParagraphNumber(SECTION_6 + 3): "",
-                     ParagraphNumber(SECTION_6 + 27): ""},
-  Version(4, 1, 0): {ParagraphNumber(SECTION_6 + 33, 3): "LB 6",
+                     ParagraphNumber(SECTION_6 + 12): "",
+                     ParagraphNumber(SECTION_6 + 13): "",
+                     ParagraphNumber(SECTION_6 + 26): "",
+                     ParagraphNumber(SECTION_6 + 27): "",
+                     ParagraphNumber(SECTION_6 + 39): "LB 7a"},
+  Version(4, 1, 0): {ParagraphNumber(SECTION_6 + 13): "",
+                     ParagraphNumber(SECTION_6 + 33, 3): "LB 6",
                      ParagraphNumber(SECTION_6 + 39): "LB 7a",
+                     ParagraphNumber(SECTION_6 + 40, 2): "",
                      ParagraphNumber(SECTION_6 + 40, 3): "",
                      ParagraphNumber(SECTION_6 + 40, 4): "",
                      ParagraphNumber(SECTION_6 + 53, 4): "",
+                     ParagraphNumber(SECTION_6 + 55): "",
                      ParagraphNumber(SECTION_6 + 84): ""},
   Version(5, 0, 0): {ParagraphNumber(SECTION_6 + 3): "",
                      ParagraphNumber(SECTION_6 + 6): "",
                      ParagraphNumber(SECTION_6 + 9, 1): "",
                      ParagraphNumber(SECTION_6 + 10,): "",
                      ParagraphNumber(SECTION_6 + 11): "",
+                     ParagraphNumber(SECTION_6 + 13): "",
+                     ParagraphNumber(SECTION_6 + 15): "",
+                     ParagraphNumber(SECTION_6 + 17): "",
+                     ParagraphNumber(SECTION_6 + 21): "",
                      ParagraphNumber(SECTION_6 + 33, 2, 1): "",
                      ParagraphNumber(SECTION_6 + 39, 1): "",
-                     ParagraphNumber(SECTION_6 + 40, 7): ""},
+                     ParagraphNumber(SECTION_6 + 40, 2): "",
+                     ParagraphNumber(SECTION_6 + 40, 7): "",
+                     ParagraphNumber(SECTION_6 + 102): ""},
   Version(5, 1, 0): {ParagraphNumber(SECTION_6 + 40, 13): "",
-                     ParagraphNumber(SECTION_6 + 40, 18): "The following",
+                     ParagraphNumber(SECTION_6 + 40, 18): "The following rules and the classes",
+                     ParagraphNumber(SECTION_6 + 52): "LB16",
                      ParagraphNumber(SECTION_6 + 101, 3): "LB30"},
   Version(5, 2, 0): {ParagraphNumber(SECTION_6 + 101, 3): "LB30"},
   Version(6, 0, 0): {ParagraphNumber(SECTION_6 + 33): ""},
   Version(6, 1, 0): {ParagraphNumber(SECTION_6 + 13, 2): ""},
-  Version(9, 0, 0): {ParagraphNumber(SECTION_6 + 82, 4): "(PR | PO)",
+  Version(8, 0, 0): {ParagraphNumber(SECTION_6 + 72): ""},
+  Version(9, 0, 0): {ParagraphNumber(SECTION_6 + 80): "",
+                     ParagraphNumber(SECTION_6 + 82, 1): "LB24",
+                     ParagraphNumber(SECTION_6 + 82, 4): "(PR | PO)",
                      ParagraphNumber(SECTION_6 + 101, 11) : "sot (RI RI)*"},
   Version(11, 0, 0): {ParagraphNumber(SECTION_6 + 33, 1, 4): "A ZWJ"},
-  Version(13, 0, 0): {ParagraphNumber(SECTION_6 + 73): "× IN"},
+  Version(13, 0, 0): {ParagraphNumber(SECTION_6 + 72): "LB22",
+                      ParagraphNumber(SECTION_6 + 73): "× IN"},
 }
 
 ANCESTRIES = {
@@ -229,26 +249,12 @@ JUNK = {
 
 nontrivial_versions = []
 
+additional_paragraphs = {}
+
 previous_version = None
-for version, paragraphs in list(VERSIONS.items())[:3]:
+for version, paragraphs in list(VERSIONS.items()):
   print(version)
 
-  new_rule_descriptions = {}
-  for paragraph in paragraphs:
-    match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.contents)
-    if match:
-      if version in RENUMBERINGS:
-        old_number = None
-        for new, old in RENUMBERINGS[version]:
-          if new == match.group(1) and (
-              (version, new) not in splits and
-              (version, new) not in creations and
-              (old, new) not in REORDERINGS.get(version, [])):
-            old_number = old
-      else:
-        old_number = match.group(1)
-      if old_number:
-        new_rule_descriptions[old_number] = paragraph
   old_paragraphs = dict(history.elements)
   for paragraph_number in DELETED_PARAGRAPHS.get(version, []):
     print("Deleting", paragraph_number, "in", version)
@@ -261,11 +267,6 @@ for version, paragraphs in list(VERSIONS.items())[:3]:
     if not hinted_paragraphs:
       print("ERROR: no paragraph matching hint", hint)
     old_paragraphs[paragraph_number].add_version(version, new_paragraph, paragraph_number)
-  for paragraph_number, paragraph in history.elements:
-    if paragraph.present():
-      match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value())
-      if match and match.group(1) in new_rule_descriptions:
-        paragraph.add_version(version, new_rule_descriptions[match.group(1)], paragraph_number)
 
   history.add_version(version, paragraphs)
 
@@ -275,30 +276,21 @@ for version, paragraphs in list(VERSIONS.items())[:3]:
   for paragraph_number, paragraph in history.elements:
     paragraph_issues = [issue for issue in ISSUES
                         if issue.version == version and paragraph_number in issue.paragraphs]
-    match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value())
     rule_number = None
     previous_rule_number = None
-    if match:
-      rule_number = "LB" + match.group(1)
-    if previous_version:
-      match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value_at(previous_version))
-      if match:
-        previous_rule_number = "LB" + match.group(1)
-    if rule_number or previous_rule_number:
-      rule_issues = [issue for issue in ISSUES
-                        if issue.version == version and
-                           (rule_number in issue.target_rules or
-                            rule_number in issue.affected_rules)]
-      rule_issues += [issue for issue in ISSUES
-                         if issue.version == version and
-                            previous_rule_number in issue.deleted_rules]
 
     if paragraph.last_changed() == version:
       any_change = True
+      for issue in rule_issues:
+        additional_paragraphs.setdefault(issue, []).append(paragraph_number)
       paragraph.references += paragraph_issues + rule_issues
   if any_change:
       nontrivial_versions.append(version)
   previous_version = version
+
+for issue, paragraphs in sorted(additional_paragraphs.items(), key=lambda x: -x[0].source_line):
+  print(issue)
+  print(str(paragraphs).replace("), ", "),\n    ").replace("[", "paragraphs=[\n    ").replace("]", ",\n]"))
 
 for issue in ISSUES:
   for annotation in issue.annotations:
