@@ -304,7 +304,7 @@ for version, paragraphs in VERSIONS.items():
 
 for issue, paragraphs in sorted(additional_paragraphs.items(), key=lambda x: -x[0].source_line):
   print(issue)
-  print(str(paragraphs).replace("), ", "),\n "))
+  print(str(paragraphs).replace("), ", "),\n    ").replace("[", "paragraphs=[\n    ").replace("]", ",\n]"))
 
 for issue in ISSUES:
   for annotation in issue.annotations:
