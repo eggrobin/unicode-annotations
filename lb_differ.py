@@ -302,7 +302,7 @@ for version, paragraphs in VERSIONS.items():
       nontrivial_versions.append(version)
   previous_version = version
 
-for issue, paragraphs in additional_paragraphs.items():
+for issue, paragraphs in sorted(additional_paragraphs.items(), key=lambda x: -x[0].source_line):
   print(issue)
   print(str(paragraphs).replace("), ", "),\n "))
 
