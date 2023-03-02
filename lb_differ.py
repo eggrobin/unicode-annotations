@@ -120,41 +120,61 @@ history = SequenceHistory(element_history=make_sequence_history, number_nicely=T
 
 DELETED_PARAGRAPHS = {
   Version(3, 1, 0): [ParagraphNumber(65), ParagraphNumber(67)],
-  Version(4, 0, 0): [ParagraphNumber(22)],
+  Version(4, 0, 0): [ParagraphNumber(22), ParagraphNumber(37), ParagraphNumber(38)],
   Version(4, 1, 0): [ParagraphNumber(53, 5), ParagraphNumber(53, 6)],
 }
 
 PRESERVED_PARAGRAPHS = {
   Version(3, 1, 0): {ParagraphNumber(10): "",
                      ParagraphNumber(38): "",
+                     ParagraphNumber(39): "",
+                     ParagraphNumber(64): "",
                      #ParagraphNumber(67): "× NS",
                      ParagraphNumber(84): ""},
   Version(4, 0, 0): {ParagraphNumber(3): "",
-                     ParagraphNumber(27): ""},
-  Version(4, 1, 0): {ParagraphNumber(33, 3): "LB 6",
+                     ParagraphNumber(12): "",
+                     ParagraphNumber(13): "",
+                     ParagraphNumber(26): "",
+                     ParagraphNumber(27): "",
+                     ParagraphNumber(39): "LB 7a"},
+  Version(4, 1, 0): {ParagraphNumber(13): "",
+                     ParagraphNumber(33, 3): "LB 6",
                      ParagraphNumber(39): "LB 7a",
+                     ParagraphNumber(40, 2): "",
                      ParagraphNumber(40, 3): "",
                      ParagraphNumber(40, 4): "",
                      ParagraphNumber(53, 4): "",
+                     ParagraphNumber(55): "",
                      ParagraphNumber(84): ""},
   Version(5, 0, 0): {ParagraphNumber(3): "",
                      ParagraphNumber(6): "",
                      ParagraphNumber(9, 1): "",
                      ParagraphNumber(10,): "",
                      ParagraphNumber(11): "",
+                     ParagraphNumber(13): "",
+                     ParagraphNumber(15): "",
+                     ParagraphNumber(17): "",
+                     ParagraphNumber(21): "",
                      ParagraphNumber(33, 2, 1): "",
                      ParagraphNumber(39, 1): "",
-                     ParagraphNumber(40, 7): ""},
+                     ParagraphNumber(40, 2): "",
+                     ParagraphNumber(40, 7): "",
+                     ParagraphNumber(102): ""},
   Version(5, 1, 0): {ParagraphNumber(40, 13): "",
                      ParagraphNumber(40, 18): "The following",
+                     ParagraphNumber(52): "LB16",
                      ParagraphNumber(101, 3): "LB30"},
   Version(5, 2, 0): {ParagraphNumber(101, 3): "LB30"},
   Version(6, 0, 0): {ParagraphNumber(33): ""},
   Version(6, 1, 0): {ParagraphNumber(13, 2): ""},
-  Version(9, 0, 0): {ParagraphNumber(82, 4): "(PR | PO)",
+  Version(8, 0, 0): {ParagraphNumber(72): ""},
+  Version(9, 0, 0): {ParagraphNumber(80): "",
+                     ParagraphNumber(82, 1): "LB24",
+                     ParagraphNumber(82, 4): "(PR | PO)",
                      ParagraphNumber(101, 11) : "sot (RI RI)*"},
   Version(11, 0, 0): {ParagraphNumber(33, 1, 4): "A ZWJ"},
-  Version(13, 0, 0): {ParagraphNumber(73): "× IN"},
+  Version(13, 0, 0): {ParagraphNumber(72): "LB22",
+                      ParagraphNumber(73): "× IN"},
 }
 
 ANCESTRIES = {
@@ -228,25 +248,9 @@ JUNK = {
 nontrivial_versions = []
 
 previous_version = None
-for version, paragraphs in VERSIONS.items():
+for version, paragraphs in list(VERSIONS.items()):
   print(version)
 
-  new_rule_descriptions = {}
-  for paragraph in paragraphs:
-    match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.contents)
-    if match:
-      if version in RENUMBERINGS:
-        old_number = None
-        for new, old in RENUMBERINGS[version]:
-          if new == match.group(1) and (
-              (version, new) not in splits and
-              (version, new) not in creations and
-              (old, new) not in REORDERINGS.get(version, [])):
-            old_number = old
-      else:
-        old_number = match.group(1)
-      if old_number:
-        new_rule_descriptions[old_number] = paragraph
   old_paragraphs = dict(history.elements)
   for paragraph_number in DELETED_PARAGRAPHS.get(version, []):
     print("Deleting", paragraph_number, "in", version)
@@ -259,11 +263,6 @@ for version, paragraphs in VERSIONS.items():
     if not hinted_paragraphs:
       print("ERROR: no paragraph matching hint", hint)
     old_paragraphs[paragraph_number].add_version(version, new_paragraph, paragraph_number)
-  for paragraph_number, paragraph in history.elements:
-    if paragraph.present():
-      match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value())
-      if match and match.group(1) in new_rule_descriptions:
-        paragraph.add_version(version, new_rule_descriptions[match.group(1)], paragraph_number)
 
   history.add_version(version, paragraphs)
 
@@ -273,23 +272,8 @@ for version, paragraphs in VERSIONS.items():
   for paragraph_number, paragraph in history.elements:
     paragraph_issues = [issue for issue in ISSUES
                         if issue.version == version and paragraph_number in issue.paragraphs]
-    match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value())
     rule_number = None
     previous_rule_number = None
-    if match:
-      rule_number = "LB" + match.group(1)
-    if previous_version:
-      match = re.match(r"LB\s*(\d+[a-z]?)", paragraph.value_at(previous_version))
-      if match:
-        previous_rule_number = "LB" + match.group(1)
-    if rule_number or previous_rule_number:
-      rule_issues = [issue for issue in ISSUES
-                        if issue.version == version and
-                           (rule_number in issue.target_rules or
-                            rule_number in issue.affected_rules)]
-      rule_issues += [issue for issue in ISSUES
-                         if issue.version == version and
-                            previous_rule_number in issue.deleted_rules]
 
     if paragraph.last_changed() == version:
       any_change = True
