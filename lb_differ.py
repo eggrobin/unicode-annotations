@@ -227,6 +227,8 @@ JUNK = {
 
 nontrivial_versions = []
 
+additional_paragraphs = {}
+
 previous_version = None
 for version, paragraphs in VERSIONS.items():
   print(version)
@@ -293,10 +295,16 @@ for version, paragraphs in VERSIONS.items():
 
     if paragraph.last_changed() == version:
       any_change = True
+      for issue in rule_issues:
+        additional_paragraphs.setdefault(issue, []).append(paragraph_number)
       paragraph.references += paragraph_issues + rule_issues
   if any_change:
       nontrivial_versions.append(version)
   previous_version = version
+
+for issue, paragraphs in additional_paragraphs.items():
+  print(issue)
+  print(str(paragraphs).replace("), ", "),\n "))
 
 for issue in ISSUES:
   for annotation in issue.annotations:

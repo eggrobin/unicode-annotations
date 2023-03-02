@@ -1,3 +1,4 @@
+import inspect
 from typing import Tuple, Union
 from typing import Sequence
 from typing import Optional
@@ -51,6 +52,7 @@ class Issue:
       l2_docs: Sequence[str] = [],
       affected_rules: Sequence[str] = [],
       deleted_rules: Sequence[str] = []) -> None:
+    self.source_line = inspect.getframeinfo(inspect.stack()[1][0]).lineno
     self.version = version
     self.target_rules = target_rules
     self.l2_refs = l2_refs
@@ -59,6 +61,9 @@ class Issue:
     self.affected_rules = affected_rules
     self.deleted_rules = deleted_rules
     self.annotations = annotations
+
+  def __repr__(self):
+    return "(Issue in %s, l. %s)" % (self.version, self.source_line)
 
 
 
