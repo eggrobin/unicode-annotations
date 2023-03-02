@@ -1,6 +1,6 @@
 ﻿from collections import Counter
 from historical_diff import Version
-from document import Paragraph, Heading, Rule, Formula, TableRow
+from document import Paragraph, Heading, Rule, Formula, TableRow, CodeLine
 import glob
 import html
 from html.parser import HTMLParser
@@ -22,6 +22,21 @@ ID_REMAPPINGS = {
   "ConjoiningJamo": "KoreanSyllableBlocks",
 }
 
+EXPECTED_STRAY_PARAGRAPHS = [
+  "All line breaking classes are informative, except for the line breaking classes marked with a * in Table 1 Line Breaking Properties. The interpretation of characters with normative line breaking classes by all conforming implementations must be consistent with the specification of the normative property.",
+  "Change from Revision 12:",
+  "[Revision 11, being a proposed update, is superseded and no longer publicly available]",
+  "[Revision 16, being a proposed update, is superseded and no longer publicly available. Only modifications between revisions 10 and 12 are tracked here.]",
+  "[Revision 11, being a proposed update, is superseded and no longer publicly available. Only modifications between revisions 10 and 12 are tracked here.]",
+  "UAX14-HL3. Override any rule in Section 6.2,Tailorable Line Breaking Rules, or add new rules to that section.",
+  "Revision 18 being a proposed update, only changes between revisions 17 and 19 are noted here.",
+  "Revision 16 being a proposed update, only changes between revisions 17 and 15 are noted here.",
+  "Revision 11 being a proposed update, only changes between revisions 12 and 14 are noted here.",
+  "Revision 11, being a proposed update, only changes between revisions 10 and 12 are noted here.]",
+  "Note: To determine a break it is generally not sufficient to just test the two adjacent characters.",
+  "Revisions 20 and 21 being a proposed update, only changes between revisions 19 and 22 are noted here.",
+  "Revision 23 being a proposed update, only changes between revisions 22 and 24 are noted here.",
+]
 
 class TR14Parser(HTMLParser):
   def __init__(self, version=None):
@@ -48,7 +63,7 @@ class TR14Parser(HTMLParser):
       self.bold = True
     if tag in ("td", "th") and self.line.strip():
       self.line = self.line.rstrip() + '\uE000'
-    if tag == "p" or re.match(r"h\d", tag):
+    if (tag in ("p", "li", "pre") and self.line_tag != "tr") or re.match(r"h\d", tag):
       self.end_line()
       self.line_tag = tag
       if (("align", "center") in attrs.items() or
@@ -61,9 +76,9 @@ class TR14Parser(HTMLParser):
   def handle_endtag(self, tag):
     if tag == "b":
       self.bold = False
-    if tag == "h2":
-      self.in_algorithm = "algorithm" in self.line.casefold()
-    if tag == "p" or re.match(r"h\d", tag):
+    if re.match(r"h\d", tag):
+      self.in_algorithm = True
+    if (tag in ("p", "li", "pre") and self.line_tag != "tr") or tag == "tr" or re.match(r"h\d", tag):
       self.end_line()
 
   def handle_data(self, data):
@@ -71,42 +86,50 @@ class TR14Parser(HTMLParser):
       self.version = parse_version(data)
     if data.strip() and not self.bold:
       self.line_is_all_bold = False
-    if self.line.endswith("\uE000"):
+    if self.line_tag == "tr" and self.line.endswith("\uE000"):
       self.line += data.lstrip()
     else:
       self.line += data
 
   def end_line(self):
-    self.line = re.sub(r'\s+', ' ', self.line.strip())
-    if not self.line:
-      return
+    if self.line_tag == "pre":
+      for line in self.line.splitlines():
+        self.paragraphs.append(CodeLine(line))
+    else:
+      self.line = re.sub(r'\s+', ' ', self.line.strip())
+      if not self.line:
+        return
     
-    if self.in_algorithm:
-      if not self.line_tag:
-        raise ValueError("Stray text: %s" % self.line)
-      if self.line_tag == "tr":
-        self.paragraphs.append(TableRow(self.line))
-      elif self.line_tag.startswith("h"):
-        tag = self.line_tag
-        id = self.line_id
-        if self.line_tag == "h4" and not id and self.version <= Version(4, 0, 1):
-          tag = "h3"
-          id = "BreakingRules"
-        self.paragraphs.append(
-          Heading(int(re.match(r"h(\d)", tag).group(1)), self.line))
-      elif self.line_is_all_bold:
-        id = self.line.title().replace(" ", "").replace(":", "").replace(".", "").replace(",", "")
-        id = ID_REMAPPINGS.get(id) or id
-        self.paragraphs.append(
-          Heading(4, self.line))
-      elif self.line.startswith("LB"):
-        self.paragraphs.append(
-          Rule(self.line))
-      elif self.centred:
-        self.paragraphs.append(
-          Formula(self.line))
-      else:
-        self.paragraphs.append(Paragraph(self.line))
+      if self.in_algorithm:
+        if not self.line_tag:
+          if self.line in EXPECTED_STRAY_PARAGRAPHS:
+            self.line_tag = "p"
+          else:
+            print(self.paragraphs)
+            raise ValueError("Stray text: %s\n%r" % (self.line, self.line))
+        if self.line_tag == "tr":
+          self.paragraphs.append(TableRow(self.line))
+        elif self.line_tag.startswith("h"):
+          tag = self.line_tag
+          id = self.line_id
+          if self.line_tag == "h4" and not id and self.version <= Version(4, 0, 1):
+            tag = "h3"
+            id = "BreakingRules"
+          self.paragraphs.append(
+            Heading(int(re.match(r"h(\d)", tag).group(1)), self.line))
+        elif self.line_is_all_bold:
+          id = self.line.title().replace(" ", "").replace(":", "").replace(".", "").replace(",", "")
+          id = ID_REMAPPINGS.get(id) or id
+          self.paragraphs.append(
+            Heading(4, self.line))
+        elif self.line.startswith("LB"):
+          self.paragraphs.append(
+            Rule(self.line))
+        elif self.centred:
+          self.paragraphs.append(
+            Formula(self.line))
+        else:
+          self.paragraphs.append(Paragraph(self.line))
     self.line = ""
     self.line_id = None
     self.line_tag = None

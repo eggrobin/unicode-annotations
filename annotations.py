@@ -5,6 +5,8 @@ from typing import Optional
 from document import Paragraph
 from historical_diff import Version, ParagraphNumber
 
+SECTION_6 = 361
+
 class Annotation(Paragraph):
   def __init__(self, number: Tuple[Union[int, str]], text: str):
     self.contents = text
@@ -207,7 +209,7 @@ ISSUES = (
         Version(10, 0, 0),
         [],
         ["147-A79"],
-        paragraphs=[ParagraphNumber(3)],
+        paragraphs=[ParagraphNumber(SECTION_6 + 3)],
         ),
     # Creates LB23a.
     Issue(
@@ -283,7 +285,7 @@ ISSUES = (
           ["LB30"],
           ["114-A86", "120-M1"],
           affected_rules=["LB13", "LB16", "LB25"],
-          paragraphs=[ParagraphNumber(84)]),
+          paragraphs=[ParagraphNumber(SECTION_6 + 84)]),
     # Removed LB30.
     Issue(Version(5, 1, 0),
           [],

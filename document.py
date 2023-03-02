@@ -33,3 +33,7 @@ class Formula(Paragraph):
 class TableRow(Paragraph):
   def html(self, inner, version=None):
     return f"<table><tr><td>{inner}</td></tr></table>"
+
+class CodeLine(Paragraph):
+  def html(self, inner, version=None):
+    return f"<pre><code>{inner}</code></pre>"
