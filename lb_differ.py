@@ -186,6 +186,7 @@ PRESERVED_PARAGRAPHS = {
                      ParagraphNumber(594): "",
                      ParagraphNumber(596): "Modifications",
                      ParagraphNumber(598): ""},
+  Version(3, 2, 0): {ParagraphNumber(593, 13): ""},
   Version(4, 0, 0): {ParagraphNumber(SECTION_6 + 3): "",
                      ParagraphNumber(SECTION_6 + 12): "",
                      ParagraphNumber(SECTION_6 + 13): "",
