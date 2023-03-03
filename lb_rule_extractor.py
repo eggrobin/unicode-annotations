@@ -94,7 +94,7 @@ class TR14Parser(HTMLParser):
   def end_line(self):
     if self.line_tag == "pre":
       for line in self.line.splitlines():
-        self.paragraphs.append(CodeLine(line))
+        self.paragraphs.append(CodeLine(html.unescape(line)))
     else:
       self.line = re.sub(r'\s+', ' ', self.line.strip())
       if not self.line:

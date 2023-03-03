@@ -2,7 +2,7 @@ nav {background:white;position:fixed;right:0;top:0; }
 nav table { margin-left:initial; }
 body { margin-right:15em; }
 @media print { body { column-count:2; margin-right:initial; font-size:8pt; } nav { display:none } }
-p, h1, h2, h3, h4, table { margin-left: 3rem; }
+p, h1, h2, h3, h4, table, pre { margin-left: 3rem; }
 table { width: max-content; }
 div.paranum { float:left; font-size: 64%; width: 2.8em; margin-left: -0.4em; margin-right: -3em; margin-top: 0.2em; }
 div.sources { float:right; font-size: 80%; margin-left: 1em; text-align:right; }
