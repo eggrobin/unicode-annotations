@@ -121,13 +121,55 @@ def make_sequence_history(v, p: Paragraph, *context):
 history = SequenceHistory(element_history=make_sequence_history, number_nicely=True)
 
 DELETED_PARAGRAPHS = {
-  Version(3, 1, 0): [ParagraphNumber(SECTION_6 + 65), ParagraphNumber(SECTION_6 + 67)],
+  Version(3, 1, 0): [
+      ParagraphNumber(60),
+      ParagraphNumber(93),
+      ParagraphNumber(SECTION_6 + 65),
+      ParagraphNumber(SECTION_6 + 67)],
   Version(4, 0, 0): [ParagraphNumber(SECTION_6 + 22), ParagraphNumber(SECTION_6 + 37), ParagraphNumber(SECTION_6 + 38)],
   Version(4, 1, 0): [ParagraphNumber(SECTION_6 + 53, 5), ParagraphNumber(SECTION_6 + 53, 6)],
 }
 
 PRESERVED_PARAGRAPHS = {
-  Version(3, 1, 0): {ParagraphNumber(SECTION_6 + 10): "",
+  Version(3, 1, 0): {ParagraphNumber(37): "",
+                     ParagraphNumber(53): "",
+                     ParagraphNumber(54): "",
+                     ParagraphNumber(63): "",
+                     ParagraphNumber(64): "",
+                     ParagraphNumber(67): "",
+                     ParagraphNumber(68): "",
+                     ParagraphNumber(72): "",
+                     ParagraphNumber(74): "",
+                     ParagraphNumber(76): "",
+                     ParagraphNumber(78): "",
+                     ParagraphNumber(79): "",
+                     ParagraphNumber(81): "",
+                     ParagraphNumber(82): "",
+                     ParagraphNumber(86): "",
+                     ParagraphNumber(91): "The first",
+                     ParagraphNumber(92): "NOTE: When Korean text",
+                     ParagraphNumber(94): "",
+                     ParagraphNumber(102): "",
+                     ParagraphNumber(110): "",
+                     ParagraphNumber(119): "",
+                     ParagraphNumber(136): "",
+                     ParagraphNumber(165): "",
+                     ParagraphNumber(202): "Most controls",
+                     ParagraphNumber(335): "",
+                     ParagraphNumber(336): "",
+                     ParagraphNumber(347): "",
+                     ParagraphNumber(510): "",
+                     ParagraphNumber(513): "",
+                     ParagraphNumber(521): "         return ich;",
+                     ParagraphNumber(524): "",
+                     ParagraphNumber(529): "",
+                     ParagraphNumber(533): "",
+                     ParagraphNumber(534): "",
+                     ParagraphNumber(558): "              cls = pcls[ich];",
+                     ParagraphNumber(566): "",
+                     ParagraphNumber(571): "",
+                     ParagraphNumber(600): "",
+                     ParagraphNumber(SECTION_6 + 10): "",
                      ParagraphNumber(SECTION_6 + 38): "",
                      ParagraphNumber(SECTION_6 + 39): "",
                      ParagraphNumber(SECTION_6 + 64): "",
@@ -188,7 +230,8 @@ PRESERVED_PARAGRAPHS = {
 }
 
 ANCESTRIES = {
-  Version(3, 1, 0): {ParagraphNumber(SECTION_6 + 9, 1): ParagraphNumber(SECTION_6 + 11),
+  Version(3, 1, 0): {
+                     ParagraphNumber(SECTION_6 + 9, 1): ParagraphNumber(SECTION_6 + 11),
                      ParagraphNumber(SECTION_6 + 21, 3): ParagraphNumber(SECTION_6 + 23),
                      ParagraphNumber(SECTION_6 + 21, 2): ParagraphNumber(SECTION_6 + 24),
                      ParagraphNumber(SECTION_6 + 21, 1): ParagraphNumber(SECTION_6 + 25),
