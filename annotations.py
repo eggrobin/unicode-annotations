@@ -669,6 +669,35 @@ ISSUES = (
     Issue(Version(3, 2, 0),
           [],
           ["81-M6", "85-M7"],
-          paragraphs=[ParagraphNumber(SECTION_6 + 58)],
-          l2_docs=["L2/00-258"])
+          paragraphs=[
+              ParagraphNumber(61),
+              ParagraphNumber(214, 1),
+              ParagraphNumber(216),
+              ParagraphNumber(248),
+              ParagraphNumber(347),
+              ParagraphNumber(596, 0, 5),
+              ParagraphNumber(SECTION_6 + 58),
+          ],
+          l2_docs=["L2/00-258"]),
+    # CGJ.
+    Issue(Version(3, 2, 0),
+          [],
+          ["83-AI43", "84-M10", "85-M13"],
+          paragraphs=[
+              ParagraphNumber(61),
+              ParagraphNumber(219, 1),
+              ParagraphNumber(219, 2),
+              ParagraphNumber(596, 0, 6),
+          ],
+          l2_docs=["L2/00-156"]),
+    # Math symbols.
+    Issue(Version(3, 2, 0),
+          [],
+          ["83-M11"],
+          paragraphs=[
+              ParagraphNumber(324, 1),
+              ParagraphNumber(324, 6),
+              ParagraphNumber(596, 0, 6),
+          ],
+          l2_docs=["L2/00-119"])
 )
