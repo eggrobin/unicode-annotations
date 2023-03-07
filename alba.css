@@ -9,7 +9,7 @@ div.sources { float:right; font-size: 80%; margin-left: 1em; text-align:right; }
 @media (max-width:80em) { div.sources { width:min-content; } }
 p { text-align: justify; hyphens: auto; margin-bottom: 0; }
 div.paragraph { clear: both; }
-.paragraph table {table-layout: fixed; width: 20em}
+.paragraph table {table-layout: fixed; width: 100%; }
 .annotation { font-size:80%; margin-left:5em; margin-top:0; }
 .diff-comment, .deletion-comment { font-size:80%; font-style:italic; }
 .rule { font-style: italic }
