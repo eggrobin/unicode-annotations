@@ -510,11 +510,20 @@ for version, paragraphs in list(VERSIONS.items()):
     old_paragraphs[paragraph_number].remove(version, paragraph_number)
   for paragraph_number, hint in PRESERVED_PARAGRAPHS.get(version, {}).items():
     print("Preserving", paragraph_number, "in", version)
+    expected_type = type(old_paragraphs[paragraph_number].tag)
+    if version in METAMORPHOSES:
+      for old_type, number, new_type in METAMORPHOSES[version]:
+        if expected_type == old_type and number == paragraph_number:
+          expected_type = new_type
     old_paragraph = old_paragraphs[paragraph_number].value()
-    hinted_paragraphs = (p for p in paragraphs if p.contents.startswith(hint)) if hint else paragraphs
-    new_paragraph = max(hinted_paragraphs, key = lambda p: SequenceMatcher(None, p.contents, old_paragraph).ratio())
+    hinted_paragraphs = [
+        p for p in paragraphs
+        if type(p) == expected_type and p.contents.startswith(hint)] if hint else [
+        p for p in paragraphs
+        if type(p) == expected_type]
     if not hinted_paragraphs:
       print("ERROR: no paragraph matching hint", hint)
+    new_paragraph = max(hinted_paragraphs, key = lambda p: SequenceMatcher(None, p.contents, old_paragraph).ratio())
     old_paragraphs[paragraph_number].add_version(version, new_paragraph, paragraph_number)
 
   history.add_version(version, paragraphs)
