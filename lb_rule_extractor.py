@@ -48,6 +48,7 @@ class TR14Parser(HTMLParser):
     self.line_is_all_bold = True
     self.bold = False
     self.centred = False
+    self.in_uax = False
     self.in_algorithm = False
     self.version = version
 
@@ -77,7 +78,9 @@ class TR14Parser(HTMLParser):
     if tag == "b":
       self.bold = False
     if re.match(r"h\d", tag):
-      self.in_algorithm = True
+      self.in_uax = True
+    if tag == "h2":
+      self.in_algorithm = self.line == "6 Line Breaking Algorithm"
     if (tag in ("p", "li", "pre") and self.line_tag != "tr") or tag == "tr" or re.match(r"h\d", tag):
       self.end_line()
 
@@ -100,7 +103,7 @@ class TR14Parser(HTMLParser):
       if not self.line:
         return
     
-      if self.in_algorithm:
+      if self.in_uax:
         if not self.line_tag:
           if self.line in EXPECTED_STRAY_PARAGRAPHS:
             self.line_tag = "p"
@@ -122,7 +125,7 @@ class TR14Parser(HTMLParser):
           id = ID_REMAPPINGS.get(id) or id
           self.paragraphs.append(
             Heading(4, self.line))
-        elif self.line.startswith("LB"):
+        elif self.line.startswith("LB") and self.in_algorithm:
           self.paragraphs.append(
             Rule(self.line))
         elif self.centred:
