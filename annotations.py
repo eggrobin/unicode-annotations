@@ -699,5 +699,54 @@ ISSUES = (
               ParagraphNumber(324, 6),
               ParagraphNumber(596, 0, 6),
           ],
-          l2_docs=["L2/00-119"])
+          l2_docs=["L2/00-119"]),
+    # Possible tailorings.
+    Issue(Version(15, 1, 0),
+          [],
+          ["173-A6"],
+          paragraphs=[
+              ParagraphNumber(583),
+              ParagraphNumber(587, 2),
+              ParagraphNumber(587, 2, 1),
+              ParagraphNumber(596, 66),
+              ParagraphNumber(596, 67),
+          ],
+          l2_docs=["L2/22-244"]),
+    # Third style.
+    Issue(Version(15, 1, 0),
+          [],
+          ["173-A8"],
+          paragraphs=[
+              ParagraphNumber(94, 1),
+              ParagraphNumber(595),
+              ParagraphNumber(596, 64),
+          ],
+          l2_docs=["L2/22-244"]),
+    # Dictionary usage CP-1252 nonsense.
+    Issue(Version(15, 1, 0),
+          [],
+          ["173-A13"],
+          paragraphs=[
+              ParagraphNumber(354),
+              ParagraphNumber(355),
+              ParagraphNumber(356),
+              ParagraphNumber(357),
+              ParagraphNumber(358),
+              ParagraphNumber(359),
+              ParagraphNumber(360),
+              ParagraphNumber(361),
+              ParagraphNumber(596, 65),
+          ],
+          l2_docs=["L2/22-244"]),
+    # SCWG.
+    Issue(Version(15, 1, 0),
+          [],
+          ["173-C29", "173-A128"],
+          paragraphs=[
+              ParagraphNumber(168, 1),
+              ParagraphNumber(169, 1),
+              ParagraphNumber(386, 2),
+              ParagraphNumber(596, 63),
+          ],
+          l2_docs=["L2/22-244"]),
 )

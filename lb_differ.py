@@ -593,6 +593,7 @@ ANCESTRIES = {
   Version(9, 0, 0): {ParagraphNumber(SECTION_6 + 82, 0, 1): ParagraphNumber(SECTION_6 + 82, 1),
                      ParagraphNumber(SECTION_6 + 82, 0, 2): ParagraphNumber(SECTION_6 + 82, 2),
                      ParagraphNumber(SECTION_6 + 82, 0, 3): ParagraphNumber(SECTION_6 + 80, 1),},
+  Version(15, 1, 0): {ParagraphNumber(168, 1): ParagraphNumber(169, 1),},
 }
 
 JUNK = {
