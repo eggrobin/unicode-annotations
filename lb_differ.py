@@ -175,6 +175,9 @@ DELETED_PARAGRAPHS = {
   Version(14, 0, 0): [
       ParagraphNumber(596, 46),
   ],
+  Version(15, 1, 0): [
+      ParagraphNumber(596, 54),
+  ],
 }
 
 PRESERVED_PARAGRAPHS = {
@@ -601,6 +604,7 @@ JUNK = {
                      ParagraphNumber(SECTION_6 + 98, 10): ["Hangul", "syllable", "block"],
                      ParagraphNumber(SECTION_6 + 98, 15): ["Korean", "are", "for", "line", "break", "class", "ID"]},
   Version(5, 1, 0): {ParagraphNumber(SECTION_6 + 40, 20): ["after"]},
+  Version(15, 1, 0): {ParagraphNumber(12): ["by", "Unicode", "other", "as", "a"]},
 }
 
 nontrivial_versions = []

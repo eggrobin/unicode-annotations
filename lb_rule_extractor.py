@@ -12,7 +12,7 @@ revisions = {int(re.search(r"-(\d+).html", filename).group(1)): filename
              for filename in glob.glob("tr14-*.html")}
 
 def parse_version(s):
-  match = re.match(r"(?:Unicode )?(\d+)\.(\d)\.(\d)", s)
+  match = re.search(r"(?:Unicode )?(\d+)\.(\d)\.(\d)", s)
   if match:
     return Version(*(int(v) for v in match.groups()))
 
@@ -51,20 +51,24 @@ class TR14Parser(HTMLParser):
     self.in_uax = False
     self.in_algorithm = False
     self.version = version
+    self.removed_tag = None
 
   def handle_starttag(self, tag, attrs):
+    attrs = dict(attrs)
+    if "class" in attrs and "removed" in attrs["class"]:
+      self.removed_tag = tag
+      return
     if tag == "tr":
       self.end_line()
       self.line_tag = tag
     if tag == "br":
       self.handle_data("\u2028")
       return
-    attrs = dict(attrs)
     if tag == "b":
       self.bold = True
     if tag in ("td", "th") and self.line.strip():
       self.line = self.line.rstrip() + '\uE000'
-    if (tag in ("p", "li", "pre") and self.line_tag != "tr") or re.match(r"h\d", tag):
+    if (tag in ("p", "li", "pre", "blockquote") and self.line_tag != "tr") or re.match(r"h\d", tag):
       self.end_line()
       self.line_tag = tag
       if (("align", "center") in attrs.items() or
@@ -75,6 +79,10 @@ class TR14Parser(HTMLParser):
       self.line_id = ID_REMAPPINGS.get(self.line_id) or self.line_id
 
   def handle_endtag(self, tag):
+    if self.removed_tag:
+      if tag == self.removed_tag:
+        self.removed_tag = None
+      return
     if tag == "b":
       self.bold = False
     if re.match(r"h\d", tag):
@@ -85,6 +93,8 @@ class TR14Parser(HTMLParser):
       self.end_line()
 
   def handle_data(self, data):
+    if self.removed_tag:
+      return
     if not self.version:
       self.version = parse_version(data)
     if data.strip() and not self.bold:
@@ -95,6 +105,8 @@ class TR14Parser(HTMLParser):
       self.line += data
 
   def end_line(self):
+    if not self.version:
+      self.version = parse_version(self.line)
     if self.line_tag == "pre":
       for line in self.line.splitlines():
         self.paragraphs.append(CodeLine(html.unescape(line)))
