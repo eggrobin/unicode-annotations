@@ -112,11 +112,11 @@ ISSUES = (
                 " any text retained. Compare the Annotated Ada 2012 Reference"
                 " Manual, Introduction (77.5)."),
             Annotation(
-                (SECTION_6 + 1, 'd'),
+                (11, 'd'),
                 "Annotations are numbered similarly, except that the first"
                 " insertion number is alphabetic rather than numeric."),
             Discussion(
-                (SECTION_6 + 1, 'e'),
+                (11, 'e'),
                 "This document is available as an interactive web page; the bar"
                 " on the right-hand side of the document allows for the"
                 " selection of the base version from which changes are shown"
