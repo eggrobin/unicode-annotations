@@ -454,7 +454,8 @@ PRESERVED_PARAGRAPHS = {
                      ParagraphNumber(484): "QU",
                      ParagraphNumber(501, 1, 5): "JT"
                     },
-  Version(6, 0, 0): {ParagraphNumber(SECTION_6 + 33): ""},
+  Version(6, 0, 0): {ParagraphNumber(232): "Characters with this property",
+                     ParagraphNumber(SECTION_6 + 33): ""},
   Version(6, 1, 0): {ParagraphNumber(SECTION_6 + 13, 2): ""},
   Version(8, 0, 0): {ParagraphNumber(SECTION_6 + 72): ""},
   Version(9, 0, 0): {ParagraphNumber(SECTION_6 + 80): "",
