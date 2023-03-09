@@ -700,6 +700,15 @@ ISSUES = (
               ParagraphNumber(596, 0, 6),
           ],
           l2_docs=["L2/00-119"]),
+    # ⎶.
+    Issue(Version(15, 0, 0),
+          [],
+          ["172-A98"],
+          paragraphs=[
+              ParagraphNumber(324, 6),
+              ParagraphNumber(596, 60),
+          ],
+          l2_docs=["L2/22-124"]),
     # Possible tailorings.
     Issue(Version(15, 1, 0),
           [],
