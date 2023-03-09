@@ -521,7 +521,10 @@ PRESERVED_PARAGRAPHS = {
                       ParagraphNumber(248, 0, 10): "20000",
                       ParagraphNumber(248, 0, 11): "30000",
                       ParagraphNumber(466): "7 Deleted",},
-  Version(11, 0, 0): {ParagraphNumber(SECTION_6 + 33, 1, 4): "A ZWJ"},
+  Version(11, 0, 0): {ParagraphNumber(SECTION_6 + 33, 1, 4): "A ZWJ",
+                      ParagraphNumber(596, 0, 0, 0, 1, 1): "The following summarizes",
+                      ParagraphNumber(597, 2): "Modifications for previous versions",
+                      ParagraphNumber(598): "© 2018",},
   Version(13, 0, 0): {ParagraphNumber(SECTION_6 + 72): "LB22",
                       ParagraphNumber(SECTION_6 + 73): "× IN"},
 }
