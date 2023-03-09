@@ -145,6 +145,9 @@ DELETED_PARAGRAPHS = {
       ParagraphNumber(173),
       ParagraphNumber(291),
   ],
+  Version(5, 2, 0): [
+      ParagraphNumber(326, 1),
+  ],
 }
 
 PRESERVED_PARAGRAPHS = {
@@ -439,7 +442,18 @@ PRESERVED_PARAGRAPHS = {
                      ParagraphNumber(587, 17): "While this tailoring",
                      ParagraphNumber(596, 0, 0, 0, 0, 19): "LB12",
                      ParagraphNumber(596, 0, 0, 0, 0, 20): "LB13"},
-  Version(5, 2, 0): {ParagraphNumber(SECTION_6 + 101, 3): "LB30"},
+  Version(5, 2, 0): {ParagraphNumber(8, 1): "Revision",
+                     ParagraphNumber(35): "The text of",
+                     ParagraphNumber(67, 1, 1): "CL",
+                     ParagraphNumber(184): "The closing character",
+                     ParagraphNumber(251): "These characters",
+                     ParagraphNumber(333): "SG:",
+                     ParagraphNumber(361, 25, 1): "The set of line break classes",
+                     ParagraphNumber(SECTION_6 + 101, 3): "LB30",
+                     ParagraphNumber(483): "CL",
+                     ParagraphNumber(484): "QU",
+                     ParagraphNumber(501, 1, 5): "JT"
+                    },
   Version(6, 0, 0): {ParagraphNumber(SECTION_6 + 33): ""},
   Version(6, 1, 0): {ParagraphNumber(SECTION_6 + 13, 2): ""},
   Version(8, 0, 0): {ParagraphNumber(SECTION_6 + 72): ""},
