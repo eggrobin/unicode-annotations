@@ -47,22 +47,18 @@ class Issue:
   def __init__(
       self,
       version: Version,
-      target_rules: Sequence[str],
       l2_refs: Sequence[str],
       annotations: Sequence[Annotation] = [],
       paragraphs: Sequence[ParagraphNumber] = [],
       l2_docs: Sequence[str] = [],
-      affected_rules: Sequence[str] = [],
-      deleted_rules: Sequence[str] = []) -> None:
+      pri: Sequence[str] = []) -> None:
     self.source_line = inspect.getframeinfo(inspect.stack()[1][0]).lineno
     self.version = version
-    self.target_rules = target_rules
     self.l2_refs = l2_refs
     self.l2_docs = l2_docs
     self.paragraphs = paragraphs
-    self.affected_rules = affected_rules
-    self.deleted_rules = deleted_rules
     self.annotations = annotations
+    self.pri = pri
 
   def __repr__(self):
     return "(Issue in %s, l. %s)" % (self.version, self.source_line)
@@ -71,8 +67,7 @@ class Issue:
 
 ISSUES = (
     Issue(
-        Version(3, 0, 0),
-        [], 
+        Version(3, 0, 0), 
         [],  # TODO(egg): if this annotation thing ever makes it to the UTC, put an AI here.
         [
             Discussion(
@@ -148,7 +143,6 @@ ISSUES = (
 
     Issue(
         Version(14, 0, 0),
-        [],
         ["167-A94", "168-C7", "168-C8"],
         [
             Reason(
@@ -171,13 +165,11 @@ ISSUES = (
         ]
         ),
     Issue(Version(14, 0, 0),
-          [],
           ["163-A70"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 98, 12),
           ]),
     Issue(Version(13, 0, 0),
-          [],
           ["160-A75", "161-A47", "162-A42"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 101, 7),
@@ -187,7 +179,6 @@ ISSUES = (
               ParagraphNumber(SECTION_6 + 101, 9, 3),
           ]),
     Issue(Version(13, 0, 0),
-          [],
           ["142-A23", "160-A56"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 72),
@@ -198,7 +189,6 @@ ISSUES = (
               ParagraphNumber(SECTION_6 + 74),
           ]),
     Issue(Version(11, 0, 0),
-          [],
           ["149-A53"],
           [
             Ramification(
@@ -234,7 +224,6 @@ ISSUES = (
     # Creates 8a.  The original proposal targets LB23 and LB24, but the relevant
     # parts become LB23a per the next issue.
     Issue(Version(9, 0, 0),
-          [],
           ["146-A46", "147-C26"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 33, 1, 2),
@@ -259,14 +248,12 @@ ISSUES = (
     # the new rules, and the review note which says it wasn’t updated.
     Issue(
         Version(10, 0, 0),
-        [],
         ["147-A79"],
         paragraphs=[ParagraphNumber(SECTION_6 + 3)],
         ),
     # Creates LB23a.
     Issue(
         Version(9, 0, 0),
-        [],
         ["143-A4", "146-C19"],
         [
             Reason(
@@ -290,7 +277,6 @@ ISSUES = (
     # Creates LB21b.
     Issue(
         Version(8, 0, 0),
-        [],
         ["137-C9"],
         [
             Reason(
@@ -305,7 +291,6 @@ ISSUES = (
             ParagraphNumber(SECTION_6 + 71, 4),
         ]),
     Issue(Version(8, 0, 0),
-          [],
           ["142-C3"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 72),
@@ -313,7 +298,6 @@ ISSUES = (
           ]),
     # Added LB30a.
     Issue(Version(6, 2, 0),
-          [],
           ["131-C16", "132-C33"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 101, 10),
@@ -322,7 +306,6 @@ ISSUES = (
     # Added LB21a.
     Issue(
         Version(6, 1, 0),
-        [],
         ["125-A99"],  # Discussed in https://www.unicode.org/L2/L2011/11116-pre.htm#:~:text=Segmentation%20and%20Linebreak, approved in 129-A147.
         [
             Reason(
@@ -351,7 +334,6 @@ ISSUES = (
             ParagraphNumber(SECTION_6 + 101, 8),
         ]),
     Issue(Version(6, 1, 0),
-          [],
           ["129-C2"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 13),
@@ -364,7 +346,6 @@ ISSUES = (
         ]),  # Rationale is in the review note https://www.unicode.org/reports/tr14/tr14-27d2.html#NS.
     Issue(
         Version(6, 0, 0),
-        [],
         ["121-C5"],
         [
             Discussion(
@@ -384,7 +365,6 @@ ISSUES = (
         ]),
     # Re-added LB30.
     Issue(Version(5, 2, 0),
-          [],
           ["114-A86", "120-M1"],
           paragraphs=[
             ParagraphNumber(SECTION_6 + 84),
@@ -400,7 +380,6 @@ ISSUES = (
         ]),
     # Removed LB30.
     Issue(Version(5, 1, 0),
-          [],
           ["114-C30"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 101, 3),
@@ -409,7 +388,6 @@ ISSUES = (
               ParagraphNumber(SECTION_6 + 101, 6),
           ]),
     Issue(Version(5, 1, 0),
-          [],
           [],
           [
               Discussion(
@@ -457,7 +435,6 @@ ISSUES = (
           ]),
     # Split 12a from 12.
     Issue(Version(5, 1, 0),
-          [],
           ["110-C17"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 40, 13),
@@ -473,7 +450,6 @@ ISSUES = (
     # Added LB30 (2); changes LB18 (3), but that one gets split into LB24 and LB25.
     # Changes to discusssions of tailoring are from (5).
     Issue(Version(5, 0, 0),
-          [],
           ["105-C37"],
           [
               ToBeHonest(
@@ -512,7 +488,6 @@ ISSUES = (
           ]),
     # Splits 18 into 24 and 25.
     Issue(Version(5, 0, 0),
-          [],
           ["105-C6"],
           paragraphs=[
             ParagraphNumber(SECTION_6 + 82, 1),
@@ -540,7 +515,6 @@ ISSUES = (
         ]),
     # Splits 6 into 18b and 18c (4), removes 18b (5).
     Issue(Version(4, 1, 0),
-          [],
           ["100-C40"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 33, 3),
@@ -575,7 +549,6 @@ ISSUES = (
           ]),
     # Removes 7a.
     Issue(Version(4, 1, 0),
-          [],
           ["100-M2"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 39),
@@ -584,7 +557,6 @@ ISSUES = (
               ParagraphNumber(SECTION_6 + 40, 1),
           ]),
     Issue(Version(4, 1, 0),
-          [],
           ["102-C23"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 40, 2),
@@ -594,7 +566,6 @@ ISSUES = (
           ]),
     # Splits 13 from 11b.
     Issue(Version(4, 1, 0),
-          [],
           ["94-M3"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 53, 4),
@@ -608,7 +579,6 @@ ISSUES = (
           ]),
     # Creates 19b.
     Issue(Version(4, 0, 1),
-          [],
           ["97-C25"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 101, 1),
@@ -616,7 +586,6 @@ ISSUES = (
           ]),
     # Splits 3b from 3a.
     Issue(Version(4, 0, 0),
-          [],
           ["94-M2"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 21, 1, 1),
@@ -630,7 +599,6 @@ ISSUES = (
     # Moves 15b to 18b (A).  Separate from the one below because the motion is 
     # only about 18b.
     Issue(Version(4, 0, 0),
-          [],
           ["92-A64", "93-A96", "94-M4"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 98, 1),
@@ -639,7 +607,6 @@ ISSUES = (
           ]),
     # Adds 14a (F), adds 7c (J), moves 13 to 11b (K).
     Issue(Version(4, 0, 0),
-          [],
           ["92-A64", "93-A96"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 40, 5),
@@ -655,7 +622,6 @@ ISSUES = (
           ]),
     # Splits 7b from 6.
     Issue(Version(4, 0, 0),
-          [],
           ["94-C6"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 33, 3),
@@ -667,7 +633,6 @@ ISSUES = (
               ParagraphNumber(SECTION_6 + 40, 4),
           ]),
     Issue(Version(3, 2, 0),
-          [],
           ["81-M6", "85-M7"],
           paragraphs=[
               ParagraphNumber(61),
@@ -681,7 +646,6 @@ ISSUES = (
           l2_docs=["L2/00-258"]),
     # CGJ.
     Issue(Version(3, 2, 0),
-          [],
           ["83-AI43", "84-M10", "85-M13"],
           paragraphs=[
               ParagraphNumber(61),
@@ -692,7 +656,6 @@ ISSUES = (
           l2_docs=["L2/00-156"]),
     # UAX.
     Issue(Version(3, 0, 1),
-          [],
           ["83-C6"],
           paragraphs=[
               ParagraphNumber(1),
@@ -707,7 +670,6 @@ ISSUES = (
           l2_docs=["L2/00-118"]),
     # Math symbols.
     Issue(Version(3, 2, 0),
-          [],
           ["83-M11"],
           paragraphs=[
               ParagraphNumber(324, 1),
@@ -717,16 +679,15 @@ ISSUES = (
           l2_docs=["L2/00-119"]),
     # ⎶.
     Issue(Version(15, 0, 0),
-          [],
           ["172-A98"],
           paragraphs=[
               ParagraphNumber(324, 6),
               ParagraphNumber(596, 60),
           ],
-          l2_docs=["L2/22-124"]),
+          l2_docs=["L2/22-124"],
+          pri=["446:Fri Jun 3 19:49:05 CDT 2022"]),
     # Possible tailorings.
     Issue(Version(15, 1, 0),
-          [],
           ["173-A6"],
           paragraphs=[
               ParagraphNumber(583),
@@ -735,20 +696,20 @@ ISSUES = (
               ParagraphNumber(596, 66),
               ParagraphNumber(596, 67),
           ],
-          l2_docs=["L2/22-244"]),
+          l2_docs=["L2/22-244"],
+          pri=["L2/22-243:Wed Sep 21 07:53:00 CDT 2022"]),
     # Third style.
     Issue(Version(15, 1, 0),
-          [],
           ["173-A8"],
           paragraphs=[
               ParagraphNumber(94, 1),
               ParagraphNumber(595),
               ParagraphNumber(596, 64),
           ],
-          l2_docs=["L2/22-244"]),
+          l2_docs=["L2/22-244"],
+          pri=["446:Sun Apr 10 20:12:11 CDT 2022"]),
     # Dictionary usage CP-1252 nonsense.
     Issue(Version(15, 1, 0),
-          [],
           ["173-A13"],
           paragraphs=[
               ParagraphNumber(354),
@@ -761,10 +722,10 @@ ISSUES = (
               ParagraphNumber(361),
               ParagraphNumber(596, 65),
           ],
-          l2_docs=["L2/22-244"]),
+          l2_docs=["L2/22-244"],
+          pri=["L2/22-243:Wed Sep 21 02:47:38 CDT 2022"]),
     # SCWG.
     Issue(Version(15, 1, 0),
-          [],
           ["173-C29", "173-A128"],
           paragraphs=[
               ParagraphNumber(168, 1),
@@ -772,5 +733,5 @@ ISSUES = (
               ParagraphNumber(386, 2),
               ParagraphNumber(596, 63),
           ],
-          l2_docs=["L2/22-244"]),
+          l2_docs=["L2/22-229R", "L2/22-234R2"]),
 )
