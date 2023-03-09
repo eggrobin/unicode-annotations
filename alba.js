@@ -37,7 +37,7 @@ function update_from_query() {
     }
   }
   if (params.has("show_deleted")) {
-    document.querySelector('input[name="show-deleted"]').checked = params.get("show_deleted");
+    document.querySelector('input[name="show-deleted"]').checked = params.get("show_deleted") === "true";
   }
   meow(false);
 }
