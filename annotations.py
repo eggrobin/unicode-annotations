@@ -690,6 +690,21 @@ ISSUES = (
               ParagraphNumber(596, 0, 6),
           ],
           l2_docs=["L2/00-156"]),
+    # UAX.
+    Issue(Version(3, 0, 1),
+          [],
+          ["83-C6"],
+          paragraphs=[
+              ParagraphNumber(1),
+              ParagraphNumber(3),
+              ParagraphNumber(8, 1),
+              ParagraphNumber(12),
+              ParagraphNumber(12, 1),
+              ParagraphNumber(13),
+              ParagraphNumber(13, 1),
+              ParagraphNumber(597, 1),
+          ],
+          l2_docs=["L2/00-118"]),
     # Math symbols.
     Issue(Version(3, 2, 0),
           [],
