@@ -775,8 +775,10 @@ with open("alba.html", "w", encoding="utf-8") as f:
       print('</ins>', file=f)
     if paragraph.references:
       print("</div>", file=f)
-
-    print(paragraph.tag.html(paragraph.html(), paragraph.version_added()), file=f)
+    if paragraph_number in (ParagraphNumber(1), ParagraphNumber(2)):
+      print(paragraph.tag.html("Annotated " + paragraph.html(), paragraph.version_added()), file=f)
+    else:
+      print(paragraph.tag.html(paragraph.html(), paragraph.version_added()), file=f)
     print("</div>", file=f)
   print("</body>", file=f)
   print("</html>", file=f)
