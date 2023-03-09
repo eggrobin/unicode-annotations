@@ -764,6 +764,12 @@ with open("alba.html", "w", encoding="utf-8") as f:
             ("" if not issue.l2_refs or not issue.l2_docs else
              "; " + ",".join(f'<a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?{l2doc}">{l2doc}</a>'
                              for l2doc in issue.l2_docs)) +
+            ("" if not issue.l2_refs or not issue.pri else
+             "; " + ",".join(
+              (f'<a href="https://www.unicode.org/{pri.replace("L2/", "L2/L20").replace("-", "").replace("@","-pubrev.html#:~:text=")}">{pri}</a>'
+               if pri.startswith("L2") else
+               f'<a href="https://www.unicode.org/review/pri{pri.replace("@","/feedback.html#:~:text=")}">PRI-{pri}</a>')
+              for pri in issue.pri)) +
             "}",
             file=f)
       print('</ins>', file=f)

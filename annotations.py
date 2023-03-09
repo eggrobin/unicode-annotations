@@ -685,7 +685,7 @@ ISSUES = (
               ParagraphNumber(596, 60),
           ],
           l2_docs=["L2/22-124"],
-          pri=["446:Fri Jun 3 19:49:05 CDT 2022"]),
+          pri=["446@Fri Jun 3 10:22:13 CDT 2022"]),
     # Possible tailorings.
     Issue(Version(15, 1, 0),
           ["173-A6"],
@@ -697,7 +697,7 @@ ISSUES = (
               ParagraphNumber(596, 67),
           ],
           l2_docs=["L2/22-244"],
-          pri=["L2/22-243:Wed Sep 21 07:53:00 CDT 2022"]),
+          pri=["L2/22-243@Wed Sep 21 07:53:00 CDT 2022"]),
     # Third style.
     Issue(Version(15, 1, 0),
           ["173-A8"],
@@ -707,7 +707,7 @@ ISSUES = (
               ParagraphNumber(596, 64),
           ],
           l2_docs=["L2/22-244"],
-          pri=["446:Sun Apr 10 20:12:11 CDT 2022"]),
+          pri=["446@Sun Apr 10 20:12:11 CDT 2022"]),
     # Dictionary usage CP-1252 nonsense.
     Issue(Version(15, 1, 0),
           ["173-A13"],
@@ -723,7 +723,7 @@ ISSUES = (
               ParagraphNumber(596, 65),
           ],
           l2_docs=["L2/22-244"],
-          pri=["L2/22-243:Wed Sep 21 02:47:38 CDT 2022"]),
+          pri=["L2/22-243@Wed Sep 21 02:47:38 CDT 2022"]),
     # SCWG.
     Issue(Version(15, 1, 0),
           ["173-C29", "173-A128"],
