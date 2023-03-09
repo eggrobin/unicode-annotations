@@ -526,7 +526,8 @@ PRESERVED_PARAGRAPHS = {
                       ParagraphNumber(597, 2): "Modifications for previous versions",
                       ParagraphNumber(598): "© 2018",},
   Version(12, 0, 0): {ParagraphNumber(579, 2, 2): "Some changes to rules",},
-  Version(13, 0, 0): {ParagraphNumber(SECTION_6 + 72): "LB22",
+  Version(13, 0, 0): {ParagraphNumber(102): "The classification",
+                      ParagraphNumber(SECTION_6 + 72): "LB22",
                       ParagraphNumber(SECTION_6 + 73): "× IN"},
 }
 
