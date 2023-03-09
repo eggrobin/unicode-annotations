@@ -172,6 +172,9 @@ DELETED_PARAGRAPHS = {
   Version(5, 2, 0): [
       ParagraphNumber(326, 1),
   ],
+  Version(14, 0, 0): [
+      ParagraphNumber(596, 46),
+  ],
 }
 
 PRESERVED_PARAGRAPHS = {
