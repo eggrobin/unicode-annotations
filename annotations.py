@@ -191,17 +191,8 @@ ISSUES = (
     Issue(Version(11, 0, 0),
           ["149-A53"],
           [
-            Ramification(
-                (SECTION_6 + 40, 11, 'a'),
-                "ZWJ and WJ differ in line breaking only when preceded by SP"
-                " (and in the absence of ZW). This resolves to SP ÷ ZWJ by LB18"
-                " unless LB14 applies."),
-            Proof(
-                (SECTION_6 + 40, 11, 'b'),
-                "ZWJ × is LB8a. LB9 implies X × ZWJ, where the exceptions for X"
-                " are SP or Y such that Y ! or Y ÷ by that point."),
             Discussion(
-                (SECTION_6 + 40, 11, 'c'),
+                (SECTION_6 + 40, 11, 'a'),
                 "In contrast to SP CM which is either deprecated or anomalous,"
                 " SP ZWJ can occur in practice, and SP ÷ ZWJ is desired; a"
                 " leading ZWJ can be used to force a leading medial or final"
