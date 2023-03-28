@@ -2414,6 +2414,15 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p162 href=#p162>162<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
 <p><ins class="changed-in-3-0-0"></ins><ins class="changed-in-4-0-0">Despite its name, </ins><ins class="changed-in-4-1-0">this</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-0">the</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">The</ins></del><ins class="changed-in-3-0-0"> Mongolian </ins><ins class="changed-in-4-1-0">character is not an invisible control like SOFT HYPHEN, but rather a visible character like a regular</ins><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">Todo </ins></del><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">soft</ins></del><ins class="changed-in-3-0-0"> hyphen</ins><ins class="changed-in-4-1-0">. Unlike the hyphen, MONGOLIAN TODO</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0"> </ins><ins class="changed-in-4-0-0">is not</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">indicates</ins></del><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0"> an </ins><ins class="changed-in-4-0-0">invisible control like</ins></del><ins class="changed-in-4-0-0"> SOFT HYPHEN</ins><del class="changed-in-4-1-0"><ins class="changed-in-4-0-0">, but rather a visible character like a regular hyphen. Unlike the hyphen it</ins></del><ins class="changed-in-4-0-0"> stays with the following line. </ins><ins class="changed-in-4-1-0">Whenever optional line breaks are to be marked</ins><ins class="changed-in-5-1-0"> invisibly</ins><ins class="changed-in-4-1-0">, </ins><ins class="changed-in-4-0-0">SOFT HYPHEN should be used </ins><ins class="changed-in-4-1-0">instead.</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-0">whenever </ins><ins class="changed-in-3-0-0">optional line </ins><ins class="changed-in-4-0-0">breaks are to be marked in any script.</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">break opportunity with hyphen, but unlike the soft-hyphen it stays with the following line.</ins></del></p>
 </div>
+<div class="paragraph added-in-9-0-0">
+<div class=paranum><a id=p162.12.a href=#p162.12.a>162.12.a<ins class="paranum changed-in-9-0-0">/9</ins></a></div>
+<div class=sources>
+<ins class="changed-in-9-0-0 sources">
+{9.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?146-A46">146-A46</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?147-C26">147-C26</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-9-0-0><b>Ramification: </b></ins><ins class="changed-in-9-0-0">This rule requires extended context.</ins></p>
+</div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p163 href=#p163>163<del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><ins class="paranum changed-in-5-0-0">/5</ins></a></div>
 <h3><ins class="changed-in-3-0-0">B2</ins><ins class="changed-in-5-0-0">:</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0"> </ins><ins class="changed-in-4-0-1">—</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-3-0-0">-</ins></del><ins class="changed-in-3-0-0"> Break Opportunity Before and After (B/A/XP)</ins></h3>
@@ -5052,7 +5061,16 @@ addEventListener('popstate', update_from_query);
 {11.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?149-A53">149-A53</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/17-074">L2/17-074</a>}
 </ins>
 </div>
-<p class=annotation><ins class=changed-in-11-0-0><b>Discussion: </b></ins><ins class="changed-in-11-0-0">Absent tailoring, this rule has no effect in the case of ZWJ. The breaks on both sides of ZWJ have already been resolved, except in SP ZWJ, which gets resolved at the latest in LB18 without class AL being involved.  The rule is written like this for consistency with combining marks following LB9.</ins></p>
+<p class=annotation><ins class=changed-in-11-0-0><b>Discussion: </b></ins><ins class="changed-in-11-0-0">Absent tailoring, this rule has no effect in the case of ZWJ. The breaks on both sides of ZWJ have already been resolved, except in SP ZWJ, which gets resolved at the latest in LB18 without classes AL nor ZWJ being involved as extended context. The rule is written like this for consistency with combining marks following LB9.</ins></p>
+</div>
+<div class="paragraph added-in-11-0-0">
+<div class=paranum><a id=p401.7.b href=#p401.7.b>401.7.b<ins class="paranum changed-in-11-0-0">/11</ins></a></div>
+<div class=sources>
+<ins class="changed-in-11-0-0 sources">
+{11.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?149-A53">149-A53</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/17-074">L2/17-074</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-11-0-0><b>Discussion: </b></ins><ins class="changed-in-11-0-0">In contrast to SP CM which is either deprecated or anomalous, SP ZWJ can occur in practice, and SP ÷ ZWJ is desired; a leading ZWJ can be used to force a leading medial or final form, such as this final alif: ‍ا (contrast the isolated ا).</ins></p>
 </div>
 <div class="paragraph added-in-5-0-0">
 <div class=paranum><a id=p401.8 href=#p401.8>401.8<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-5-0-0">/5</ins></a></div>
@@ -5091,14 +5109,14 @@ addEventListener('popstate', update_from_query);
 </div>
 <p class=formula><ins class="diff-comment changed-in-5-0-0">Moved from §414.8. </ins><ins class="changed-in-4-1-0">WJ ×</ins></p>
 </div>
-<div class="paragraph added-in-11-0-0">
-<div class=paranum><a id=p401.11.a href=#p401.11.a>401.11.a<ins class="paranum changed-in-11-0-0">/11</ins></a></div>
+<div class="paragraph added-in-6-1-0">
+<div class=paranum><a id=p401.11.a href=#p401.11.a>401.11.a<ins class="paranum changed-in-6-1-0">/6.1</ins></a></div>
 <div class=sources>
-<ins class="changed-in-11-0-0 sources">
-{11.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?149-A53">149-A53</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/17-074">L2/17-074</a>}
+<ins class="changed-in-6-1-0 sources">
+{6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?125-A99">125-A99</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/11-141R">L2/11-141R</a>}
 </ins>
 </div>
-<p class=annotation><ins class=changed-in-11-0-0><b>Discussion: </b></ins><ins class="changed-in-11-0-0">In contrast to SP CM which is either deprecated or anomalous, SP ZWJ can occur in practice, and SP ÷ ZWJ is desired; a leading ZWJ can be used to force a leading medial or final form, such as this final alif: ‍ا (contrast the isolated ا).</ins></p>
+<p class=annotation><ins class=changed-in-6-1-0><b>Ramification: </b></ins><ins class="changed-in-6-1-0">Since this is not a “treat as” rule, the WJ remains in the sequence for subsequent rules to see.  In the presence of rules that use extended context, this means that introducing a WJ can paradoxically create break opportunities. For instance, LB21 and LB21a yield HL × HY × AL, but LB21a does not apply in HL × WJ × HY ÷ AL.</ins></p>
 </div>
 <div class="paragraph added-in-5-0-0">
 <div class=paranum><a id=p401.12 href=#p401.12>401.12<del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-5-0-0">/5</ins></a></div>
@@ -5650,6 +5668,15 @@ addEventListener('popstate', update_from_query);
 </ins>
 </div>
 <p class=annotation><ins class=changed-in-6-1-0><b>Discussion: </b></ins><ins class="changed-in-6-1-0">The Hebrew ICU “and” list format with a non-Hebrew last element provides an example of such a sequence: ⁧John ו-Michael⁩; with a Hebrew last word, the letter ו is prefixed to the word: יוחנן ומיכאל. See ICU-21016.</ins></p>
+</div>
+<div class="paragraph added-in-6-1-0">
+<div class=paranum><a id=p432.2.c href=#p432.2.c>432.2.c<ins class="paranum changed-in-6-1-0">/6.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-6-1-0 sources">
+{6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?125-A99">125-A99</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/11-141R">L2/11-141R</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-6-1-0><b>Ramification: </b></ins><ins class="changed-in-6-1-0">This rule requires extended context.</ins></p>
 </div>
 <div class="paragraph added-in-8-0-0">
 <div class=paranum><a id=p432.3 href=#p432.3>432.3<ins class="paranum changed-in-8-0-0">/8</ins></a></div>

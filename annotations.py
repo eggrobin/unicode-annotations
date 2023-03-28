@@ -218,6 +218,11 @@ ISSUES = (
     # parts become LB23a per the next issue.
     Issue(Version(9, 0, 0),
           ["146-A46", "147-C26"],
+          [
+            Ramification(
+                (162, 12, 'a'),
+                "This rule requires extended context."),
+          ],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 33, 1, 2),
               ParagraphNumber(SECTION_6 + 33, 1, 3),
@@ -308,7 +313,7 @@ ISSUES = (
                 " extended context, this means that introducing a WJ can paradoxically"
                 " create break opportunities."
                 " For instance, LB21 and LB21a yield HL × HY × AL, but"
-                " LB21a does not apply HL × WJ × HY ÷ AL."),
+                " LB21a does not apply in HL × WJ × HY ÷ AL."),
             Reason(
                 (SECTION_6 + 71, 2, 'a'),
                 "“With <hebrew hyphen non-hebrew>, there is no break on either side of the hyphen.”"),
@@ -319,6 +324,9 @@ ISSUES = (
                 " a Hebrew last word, the letter ו is prefixed to the word:"
                 " יוחנן ומיכאל."
                 " See ICU-21016."),
+            Ramification(
+                (432, 2, 'c'),
+                "This rule requires extended context."),
         ],
         l2_docs=["L2/11-141R"],
         paragraphs=[
