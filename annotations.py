@@ -192,18 +192,20 @@ ISSUES = (
           ["149-A53"],
           [
             Discussion(
-                (SECTION_6 + 40, 11, 'a'),
-                "In contrast to SP CM which is either deprecated or anomalous,"
-                " SP ZWJ can occur in practice, and SP ÷ ZWJ is desired; a"
-                " leading ZWJ can be used to force a leading medial or final"
-                " form, such as this final alif: ‍ا (contrast the isolated ا)."),
-            Discussion(
                 (SECTION_6 + 40, 7, 'a'),
                 "Absent tailoring, this rule has no effect in the case of ZWJ."
                 " The breaks on both sides of ZWJ have already been resolved,"
                 " except in SP ZWJ, which gets resolved at the latest in LB18"
-                " without class AL being involved.  The rule is written like"
-                " this for consistency with combining marks following LB9."),
+                " without classes AL nor ZWJ being involved as extended"
+                " context."
+                " The rule is written like this for consistency with combining"
+                " marks following LB9."),
+            Discussion(
+                (SECTION_6 + 40, 7, 'b'),
+                "In contrast to SP CM which is either deprecated or anomalous,"
+                " SP ZWJ can occur in practice, and SP ÷ ZWJ is desired; a"
+                " leading ZWJ can be used to force a leading medial or final"
+                " form, such as this final alif: ‍ا (contrast the isolated ا)."),
           ],
           l2_docs=["L2/17-074"],
           paragraphs=[
@@ -299,6 +301,14 @@ ISSUES = (
         Version(6, 1, 0),
         ["125-A99"],  # Discussed in https://www.unicode.org/L2/L2011/11116-pre.htm#:~:text=Segmentation%20and%20Linebreak, approved in 129-A147.
         [
+            Ramification(
+                (401, 11, 'a'),
+                "Since this is not a “treat as” rule, the WJ remains in the sequence"
+                " for subsequent rules to see.  In the presence of rules that use"
+                " extended context, this means that introducing a WJ can paradoxically"
+                " create break opportunities."
+                " For instance, LB21 and LB21a yield HL × HY × AL, but"
+                " LB21a does not apply HL × WJ × HY ÷ AL."),
             Reason(
                 (SECTION_6 + 71, 2, 'a'),
                 "“With <hebrew hyphen non-hebrew>, there is no break on either side of the hyphen.”"),
