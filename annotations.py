@@ -357,8 +357,11 @@ ISSUES = (
         Version(6, 0, 0),
         ["121-C5"],
         [
-            Discussion(
+            Ramification(
                 (SECTION_6 + 33, 'a'),
+                "This rule requires extended context."),
+            Reason(
+                (SECTION_6 + 33, 'b'),
                 "The zero width space is a hint to the line breaking algorithm,"
                 " hinting a break. Its inverse is the word joiner, see LB11."
                 " When they contradict each other, the zero width space wins."

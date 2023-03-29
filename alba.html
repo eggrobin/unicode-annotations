@@ -4793,7 +4793,16 @@ addEventListener('popstate', update_from_query);
 {6.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?121-C5">121-C5</a>}
 </ins>
 </div>
-<p class=annotation><ins class=changed-in-6-0-0><b>Discussion: </b></ins><ins class="changed-in-6-0-0">The zero width space is a hint to the line breaking algorithm, hinting a break. Its inverse is the word joiner, see LB11. When they contradict each other, the zero width space wins. However, this rule needs to be more complicated than LB11:  if it were simply ZW ÷ before LB7, it would allow for spaces at the beginning of a line.  Instead it acts through any sequence of spaces following it.</ins></p>
+<p class=annotation><ins class=changed-in-6-0-0><b>Ramification: </b></ins><ins class="changed-in-6-0-0">This rule requires extended context.</ins></p>
+</div>
+<div class="paragraph added-in-6-0-0">
+<div class=paranum><a id=p394.b href=#p394.b>394.b<ins class="paranum changed-in-6-0-0">/6</ins></a></div>
+<div class=sources>
+<ins class="changed-in-6-0-0 sources">
+{6.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?121-C5">121-C5</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-6-0-0><b>Reason: </b></ins><ins class="changed-in-6-0-0">The zero width space is a hint to the line breaking algorithm, hinting a break. Its inverse is the word joiner, see LB11. When they contradict each other, the zero width space wins. However, this rule needs to be more complicated than LB11:  if it were simply ZW ÷ before LB7, it would allow for spaces at the beginning of a line.  Instead it acts through any sequence of spaces following it.</ins></p>
 </div>
 <div class="paragraph added-in-4-0-0 removed-in-4-1-0">
 <div class=paranum><a id=p394.1 href=#p394.1>394.1<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-0">/4</ins></del><ins class="paranum changed-in-4-1-0">/4.1</ins></a></div>
