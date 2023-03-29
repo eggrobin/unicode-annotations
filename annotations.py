@@ -220,7 +220,7 @@ ISSUES = (
           ["149-A53"],
           [
             Discussion(
-                (SECTION_6 + 40, 7, 'a'),
+                (401, 4, 'a'),
                 "Absent tailoring, this rule has no effect in the case of ZWJ."
                 " The breaks on both sides of ZWJ have already been resolved,"
                 " except in SP ZWJ, which gets resolved at the latest in LB18"
@@ -229,7 +229,7 @@ ISSUES = (
                 " The rule is written like this for consistency with combining"
                 " marks following LB9."),
             Discussion(
-                (SECTION_6 + 40, 7, 'b'),
+                (401, 4, 'b'),
                 "In contrast to SP CM which is either deprecated or anomalous,"
                 " SP ZWJ can occur in practice, and SP ÷ ZWJ is desired; a"
                 " leading ZWJ can be used to force a leading medial or final"
@@ -256,10 +256,10 @@ ISSUES = (
               ParagraphNumber(SECTION_6 + 33, 1, 3),
               ParagraphNumber(SECTION_6 + 33, 1, 4),
               ParagraphNumber(SECTION_6 + 33, 1, 5),
-              ParagraphNumber(SECTION_6 + 40, 2),
-              ParagraphNumber(SECTION_6 + 40, 3),
-              ParagraphNumber(SECTION_6 + 40, 5),
-              ParagraphNumber(SECTION_6 + 40, 6),
+              ParagraphNumber(397),
+              ParagraphNumber(398),
+              ParagraphNumber(401, 2),
+              ParagraphNumber(401, 3),
               ParagraphNumber(SECTION_6 + 72, 2),
               ParagraphNumber(SECTION_6 + 82, 0, 1),
               ParagraphNumber(SECTION_6 + 82, 0, 2),
@@ -477,14 +477,14 @@ ISSUES = (
     Issue(Version(5, 1, 0),
           ["110-C17"],
           paragraphs=[
-              ParagraphNumber(SECTION_6 + 40, 13),
-              ParagraphNumber(SECTION_6 + 40, 14),
-              ParagraphNumber(SECTION_6 + 40, 16),
-              ParagraphNumber(SECTION_6 + 40, 18),
-              ParagraphNumber(SECTION_6 + 40, 19),
-              ParagraphNumber(SECTION_6 + 40, 20),
-              ParagraphNumber(SECTION_6 + 40, 21),
-              ParagraphNumber(SECTION_6 + 40, 22),
+              ParagraphNumber(401, 10),
+              ParagraphNumber(401, 11),
+              ParagraphNumber(401, 13),
+              ParagraphNumber(401, 15),
+              ParagraphNumber(401, 16),
+              ParagraphNumber(401, 17),
+              ParagraphNumber(401, 18),
+              ParagraphNumber(401, 19),
               ParagraphNumber(SECTION_6 + 42),
           ]),
     # Added LB30 (2); changes LB18 (3), but that one gets split into LB24 and LB25.
@@ -591,18 +591,18 @@ ISSUES = (
     Issue(Version(4, 1, 0),
           ["100-M2"],
           paragraphs=[
-              ParagraphNumber(SECTION_6 + 39),
-              ParagraphNumber(SECTION_6 + 39, 1),
-              ParagraphNumber(SECTION_6 + 40),
-              ParagraphNumber(SECTION_6 + 40, 1),
+              ParagraphNumber(396, 1),
+              ParagraphNumber(396, 2),
+              ParagraphNumber(396, 3),
+              ParagraphNumber(396, 4),
           ]),
+    # Excludes SP, BK, CR, LF, NL, ZW from X in X CM* ×.
     Issue(Version(4, 1, 0),
           ["102-C23"],
           paragraphs=[
-              ParagraphNumber(SECTION_6 + 40, 2),
-              ParagraphNumber(SECTION_6 + 40, 3),
-              ParagraphNumber(SECTION_6 + 40, 3, 1),
-              ParagraphNumber(SECTION_6 + 40, 4),
+              ParagraphNumber(400, 1),
+              ParagraphNumber(401, 1),
+              ParagraphNumber(401, 4),
           ]),
     # Splits 13 from 11b.
     Issue(Version(4, 1, 0),
@@ -649,9 +649,9 @@ ISSUES = (
     Issue(Version(4, 0, 0),
           ["92-A64", "93-A96"],
           paragraphs=[
-              ParagraphNumber(SECTION_6 + 40, 5),
-              ParagraphNumber(SECTION_6 + 40, 6),
-              ParagraphNumber(SECTION_6 + 40, 7),
+              ParagraphNumber(401, 2),
+              ParagraphNumber(401, 3),
+              ParagraphNumber(401, 4),
               ParagraphNumber(SECTION_6 + 53, 4),
               ParagraphNumber(SECTION_6 + 53, 5),
               ParagraphNumber(SECTION_6 + 53, 6),
@@ -668,9 +668,9 @@ ISSUES = (
               ParagraphNumber(SECTION_6 + 33, 4),
               ParagraphNumber(SECTION_6 + 33, 5),
               ParagraphNumber(SECTION_6 + 35),
-              ParagraphNumber(SECTION_6 + 40, 2),
-              ParagraphNumber(SECTION_6 + 40, 3),
-              ParagraphNumber(SECTION_6 + 40, 4),
+              ParagraphNumber(397),
+              ParagraphNumber(398),
+              ParagraphNumber(401, 1),
           ]),
     Issue(Version(3, 2, 0),
           ["81-M6", "85-M7"],
