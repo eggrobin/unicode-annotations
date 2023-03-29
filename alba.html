@@ -5103,6 +5103,15 @@ addEventListener('popstate', update_from_query);
 </div>
 <p class=formula><ins class="diff-comment changed-in-5-0-0">Moved from §414.7. </ins><ins class="changed-in-4-1-0">× WJ</ins></p>
 </div>
+<div class="paragraph added-in-3-0-0">
+<div class=paranum><a id=p401.7.a href=#p401.7.a>401.7.a</a></div>
+<div class=sources>
+<ins class="changed-in-3-0-0 sources">
+{3.0.0: }
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-3-0-0><b>Ramification: </b></ins><ins class="changed-in-3-0-0">The “do not break” part of these rules does not require extended context, but the “treat as” means that most subsequent rules implicitly have extended context across combining marks.</ins></p>
+</div>
 <div class="paragraph added-in-5-0-0">
 <div class=paranum><a id=p401.8 href=#p401.8>401.8<del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-5-0-0">/5</ins></a></div>
 <div class=sources>
@@ -5156,7 +5165,7 @@ addEventListener('popstate', update_from_query);
 {6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?125-A99">125-A99</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/11-141R">L2/11-141R</a>}
 </ins>
 </div>
-<p class=annotation><ins class=changed-in-6-1-0><b>Ramification: </b></ins><ins class="changed-in-6-1-0">Since this is not a “treat as” rule, the WJ remains in the sequence for subsequent rules to see.  In the presence of rules that use extended context, this means that introducing a WJ can paradoxically create break opportunities. For instance, LB21 and LB21a yield HL × HY × AL, but LB21a does not apply in HL × WJ × HY ÷ AL.</ins></p>
+<p class=annotation><ins class=changed-in-6-1-0><b>Ramification: </b></ins><ins class="changed-in-6-1-0">Since this is not a “treat as” rule, the WJ remains in the sequence for subsequent rules to see.  In the presence of rules that require extended context, this means that introducing a WJ can paradoxically create break opportunities. For instance, LB21 and LB21a yield HL × HY × AL, but LB21a does not apply in HL × WJ × HY ÷ AL.</ins></p>
 </div>
 <div class="paragraph added-in-5-0-0">
 <div class=paranum><a id=p401.12 href=#p401.12>401.12<ins class="paranum changed-in-5-0-0">/5</ins></a></div>

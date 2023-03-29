@@ -140,6 +140,11 @@ ISSUES = (
                 " « quotation marks » if QU has been resolved for French."
                 " See [Suign98]."),
             Ramification(
+                (401, 7, 'a'),
+                "The “do not break” part of these rules does not require extended"
+                " context, but the “treat as” means that most subsequent rules"
+                " implicitly have extended context across combining marks."),
+            Ramification(
                 (410, 'a'),
                 "This rule requires extended context."),
             Ramification(
@@ -337,7 +342,7 @@ ISSUES = (
             Ramification(
                 (401, 11, 'a'),
                 "Since this is not a “treat as” rule, the WJ remains in the sequence"
-                " for subsequent rules to see.  In the presence of rules that use"
+                " for subsequent rules to see.  In the presence of rules that require"
                 " extended context, this means that introducing a WJ can paradoxically"
                 " create break opportunities."
                 " For instance, LB21 and LB21a yield HL × HY × AL, but"
