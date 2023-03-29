@@ -130,7 +130,7 @@ ISSUES = (
                 "A sequence of spaces is unbreakable; a prohibited break after"
                 " X is expressed in subsequent rules by disallowing the break"
                 " after any spaces following X (X SP* ×), and a prohibited break"
-                " by disallowing the break before X (× X)."),
+                " before X by disallowing the break before X (× X)."),
             Reason(
                 (SECTION_6 + 47, 'a'),
                 "× EX and × IS accomodate French typographical conventions in"
