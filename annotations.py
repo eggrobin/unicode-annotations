@@ -253,7 +253,7 @@ ISSUES = (
           ["146-A46", "147-C26"],
           [
             Ramification(
-                (162, 12, 'a'),
+                (462, 12, 'a'),
                 "This rule requires extended context."),
           ],
           paragraphs=[
