@@ -280,6 +280,40 @@ ISSUES = (
     Issue(
         Version(10, 0, 0),
         ["147-A79"],
+        [
+            Discussion(
+                (46, 0, 1, 'a'),
+                "While many rules depend only on the code points either side of"
+                " the break (those of the form A # B or simply A # or # B, where # is "
+                " either ÷, ×, or !), others depend on context further away. Such"
+                " rules are said to require extended context."),
+            Annotation(
+                (46, 0, 1, 'b'),
+                " Rules requiring extended context used to be a concern for pair"
+                " table-based implementations, and were listed in Section 7."
+                " As more rules of this kind have been added, pair table-based"
+                " implementations have become intractable, and this section has"
+                " been removed."),
+            Annotation(
+                (46, 0, 1, 'c'),
+                "However, extended context can lead to unexpected interactions"
+                " between the rules, so they are called out in this annotated"
+                " version with the annotation"
+                " “Ramification: This rule requires extended context.” in"
+                " order to facilitate the analysis of the algorithm."),
+            Discussion(
+                (49, 2, 'a'),
+                "Indirect breaks can be represented with such a rule requiring"
+                " extended context, but within the algorithm, they are"
+                " instead expressed as × SP, SP ÷, B × A, which does not"
+                " require extended context."),
+            Discussion(
+                (50, 1, 'a'),
+                "Not all prohibited breaks involve a rule requiring extended"
+                " context: a rule × A before the rule SP ÷ is a prohibited"
+                " break before A. However, prohibited breaks with context"
+                " before spaces require extended context."),
+        ],
         paragraphs=[ParagraphNumber(SECTION_6 + 3)],
         ),
     # Creates LB23a.

@@ -869,6 +869,33 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p46.0.1 href=#p46.0.1>46.0.1<del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
 <p><ins class="changed-in-5-0-0">Line breaking property values are used to classify characters and, taken in context, determine the type of </ins><ins class="changed-in-5-1-0">line </ins><ins class="changed-in-5-0-0">break</ins><ins class="changed-in-5-1-0"> opportunity.</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">.</ins></del></p>
 </div>
+<div class="paragraph added-in-10-0-0">
+<div class=paranum><a id=p46.0.1.a href=#p46.0.1.a>46.0.1.a<ins class="paranum changed-in-10-0-0">/10</ins></a></div>
+<div class=sources>
+<ins class="changed-in-10-0-0 sources">
+{10.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?147-A79">147-A79</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-10-0-0><b>Discussion: </b></ins><ins class="changed-in-10-0-0">While many rules depend only on the code points either side of the break (those of the form A # B or simply A # or # B, where # is  either ÷, ×, or !), others depend on context further away. Such rules are said to require extended context.</ins></p>
+</div>
+<div class="paragraph added-in-10-0-0">
+<div class=paranum><a id=p46.0.1.b href=#p46.0.1.b>46.0.1.b<ins class="paranum changed-in-10-0-0">/10</ins></a></div>
+<div class=sources>
+<ins class="changed-in-10-0-0 sources">
+{10.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?147-A79">147-A79</a>}
+</ins>
+</div>
+<p class=annotation><ins class="changed-in-10-0-0"> Rules requiring extended context used to be a concern for pair table-based implementations, and were listed in Section 7. As more rules of this kind have been added, pair table-based implementations have become intractable, and this section has been removed.</ins></p>
+</div>
+<div class="paragraph added-in-10-0-0">
+<div class=paranum><a id=p46.0.1.c href=#p46.0.1.c>46.0.1.c<ins class="paranum changed-in-10-0-0">/10</ins></a></div>
+<div class=sources>
+<ins class="changed-in-10-0-0 sources">
+{10.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?147-A79">147-A79</a>}
+</ins>
+</div>
+<p class=annotation><ins class="changed-in-10-0-0">However, extended context can lead to unexpected interactions between the rules, so they are called out in this annotated version with the annotation “Ramification: This rule requires extended context.” in order to facilitate the analysis of the algorithm.</ins></p>
+</div>
 <div class="paragraph added-in-4-0-0">
 <div class=paranum><a id=p46.1 href=#p46.1>46.1<del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><ins class="paranum changed-in-8-0-0">/8</ins></a></div>
 <p><ins class="changed-in-4-0-0"></ins><ins class="changed-in-5-0-0">LD6</ins><ins class="changed-in-8-0-0">.</ins><ins class="changed-in-5-0-0"> </ins><ins class="changed-in-4-0-0">Line Breaking Class</ins><ins class="changed-in-5-0-0">: A</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-0-0"> </ins><ins class="changed-in-4-0-1">—</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">-</ins></del><del class="changed-in-5-0-0"><ins class="changed-in-4-0-0"> a</ins></del><ins class="changed-in-4-0-0"> class of characters with the </ins><ins class="changed-in-5-0-0">same </ins><ins class="changed-in-4-0-0">line breaking property value.</ins></p>
@@ -905,6 +932,15 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p49.2 href=#p49.2>49.2<del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-10-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-10-0-0">/10</ins></a></div>
 <p><ins class="changed-in-5-0-0"></ins><ins class="changed-in-10-0-0">In the notation of the rules in Section 6, Line Breaking Algorithm, an</ins><wbr><del class="changed-in-10-0-0"><ins class="changed-in-5-0-0">An</ins></del><ins class="changed-in-5-0-0"> indirect break is </ins><ins class="changed-in-10-0-0">represented</ins><wbr><del class="changed-in-10-0-0"><ins class="changed-in-5-0-0">indicated in the pair table in Table 2</ins></del><ins class="changed-in-5-0-0"> as </ins><ins class="changed-in-10-0-0">two rules: </ins><ins class="changed-in-5-0-0">B </ins><ins class="changed-in-10-0-0">×</ins><wbr><del class="changed-in-10-0-0"><ins class="changed-in-5-0-0">%</ins></del><ins class="changed-in-5-0-0"> A</ins><ins class="changed-in-10-0-0"> and</ins><wbr><del class="changed-in-10-0-0"><ins class="changed-in-5-0-0">, where</ins></del><ins class="changed-in-5-0-0"> B</ins><del class="changed-in-10-0-0"><ins class="changed-in-5-0-0"> is the character class of the character before and A is the character class of the character after the break. Even though space characters are not shown in the pair table, an indirect break can occur only if one or more spaces follow B. In the notation of the rules in Section 6, Line Breaking Algorithm, this would be represented as two rules: B × A and B</ins></del><ins class="changed-in-5-0-0"> SP+ ÷ A</ins><ins class="changed-in-5-1-0"> where the “+” sign means one or more occurrences.</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">.</ins></del></p>
 </div>
+<div class="paragraph added-in-10-0-0">
+<div class=paranum><a id=p49.2.a href=#p49.2.a>49.2.a<ins class="paranum changed-in-10-0-0">/10</ins></a></div>
+<div class=sources>
+<ins class="changed-in-10-0-0 sources">
+{10.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?147-A79">147-A79</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-10-0-0><b>Discussion: </b></ins><ins class="changed-in-10-0-0">Indirect breaks can be represented with such a rule requiring extended context, but within the algorithm, they are instead expressed as × SP, SP ÷, B × A, which does not require extended context.</ins></p>
+</div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p50 href=#p50>50<del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><ins class="paranum changed-in-8-0-0">/8</ins></a></div>
 <p><ins class="changed-in-3-0-0"></ins><ins class="changed-in-5-0-0">LD10</ins><ins class="changed-in-8-0-0">.</ins><ins class="changed-in-5-0-0"> </ins><ins class="changed-in-3-0-0">Prohibited Break</ins><ins class="changed-in-5-0-0">: No</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0"> </ins><ins class="changed-in-4-0-1">—</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-3-0-0">-</ins></del><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0"> no</ins></del><ins class="changed-in-3-0-0"> line break</ins><del class="changed-in-4-0-1"><ins class="changed-in-3-0-0">ing</ins></del><ins class="changed-in-3-0-0"> opportunity exists between two characters of the given line breaking </ins><ins class="changed-in-4-0-0">classes</ins><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">properties</ins></del><ins class="changed-in-3-0-0">, even if they are separated by one or more space characters.</ins><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0"> This is indicated in the pair table below as B ^ A, where B is the character class of the character before and A is the character class of the character after the break and the optional space characters are not shown. In the notation of the </ins></del><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">the </ins></del><del class="changed-in-5-0-0"><ins class="changed-in-4-0-0">rules in Section 6, Line Breaking Algorithm</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">Unicode Standard,</ins></del><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0"> this would be </ins><ins class="changed-in-3-1-0">expressed as a</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-0">the</ins></del><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0"> rule</ins><ins class="changed-in-3-1-0"> of the form</ins><ins class="changed-in-3-0-0">: B SP* × A.</ins></del></p>
@@ -912,6 +948,15 @@ addEventListener('popstate', update_from_query);
 <div class="paragraph added-in-5-0-0">
 <div class=paranum><a id=p50.1 href=#p50.1>50.1<del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-10-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-10-0-0">/10</ins></a></div>
 <p><ins class="changed-in-5-0-0"></ins><ins class="changed-in-10-0-0">In the notation of the rules in Section 6, Line Breaking Algorithm, a</ins><wbr><del class="changed-in-10-0-0"><ins class="changed-in-5-0-0">A</ins></del><ins class="changed-in-5-0-0"> </ins><ins class="changed-in-5-1-0">prohibited</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">direct</ins></del><ins class="changed-in-5-0-0"> break is </ins><ins class="changed-in-10-0-0">expressed</ins><wbr><del class="changed-in-10-0-0"><ins class="changed-in-5-0-0">indicated in the pair table in Table 2</ins></del><ins class="changed-in-5-0-0"> as </ins><ins class="changed-in-10-0-0">a rule of the form: </ins><ins class="changed-in-5-0-0">B</ins><del class="changed-in-10-0-0"><ins class="changed-in-5-0-0"> ^ A, where B is the character class of the character before and A is the character class of the character after the break, and the optional space characters are not shown. In the notation of the rules in Section 6, Line Breaking Algorithm, this would be expressed as a rule of the form: B</ins></del><ins class="changed-in-5-0-0"> SP* × A.</ins></p>
+</div>
+<div class="paragraph added-in-10-0-0">
+<div class=paranum><a id=p50.1.a href=#p50.1.a>50.1.a<ins class="paranum changed-in-10-0-0">/10</ins></a></div>
+<div class=sources>
+<ins class="changed-in-10-0-0 sources">
+{10.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?147-A79">147-A79</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-10-0-0><b>Discussion: </b></ins><ins class="changed-in-10-0-0">Not all prohibited breaks involve a rule requiring extended context: a rule × A before the rule SP ÷ is a prohibited break before A. However, prohibited breaks with context before spaces require extended context.</ins></p>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p51 href=#p51>51<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><ins class="paranum changed-in-8-0-0">/8</ins></a></div>
