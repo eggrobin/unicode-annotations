@@ -312,7 +312,7 @@ ISSUES = (
                 "Not all prohibited breaks involve a rule requiring extended"
                 " context: a rule × A before the rule SP ÷ is a prohibited"
                 " break before A. However, prohibited breaks with context"
-                " before spaces require extended context."),
+                " before spaces require  extended context."),
         ],
         paragraphs=[ParagraphNumber(SECTION_6 + 3)],
         ),
