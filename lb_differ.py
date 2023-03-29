@@ -738,7 +738,7 @@ with open("alba.html", "w", encoding="utf-8") as f:
     print("</td></tr>", file=f)
   print("</tbody>", file=f)
   print("</table>", file=f)
-  print('<div><input type="checkbox" name="show-deleted" id="show-deleted" checked>', file=f)
+  print('<div><input type="checkbox" name="show-deleted" id="show-deleted">', file=f)
   print('<label for="show-deleted">Show deleted paragraphs</label></div>', file=f)
   print('</nav>', file=f)
   for paragraph_number, paragraph in history.elements:

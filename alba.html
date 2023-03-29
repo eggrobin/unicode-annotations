@@ -176,7 +176,7 @@ function meow(push_history = true) {
     if (older(oldest, newest)) {
       query.push(`base=${oldest.join(".")}`);
     }
-    if (!show_deleted_paragraphs) {
+    if (show_deleted_paragraphs) {
       query.push(`show_deleted=${show_deleted_paragraphs}`);
     }
     var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + query.join("&");
@@ -446,7 +446,7 @@ addEventListener('popstate', update_from_query);
 </td></tr>
 </tbody>
 </table>
-<div><input type="checkbox" name="show-deleted" id="show-deleted" checked>
+<div><input type="checkbox" name="show-deleted" id="show-deleted">
 <label for="show-deleted">Show deleted paragraphs</label></div>
 </nav>
 <div class="paragraph added-in-3-0-0">

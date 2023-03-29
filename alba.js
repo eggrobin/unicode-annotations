@@ -51,7 +51,7 @@ function meow(push_history = true) {
     if (older(oldest, newest)) {
       query.push(`base=${oldest.join(".")}`);
     }
-    if (!show_deleted_paragraphs) {
+    if (show_deleted_paragraphs) {
       query.push(`show_deleted=${show_deleted_paragraphs}`);
     }
     var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + query.join("&");
