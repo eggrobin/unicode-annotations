@@ -139,8 +139,36 @@ ISSUES = (
                 " colon and semicolon. × CL likewise caters to French"
                 " « quotation marks » if QU has been resolved for French."
                 " See [Suign98]."),
+            Ramification(
+                (410, 'a'),
+                "This rule requires extended context."),
+            Ramification(
+                (412, 'a'),
+                "This rule requires extended context."),
+            Ramification(
+                (414, 'a'),
+                "This rule requires extended context."),
         ]),
 
+    Issue(
+        Version(3, 1, 0),
+        [],  # Adds LB11a with a description inconistent with the formula, based on the pair table.
+        paragraphs=[
+            ParagraphNumber(414, 1),
+            ParagraphNumber(414, 2),
+            ParagraphNumber(596, 8),
+        ]),
+    Issue(
+        Version(4, 1, 0),
+        [],  # Changes the formula of LB11a to match the description.
+        [
+            Ramification(
+                (414, 2, 'a'),
+                "This rule requires extended context."),
+        ],
+        paragraphs=[
+            ParagraphNumber(596, 0, 0, 0, 1, 12),
+        ]),
     Issue(
         Version(14, 0, 0),
         ["167-A94", "168-C7", "168-C8"],
