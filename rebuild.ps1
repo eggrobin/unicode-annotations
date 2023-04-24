@@ -4,5 +4,5 @@ foreach (
             50)) {
   Invoke-WebRequest "https://www.unicode.org/reports/tr14/tr14-$i.html" -OutFile "tr14-$i.html"
 }
-.\lb_rule_extractor.py --out=paragraphs.py
-.\lb_differ.py
+python .\lb_rule_extractor.py --out=paragraphs.py
+python .\lb_differ.py
