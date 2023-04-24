@@ -222,7 +222,7 @@ ISSUES = (
               ParagraphNumber(SECTION_6 + 74),
           ]),
     Issue(Version(11, 0, 0),
-          ["149-A53"],
+          ["149-A53", "155-A27", "155-C14", "155-A112"],
           [
             Discussion(
                 (401, 4, 'a'),
