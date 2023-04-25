@@ -317,8 +317,37 @@ ISSUES = (
                 " break before A. However, prohibited breaks with context"
                 " before spaces require  extended context."),
         ],
-        paragraphs=[ParagraphNumber(SECTION_6 + 3)],
-        ),
+        paragraphs=[
+            ParagraphNumber(10),
+            ParagraphNumber(23),
+            ParagraphNumber(24),
+            ParagraphNumber(25),
+            ParagraphNumber(26),
+            ParagraphNumber(27),
+            ParagraphNumber(28),
+            ParagraphNumber(28, 2),
+            ParagraphNumber(36),
+            ParagraphNumber(37, 2),
+            ParagraphNumber(48, 1),
+            ParagraphNumber(49, 2),
+            ParagraphNumber(50, 1),
+            ParagraphNumber(102),
+            ParagraphNumber(112, 5),
+            ParagraphNumber(347, 5),
+            ParagraphNumber(364),
+            ParagraphNumber(SECTION_6 + 3),
+            ParagraphNumber(466),  # TODO(egg): .. 573.51
+            ParagraphNumber(573, 52),
+            ParagraphNumber(579, 5),
+            ParagraphNumber(581),
+            ParagraphNumber(582),
+            ParagraphNumber(582, 1),
+            ParagraphNumber(583, 1),
+            ParagraphNumber(584, 1),
+            ParagraphNumber(585),
+            ParagraphNumber(587, 5, 7),
+            ParagraphNumber(587, 20, 1),
+        ]),
     # Creates LB23a.
     Issue(
         Version(9, 0, 0),
@@ -875,4 +904,22 @@ ISSUES = (
               ParagraphNumber(596, 30),
           ],
           pri=["376@Sat Apr 14 08:42:52 CDT 2018"]),
+    # Emoji rules from CLDR, and the UTR becomes a UTS.
+    Issue(Version(10, 0, 0),
+          ["150-A58", "150-C22"],
+          paragraphs=[
+              ParagraphNumber(205, 3),
+              ParagraphNumber(205, 10),
+              ParagraphNumber(350, 4),
+              ParagraphNumber(394, 1, 4),
+              ParagraphNumber(394, 1, 5),
+              ParagraphNumber(579, 2, 2),
+          ],
+          l2_docs=["L2/16-315R"]),
+    # RI.
+    Issue(Version(10, 0, 0),
+          ["150-A28"],
+          paragraphs=[
+              ParagraphNumber(324, 10),
+          ]),
 )
