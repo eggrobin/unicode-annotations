@@ -221,6 +221,7 @@ ISSUES = (
               ParagraphNumber(SECTION_6 + 73),
               ParagraphNumber(SECTION_6 + 74),
           ]),
+    # Remove the RHS of LB8a.
     Issue(Version(11, 0, 0),
           ["149-A53", "155-A27", "155-C14", "155-A112"],
           [
@@ -242,10 +243,12 @@ ISSUES = (
           ],
           l2_docs=["L2/17-074"],
           paragraphs=[
+              ParagraphNumber(350, 3),
               ParagraphNumber(SECTION_6 + 33, 1, 2),
               ParagraphNumber(SECTION_6 + 33, 1, 3),
               ParagraphNumber(SECTION_6 + 33, 1, 4),
               ParagraphNumber(SECTION_6 + 33, 1, 5),
+              ParagraphNumber(596, 29),
           ]),
     # Creates 8a.  The original proposal targets LB23 and LB24, but the relevant
     # parts become LB23a per the next issue.
@@ -843,4 +846,33 @@ ISSUES = (
               ParagraphNumber(596, 36),
           ],
           l2_docs=[]),
+    # Tab-delimited.
+    Issue(Version(11, 0, 0),
+          ["154-A128"],
+          paragraphs=[
+              ParagraphNumber(102, 2),
+              ParagraphNumber(596, 31),
+          ],
+          l2_docs=["L2/18-009@Fri Nov 10 17:16:01 CST 2017"]),
+    # Character names.
+    Issue(Version(11, 0, 0),
+          ["155-A26"],
+          paragraphs=[
+              ParagraphNumber(54),
+              ParagraphNumber(153, 3),
+              ParagraphNumber(153, 4),
+              ParagraphNumber(153, 12, 5),
+              ParagraphNumber(153, 12, 12),
+              ParagraphNumber(153, 49, 2),
+              ParagraphNumber(171),
+              ParagraphNumber(174),
+              ParagraphNumber(175),
+              ParagraphNumber(222),
+              ParagraphNumber(315),
+              ParagraphNumber(318, 1),
+              ParagraphNumber(361, 0, 11),
+              ParagraphNumber(361, 16, 1),
+              ParagraphNumber(596, 30),
+          ],
+          pri=["376@Sat Apr 14 08:42:52 CDT 2018"]),
 )
