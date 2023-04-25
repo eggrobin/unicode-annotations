@@ -813,4 +813,34 @@ ISSUES = (
               ParagraphNumber(596, 63),
           ],
           l2_docs=["L2/22-229R", "L2/22-234R2"]),
+    # Update UAX #14 to point to the CLDR tailoring, for version 12.0.
+    Issue(Version(12, 0, 0),
+          ["173-A128"],
+          paragraphs=[
+              ParagraphNumber(96, 1, 2, 3, 1),
+              ParagraphNumber(579, 2, 1, 2),
+              ParagraphNumber(596, 38),
+          ],
+          l2_docs=[]),
+    # Typos from PRI.
+    Issue(Version(12, 0, 0),
+          ["173-A128"],
+          paragraphs=[
+              ParagraphNumber(324, 11),
+              ParagraphNumber(579, 3),
+              ParagraphNumber(586),
+              ParagraphNumber(596, 37),
+          ],
+          l2_docs=[],
+          pri=["383@Sun Jan 6 23:07:34 CST 2019"]),
+    # Mongolian NNBSP.
+    Issue(Version(12, 0, 0),
+          ["155-A31"],
+          paragraphs=[
+              ParagraphNumber(219),
+              ParagraphNumber(219, 0, 1),
+              ParagraphNumber(219, 0, 3),
+              ParagraphNumber(596, 36),
+          ],
+          l2_docs=[]),
 )
