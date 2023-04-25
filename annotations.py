@@ -176,7 +176,7 @@ ISSUES = (
         ]),
     Issue(
         Version(14, 0, 0),
-        ["167-A94", "168-C7", "168-C8"],
+        ["167-A94", "168-C7", "168-C8", "168-A98"],
         [
             Reason(
                 (SECTION_6 + 101, 15, 'a'),
@@ -195,12 +195,14 @@ ISSUES = (
         paragraphs=[
             ParagraphNumber(SECTION_6 + 101, 13),
             ParagraphNumber(SECTION_6 + 101, 15),
-        ]
-        ),
+            ParagraphNumber(596, 53),
+        ],
+        l2_docs=["L2/21-135R"]),
     Issue(Version(14, 0, 0),
           ["163-A70"],
           paragraphs=[
               ParagraphNumber(SECTION_6 + 98, 12),
+              ParagraphNumber(596, 52)
           ]),
     Issue(Version(13, 0, 0),
           ["160-A75", "161-A47", "162-A42"],
@@ -210,7 +212,8 @@ ISSUES = (
               ParagraphNumber(SECTION_6 + 101, 9, 1),
               ParagraphNumber(SECTION_6 + 101, 9, 2),
               ParagraphNumber(SECTION_6 + 101, 9, 3),
-          ]),
+          ],
+          pri=["406@Mon Oct 14 18:46:18 CDT 2019"]),
     Issue(Version(13, 0, 0),
           ["142-A23", "160-A56"],
           paragraphs=[
