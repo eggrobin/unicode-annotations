@@ -177,6 +177,7 @@ DELETED_PARAGRAPHS = {
   ],
   Version(15, 1, 0): [
       ParagraphNumber(596, 54),
+      ParagraphNumber(587, 11),
   ],
 }
 
@@ -536,6 +537,9 @@ PRESERVED_PARAGRAPHS = {
   Version(13, 0, 0): {ParagraphNumber(102): "The classification",
                       ParagraphNumber(SECTION_6 + 72): "LB22",
                       ParagraphNumber(SECTION_6 + 73): "× IN"},
+  Version(15, 1, 0): {ParagraphNumber(94, 1): "The third style",
+                      ParagraphNumber(94, 2): "For multilingual",
+                      ParagraphNumber(288): "Numeric characters consist of"}
 }
 
 ANCESTRIES = {
@@ -747,6 +751,13 @@ with open("alba.html", "w", encoding="utf-8") as f:
     versions_changed = paragraph.versions_changed()
     version_added = paragraph.version_added()
     last_changed = paragraph.last_changed()
+
+    # Unexplained changes.
+    # TODO(egg): Move the printing out of the loop, gather for all versions,
+    # print an explanatory line above.
+    if Version(15, 1, 0) in versions_changed and not any(issue.version == Version(15, 1, 0) for issue in paragraph.references):
+      print("              %r," % paragraph_number)
+
     print(f'<div class="paragraph added-in-{version_added.html_class()}{(" removed-in-" + last_changed.html_class()) if paragraph.absent() else ""}">', file=f)
     for new, old in zip(versions_changed[1:], versions_changed[:-1]):
       if old == Version(3, 0, 0):
