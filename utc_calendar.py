@@ -1,8 +1,16 @@
 from datetime import date, timedelta
 import sys
 
-OFFSET = 79
+OFFSET = 71
 UTC = [
+    (date(1996, 12, 5), 2), # UTC #71 https://www.unicode.org/L2/L1996/UTC71-Minutes.htm
+    (date(1997, 5, 29), 2), # UTC #72?  UTC - L2 ad hoc May 29–30, 1997
+    (date(1997, 8, 4), 2),  # UTC #73 https://www.unicode.org/L2/L1997/97255r.pdf
+    (date(1997, 12, 5), 1),  # UTC #74 https://www.unicode.org/L2/L1998/98039.pdf
+    (date(1998, 2, 24), 3),  # UTC #75 https://www.unicode.org/L2/L1998/98070.pdf
+    (date(1998, 4, 20), 3),  # UTC #76 https://www.unicode.org/L2/L1998/98158.html
+    (date(1998, 7, 29), 3),  # UTC #77 https://www.unicode.org/L2/L1998/98281r.pdf
+    (date(1998, 12, 1), 4), # UTC #78 https://www.unicode.org/L2/L1998/98419.pdf
     (date(1999, 2, 3), 3),  # UTC #079
     (date(1999, 6, 8), 3),  # UTC #080?
     (date(1999, 10, 26), 4),  # UTC #081
@@ -88,6 +96,7 @@ UTC = [
     (date(2019, 10, 7), 4),  # UTC #161
     (date(2020, 1, 13), 4),  # UTC #162
     (date(2020, 4, 28), 4),  # UTC #163
+    # TODO(egg): The 2-day ones are wrong, there is a gap.
     (date(2020, 7, 28), 2),  # UTC #164
     (date(2020, 10, 28), 2),  # UTC #165
     (date(2021, 1, 28), 2),  # UTC #166
