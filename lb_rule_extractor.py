@@ -1,4 +1,5 @@
 ﻿from collections import Counter
+from typing import List, Tuple
 from historical_diff import Version
 from document import Paragraph, Heading, Rule, Formula, TableRow, CodeLine
 import glob
@@ -38,6 +39,16 @@ EXPECTED_STRAY_PARAGRAPHS = [
   "Revision 23 being a proposed update, only changes between revisions 22 and 24 are noted here.",
 ]
 
+_NUMERALS = {
+  "toc": lambda n: "",
+  "ul": lambda n: "• ",
+  "1": lambda n: str(n) + ". ",
+  "a": lambda n: chr(ord("a") + n) + ". ",
+  "A": lambda n: chr(ord("A") + n) + ". ",
+  "i": lambda n: ["i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x"][n] + ". ",
+  "I": lambda n: ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"][n] + ". ",
+}
+
 class TR14Parser(HTMLParser):
   def __init__(self, version=None):
     super().__init__()
@@ -52,6 +63,7 @@ class TR14Parser(HTMLParser):
     self.in_algorithm = False
     self.version = version
     self.removed_tag = None
+    self.list_stack : List[Tuple[int, str]] = []
 
   def handle_starttag(self, tag, attrs):
     attrs = dict(attrs)
@@ -68,12 +80,24 @@ class TR14Parser(HTMLParser):
       self.bold = True
     if tag in ("td", "th") and self.line.strip():
       self.line = self.line.rstrip() + '\uE000'
+    if tag in ("ol", "ul"):
+      self.list_stack.append(
+          (int(attrs.get("start", "1")) - 1,
+           ("toc" if attrs.get("class", "") == "toc" else "ul") if tag == "ul"
+           else attrs.get("type", "1")))
     if (tag in ("p", "li", "pre", "blockquote") and self.line_tag != "tr") or re.match(r"h\d", tag):
       self.end_line()
       self.line_tag = tag
       if (("align", "center") in attrs.items() or
           ("style", "text-align:center") in attrs.items()):
         self.centred = True
+    if tag == "li" and not self.removed_tag:
+      if not self.list_stack:
+        print(self.paragraphs[-1])
+      [i, t] = self.list_stack[-1]
+      i += 1
+      self.list_stack[-1] = (i, t)
+      self.line += _NUMERALS[t](i)
     elif tag == "a" and self.line_tag and self.line_tag.startswith("h") and "id" in attrs or "name" in attrs:
       self.line_id = attrs.get("id") or attrs.get("name")
       self.line_id = ID_REMAPPINGS.get(self.line_id) or self.line_id
@@ -83,6 +107,8 @@ class TR14Parser(HTMLParser):
       if tag == self.removed_tag:
         self.removed_tag = None
       return
+    if tag in ("ol", "ul"):
+      self.list_stack.pop()
     if tag == "b":
       self.bold = False
     if re.match(r"h\d", tag):
@@ -111,10 +137,12 @@ class TR14Parser(HTMLParser):
       for line in self.line.splitlines():
         self.paragraphs.append(CodeLine(html.unescape(line)))
     else:
+      if re.fullmatch(r"•\s+", self.line):
+        # Deal with <ul> <p> by sticking the bullet in the paragraph.
+        return
       self.line = re.sub(r'\s+', ' ', self.line.strip())
       if not self.line:
         return
-    
       if self.in_uax:
         if not self.line_tag:
           if self.line in EXPECTED_STRAY_PARAGRAPHS:

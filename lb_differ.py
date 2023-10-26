@@ -177,6 +177,7 @@ DELETED_PARAGRAPHS = {
   ],
   Version(15, 1, 0): [
       ParagraphNumber(596, 54),
+      ParagraphNumber(587, 11),
   ],
 }
 
@@ -235,6 +236,7 @@ PRESERVED_PARAGRAPHS = {
                      ParagraphNumber(588): "",
                      ParagraphNumber(594): "",
                      ParagraphNumber(596): "Modifications",
+                     ParagraphNumber(597): "• Rewrite and reorganization",
                      ParagraphNumber(598): ""},
   Version(3, 2, 0): {ParagraphNumber(593, 13): ""},
   Version(4, 0, 0): {ParagraphNumber(12, 1): "",
@@ -283,8 +285,8 @@ PRESERVED_PARAGRAPHS = {
                      ParagraphNumber(575): "",
                      ParagraphNumber(593, 11): "",
                      ParagraphNumber(593, 13): "",
-                     ParagraphNumber(596, 0, 2): "Change header",},
-  Version(4, 0, 1): {ParagraphNumber(22): "Line Breaking",
+                     ParagraphNumber(596, 0, 2): "• Change header",},
+  Version(4, 0, 1): {ParagraphNumber(22): "6. Line Breaking",
                      ParagraphNumber(35, 1): "",
                      ParagraphNumber(36): "",
                      ParagraphNumber(85): "",
@@ -339,6 +341,7 @@ PRESERVED_PARAGRAPHS = {
                      ParagraphNumber(501, 2): "",
                      ParagraphNumber(502): "",
                      ParagraphNumber(505, 1): "",
+                     ParagraphNumber(506): "_",
                      ParagraphNumber(508): "",
                      ParagraphNumber(510): "    int findComplexBreak(",
                      ParagraphNumber(523, 3): "",
@@ -532,10 +535,13 @@ PRESERVED_PARAGRAPHS = {
                       ParagraphNumber(596, 0, 0, 0, 1, 1): "The following summarizes",
                       ParagraphNumber(597, 2): "Modifications for previous versions",
                       ParagraphNumber(598): "© 2018",},
-  Version(12, 0, 0): {ParagraphNumber(579, 2, 2): "Some changes to rules",},
+  Version(12, 0, 0): {ParagraphNumber(579, 2, 2): "• Some changes to rules",},
   Version(13, 0, 0): {ParagraphNumber(102): "The classification",
                       ParagraphNumber(SECTION_6 + 72): "LB22",
                       ParagraphNumber(SECTION_6 + 73): "× IN"},
+  Version(15, 1, 0): {ParagraphNumber(94, 1): "The third style",
+                      ParagraphNumber(94, 2): "For multilingual",
+                      ParagraphNumber(288): "Numeric characters consist of"}
 }
 
 ANCESTRIES = {
@@ -747,6 +753,13 @@ with open("alba.html", "w", encoding="utf-8") as f:
     versions_changed = paragraph.versions_changed()
     version_added = paragraph.version_added()
     last_changed = paragraph.last_changed()
+
+    # Unexplained changes.
+    # TODO(egg): Move the printing out of the loop, gather for all versions,
+    # print an explanatory line above.
+    if Version(15, 1, 0) in versions_changed and not any(issue.version == Version(15, 1, 0) for issue in paragraph.references):
+      print("              %r," % paragraph_number)
+
     print(f'<div class="paragraph added-in-{version_added.html_class()}{(" removed-in-" + last_changed.html_class()) if paragraph.absent() else ""}">', file=f)
     for new, old in zip(versions_changed[1:], versions_changed[:-1]):
       if old == Version(3, 0, 0):
