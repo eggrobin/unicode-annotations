@@ -128,13 +128,13 @@ UTC = [
     (date(2020, 1, 13), 4),  # UTC #162
     (date(2020, 4, 28), 4),  # UTC #163
     # Meetings with a gap in the middle:
-    (date(2020, 7, 28), 3),  # UTC #164
-    (date(2020, 10, 28), 3),  # UTC #165
-    (date(2021, 1, 28), 3),  # UTC #166
-    (date(2021, 4, 28), 3),  # UTC #167
-    (date(2021, 7, 28), 3),  # UTC #168
-    (date(2021, 10, 28), 3),  # UTC #169
-    (date(2022, 1, 28), 3),  # UTC #170
+    (date(2020, 7, 27), 3),  # UTC #164
+    (date(2020, 10, 5), 3),  # UTC #165
+    (date(2021, 1, 19), 3),  # UTC #166
+    (date(2021, 4, 27), 3),  # UTC #167
+    (date(2021, 7, 27), 3),  # UTC #168
+    (date(2021, 10, 5), 3),  # UTC #169
+    (date(2022, 1, 25), 3),  # UTC #170
     (date(2022, 4, 19), 3),  # UTC #171
     # Back to connectedness.
     (date(2022, 7, 26), 3),  # UTC #172
@@ -144,9 +144,16 @@ UTC = [
     (date(2023, 7, 25), 3),  # UTC #176
     (date(2023, 11, 1), 3),  # UTC #177
     (date(2024, 1, 23), 3),  # UTC #178
-    (date(2023, 4, 23), 3),  # UTC #179
-    (date(2023, 7, 23), 3),  # UTC #180
+    (date(2024, 4, 23), 3),  # UTC #179
+    (date(2024, 7, 23), 3),  # UTC #180
 ]
+
+for i, (start, duration) in enumerate(UTC):
+    utc_number = OFFSET + i
+    for n in range(duration):
+        weekday = ((start + timedelta(days=n)).isocalendar().weekday)
+        if weekday in (6, 7) and utc_number not in (70,):
+            raise ValueError(f"UTC #{utc_number} overlaps with a weekend")
 
 t = date.fromisoformat(sys.argv[1]) if len(sys.argv) > 1 else date.today()
 
