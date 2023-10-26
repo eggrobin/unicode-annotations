@@ -1,10 +1,40 @@
 from datetime import date, timedelta
 import sys
 
-OFFSET = 71
+OFFSET = 44
 UTC = [
+    # https://www.unicode.org/L2/meetings/utc-meetings-early.html#UWG
+    # https://www.unicode.org/L2/meetings/utc-meetings-early.html#distinct
+    (date(1991, 2, 1), 2),  # UTC #44
+    (date(1991, 2, 28), 2),  # UTC #45
+    (date(1991, 3, 26), 2),  # UTC #46
+    (date(1991, 6, 6), 2),  # UTC #47
+    (date(1991, 9, 12), 2),  # UTC #48
+    (date(1991, 10, 31), 2),  # UTC #49
+    (date(1992, 1, 14), 1),  # UTC #50
+    (date(1992, 3, 6), 1),  # UTC #51
+    (date(1992, 5, 8), 1),  # UTC #52
+    (date(1992, 7, 16), 2),  # UTC #53
+    (date(1992, 9, 1), 1),  # UTC #54
+    (date(1992, 11, 19), 2),  # UTC #55
+    (date(1993, 4, 1), 2),  # UTC #56
+    (date(1993, 6, 28), 2),  # UTC #57
+    (date(1993, 9, 9), 2),  # UTC #58
+    (date(1993, 12, 2), 2),  # UTC #59
+    (date(1994, 3, 3), 2),  # UTC #60
+    (date(1994, 6, 2), 1),  # UTC #61
+    (date(1994, 9, 30), 1),  # UTC #62
+    (date(1994, 12, 1), 1),  # UTC #63
+    (date(1995, 3, 9), 2),  # UTC #64
+    (date(1995, 6, 2), 1),  # UTC #65
+    (date(1995, 9, 29), 1),  # UTC #66
+    (date(1995, 12, 8), 1),  # UTC #67
+    (date(1996, 3, 8), 1),  # UTC #68
+    (date(1996, 6, 6), 2),  # UTC #69
+    (date(1996, 9, 7), 1),  # UTC #70
     (date(1996, 12, 5), 2), # UTC #71 https://www.unicode.org/L2/L1996/UTC71-Minutes.htm
-    (date(1997, 5, 29), 2), # UTC #72?  UTC - L2 ad hoc May 29–30, 1997
+    # https://www.unicode.org/L2/meetings/utc-meetings-early.html#joint
+    (date(1997, 5, 29), 2), # UTC #72:  UTC - L2 ad hoc May 29–30, 1997
     (date(1997, 8, 4), 2),  # UTC #73 https://www.unicode.org/L2/L1997/97255r.pdf
     (date(1997, 12, 5), 1),  # UTC #74 https://www.unicode.org/L2/L1998/98039.pdf
     (date(1998, 2, 24), 3),  # UTC #75 https://www.unicode.org/L2/L1998/98070.pdf
@@ -64,6 +94,7 @@ UTC = [
     (date(2011, 10, 31), 5),  # UTC #129
     (date(2012, 2, 6), 5),  # UTC #130
     (date(2012, 5, 7), 5),  # UTC #131
+    # https://www.unicode.org/L2/meetings/utc-meetings.html#recent
     (date(2012, 7, 30), 5),  # UTC #132
     (date(2012, 11, 5), 5),  # UTC #133
     (date(2013, 1, 28), 5),  # UTC #134
