@@ -5,7 +5,7 @@ OFFSET = 44
 UTC = [
     # https://www.unicode.org/L2/meetings/utc-meetings-early.html#UWG
     # https://www.unicode.org/L2/meetings/utc-meetings-early.html#distinct
-    (date(1991, 2, 1), 2),  # UTC #44
+    (date(1991, 2, 1), 1),  # UTC #44
     (date(1991, 2, 28), 2),  # UTC #45
     (date(1991, 3, 26), 2),  # UTC #46
     (date(1991, 6, 6), 2),  # UTC #47
@@ -153,14 +153,16 @@ next_utc = next(i for i, (date, duration) in enumerate(UTC) if date > t)
 #print(next_utc)
 days_to_next_utc = (UTC[next_utc][0] - t).days
 days_since_previous_utc = (t - UTC[next_utc - 1][0]).days
-if days_since_previous_utc < UTC[next_utc - 1][1]:
+previous_utc_duration = UTC[next_utc - 1][1]
+if days_since_previous_utc < previous_utc_duration:
     # During UTC
     n = days_since_previous_utc + 1
     print(t.strftime("%A, ") +
-        ("first" if n == 1 else
-         "second" if n == 2 else
-         "third" if n == 3 else f"{n}th") +
-         f" day of UTC #{OFFSET + next_utc - 1}")
+        (("first " if n == 1 else
+          "second " if n == 2 else
+          "third " if n == 3 else
+          f"{n}th ") if previous_utc_duration > 1 else "") +
+         f"day of UTC #{OFFSET + next_utc - 1}")
 elif days_to_next_utc <= 7:
     print(t.strftime("%A ") + f"before UTC #{OFFSET + next_utc}")
 else:
