@@ -127,15 +127,16 @@ UTC = [
     (date(2019, 10, 7), 4),  # UTC #161
     (date(2020, 1, 13), 4),  # UTC #162
     (date(2020, 4, 28), 4),  # UTC #163
-    # TODO(egg): The 2-day ones are wrong, there is a gap.
-    (date(2020, 7, 28), 2),  # UTC #164
-    (date(2020, 10, 28), 2),  # UTC #165
-    (date(2021, 1, 28), 2),  # UTC #166
-    (date(2021, 4, 28), 2),  # UTC #167
-    (date(2021, 7, 28), 2),  # UTC #168
-    (date(2021, 10, 28), 2),  # UTC #169
-    (date(2022, 1, 28), 2),  # UTC #170
-    (date(2022, 4, 28), 2),  # UTC #171
+    # Meetings with a gap in the middle:
+    (date(2020, 7, 28), 3),  # UTC #164
+    (date(2020, 10, 28), 3),  # UTC #165
+    (date(2021, 1, 28), 3),  # UTC #166
+    (date(2021, 4, 28), 3),  # UTC #167
+    (date(2021, 7, 28), 3),  # UTC #168
+    (date(2021, 10, 28), 3),  # UTC #169
+    (date(2022, 1, 28), 3),  # UTC #170
+    (date(2022, 4, 19), 3),  # UTC #171
+    # Back to connectedness.
     (date(2022, 7, 26), 3),  # UTC #172
     (date(2022, 11, 1), 3),  # UTC #173
     (date(2023, 1, 24), 3),  # UTC #174
@@ -156,13 +157,22 @@ days_since_previous_utc = (t - UTC[next_utc - 1][0]).days
 previous_utc_duration = UTC[next_utc - 1][1]
 if days_since_previous_utc < previous_utc_duration:
     # During UTC
+    utc_number = OFFSET + next_utc - 1
     n = days_since_previous_utc + 1
-    print(t.strftime("%A, ") +
-        (("first " if n == 1 else
-          "second " if n == 2 else
-          "third " if n == 3 else
-          f"{n}th ") if previous_utc_duration > 1 else "") +
-         f"day of UTC #{OFFSET + next_utc - 1}")
+    if utc_number >= 164 and utc_number <= 171:  # COVID.
+        if n == 2:
+            print(t.strftime(f"%A between the two days of UTC #{utc_number}"))
+        else:
+            print(t.strftime("%A, ") +
+                ("first " if n == 1 else "second ") +
+                f"day of UTC #{utc_number}")
+    else:
+        print(t.strftime("%A, ") +
+            (("first " if n == 1 else
+            "second " if n == 2 else
+            "third " if n == 3 else
+            f"{n}th ") if previous_utc_duration > 1 else "") +
+            f"day of UTC #{utc_number}")
 elif days_to_next_utc <= 7:
     print(t.strftime("%A ") + f"before UTC #{OFFSET + next_utc}")
 else:
