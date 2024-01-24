@@ -186,7 +186,9 @@ paragraphs = {}
 for revision, filename in sorted(revisions.items()):
   print(filename)
   with open(filename, encoding=('cp1252' if revision < 10 else'utf-8')) as f:
-    parser = TR14Parser(Version(3,0,0) if revision == 6 else None)
+    parser = TR14Parser(Version(3,0,0) if revision == 6 else
+                        Version(16, 0, 0) if revision == 52 else
+                        None)
     parser.feed(f.read())
     paragraphs[parser.version] = parser.paragraphs
     print(f"Unicode Version {parser.version}, {len(parser.paragraphs)} paragraphs")

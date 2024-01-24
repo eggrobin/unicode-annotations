@@ -545,7 +545,11 @@ PRESERVED_PARAGRAPHS = {
                       ParagraphNumber(587, 61): "split",
                       ParagraphNumber(587, 62): "LB16",
                       ParagraphNumber(587, 75): "LB28",
-                      ParagraphNumber(587, 76): "LB29",}
+                      ParagraphNumber(587, 76): "LB29"},
+  Version(16, 0, 0): {ParagraphNumber(116, 14): "The AS line break class",
+                      ParagraphNumber(248, 0, 12): "All unassigned code points",
+                      ParagraphNumber(248, 0, 13): "1F000",
+                      ParagraphNumber(352): "Dictionaries follow",},
 }
 
 ANCESTRIES = {
@@ -618,6 +622,7 @@ JUNK = {
                      ParagraphNumber(SECTION_6 + 98, 15): ["Korean", "are", "for", "line", "break", "class", "ID"]},
   Version(5, 1, 0): {ParagraphNumber(401, 17): ["after"]},
   Version(15, 1, 0): {ParagraphNumber(12): ["by", "Unicode", "other", "as", "a"]},
+  Version(16, 0, 0): {ParagraphNumber(401, 1): ["any", "break", "CM", "character"]},
 }
 
 nontrivial_versions = []
