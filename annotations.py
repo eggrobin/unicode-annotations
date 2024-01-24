@@ -133,7 +133,7 @@ ISSUES = (
             Annotation(
                 (12, 'b'),
                 "The annotations have not been considered, reviewed, nor"
-                " approved by the UTC nor indeed by anyone in particular."),
+                " approved by the UTC nor by any other Technical Committee."),
             Annotation(
                 (12, 'c'),
                 "This Annotated UAX is not a stable document."
