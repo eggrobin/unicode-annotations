@@ -541,7 +541,11 @@ PRESERVED_PARAGRAPHS = {
                       ParagraphNumber(SECTION_6 + 73): "× IN"},
   Version(15, 1, 0): {ParagraphNumber(94, 1): "The third style",
                       ParagraphNumber(94, 2): "For multilingual",
-                      ParagraphNumber(288): "Numeric characters consist of"}
+                      ParagraphNumber(288): "Numeric characters consist of",
+                      ParagraphNumber(587, 61): "split",
+                      ParagraphNumber(587, 62): "LB16",
+                      ParagraphNumber(587, 75): "LB28",
+                      ParagraphNumber(587, 76): "LB29",}
 }
 
 ANCESTRIES = {
