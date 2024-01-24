@@ -549,7 +549,8 @@ PRESERVED_PARAGRAPHS = {
   Version(16, 0, 0): {ParagraphNumber(116, 14): "The AS line break class",
                       ParagraphNumber(248, 0, 12): "All unassigned code points",
                       ParagraphNumber(248, 0, 13): "1F000",
-                      ParagraphNumber(352): "Dictionaries follow",},
+                      ParagraphNumber(352): "Dictionaries follow",
+                      ParagraphNumber(462, 0, 5): "(AK | [◌] | AS) ×",},
 }
 
 ANCESTRIES = {
