@@ -622,8 +622,9 @@ JUNK = {
                      ParagraphNumber(SECTION_6 + 98, 10): ["Hangul", "syllable", "block"],
                      ParagraphNumber(SECTION_6 + 98, 15): ["Korean", "are", "for", "line", "break", "class", "ID"]},
   Version(5, 1, 0): {ParagraphNumber(401, 17): ["after"]},
-  Version(15, 1, 0): {ParagraphNumber(12): ["by", "Unicode", "other", "as", "a"]},
-  Version(16, 0, 0): {ParagraphNumber(401, 1): ["any", "break", "CM", "character"]},
+  Version(15, 1, 0): {},
+  Version(16, 0, 0): {ParagraphNumber(12): ["by", "Unicode", "other", "as", "a"],
+                      ParagraphNumber(401, 1): ["any", "break", "CM", "character"]},
 }
 
 nontrivial_versions = []
