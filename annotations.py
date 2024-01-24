@@ -71,7 +71,7 @@ ISSUES = (
         ["175-A67"],
         [
             Discussion(
-                (11, 'a'),
+                (10, 'a'),
                 "This Annotated Line Breaking Algorithm contains the entire"
                 " text of Unicode Standard Annex #14, Unicode Line"
                 " Breaking Algorithm, plus certain annotations. The annotations"
@@ -81,13 +81,13 @@ ISSUES = (
                 " the rules (interesting to Unicode maintainers, that is). (The"
                 " text you are reading now is an annotation.)"),
             Annotation(
-                (11, 'b'),
+                (10, 'b'),
                 "The structure of this document is heavily inspired by that of"
                 " the Annotated Ada Reference Manual.  For a description of the"
                 " various kinds of annotations, see paragraphs 1(2.dd) through"
                 " 1(2.ll) in that document."),
             Annotation(
-                (11, 'c'),
+                (10, 'c'),
                 "A version number of the form /v[.v[.v]] follows the paragraph"
                 " number for any paragraph that has been modified from the"
                 " original Unicode Line Breaking Algorithm (Unicode"
@@ -107,11 +107,11 @@ ISSUES = (
                 " any text retained. Compare the Annotated Ada 2012 Reference"
                 " Manual, Introduction (77.5)."),
             Annotation(
-                (11, 'd'),
+                (10, 'd'),
                 "Annotations are numbered similarly, except that the first"
                 " insertion number is alphabetic rather than numeric."),
             Discussion(
-                (11, 'e'),
+                (10, 'e'),
                 "This document is available as an interactive web page; the bar"
                 " on the right-hand side of the document allows for the"
                 " selection of the base version from which changes are shown"
@@ -121,6 +121,25 @@ ISSUES = (
                 " number sets the head to that version and the base to the"
                 " preceding version, thus showing the changes from that"
                 " version.  These settings are reflected as URL parameters."),
+            ToBeHonest(
+                (12, 'a'),
+                "The document that has been reviewed by the UTC is the actual"
+                " UAX #14, available at"
+                " https://www.unicode.org/unicode/reports/tr14/."
+                " While the text outside of the annotations comes from that"
+                " UAX, it has been processed in a way that is not stable and"
+                " may alter its meaning; in particular, most formatting is"
+                " lost."),
+            Annotation(
+                (12, 'b'),
+                "The annotations have not been considered, reviewed, nor"
+                " approved by the UTC nor indeed by anyone in particular."),
+            Annotation(
+                (12, 'c'),
+                "This Annotated UAX is not a stable document."
+                " It has not been approved by any of the Unicode Technical"
+                " Committees, nor is it part of the Unicode Standard or any"
+                " other Unicode specification."),
             Ramification(
                 (SECTION_6 + 31, 'a'),
                 "Lines do not start with spaces, except after a hard line break"
