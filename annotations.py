@@ -960,7 +960,8 @@ ISSUES = (
               ParagraphNumber(596, 63),
           ],
           l2_docs=["L2/23-072", "L2/22-080R2", "L2/22-086"],
-          pri=["406@Tue Nov 5 18:25:35 CST 2019"]),
+          pri=["335@Thu May 4 18:29:06 CDT 2017",
+               "406@Tue Nov 5 18:25:35 CST 2019"]),
     # Update UAX #14 to point to the CLDR tailoring, for version 12.0.
     Issue(Version(12, 0, 0),
           ["173-A128"],
