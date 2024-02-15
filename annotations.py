@@ -530,7 +530,7 @@ ISSUES = (
                   " ancestor standard JIS X 4051, necessitated by the variety"
                   " of quotation mark styles across languages; see The Unicode"
                   " Standard, Chapter 6."),
-              Ramification(
+              Annotation(
                   (321, 'b'),
                   "Some rules pertaining to class QU in the algorithm may be"
                   " expressed as heuristics for its resolution into OP and CL,"
