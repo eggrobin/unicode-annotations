@@ -4568,6 +4568,60 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p321 href=#p321>321<del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-6-0-0"><ins class="paranum changed-in-5-2-0">/5.2</ins></del><ins class="paranum changed-in-6-0-0">/6</ins></a></div>
 <p><ins class="changed-in-3-0-0"></ins><ins class="changed-in-5-0-0">Note</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-3-1-0">NOTE</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-0">Note</ins></del><ins class="changed-in-3-0-0">: If language information is available, it can be used to determine which character is used as </ins><ins class="changed-in-5-0-0">the </ins><ins class="changed-in-3-0-0">opening </ins><ins class="changed-in-5-0-0">quote </ins><ins class="changed-in-3-0-0">and which as </ins><ins class="changed-in-5-0-0">the </ins><ins class="changed-in-3-0-0">closing quote. </ins><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">(</ins></del><ins class="changed-in-3-0-0">See the information in </ins><ins class="changed-in-5-0-0">Section 6.2, General Punctuation, in </ins><ins class="changed-in-4-0-0">[</ins><ins class="changed-in-6-0-0">Unicode</ins><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-0-0">Unicode5.</ins><ins class="changed-in-5-2-0">2</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-0-0">0</ins></del><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">the </ins></del><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0">Unicode</ins></del><ins class="changed-in-4-0-0">]</ins><ins class="changed-in-5-0-0">.</ins><ins class="changed-in-5-1-0"> In such a case, the quotation marks could be tailored to either OP or CL depending on their actual usage.</ins><del class="changed-in-5-0-0"><ins class="changed-in-4-0-0"> Section</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0"> Standard, Version 3.0, Chapter</ins></del><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0"> 6.</ins><ins class="changed-in-4-0-0">2, General Punctuation</ins><ins class="changed-in-4-1-0">.</ins></del><del class="changed-in-4-0-0"><ins class="changed-in-3-1-0"> [U3.0]</ins></del><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">)</ins></del></p>
 </div>
+<div class="paragraph added-in-5-1-0">
+<div class=paranum><a id=p321.a href=#p321.a>321.a<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-5-1-0 sources">
+{5.1.0: }
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-5-1-0><b>Discussion: </b></ins><ins class="changed-in-5-1-0">Class QU (for ambiguous quotation marks) is a Unicode innovation compared to the ancestor standard JIS X 4051, necessitated by the variety of quotation mark styles across languages; see The Unicode Standard, Chapter 6.</ins></p>
+</div>
+<div class="paragraph added-in-5-1-0">
+<div class=paranum><a id=p321.b href=#p321.b>321.b<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-5-1-0 sources">
+{5.1.0: }
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-5-1-0><b>Ramification: </b></ins><ins class="changed-in-5-1-0">Some rules pertaining to class QU in the algorithm may be expressed as heuristics for its resolution into OP and CL, as follows, where treating a quotation mark as both OP and CL means disallowing breaks according to both interpretations:</ins></p>
+</div>
+<div class="paragraph added-in-5-1-0">
+<div class=paranum><a id=p321.c href=#p321.c>321.c<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-5-1-0 sources">
+{5.1.0: }
+</ins>
+</div>
+<p class=annotation><ins class="changed-in-5-1-0">Treat QU as OP in QU [^SP]. (LB19)</ins></p>
+</div>
+<div class="paragraph added-in-5-1-0">
+<div class=paranum><a id=p321.d href=#p321.d>321.d<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-5-1-0 sources">
+{5.1.0: }
+</ins>
+</div>
+<p class=annotation><ins class="changed-in-5-1-0">Treat QU as CL in [^SP] QU. (LB19)</ins></p>
+</div>
+<div class="paragraph added-in-15-1-0">
+<div class=paranum><a id=p321.e href=#p321.e>321.e<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-15-1-0 sources">
+{15.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-C23">175-C23</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A71">175-A71</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-063">L2/23-063</a>}
+</ins>
+</div>
+<p class=annotation><ins class="changed-in-15-1-0">Treat Initial Punctuation (gc=Pi) as OP at the beginning of a line, at the beginning of a parenthetical or quotation, or after spaces. (LB15a)</ins></p>
+</div>
+<div class="paragraph added-in-15-1-0">
+<div class=paranum><a id=p321.e href=#p321.e>321.e<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-15-1-0 sources">
+{15.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-C23">175-C23</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A71">175-A71</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-063">L2/23-063</a>}
+</ins>
+</div>
+<p class=annotation><ins class="changed-in-15-1-0">Treat Final Punctuation (gc=Pf) as CL at the end of a line, before a prohibited break (including at the end of a parenthetical or quotation, as well as before trailing punctuation), or before spaces. (LB15b)</ins></p>
+</div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p322 href=#p322>322<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><ins class="paranum changed-in-5-2-0">/5.2</ins></a></div>
 <p><ins class="changed-in-3-0-0"></ins><ins class="changed-in-4-1-0">The QU line break class consists of characters</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">Characters</ins></del><ins class="changed-in-3-0-0"> of </ins><ins class="changed-in-5-0-0">General_Category</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-3-1-0">General Category</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-0">general category</ins></del><ins class="changed-in-3-0-0"> Pf or Pi in the Unicode Character Database </ins><ins class="changed-in-5-2-0">and additional characters, including:</ins><wbr><del class="changed-in-5-2-0"><ins class="changed-in-3-0-0">as well as</ins><ins class="changed-in-5-0-0"></ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-3-1-0">:</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-0">,</ins></del></p>
@@ -6212,69 +6266,6 @@ addEventListener('popstate', update_from_query);
 </div>
 <p><ins class="deletion-comment changed-in-15-1-0">This paragraph was deleted. </ins><del class="changed-in-15-1-0"><ins class="changed-in-5-1-0">For more information on this rule, see the note in the description for the QU class.</ins></del></p>
 </div>
-<div class="paragraph added-in-5-1-0">
-<div class=paranum><a id=p412.1.a href=#p412.1.a>412.1.a<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
-<div class=sources>
-<ins class="changed-in-5-1-0 sources">
-{5.1.0: }
-</ins>
-</div>
-<p class=annotation><ins class=changed-in-5-1-0><b>Discussion: </b></ins><ins class="changed-in-5-1-0">When a quote is known to be opening or closing, OP and CL should respectively be used.  Class QU (for ambiguous quotation marks) is a Unicode innovation compared to the ancestor standard JIS X 4051, necessitated by the variety of quotation mark styles across languages; see The Unicode Standard, Chapter 6.</ins></p>
-</div>
-<div class="paragraph added-in-5-1-0">
-<div class=paranum><a id=p412.1.b href=#p412.1.b>412.1.b<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
-<div class=sources>
-<ins class="changed-in-5-1-0 sources">
-{5.1.0: }
-</ins>
-</div>
-<p class=annotation><ins class=changed-in-5-1-0><b>Ramification: </b></ins><ins class="changed-in-5-1-0">The rules pertaining to class QU in the algorithm may be expressed as heuristics for its resolution into OP and CL, as follows, where treating a quotation mark as both OP and CL means disallowing breaks according to both interpretations:</ins></p>
-</div>
-<div class="paragraph added-in-5-1-0">
-<div class=paranum><a id=p412.1.c href=#p412.1.c>412.1.c<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
-<div class=sources>
-<ins class="changed-in-5-1-0 sources">
-{5.1.0: }
-</ins>
-</div>
-<p class=annotation><ins class="changed-in-5-1-0">Treat QU as OP in QU SP+ OP. (LB15)</ins></p>
-</div>
-<div class="paragraph added-in-5-1-0">
-<div class=paranum><a id=p412.1.d href=#p412.1.d>412.1.d<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
-<div class=sources>
-<ins class="changed-in-5-1-0 sources">
-{5.1.0: }
-</ins>
-</div>
-<p class=annotation><ins class="changed-in-5-1-0">Treat QU as OP in QU [^SP]. (LB19)</ins></p>
-</div>
-<div class="paragraph added-in-5-1-0">
-<div class=paranum><a id=p412.1.e href=#p412.1.e>412.1.e<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
-<div class=sources>
-<ins class="changed-in-5-1-0 sources">
-{5.1.0: }
-</ins>
-</div>
-<p class=annotation><ins class="changed-in-5-1-0">Treat QU as CL in [^SP] QU. (LB19)</ins></p>
-</div>
-<div class="paragraph added-in-5-1-0">
-<div class=paranum><a id=p412.1.f href=#p412.1.f>412.1.f<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
-<div class=sources>
-<ins class="changed-in-5-1-0 sources">
-{5.1.0: }
-</ins>
-</div>
-<p class=annotation><ins class=changed-in-5-1-0><b>Discussion: </b></ins><ins class="changed-in-5-1-0">While the latter two heuristics are self-explanatory, the first one (LB15) is weird.  It applies to cases such as the opening quotation mark in « [Le livre] tuera [l’édifice] », but not to the closing quotation mark. It can misfire, as in “All Gaul is divided into three parts” ×(Caes. BGall. 1.1.1).</ins></p>
-</div>
-<div class="paragraph added-in-5-1-0">
-<div class=paranum><a id=p412.1.g href=#p412.1.g>412.1.g<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
-<div class=sources>
-<ins class="changed-in-5-1-0 sources">
-{5.1.0: }
-</ins>
-</div>
-<p class=annotation><ins class="changed-in-5-1-0"> Generally, whereas the algorithm correctly deals with spaces before French !?:;, it does not prevent break opportunities inside of French quotation marks, unless no-break space is used.</ins></p>
-</div>
 <div class="paragraph added-in-15-1-0">
 <div class=paranum><a id=p412.2 href=#p412.2>412.2<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
 <div class=sources>
@@ -6294,6 +6285,15 @@ addEventListener('popstate', update_from_query);
 <p class=formula><ins class="changed-in-15-1-0">(sot | BK | CR | LF | NL | OP | QU | GL | SP | ZW) [\p{Pi}&amp;QU] SP* ×</ins></p>
 </div>
 <div class="paragraph added-in-15-1-0">
+<div class=paranum><a id=p412.3.a href=#p412.3.a>412.3.a<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-15-1-0 sources">
+{15.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-C23">175-C23</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A71">175-A71</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-063">L2/23-063</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-15-1-0><b>Ramification: </b></ins><ins class="changed-in-15-1-0">Ramification: This rule requires extended context.</ins></p>
+</div>
+<div class="paragraph added-in-15-1-0">
 <div class=paranum><a id=p412.4 href=#p412.4>412.4<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
 <div class=sources>
 <ins class="changed-in-15-1-0 sources">
@@ -6310,6 +6310,15 @@ addEventListener('popstate', update_from_query);
 </ins>
 </div>
 <p class=formula><ins class="changed-in-15-1-0">× [\p{Pf}&amp;QU] ( SP | GL | WJ | CL | QU | CP | EX | IS | SY | BK | CR | LF | NL | ZW | eot)</ins></p>
+</div>
+<div class="paragraph added-in-15-1-0">
+<div class=paranum><a id=p412.5.a href=#p412.5.a>412.5.a<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-15-1-0 sources">
+{15.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-C23">175-C23</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A71">175-A71</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-063">L2/23-063</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-15-1-0><b>Ramification: </b></ins><ins class="changed-in-15-1-0">Ramification: This rule requires extended context.</ins></p>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p413 href=#p413>413<del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
@@ -7423,6 +7432,15 @@ addEventListener('popstate', update_from_query);
 </ins>
 </div>
 <p class=formula><ins class="changed-in-15-1-0">(AK | ◌ | AS) × (AK | ◌ | AS) VF</ins></p>
+</div>
+<div class="paragraph added-in-15-1-0">
+<div class=paranum><a id=p462.0.5.a href=#p462.0.5.a>462.0.5.a<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-15-1-0 sources">
+{15.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?162-A43">162-A43</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-C23">175-C23</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A71">175-A71</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A79">175-A79</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-072">L2/23-072</a>,<a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/22-080R2">L2/22-080R2</a>,<a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/22-086">L2/22-086</a>; <a href="https://www.unicode.org/review/pri335/feedback.html#:~:text=Thu May 4 18:29:06 CDT 2017">PRI-335@Thu May 4 18:29:06 CDT 2017</a>,<a href="https://www.unicode.org/review/pri406/feedback.html#:~:text=Tue Nov 5 18:25:35 CST 2019">PRI-406@Tue Nov 5 18:25:35 CST 2019</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-15-1-0><b>Ramification: </b></ins><ins class="changed-in-15-1-0">Ramification: This rule requires extended context.</ins></p>
 </div>
 <div class="paragraph added-in-4-0-1">
 <div class=paranum><a id=p462.1 href=#p462.1>462.1<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-5-0-0">/5</ins></a></div>
