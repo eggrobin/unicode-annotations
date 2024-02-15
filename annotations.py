@@ -864,12 +864,20 @@ ISSUES = (
                   " before a prohibited break (including at the end of a"
                   " parenthetical or quotation, as well as before trailing"
                   " punctuation), or before spaces. (LB15b)"),
+              Annotation(
+                (46, 0, 1, 'c', 1),
+                " Implementations based on state machines may require special"
+                " treatment for rules of the form A # B C or similar that"
+                " require more than one character of lookahead beyond the"
+                " break. These are annotated with “Ramification: This"
+                " rule requires extended context after the break.”."),
               Ramification(
                   (412, 3, 'a'),
                   "Ramification: This rule requires extended context."),
               Ramification(
                   (412, 5, 'a'),
-                  "Ramification: This rule requires extended context."),
+                  "Ramification: This rule requires extended context after the"
+                  " break."),
           ],
           paragraphs=[
               ParagraphNumber(411),
@@ -884,11 +892,12 @@ ISSUES = (
           l2_docs=["L2/23-063"]),
     # Orthographic syllables.
     Issue(Version(15, 1, 0),
-          ["162-A43", "175-C23", "175-A71", "175-A79"],
+          ["162-A43", "175-C27", "175-A77", "175-A79"],
           [
             Ramification(
                   (462, 0, 5, 'a'),
-                  "Ramification: This rule requires extended context."),
+                  "Ramification: This rule requires extended context after the"
+                  " break."),
           ],
           paragraphs=[
               ParagraphNumber(79, 1, 2),
