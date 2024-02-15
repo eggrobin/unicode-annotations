@@ -524,43 +524,25 @@ ISSUES = (
           [],
           [
               Discussion(
-                  (SECTION_6 + 51, 1, 'a'),
-                  "When a quote is known to be opening or closing, OP and CL"
-                  " should respectively be used.  Class QU (for ambiguous"
+                  (321, 'a'),
+                  "Class QU (for ambiguous"
                   " quotation marks) is a Unicode innovation compared to the"
                   " ancestor standard JIS X 4051, necessitated by the variety"
                   " of quotation mark styles across languages; see The Unicode"
                   " Standard, Chapter 6."),
-              Ramification(
-                  (SECTION_6 + 51, 1, 'b'),
-                  "The rules pertaining to class QU in the algorithm may be"
+              Annotation(
+                  (321, 'b'),
+                  "Some rules pertaining to class QU in the algorithm may be"
                   " expressed as heuristics for its resolution into OP and CL,"
                   " as follows, where treating a quotation mark as both OP and"
                   " CL means disallowing breaks according to both"
                   " interpretations:"),
               Annotation(
-                  (SECTION_6 + 51, 1, 'c'),
-                  "Treat QU as OP in QU SP+ OP. (LB15)"),
-              Annotation(
-                  (SECTION_6 + 51, 1, 'd'),
+                  (321, 'c'),
                   "Treat QU as OP in QU [^SP]. (LB19)"),
               Annotation(
-                  (SECTION_6 + 51, 1, 'e'),
+                  (321, 'd'),
                   "Treat QU as CL in [^SP] QU. (LB19)"),
-              Discussion(
-                  (SECTION_6 + 51, 1, 'f'),
-                  "While the latter two heuristics are self-explanatory, the"
-                  " first one (LB15) is weird.  It applies to cases such"
-                  " as the opening quotation mark in « [Le livre] tuera"
-                  " [l’édifice] », but not to the closing quotation mark."
-                  " It can misfire, as in “All Gaul is divided into three"
-                  " parts” ×(Caes. BGall. 1.1.1)."),
-              Annotation(
-                  (SECTION_6 + 51, 1, 'g'),
-                  " Generally, whereas the algorithm correctly deals with"
-                  " spaces before French !?:;, it does not prevent break"
-                  " opportunities inside of French quotation marks, unless"
-                  " no-break space is used."),
 
           ],
           paragraphs=[
@@ -870,6 +852,33 @@ ISSUES = (
     # Line breaking around quotation marks.
     Issue(Version(15, 1, 0),
           ["175-C23", "175-A71"],
+          [
+              Annotation(
+                  (321, 'e'),
+                  "Treat Initial Punctuation (gc=Pi) as OP at the beginning of"
+                  " a line, at the beginning of a parenthetical or quotation,"
+                  " or after spaces. (LB15a)"),
+              Annotation(
+                  (321, 'e'),
+                  "Treat Final Punctuation (gc=Pf) as CL at the end of a line,"
+                  " before a prohibited break (including at the end of a"
+                  " parenthetical or quotation, as well as before trailing"
+                  " punctuation), or before spaces. (LB15b)"),
+              Annotation(
+                (46, 0, 1, 'c', 1),
+                " Implementations based on state machines may require special"
+                " treatment for rules of the form A # B C or similar that"
+                " require more than one character of lookahead beyond the"
+                " break. These are annotated with “Ramification: This"
+                " rule requires extended context after the break.”."),
+              Ramification(
+                  (412, 3, 'a'),
+                  "Ramification: This rule requires extended context."),
+              Ramification(
+                  (412, 5, 'a'),
+                  "Ramification: This rule requires extended context after the"
+                  " break."),
+          ],
           paragraphs=[
               ParagraphNumber(411),
               ParagraphNumber(412),
@@ -883,7 +892,13 @@ ISSUES = (
           l2_docs=["L2/23-063"]),
     # Orthographic syllables.
     Issue(Version(15, 1, 0),
-          ["162-A43", "175-C23", "175-A71", "175-A79"],
+          ["162-A43", "175-C27", "175-A77", "175-A79"],
+          [
+            Ramification(
+                  (462, 0, 5, 'a'),
+                  "Ramification: This rule requires extended context after the"
+                  " break."),
+          ],
           paragraphs=[
               ParagraphNumber(79, 1, 2),
               ParagraphNumber(79, 3, 1),
