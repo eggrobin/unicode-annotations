@@ -44,7 +44,7 @@
   <table class="simple" width="90%">
     <tr>
       <td width="20%">Version</td>
-      <td>Unicode 1<span class="changed">6.0.0 (draft 4)</span></td>
+      <td>Unicode 1<span class="changed">6.0.0 (draft 5)</span></td>
     </tr>
     <tr>
       <td>Editors</td>
@@ -52,7 +52,7 @@
     </tr>
     <tr>
       <td>Date</td>
-      <td>202<span class="changed">4-01-31</span></td>
+      <td>202<span class="changed">4-05-08</span></td>
     </tr>
     <tr>
       <td>This Version</td>
@@ -163,7 +163,7 @@
 		<li>9.2&nbsp; <a href="#LegacySpace">Legacy Support for Space Character as Base for Combining Marks</a></li>
 	</ul></li>
     <li>10&nbsp; <a href="#Testing">Testing</a></li>
-    <li>11&nbsp; <a href="#RuleNumbering">Rule Numbering Across Versions</a></li>
+    <li>11&nbsp; <a href="#History"><span class="changed">History</span><span class="removed">Rule Numbering Across Versions</span></a></li>
     <li><a href="#References">References</a></li>
     <li><a href="#Acknowledgments">Acknowledgments</a></li>
     <li><a href="#Modifications">Modifications</a></li>
@@ -223,9 +223,12 @@
 	<li><i>Section 10,
 	    <a href="#Testing">Testing</a></i>, describes the test data file that is available
 	    for checking implementations of the line breaking algorithm.</li>
-	<li><i>Section 11,
-	    <a href="#RuleNumbering">Rule Numbering Across Versions</a></i>, documents changes in the numbering of
-	    the line breaking rules across Unicode versions.</li>
+	<li><i>Section 11,</i><span class="changed">
+  <i><a href="#History">History</a></i>, provides references to additional
+  documentation for investigating changes to the algorithm across Unicode
+  versions.</span><span class="removed">
+  <i><a href="#RuleNumbering">Rule Numbering Across Versions</a></i>, documents changes in the numbering of
+	    the line breaking rules across Unicode versions.</span></li>
     </ul>
 
   <!--
@@ -510,7 +513,7 @@
       <td class="graymiddle" width="5%" valign="top"><a class="charclass" href="#QU">QU</a></td>
       <td class="graymiddle" width="23%" valign="top"><i>Quotation</i></td>
       <td class="graymiddle" width="22%" valign="top">Quotation marks</td>
-      <td class="graymiddle" width="44%" valign="top">Act like they are both opening and closing</td>
+      <td class="graymiddle" width="44%" valign="top">Act like they are <span class="removed">both </span>opening<span class="changed">,</span><span class="removed"> and</span> closing<span class="changed">, or both</span></td>
     </tr>
     <tr>
       <td class="graymiddle" valign="top" colspan="4" style="border-bottom-style: solid; border-bottom-width: 1px">
@@ -947,10 +950,17 @@
 
 <h3>5.1 <a name="DescriptionOfProperties" href="#DescriptionOfProperties">Description of Line Breaking Properties</a></h3>
 
-  <p>Line breaking classes are listed alphabetically. Each line breaking class
-	is marked with an annotation in parentheses with the following meanings:</p>
+  <p>Line breaking classes are listed alphabetically.<span class="changed">
+  For each line breaking class, the rules that explicitly reference that class
+  are listed in italics above the description of the class.
+  Note that characters in these classes may be involved in other rules;
+  for instance, rule <a href="#LB31">LB31</a> can apply to characters with
+  almost any line breaking class,
+  but it does not list any line breaking class explicitly.</span><span class="removed">
+  Each line breaking class
+	is marked with an annotation in parentheses with the following meanings:</span></p>
 
-<div align="center">
+<div class="removed" align="center">
 	<table class="subtle">
 		<tr>
 			<th>Label</th>
@@ -983,7 +993,7 @@
 	</table>
 </div>
 
-<blockquote>
+<blockquote class="removed">
     <p><span class="note">Note:</span> The use of the letters <b>B</b> and <b>A</b> in these annotations
 	marks the position of the break opportunity relative to the character. It is
 	not to be confused with the use of the same letters in the other parts of
@@ -992,6 +1002,7 @@
 </blockquote>
 
   <h3><b><a name="AI" href="#AI">AI</a></b>: Ambiguous (Alphabetic or Ideograph)</h3>
+  <p class="changed"><i><a href="#LB1">LB1</a></i></p>
   <p>Some characters that ordinarily act like
 	alphabetic characters are treated like ideographs (line breaking class
 	<a class="charclass" href="#ID"> ID</a>) in certain East Asian legacy contexts.
@@ -1071,7 +1082,8 @@
 	    increasingly like regular alphabetic characters.</p>
 	    </blockquote>
 
-<h3><b><a name="AK" href="#AK">AK</a></b>: Aksara (XB/XA)</h3>
+<h3><b><a name="AK" href="#AK">AK</a></b>: Aksara<span class="removed"> (XB/XA)</span></h3>
+      <p class="changed"><i><a href="#LB28a">LB28a</a></i></p>
       <p>The <a class="charclass" href="#AK">AK</a> line break class is used for scripts that use the Brahmic style of context analysis and have a virama of Indic syllabic category Virama or Invisible_Stacker.
         It contains characters that can occur as the bases of orthographic syllables and can also follow a virama of Indic syllabic category Virama or Invisible_Stacker within the same orthographic syllable.
         Depending on the script, this may include characters with the Indic syllabic categories Consonant, Vowel_Independent, or Number.</p>
@@ -1139,7 +1151,8 @@
           </tr>
         </table>
 
-<h3><b><a name="AL" href="#AL">AL</a></b>: Ordinary Alphabetic and Symbol Characters (XP)</h3>
+<h3><b><a name="AL" href="#AL">AL</a></b>: Ordinary Alphabetic and Symbol Characters<span class="removed"> (XP)</span></h3>
+      <p class="changed"><i><a href="#LB1">LB1</a>, <a href="#LB10">LB10</a>, <a href="#LB20a">LB20a</a>, <a href="#LB23">LB23</a>, <a href="#LB24">LB24</a>, <a href="#LB28">LB28</a>, <a href="#LB29">LB29</a>, <a href="#LB30">LB30</a></i></p>
       <p>Ordinary characters require other characters to provide break opportunities; otherwise, no
         line breaks are allowed between pairs of them. However, this behavior is tailorable. In
 	some Far Eastern documents, it may be desirable to allow breaking between
@@ -1209,7 +1222,8 @@ ID for  certain pictographic symbols<br>
 CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, JT, H2 or H3 for Hangul characters</p>
     </blockquote>
 
-<h3><b><a name="AP" href="#AP">AP</a></b>: Aksara Pre-Base (B/XA)</h3>
+<h3><b><a name="AP" href="#AP">AP</a></b>: Aksara Pre-Base<span class="removed"> (B/XA)</span></h3>
+      <p class="changed"><i><a href="#LB28a">LB28a</a></i></p>
       <p>The <a class="charclass" href="#AP">AP</a> line break class is only used for scripts that use the Brahmic style of context analysis.
             It contains the characters of such scripts that are part of an orthographic syllable but in logical order precede the base or any half-forms.
             This includes characters with the Indic syllabic categories Consonant_Preceding_Repha, Consonant_With_Stacker, and Consonant_Prefixed.</p>
@@ -1225,7 +1239,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
           </tr>
         </table>
 
-<h3><b><a name="AS" href="#AS">AS</a></b>: Aksara Start (XB/XA)</h3>
+<h3><b><a name="AS" href="#AS">AS</a></b>: Aksara Start<span class="removed"> (XB/XA)</span></h3>
+      <p class="changed"><i><a href="#LB28a">LB28a</a></i></p>
       <p>The <a class="charclass" href="#AS">AS</a> line break class is only used for scripts that use the Brahmic style of context analysis.
             It contains characters that can occur as the bases of orthographic syllables, but cannot follow a virama of Indic syllabic category Virama or Invisible_Stacker within the same orthographic syllable.
             Depending on the script, this may include characters with the Indic syllabic categories Consonant, Vowel_Independent,<span class="removed"> Number</span>, and several others.<span class="changed">
@@ -1280,7 +1295,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
           </tr>
         </table>
 
-<h3><b><a name="BA" href="#BA">BA</a></b>: Break After (A)</h3>
+<h3><b><a name="BA" href="#BA">BA</a></b>: Break After<span class="removed"> (A)</span></h3>
+  <p class="changed"><i><a href="#LB12a">LB12a</a>, <a href="#LB21">LB21</a>, <a href="#LB21a">LB21a</a></i></p>
   <p>Like SPACE, the characters in this class provide a break opportunity; unlike
 	SPACE, they do not take part in determining indirect breaks.
       They can be subdivided into several categories.</p>
@@ -1856,7 +1872,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
       </tr>
     </table>
 
-<h3><b><a name="BB" href="#BB">BB</a></b>: Break Before (B)</h3>
+<h3><b><a name="BB" href="#BB">BB</a></b>: Break Before<span class="removed"> (B)</span></h3>
+  <p class="changed"><i><a href="#LB21">LB21</a></i></p>
 	<p>Characters of this line break class move to the next line at a line break
 	 and thus provide a line break opportunity before.</p>
 
@@ -1979,7 +1996,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
   SOFT HYPHEN,
   but rather a visible character like a regular hyphen. Unlike the hyphen, MONGOLIAN TODO SOFT HYPHEN stays with the following line. Whenever optional line breaks are to be marked invisibly,
   SOFT HYPHEN should be used instead.</p>
-  <h3 style="margin-bottom:.5em"><b><a name="B2" href="#B2">B2</a></b>: Break Opportunity Before and After (B/A/XP)</h3>
+  <h3 style="margin-bottom:.5em"><b><a name="B2" href="#B2">B2</a></b>: Break Opportunity Before and After<span class="removed"> (B/A/XP)</span></h3>
+  <p class="changed"><i><a href="#LB17">LB17</a></i></p>
   <table class="noborder">
     <tr>
       <td class="nb-la">2014</td>
@@ -2002,7 +2020,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
          In this usage there is space on the side where it can be broken. This does not conflict with
          symmetrical usages, either with spaces  on both sides of the em-dash or with no spaces.</p>
 
-  <h3><b><a name="BK" href="#BK">BK</a></b>: Mandatory Break (A) (Non-tailorable)</h3>
+  <h3><b><a name="BK" href="#BK">BK</a></b>: Mandatory Break<span class="removed"> (A)</span> (Non-tailorable)</h3>
+  <p class="changed"><i><a href="#LB4">LB4</a>, <a href="#LB6">LB6</a>, <a href="#LB9">LB9</a>, <a href="#LB15a">LB15a</a>, <a href="#LB15b">LB15b</a>, <a href="#LB20a">LB20a</a></i></p>
   <p>Explicit breaks act independently of the surrounding characters.
 	No characters can be added to the <a class="charclass" href="#BK">BK</a> class as
 	part of tailoring, but implementations are not required to support the VT
@@ -2062,7 +2081,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
 	or <a class="charclass" href="#CR">CR</a>, but not between
 	<a class="charclass" href="#CR">CR</a> and <a class="charclass" href="#LF"> LF</a>.</p>
 
-<h3><b><a name="CB" href="#CB">CB</a></b>: Contingent Break Opportunity (B/A)</h3>
+<h3><b><a name="CB" href="#CB">CB</a></b>: Contingent Break Opportunity<span class="removed"> (B/A)</span></h3>
+  <p class="changed"><i><a href="#LB1">LB1</a>, <a href="#LB20">LB20</a>, <a href="#LB20a">LB20a</a></i></p>
   <p>By default, there is a break opportunity both <i>before</i> and <i>after</i>
 	any inline object. Object-specific line breaking behavior is implemented in
 	the associated object itself, and where available can override the default
@@ -2080,6 +2100,7 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
 	another class.</p>
 
 <h3><b><a name="CJ" href="#CJ">CJ</a></b>: Conditional Japanese Starter</h3>
+  <p class="changed"><i><a href="#LB1">LB1</a></i></p>
    <p>This character class contains Japanese small hiragana and katakana. Characters of this class may be treated
       as either <a class="charclass" href="#NS">NS</a> or <a class="charclass" href="#ID">ID</a>.</p>
    <p>CSS Text Level 3 (which supports Japanese line layout) defines three distinct values
@@ -2119,7 +2140,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
    </table>
 
 
-<h3><b><a name="CL" href="#CL">CL</a></b>: Close Punctuation (XB)</h3>
+<h3><b><a name="CL" href="#CL">CL</a></b>: Close Punctuation<span class="removed"> (XB)</span></h3>
+  <p class="changed"><i><a href="#LB13">LB13</a>, <a href="#LB15b">LB15b</a>, <a href="#LB16">LB16</a>, <a href="#LB25">LB25</a></i></p>
   <p>The closing character of any set of paired punctuation should be kept with
       the preceding character, and the same applies to all forms of wide comma and
       full stop. This is desirable, even when there are
@@ -2140,6 +2162,10 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
     <tr>
       <td class="nb-la">3001..3002</td>
       <td class="nb-lb">IDEOGRAPHIC COMMA..IDEOGRAPHIC FULL STOP</td>
+    </tr>
+    <tr class="changed">
+      <td class="nb-la"><span class="changed">FE10</span></td>
+      <td class="nb-lb"><span class="changed">PRESENTATION FORM FOR VERTICAL COMMA</span></td>
     </tr>
     <tr>
       <td class="nb-la">FE11</td>
@@ -2175,7 +2201,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
     </tr>
   </table>
 
-<h3><b><a name="CM" href="#CM">CM</a></b>: Combining Mark (XB) (Non-tailorable)</h3>
+<h3><b><a name="CM" href="#CM">CM</a></b>: Combining Mark<span class="removed"> (XB)</span> (Non-tailorable)</h3>
+  <p class="changed"><i><a href="#LB1">LB1</a>, <a href="#LB9">LB9</a>, <a href="#LB10">LB10</a></i></p>
   <h4>Combining Characters</h4>
   <p>Combining character sequences are treated as units for the purpose of line
   breaking. The line breaking behavior of the sequence is that of the base
@@ -2234,7 +2261,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
        or U+3034 VERTICAL KANA REPEAT WITH VOICED SOUND MARK UPPER HALF,
        and should not be separated from them.</p>
 
-<h3><b><a name="CP" href="#CP">CP</a></b>: Closing Parenthesis (XB)</h3>
+<h3><b><a name="CP" href="#CP">CP</a></b>: Closing Parenthesis<span class="removed"> (XB)</span></h3>
+  <p class="changed"><i><a href="#LB13">LB13</a>, <a href="#LB15b">LB15b</a>, <a href="#LB16">LB16</a>, <a href="#LB25">LB25</a>, <a href="#LB30">LB30</a></i></p>
    <p>This class contains just two characters, U+0029 RIGHT PARENTHESIS
         and U+005D RIGHT SQUARE BRACKET.
         Characters of class <a class="charclass" href="#CP">CP</a> differ from those of the
@@ -2255,7 +2283,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
   </table>
 
 
-<h3 style="margin-bottom:.5em"><b><a name="CR" href="#CR">CR</a></b>: Carriage Return (A) (Non-tailorable)</h3>
+<h3 style="margin-bottom:.5em"><b><a name="CR" href="#CR">CR</a></b>: Carriage Return<span class="removed"> (A)</span> (Non-tailorable)</h3>
+  <p class="changed"><i><a href="#LB5">LB5</a>, <a href="#LB6">LB6</a>, <a href="#LB9">LB9</a>, <a href="#LB15a">LB15a</a>, <a href="#LB15b">LB15b</a>, <a href="#LB20a">LB20a</a></i></p>
   <table class="noborder">
     <tr>
       <td class="nb-la">000D</td>
@@ -2281,7 +2310,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
             the plain text content.</p>
     </blockquote>
 
-<h3><b><a name="EB" href="#EB">EB</a></b>: Emoji Base (B/A)</h3>
+<h3><b><a name="EB" href="#EB">EB</a></b>: Emoji Base<span class="removed"> (B/A)</span></h3>
+   <p class="changed"><i><a href="#LB23a">LB23a</a>, <a href="#LB30b">LB30b</a></i></p>
   <p>This class includes characters whose appearance can be modified by a subsequent emoji modifier
       in an emoji modifier sequence. This class directly corresponds to the
       Emoji_Modifier_Base property as defined in <i>Section 1.4.4 Emoji Modifiers</i> of
@@ -2305,7 +2335,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
              In other contexts, characters of class EB behave similarly to ideographs of class
              <a class="charclass" href="#ID">ID</a>, with break opportunities before and after.</p>
 
-<h3><b><a name="EM" href="#EM">EM</a></b>: Emoji Modifier (A)</h3>
+<h3><b><a name="EM" href="#EM">EM</a></b>: Emoji Modifier<span class="removed"> (A)</span></h3>
+  <p class="changed"><i><a href="#LB23a">LB23a</a>, <a href="#LB30b">LB30b</a></i></p>
   <p>This class includes characters that can be used to modify
       the appearance of a preceding emoji in an emoji modifier sequence.
       This class directly corresponds to the Emoji_Modifier property
@@ -2321,7 +2352,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
   </table>
 
 
-<h3><b><a name="EX" href="#EX">EX</a></b>: Exclamation/Interrogation (XB)</h3>
+<h3><b><a name="EX" href="#EX">EX</a></b>: Exclamation/Interrogation<span class="removed"> (XB)</span></h3>
+  <p class="changed"><i><a href="#LB13">LB13</a>, <a href="#LB15b">LB15b</a></i></p>
   <p>Characters in this line break class behave like closing characters, except in relation to postfix
     (<a class="charclass" href="#PO">PO</a>) and
       non-starter characters (<a class="charclass" href="#NS">NS</a>).
@@ -2374,7 +2406,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
 
     </table>
 
-<h3><b><a name="GL" href="#GL">GL</a></b>: Non-breaking (“Glue”) (XB/XA) (Non-tailorable)</h3>
+<h3><b><a name="GL" href="#GL">GL</a></b>: Non-breaking (“Glue”)<span class="removed"> (XB/XA)</span> (Non-tailorable)</h3>
+  <p class="changed"><i><a href="#LB12">LB12</a>, <a href="#LB12a">LB12a</a>, <a href="#LB15a">LB15a</a>, <a href="#LB15b">LB15b</a>, <a href="#LB20a">LB20a</a></i></p>
   <p>Non-breaking characters prohibit breaks on either
 	side, but that prohibition can be overridden by <a class="charclass" href="#SP"> SP</a> or
       <a class="charclass" href="#ZW">ZW</a>.
@@ -2503,7 +2536,50 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
   <p>These diacritics span two characters, so no word or line breaks are
 	possible on either side.</p>
 
-<h3><b><a name="H2" href="#H2">H2</a></b>: Hangul LV Syllable (B/A)</h3>
+<div class="changed">
+  <table class="noborder">
+    <tr>
+      <td class="nb-la">FE20</td>
+      <td class="nb-lb">COMBINING LIGATURE LEFT HALF</td>
+    </tr><tr>
+      <td class="nb-la">FE22</td>
+      <td class="nb-lb">COMBINING DOUBLE TILDE LEFT HALF</td>
+    </tr><tr>
+      <td class="nb-la">FE24</td>
+      <td class="nb-lb">COMBINING MACRON LEFT HALF</td>
+    </tr><tr>
+      <td class="nb-la">FE27</td>
+      <td class="nb-lb">COMBINING LIGATURE LEFT HALF BELOW</td>
+    </tr><tr>
+      <td class="nb-la">FE29</td>
+      <td class="nb-lb">COMBINING TILDE LEFT HALF BELOW</td>
+    </tr><tr>
+      <td class="nb-la">FE2B</td>
+      <td class="nb-lb">COMBINING MACRON LEFT HALF BELOW</td>
+    </tr><tr>
+      <td class="nb-la">FE2E</td>
+      <td class="nb-lb">COMBINING CYRILLIC TITLO LEFT HALF</td>
+    </tr><tr>
+      <td class="nb-la">FE26</td>
+      <td class="nb-lb">COMBINING CONJOINING MACRON</td>
+    </tr><tr>
+      <td class="nb-la">FE2D</td>
+      <td class="nb-lb">COMBINING CONJOINING MACRON BELOW</td>
+    </tr>
+  </table>
+  <p>The left half diacritics are part of a legacy representation of the
+  double diacritics; they occur between the two characters spanned by the double
+  diacritic. Preventing breaks on either side therefore achieves the same
+  line breaking behaviour as when using the preferred representation
+  U+035C..U+0362.</p>
+  <p>In addition, the conjoining macrons above and below, together with left and
+  right half marks, form marks spanning more than two characters; likewise no
+  line break occurs within such spans.</p>
+</div>
+
+
+<h3><b><a name="H2" href="#H2">H2</a></b>: Hangul LV Syllable<span class="removed"> (B/A)</span></h3>
+  <p class="changed"><i><a href="#LB26">LB26</a>, <a href="#LB27">LB27</a></i></p>
 	<p>This class includes all characters of Hangul Syllable Type LV.</p>
 	<p>Together with conjoining jamos, Hangul syllables form Korean Syllable Blocks, which are kept together; see
 	   Unicode Standard Annex #29, “Unicode Text Segmentation” [<a href="../tr41/tr41-32.html#UAX29">UAX29</a>].
@@ -2517,13 +2593,15 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
 	    <a class="charclass" href="#JV">JV</a>, and
 	    <a class="charclass" href="#H3">H3</a>.</p>
 
-  <h3><b><a name="H3" href="#H3">H3</a></b>: Hangul LVT Syllable (B/A)</h3>
+  <h3><b><a name="H3" href="#H3">H3</a></b>: Hangul LVT Syllable<span class="removed"> (B/A)</span></h3>
+  <p class="changed"><i><a href="#LB26">LB26</a>, <a href="#LB27">LB27</a></i></p>
   <p>This class includes all characters of Hangul Syllable Type LVT. See also <a class="charclass" href="#JL">JL</a>,
 	<a class="charclass" href="#JT">JT</a>,
 	<a class="charclass" href="#JV">JV</a>, and
 	<a class="charclass" href="#H2">H2</a>.</p>
 
-  <h3><b><a name="HY" href="#HY">HY</a></b>: Hyphen (XA)</h3>
+  <h3><b><a name="HY" href="#HY">HY</a></b>: Hyphen<span class="removed"> (XA)</span></h3>
+  <p class="changed"><i><a href="#LB12a">LB12a</a>, <a href="#LB20a">LB20a</a>, <a href="#LB21">LB21</a>, <a href="#LB21a">LB21a</a>, <a href="#LB25">LB25</a></i></p>
   <table class="noborder">
     <tr>
       <td class="nb-la">002D</td>
@@ -2543,7 +2621,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
             runs explicitly.</p>
   </blockquote>
 
-<h3><b><a name="ID" href="#ID">ID</a></b>: Ideographic (B/A)</h3>
+<h3><b><a name="ID" href="#ID">ID</a></b>: Ideographic<span class="removed"> (B/A)</span></h3>
+  <p class="changed"><i><a href="#LB23a">LB23a</a></i></p>
 
   <p>Characters with this property do not require other characters to provide break opportunities;
     lines can ordinarily break before and after and between pairs of ideographic characters.
@@ -2650,18 +2729,21 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
         <p>Certain pictographic symbols of General Category So
            are also included in this line break class.</p>
 
-<h3><b><a name="HL" href="#HL">HL</a></b>: Hebrew Letter (XB)</h3>
+<h3><b><a name="HL" href="#HL">HL</a></b>: Hebrew Letter<span class="removed"> (XB)</span></h3>
+  <p class="changed"><i><a href="#LB21a">LB21a</a>, <a href="#LB21b">LB21b</a>, <a href="#LB23">LB23</a>, <a href="#LB24">LB24</a>, <a href="#LB28">LB28</a>, <a href="#LB29">LB29</a>, <a href="#LB30">LB30</a></i></p>
   <p>This class includes all Hebrew letters.</p>
 
-  <p>When a Hebrew letter is followed by a hyphen, there is no break on either side of the hyphen.
+  <p>When a Hebrew letter is<span class="changed"> separated from</span> follow<span class="changed">ing</span><span class="removed">ed</span><span class="changed"> non-Hebrew text</span> by a hyphen, there is no break on either side of the hyphen.
      In this context a hyphen is any character of class <a class="charclass" href="#HY">HY</a>
-     or class <a class="charclass" href="#BA">BA</a>.
+     or class <a class="charclass" href="#BA">BA</a>.<span class="changed">
+     There is also no break between a solidus and a Hebrew letter.</span>
      In other respects, Hebrew letters behave the same as characters of class
      <a class="charclass" href="#AL">AL</a>.</p>
      <p>Included in this class are all characters of General Category Letter that have Script=Hebrew.</p>
 
 
-<h3><b><a name="IN" href="#IN">IN</a></b>: Inseparable Characters (XP)</h3>
+<h3><b><a name="IN" href="#IN">IN</a></b>: Inseparable Characters<span class="removed"> (XP)</span></h3>
+  <p class="changed"><i><a href="#LB22">LB22</a></i></p>
   <h4>Leaders</h4>
   <p>These characters are intended to be used consecutively.
      There is never a line break between two characters of this class.</p>
@@ -2688,7 +2770,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
   </table>
   <p>HORIZONTAL ELLIPSIS can be used as a three-dot leader.</p>
 
-<h3><b><a name="IS" href="#IS">IS</a></b>: Infix Numeric Separator (XB)</h3>
+<h3><b><a name="IS" href="#IS">IS</a></b>: Infix Numeric Separator<span class="removed"> (XB)</span></h3>
+  <p class="changed"><i><a href="#LB15b">LB15b</a>, <a href="#LB15c">LB15c</a>, <a href="#LB15d">LB15d</a>, <a href="#LB25">LB25</a>, <a href="#LB29">LB29</a></i></p>
   <p>Characters that usually occur inside a numerical expression may not be
   separated from the numeric characters that follow, unless a space character
   intervenes. For example, there is no break in “100.00” or “10,000”, nor in “12:59”.</p>
@@ -2736,17 +2819,17 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
       <td class="nb-la">2044</td>
       <td class="nb-lb">FRACTION SLASH</td>
     </tr>
-    <tr>
-      <td class="nb-la">FE10</td>
-      <td class="nb-lb">PRESENTATION FORM FOR VERTICAL COMMA</td>
+    <tr class="removed">
+      <td class="nb-la"><span class="removed">FE10</span></td>
+      <td class="nb-lb"><span class="removed">PRESENTATION FORM FOR VERTICAL COMMA</span></td>
     </tr>
-    <tr>
-      <td class="nb-la">FE13</td>
-      <td class="nb-lb">PRESENTATION FORM FOR VERTICAL COLON</td>
+    <tr class="removed">
+      <td class="nb-la"><span class="removed">FE13</span></td>
+      <td class="nb-lb"><span class="removed">PRESENTATION FORM FOR VERTICAL COLON</span></td>
     </tr>
-    <tr>
-      <td class="nb-la">FE14</td>
-      <td class="nb-lb">PRESENTATION FORM FOR VERTICAL SEMICOLON</td>
+    <tr class="removed">
+      <td class="nb-la"><span class="removed">FE14</span></td>
+      <td class="nb-lb"><span class="removed">PRESENTATION FORM FOR VERTICAL SEMICOLON</span></td>
     </tr>
   </table>
     <p>When not used in a numeric context, infix separators are sentence-ending punctuation.
@@ -2757,7 +2840,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
 		been given the line break class <a class="charclass" href="#GL">GL</a>.</p>
 	</blockquote>
 
-<h3><a name="JL" href="#JL">JL</a>: Hangul L Jamo (B)</h3>
+<h3><a name="JL" href="#JL">JL</a>: Hangul L Jamo<span class="removed"> (B)</span></h3>
+  <p class="changed"><i><a href="#LB26">LB26</a>, <a href="#LB27">LB27</a></i></p>
   <p>The <a class="charclass" href="#JL">JL</a> line break class consists of all characters of Hangul Syllable Type L.</p>
 <p>Conjoining jamos form Korean Syllable Blocks, which are kept together; see
     Unicode Standard Annex #29, “Unicode Text Segmentation” [<a href="../tr41/tr41-32.html#UAX29">UAX29</a>].
@@ -2770,21 +2854,24 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
     <a class="charclass" href="#H2">H2</a>, and
     <a class="charclass" href="#H3">H3</a>.</p>
 
-<h3><a name="JT" href="#JT">JT</a>: Hangul T Jamo (A)</h3>
+<h3><a name="JT" href="#JT">JT</a>: Hangul T Jamo<span class="removed"> (A)</span></h3>
+  <p class="changed"><i><a href="#LB26">LB26</a>, <a href="#LB27">LB27</a></i></p>
 	<p>The <a class="charclass" href="#JT">JT</a> line break class consists of all characters of Hangul Syllable Type T. See also
 	<a class="charclass" href="#JL">JL</a>,
 	<a class="charclass" href="#JV">JV</a>,
 	<a class="charclass" href="#H2">H2</a>, and
 	<a class="charclass" href="#H3">H3</a>.</p>
 
-<h3><b><a name="JV" href="#JV">JV</a></b>: Hangul V Jamo (XA/XB)</h3>
+<h3><b><a name="JV" href="#JV">JV</a></b>: Hangul V Jamo<span class="removed"> (XA/XB)</span></h3>
+  <p class="changed"><i><a href="#LB26">LB26</a>, <a href="#LB27">LB27</a></i></p>
   <p>The <a class="charclass" href="#JV">JV</a> line break class consists of all characters of Hangul Syllable Type V. See also
 	<a class="charclass" href="#JL">JL</a>,
 	<a class="charclass" href="#JT">JT</a>,
 	<a class="charclass" href="#H2">H2</a>, and
 	<a class="charclass" href="#H3">H3</a>.</p>
 
-<h3 style="margin-bottom:.5em"><b><a name="LF" href="#LF">LF</a></b>: Line Feed (A) (Non-tailorable)</h3>
+<h3 style="margin-bottom:.5em"><b><a name="LF" href="#LF">LF</a></b>: Line Feed<span class="removed"> (A)</span> (Non-tailorable)</h3>
+  <p class="changed"><i><a href="#LB5">LB5</a>, <a href="#LB6">LB6</a>, <a href="#LB9">LB9</a>, <a href="#LB15a">LB15a</a>, <a href="#LB15b">LB15b</a>, <a href="#LB20a">LB20a</a></i></p>
   <table class="noborder">
     <tr>
       <td class="nb-la">000A</td>
@@ -2794,7 +2881,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
   <p>There is a mandatory break after any LF character, but see the discussion
   under <a class="charclass" href="#BK">BK</a>.</p>
 
-<h3 style="margin-bottom:.5em"><a name="NL" href="#NL">NL</a>: Next Line (A) (Non-tailorable)</h3>
+<h3 style="margin-bottom:.5em"><a name="NL" href="#NL">NL</a>: Next Line<span class="removed"> (A)</span> (Non-tailorable)</h3>
+  <p class="changed"><i><a href="#LB5">LB5</a>, <a href="#LB6">LB6</a>, <a href="#LB9">LB9</a>, <a href="#LB15a">LB15a</a>, <a href="#LB15b">LB15b</a>, <a href="#LB20a">LB20a</a></i></p>
   <table class="noborder">
     <tr>
       <td class="nb-la">0085</td>
@@ -2808,7 +2896,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
       under <a class="charclass" href="#BK">BK</a>.</p>
 
 
-<h3><b><a name="NS" href="#NS">NS</a></b>: Nonstarters (XB)</h3>
+<h3><b><a name="NS" href="#NS">NS</a></b>: Nonstarters<span class="removed"> (XB)</span></h3>
+  <p class="changed"><i><a href="#LB1">LB1</a>, <a href="#LB16">LB16</a>, <a href="#LB21">LB21</a></i></p>
 <p>Nonstarter characters cannot start a line, but unlike <a class="charclass" href="#CL">CL</a> they may allow a
   break in some contexts when they follow one or more space characters.
   Nonstarters include:</p>
@@ -2869,6 +2958,14 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
       <td class="nb-la">30FD..30FE</td>
       <td class="nb-lb">KATAKANA ITERATION MARK..KATAKANA VOICED ITERATION MARK</td>
     </tr>
+    <tr class="changed">
+      <td class="nb-la"><span class="changed">FE10</span></td>
+      <td class="nb-lb"><span class="changed">PRESENTATION FORM FOR VERTICAL COMMA</span></td>
+    </tr>
+    <tr class="changed">
+      <td class="nb-la"><span class="changed">FE13</span></td>
+      <td class="nb-lb"><span class="changed">PRESENTATION FORM FOR VERTICAL COLON</span></td>
+    </tr>
     <tr>
       <td class="nb-la">FE54..FE55</td>
       <td class="nb-lb">SMALL SEMICOLON..SMALL COLON</td>
@@ -2898,7 +2995,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
   <p>For additional information about U+30A0
 	KATAKANA-HIRAGANA DOUBLE HYPHEN, see <i>Section 5.5, <a href="#DoubleHyphen">Use of Double Hyphen</a></i>.</p>
 
-<h3><b><a name="NU" href="#NU">NU</a>:</b> Numeric (XP)</h3>
+<h3><b><a name="NU" href="#NU">NU</a>:</b> Numeric<span class="removed"> (XP)</span></h3>
+  <p class="changed"><i><a href="#LB15c">LB15c</a>, <a href="#LB23">LB23</a>, <a href="#LB25">LB25</a>, <a href="#LB30">LB30</a></i></p>
   <p>These characters behave like ordinary characters (<a class="charclass" href="#AL">AL</a>) in the context of
 	most characters
 	but activate the prefix and postfix behavior of prefix and postfix characters.</p>
@@ -2921,7 +3019,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
     <p>Unlike <a class="charclass" href="#IS">IS</a> characters, the Arabic numeric
 	punctuation does not occur as sentence terminal punctuation outside numbers.</p>
 
-<h3><b><a name="OP" href="#OP">OP</a></b>: Open Punctuation (XA)</h3>
+<h3><b><a name="OP" href="#OP">OP</a></b>: Open Punctuation<span class="removed"> (XA)</span></h3>
+  <p class="changed"><i><a href="#LB14">LB14</a>, <a href="#LB15a">LB15a</a>, <a href="#LB25">LB25</a>, <a href="#LB30">LB30</a></i></p>
   <p>The opening character of any set of paired punctuation
 	should be kept with the character that follows. This is desirable,
 	even if there are intervening space characters, as it prevents the
@@ -2954,10 +3053,11 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
 		<a class="charclass" href="#OP">OP</a>.</p>
 	</blockquote>
 
-<h3><b><a name="PO" href="#PO">PO</a>:</b> Postfix Numeric (XB)</h3>
+<h3><b><a name="PO" href="#PO">PO</a>:</b> Postfix Numeric<span class="removed"> (XB)</span></h3>
+  <p class="changed"><i><a href="#LB23a">LB23a</a>, <a href="#LB24">LB24</a>, <a href="#LB25">LB25</a>, <a href="#LB27">LB27</a></i></p>
   <p>Characters that usually follow a numerical expression may not be separated
-  from preceding numeric characters or preceding closing characters, even if one
-  or more space characters intervene. For example, there is no break opportunity in “(12.00) %”.</p>
+  from preceding numeric characters or preceding closing characters<span class="removed">, even if one
+  or more space characters intervene</span>. For example, there is no break opportunity in “(12.00)<span class="removed"> </span>%”.</p>
 	<p>Some of these characters—in
 	particular, <i>degree sign</i> and <i>percent sign</i>—can appear on both sides of a numeric
 	expression. Therefore the line breaking algorithm by default does not break
@@ -3030,10 +3130,11 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
      line breaking, their classification as
      alphabetic is sufficient to keep them together with the preceding number.</p>
 
-<h3><b><a name="PR" href="#PR">PR</a></b>: Prefix Numeric (XA)</h3>
+<h3><b><a name="PR" href="#PR">PR</a></b>: Prefix Numeric<span class="removed"> (XA)</span></h3>
+  <p class="changed"><i><a href="#LB23a">LB23a</a>, <a href="#LB24">LB24</a>, <a href="#LB25">LB25</a>, <a href="#LB27">LB27</a></i></p>
   <p>Characters that usually precede a numerical expression may not be separated
-      from following numeric characters or following opening characters, <i>even</i>
-      if a space character intervenes. For example, there is no break opportunity in “$ (100.00)”.</p>
+      from following numeric characters or following opening characters<span class="removed">, <i>even</i>
+      if a space character intervenes</span>. For example, there is no break opportunity in “$<span class="removed"> </span>(100.00)”.</p>
    <p>Many currency signs can appear on
       both sides, or even the middle, of a numeric expression. Therefore the
       line breaking algorithm, by default, does not break between <a class="charclass" href="#PR">PR</a> and
@@ -3074,13 +3175,19 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
 	see [<a href="../tr41/tr41-32.html#CLDR">CLDR</a>].</p>
     </blockquote>
 
-<h3><b><a name="QU" href="#QU">QU</a>:</b> Quotation (XB/XA)</h3>
+<h3><b><a name="QU" href="#QU">QU</a>:</b> Quotation<span class="removed"> (XB/XA)</span></h3>
+  <p class="changed"><i><a href="#LB15a">LB15a</a>, <a href="#LB15b">LB15b</a>, <a href="#LB19">LB19</a>, <a href="#LB19a">LB19a</a></i></p>
   <p>Some quotation characters can be opening or closing,
 	or even both, depending on usage.
-      The default is to treat them as both opening and closing.
+      The default is to <span class="changed">use the General_Category values Initial_Punctation
+      and Final_Punctation as a hint, together with context, but to err on the side
+      of </span>treat<span class="changed">ing</span> them as both opening and closing<span class="changed">,
+      thus preventing breaks on either side</span>.
 	This will prevent some breaks that might have been
-	legal for a particular language or usage, such as between a closing quote
-	and a following opening punctuation.</p>
+	legal for a particular language or usage, such as<span class="changed">
+  outside quotation marks surrounding Latin text within simplified Chinese text.</span><span class="removed">
+  between a closing quote
+	and a following opening punctuation.</span></p>
   <blockquote>
     <p><span class="note">Note:</span> If language information is available, it can be used to
 	determine which character is used as the opening quote and which as the closing quote. See
@@ -3132,7 +3239,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
     </tr>
   </table>
 
-<h3><b><a name="RI" href="#RI">RI</a></b>: Regional Indicator (B/A/XP)</h3>
+<h3><b><a name="RI" href="#RI">RI</a></b>: Regional Indicator<span class="removed"> (B/A/XP)</span></h3>
+    <p class="changed"><i><a href="#LB30a">LB30a</a></i></p>
     <p>For line Breaking, the Regional Indicator characters are
        all those with the Unicode character property of
        Regional_Indicator. This includes:</p>
@@ -3149,7 +3257,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
          When RI characters are adjacent to characters of other classes, breaks can occur before and after,
          except where forbidden by other rules.</p>
 
-<h3><b><a name="SA" href="#SA">SA</a></b>: Complex-Context Dependent (South East Asian) (P)</h3>
+<h3><b><a name="SA" href="#SA">SA</a></b>: Complex-Context Dependent (South East Asian)<span class="removed"> (P)</span></h3>
+  <p class="changed"><i><a href="#LB1">LB1</a></i></p>
   <p>Runs of these characters require morphological analysis to determine break
     opportunities. This is similar to, for example, a hyphenation algorithm. For the
     characters that have this property, <strong>no</strong> break opportunities will be
@@ -3213,7 +3322,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
 
   </table>
 
-<h3><b><a name="SG" href="#SG">SG</a>:</b> Surrogate (XP) (Non-tailorable)</h3>
+<h3><b><a name="SG" href="#SG">SG</a>:</b> Surrogate<span class="removed"> (XP)</span> (Non-tailorable)</h3>
+  <p class="changed"><i><a href="#LB1">LB1</a></i></p>
   <p>Line break class <a class="charclass" href="#SG">SG</a> comprises all code points with General_Category Cs. The line breaking behavior of
   isolated surrogates is undefined. In UTF-16,
 	paired surrogates represent non-BMP code points. Such code points must be
@@ -3227,7 +3337,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
     supplementary character before line breaking.</p>
   </blockquote>
 
-<h3><b><a name="SP" href="#SP">SP</a></b>: Space (A) (Non-tailorable)</h3>
+<h3><b><a name="SP" href="#SP">SP</a></b>: Space<span class="removed"> (A)</span> (Non-tailorable)</h3>
+  <p class="changed"><i><a href="#LB7">LB7</a>, <a href="#LB8">LB8</a>, <a href="#LB9">LB9</a>, <a href="#LB12a">LB12a</a>, <a href="#LB14">LB14</a>, <a href="#LB15a">LB15a</a>, <a href="#LB15b">LB15b</a>, <a href="#LB15c">LB15c</a>, <a href="#LB16">LB16</a>, <a href="#LB17">LB17</a>, <a href="#LB18">LB18</a>, <a href="#LB20a">LB20a</a></i></p>
   <p>The space characters are used as explicit break opportunities;
 	they allow line breaks before most other characters. However, spaces at the
   end of a line are ordinarily not measured for fit. If there is a sequence of space
@@ -3250,7 +3361,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
 	<a class="charclass" href="#BA">BA</a>.</p>
   </blockquote>
 
-<h3><b><a name="SY" href="#SY">SY</a></b>: Symbols Allowing Break After (A)</h3>
+<h3><b><a name="SY" href="#SY">SY</a></b>: Symbols Allowing Break After<span class="removed"> (A)</span></h3>
+  <p class="changed"><i><a href="#LB13">LB13</a>, <a href="#LB15b">LB15b</a>, <a href="#LB21b">LB21b</a>, <a href="#LB25">LB25</a></i></p>
   <p>The <a class="charclass" href="#SY">SY</a>
   line breaking property is intended to provide a break opportunity after, except in front of
   digits, so as to not break “1/2” or “06/07/99”.</p>
@@ -3279,7 +3391,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
         breaking, which are outside the scope of this annex.</p>
   </blockquote>
 
-<h3><b><a name="VF" href="#VF">VF</a></b>: Virama Final (XB/A)</h3>
+<h3><b><a name="VF" href="#VF">VF</a></b>: Virama Final<span class="removed"> (XB/A)</span></h3>
+  <p class="changed"><i><a href="#LB28a">LB28a</a></i></p>
       <p>The <a class="charclass" href="#VF">VF</a> line break class is only used for scripts that use the Brahmic style of context analysis.
             It contains the viramas of Indic syllabic category Pure_Killer in scripts where the final consonant of a phonological syllable is expressed as a sequence of a consonant and such a virama, and the final consonant needs to be kept together with the preceding orthographic syllable.
             This includes:</p>
@@ -3292,7 +3405,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
         </table>
         <p>Viramas of Indic syllabic category Pure_Killer that don’t meet the conditions for line break class <a class="charclass" href="#VF">VF</a> use the line break class <a class="charclass" href="#CM">CM</a>.</p>
 
-<h3><b><a name="VI" href="#VI">VI</a></b>: Virama (XB/XA)</h3>
+<h3><b><a name="VI" href="#VI">VI</a></b>: Virama<span class="removed"> (XB/XA)</span></h3>
+  <p class="changed"><i><a href="#LB28a">LB28a</a></i></p>
       <p>The <a class="charclass" href="#VI">VI</a> line break class is only used for scripts that use the Brahmic style of context analysis.
             It contains the viramas of Indic syllabic categories Virama and Invisible_Stacker of such scripts.</p>
 
@@ -3319,7 +3433,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
           </tr>
         </table>
 
-<h3><a name="WJ" href="#WJ">WJ</a>: Word Joiner (XB/XA) (Non-tailorable)</h3>
+<h3><a name="WJ" href="#WJ">WJ</a>: Word Joiner<span class="removed"> (XB/XA)</span> (Non-tailorable)</h3>
+  <p class="changed"><i><a href="#LB11">LB11</a>, <a href="#LB15b">LB15b</a></i></p>
   <p>These characters glue together left and right neighbor characters such
 	that they are kept on the same line.</p>
   <table class="noborder">
@@ -3341,7 +3456,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
   of <a class="charclass" href="#SP">SP</a>, but not
   <a class="charclass" href="#ZW">ZW</a>.</p>
 
-<h3><b><a name="XX" href="#XX">XX</a></b>: Unknown (XP)</h3>
+<h3><b><a name="XX" href="#XX">XX</a></b>: Unknown<span class="removed"> (XP)</span></h3>
+  <p class="changed"><i><a href="#LB1">LB1</a></i></p>
   <p>The <a class="charclass" href="#XX">XX</a> line break class consists of all characters with
       General_Category Co as well as those unassigned code points that are not within a CJK block.
       Unassigned characters in blocks or ranges of the Unicode codespace
@@ -3380,7 +3496,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
     <p>Implementations that do not support a given character should also treat it as unknown
        (<a class="charclass" href="#XX">XX</a>).</p>
 
-  <h3><b><a name="ZW" href="#ZW">ZW</a></b>: Zero Width Space (A) (Non-tailorable)</h3>
+  <h3><b><a name="ZW" href="#ZW">ZW</a></b>: Zero Width Space<span class="removed"> (A)</span> (Non-tailorable)</h3>
+    <p class="changed"><i><a href="#LB7">LB7</a>, <a href="#LB8">LB8</a>, <a href="#LB9">LB9</a>, <a href="#LB15a">LB15a</a>, <a href="#LB15b">LB15b</a>, <a href="#LB20a">LB20a</a></i></p>
     <table class="noborder">
         <tr>
           <td class="nb-la">200B</td>
@@ -3393,7 +3510,8 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
 	its presence between two characters does not prevent increased letter
 	spacing in justification.</p>
 
-  <h3><b><a name="ZWJ" href="#ZWJ">ZWJ</a></b>: Zero Width Joiner (XA/XB) (Non-tailorable)</h3>
+  <h3><b><a name="ZWJ" href="#ZWJ">ZWJ</a></b>: Zero Width Joiner<span class="removed"> (XA/XB)</span> (Non-tailorable)</h3>
+    <p class="changed"><i><a href="#LB8a">LB8a</a>, <a href="#LB9">LB9</a>, <a href="#LB10">LB10</a></i></p>
     <table class="noborder">
         <tr>
           <td class="nb-la">200D</td>
@@ -3715,7 +3833,9 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
     as in UAX #29, <i>Unicode Text Segmentation</i> [<a href="../tr41/tr41-32.html#UAX29">UAX29</a>] and in
     UTS #18, <i>Unicode Regular Expressions</i> [<a href="../tr41/tr41-32.html#UTS18">UTS18</a>].
     Use of a line break class such as <a class="charclass" href="#BK">BK</a> is short
-    for the property expression \p{lb=<a class="charclass" href="#BK">BK</a>}.</p>
+    for the property expression \p{lb=<a class="charclass" href="#BK">BK</a>}.<span class="changed"> The
+    symbol $EastAsian stands for the set [\p{ea=F}\p{ea=W}\p{ea=H}] of characters with
+    Fullwidth, Wide, or Halfwidth East Asian Width.</span></p>
   	<p>The rules are applied in order. That is, there is an implicit “otherwise”
 	at the front of each rule following the first. It is possible to construct
 	alternate sets of such rules that are fully equivalent. To be equivalent, an
@@ -3930,11 +4050,11 @@ Unicode Source Code Handling</i>  [<a href="../tr41/tr41-32.html#UTS55">UTS55</a
   LB18.</p>
 
 <p class="rule"><a name="LB13" href="#LB13"><b>LB13</b></a>
-	Do not break before ‘]’ or ‘!’ or ‘;’ or ‘/’, even after spaces.</p>
+	Do not break before ‘]’ or ‘!’ or ‘/’, even after spaces.</p>
   <p style="text-align:center">× CL</p>
   <p style="text-align:center">× CP</p>
   <p style="text-align:center">× EX</p>
-  <p style="text-align:center">× IS</p>
+  <p class="removed" style="text-align:center">× IS</p>
   <p style="text-align:center">× SY</p>
 
 <p class="rule"><a name="LB14" href="#LB14"><b>LB14</b></a> Do not break after ‘[’, even after spaces.</p>
@@ -3951,6 +4071,16 @@ of the line, before a space, before a prohibited break, or before an unresolved
 quotation mark, even after spaces.</p>
   <p style="text-align:center">× [\p{Pf}&amp;QU] ( SP | GL | WJ | CL | QU | CP | EX | IS | SY | BK | CR | LF | NL | ZW | eot)</p>
 
+<div class="changed">
+<p class="rule"><a name="LB15c" href="#LB15c"><b>LB15c</b></a>
+	Break before a decimal mark that follows a space, for instance, in ‘subtract .5’.</p>
+  <p style="text-align:center">SP ÷ IS NU</p>
+
+<p class="rule"><a name="LB15d" href="#LB15d"><b>LB15d</b></a>
+	Otherwise, do not break before ‘;’,  ‘,’, or ‘.’, even after spaces.</p>
+  <p style="text-align:center">× IS</p>
+</div>
+
 <p class="rule"><a name="LB16" href="#LB16"><b>LB16</b></a> Do not break
        between closing punctuation and a nonstarter (lb=<a class="charclass" href="#NS">NS</a>),
        even with intervening spaces.</p>
@@ -3965,9 +4095,17 @@ quotation mark, even after spaces.</p>
   <p style="text-align:center">SP ÷</p>
   <p><b><i>Special case rules:</i></b></p>
 
-<p class="rule"><a name="LB19" href="#LB19"><b>LB19</b></a> Do not break before or after quotation marks, such as ‘ ” ’.</p>
-  <p style="text-align:center">× QU</p>
-  <p style="text-align:center">QU ×</p>
+<p class="rule"><a name="LB19" href="#LB19"><b>LB19</b></a> Do not break before <span class="changed">non-initial unresolved quotation marks, such as ‘ ” ’ or ‘ " ’, n</span>or after <span class="changed">non-final unresolved </span>quotation marks, such as <span class="changed">‘ “ ’ or ‘ " ’</span><span class="removed">‘ ” ’</span>.</p>
+  <p style="text-align:center">× <span class="changed">[ </span>QU<span class="changed"> - \p{Pi} ]</span></p>
+  <p style="text-align:center"><span class="changed">[ </span>QU<span class="changed"> - \p{Pf} ]</span> ×</p>
+
+<div class="changed">
+<p class="rule"><a name="LB19a" href="#LB19a"><b>LB19a</b></a> Unless surrounded by East Asian characters, do not break either side of any unresolved quotation marks.</p>
+  <p style="text-align:center">[^$EastAsian] × QU</p>
+  <p style="text-align:center">× QU ( [^$EastAsian] | eot )</p>
+  <p style="text-align:center">QU × [^$EastAsian]</p>
+  <p style="text-align:center">( sot | [^$EastAsian] ) QU ×</p>
+</div>
 
 <p class="rule"><a name="LB20" href="#LB20"><b>LB20</b></a> Break before and after unresolved
 	<a class="charclass" href="#CB">CB</a>.</p>
@@ -3977,6 +4115,15 @@ quotation mark, even after spaces.</p>
   However, the default action is to treat unresolved <a class="charclass" href="#CB">CB</a>  as breaking before and
   after.</p>
 
+<div class="changed">
+<p class="rule"><a name="LB20a" href="#LB20a"><b>LB20a</b></a> Do not break after a word-initial hyphen.</p>
+  <p style="text-align:center">( sot | BK | CR | LF | NL | SP | ZW | CB | GL ) ( HY | [\u2010] ) × AL</p>
+  <blockquote>
+      <span class="note">Note:</span> In the above regular expression,
+      the class [\u2010] contains the single character U+2010 HYPHEN.
+  </blockquote>
+</div>
+
 <p class="rule"><a name="LB21" href="#LB21"><b>LB21</b></a> Do not break before hyphen-minus, other hyphens,
   fixed-width spaces, small kana, and other non-starters, or after acute
   accents.</p>
@@ -3985,11 +4132,10 @@ quotation mark, even after spaces.</p>
   <p style="text-align:center">× NS</p>
   <p style="text-align:center">BB ×</p>
 
-<p class="rule"><a name="LB21a" href="#LB21a"><b>LB21a</b></a> Don't break after Hebrew + Hyphen.</p>
-  <p style="text-align:center">HL (HY | BA) ×</p>
+<p class="rule"><a name="LB21a" href="#LB21a"><b>LB21a</b></a> Do<span class="changed"> </span>n<span class="changed">o</span><span class="removed">'</span>t break after<span class="changed"> the hyphen in</span> Hebrew + Hyphen<span class="changed"> + non-Hebrew</span>.</p>
+  <p style="text-align:center">HL (HY | BA) ×<span class="changed"> [^HL]</span></p>
 
-<p class="rule"><a name="LB21b" href="#LB21b"></a>
-  <b>LB21b</b> Don’t break between Solidus and Hebrew letters.</p>
+<p class="rule"><a name="LB21b" href="#LB21b"><b>LB21b</b></a> Do<span class="changed"> </span>n<span class="changed">o</span><span class="removed">’</span>t break between Solidus and Hebrew letters.</p>
   <p style="text-align:center">SY × HL</p>
 
 <p class="rule"><a name="LB22" href="#LB22"><b>LB22</b></a> Do not break before ellipses.</p>
@@ -4019,35 +4165,47 @@ quotation mark, even after spaces.</p>
 	<p style="text-align:center">
             ( <a class="charclass" href="#PR">PR</a>  | <a class="charclass" href="#PO">PO</a>)  ?
             ( <a class="charclass" href="#OP">OP</a>  | <a class="charclass" href="#HY">HY</a>  ) ?
-            <a class="charclass" href="#NU">NU</a>  (<a class="charclass" href="#NU">NU</a> |
+            <span class="changed"><a class="charclass" href="#IS">IS</a> ?
+            </span><a class="charclass" href="#NU">NU</a>  (<a class="charclass" href="#NU">NU</a> |
                <a class="charclass" href="#SY">SY</a>  | <a class="charclass" href="#IS">IS</a>) *
             (<a class="charclass" href="#CL">CL</a> | <a class="charclass" href="#CP">CP</a>)  ?
             ( <a class="charclass" href="#PR">PR</a>  | <a class="charclass" href="#PO">PO</a>)  ?
         </p>
   <p><i>Examples:</i> $(12.35)&nbsp;&nbsp;&nbsp; 2,1234&nbsp;&nbsp;&nbsp;
-  (12)¢&nbsp;&nbsp;&nbsp; 12.54¢</p>
-  <p>The default line breaking algorithm approximates this with the following
-	rule. Note that some cases have already been handled, such as ‘9,’, ‘[9’. For a
+  (12)¢&nbsp;&nbsp;&nbsp; 12.54¢<span class="changed">&nbsp;&nbsp;&nbsp;
+  .50&nbsp;&nbsp;&nbsp;
+  ₹1,00,000.00&nbsp;&nbsp;&nbsp;
+  -1/12</span></p>
+  <p>The default line breaking algorithm<span class="removed"> approximates</span><span class="changed"> implements</span> this with the following
+	rule.<span class="removed"> Note that some cases have already been handled, such as ‘9,’, ‘[9’. For a
 	tailoring that supports the regular expression directly, as well as a key to
-	the notation see <i>Section 8.2, <a href="#Examples">Examples of Customization</a></i>.</p>
+	the notation see <i>Section 8.2, <a href="#Examples">Examples of Customization</a></i>.</span></p>
 
-  <p class="rule"><a name="LB25" href="#LB25"><b>LB25</b></a> Do not break between the following pairs of classes
-	relevant to numbers:</p>
-        <p style="text-align:center">CL × PO</p>
-        <p style="text-align:center">CP × PO</p>
-        <p style="text-align:center">CL × PR</p>
-        <p style="text-align:center">CP × PR</p>
-        <p style="text-align:center">NU × PO</p>
-        <p style="text-align:center">NU × PR</p>
-        <p style="text-align:center">PO × OP</p>
+  <p class="rule"><a name="LB25" href="#LB25"><b>LB25</b></a> Do not break<span class="removed"> between the following pairs of classes
+	relevant to</span> numbers:</p>
+        <p style="text-align:center"><span class="changed">NU ( SY | IS )* </span>CL × PO</p>
+        <p style="text-align:center"><span class="changed">NU ( SY | IS )* </span>CP × PO</p>
+        <p style="text-align:center"><span class="changed">NU ( SY | IS )* </span>CL × PR</p>
+        <p style="text-align:center"><span class="changed">NU ( SY | IS )* </span>CP × PR</p>
+        <p style="text-align:center">NU <span class="changed">( SY | IS )* </span> × PO</p>
+        <p style="text-align:center">NU <span class="changed">( SY | IS )* </span> × PR</p>
+        <p style="text-align:center">PO × OP<span class="changed"> NU</span></p>
+        <p style="text-align:center"><span class="changed">PO × OP IS NU</span></p>
         <p style="text-align:center">PO × NU</p>
-        <p style="text-align:center">PR × OP</p>
+        <p style="text-align:center">PR × OP<span class="changed"> NU</span></p>
+        <p style="text-align:center"><span class="changed">PR × OP IS NU</span></p>
         <p style="text-align:center">PR × NU</p>
         <p style="text-align:center">HY × NU</p>
         <p style="text-align:center">IS × NU</p>
-        <p style="text-align:center">NU × NU</p>
-        <p style="text-align:center">SY × NU</p>
-  <p><i>Example pairs:</i> ‘$9’, ‘$[’, ‘$-’, ‘-9’, ‘/9’,
+        <p style="text-align:center">NU <span class="changed">( SY | IS )* </span>× NU</p>
+        <p style="text-align:center"><span class="removed">SY × NU</span></p>
+        <blockquote class="reviewnote">
+        <p>Review Note: <a href="https://www.unicode.org/L2/L2024/24064r2-utc179-properties-recs.pdf">L2/24-064R2</a>, Section 5.15, proposes adding the following rule:</p>
+        <p style="text-align:center">NU ( SY | IS )* × SY</p>
+        <p>That rule is however redundant with the earlier × SY from LB13,
+        so it is not added to this Proposed Update.</p>
+        </blockquote>
+  <p class="removed"><i>Example pairs:</i> ‘$9’, ‘$[’, ‘$-’, ‘-9’, ‘/9’,
   ‘99’, ‘,9’, ‘9%’ ‘]%’</p>
   	<p><i><b>Korean syllable blocks</b></i></p>
   <p>Conjoining jamos, Hangul syllables, or combinations of both form Korean
@@ -4100,13 +4258,13 @@ quotation mark, even after spaces.</p>
 
 <p class="rule"><a name="LB30" href="#LB30"><b>LB30</b></a> Do not break between
   letters, numbers, or ordinary symbols and opening or closing parentheses.</p>
-      <p style="text-align:center">(AL | HL | NU) × [OP-[\p{ea=F}\p{ea=W}\p{ea=H}]]</p>
-      <p style="text-align:center">[CP-[\p{ea=F}\p{ea=W}\p{ea=H}]] × (AL | HL | NU)</p>
+      <p style="text-align:center">(AL | HL | NU) × [OP-<span class="changed">$EastAsian</span>]</p>
+      <p style="text-align:center">[CP-<span class="changed">$EastAsian</span>] × (AL | HL | NU)</p>
 
     <p>The purpose of this rule is to prevent breaks in common cases where a part of a word
         appears between delimiters—for example, in “person(s)”.</p>
 
-        <p>The excluded set ([\p{ea=F}\p{ea=W}\p{ea=H}]) refines the behavior of this rule, to enable
+        <p>The excluded set (<span class="changed">$EastAsian</span>) refines the behavior of this rule, to enable
           a break before an East Asian OP or after an East Asian CP. Those cases are identified by
           excluding East_Asian_Width values of Fullwidth, Wide, or Halfwidth.
           This is illustrated by the following
@@ -4270,11 +4428,16 @@ quotation mark, even after spaces.</p>
         give each grapheme cluster the line breaking class of its first code point.</p>
         <p>An example of a grapheme cluster that would be split by the default line break
         rules is U+0020 SPACE followed by a combining mark.</p>
-
-<p><b><i><a name="Example7" href="#Example7"></a>Example 7.</i>
-    </b> Regular expression-based line breaking engines might get better results
+<p><b><i><a name="Example7" href="#Example7"></a>Example 7<span class="changed"> (deleted)</span>.</i>
+    </b><span class="changed"> <i>Versions 4.1.0 through 15.1.0 of The Unicode Standard
+    defined a tailoring of the line breaking of numeric expressions as Example 7.
+    This tailoring was used in the test files provided with Unicode 5.1.0 and later.
+    Since Unicode version 16.0, that behaviour has been incorporated into the default;
+    it no longer constitutes a tailoring.</i></span><span class="removed">
+    Regular expression-based line breaking engines might get better results
 	using a tailoring that directly implements the following regular expression
-	for numeric expressions:</p>
+	for numeric expressions:</span></p>
+<div class="removed">
 	<p style="text-align:center">( <a class="charclass" href="#PR">PR</a> | <a class="charclass" href="#PO">PO</a>)  ?
             ( <a class="charclass" href="#OP">OP</a>  | <a class="charclass" href="#HY">HY</a>  ) ?
             <a class="charclass" href="#NU">NU</a>
@@ -4309,6 +4472,7 @@ quotation mark, even after spaces.</p>
 	line break class other than <a class="charclass" href="#NU">NU</a>. The
 	symbol ^ is used, instead of !, to avoid confusion with the use of
 	! to indicate an explicit break.</p>
+</div>
 
     <p><b><i>Example 8.</i></b> Some scripts that traditionally follow the Brahmic style of context analysis are nowadays occasionally written with spaces, and word-based line breaking might be desired in that case.
       This can be accomplished by remapping the line break classes <a class="charclass" href="#AK">AK</a>, <a class="charclass" href="#AP">AP</a>, and <a class="charclass" href="#AS">AS</a> to <a class="charclass" href="#AL">AL</a>; and <a class="charclass" href="#VI">VI</a> or <a class="charclass" href="#VF">VF</a> to <a class="charclass" href="#CM">CM</a>.
@@ -4362,7 +4526,7 @@ quotation mark, even after spaces.</p>
     principle, valid
     even where the rules have been tailored as permitted in <i>Section 4,
     <a href="#Conformance">Conformance</a></i>. However, for extended context rules
-    such as in <a href="#Example7">Example 7</a>, additional
+    such as in <span class="changed"><a href="#LB25">LB25</a></span><span class="removed"><a href="#Example7">Example 7</a></span>, additional
     considerations apply. These are described in <i>Section 6.2, Replacing Ignore Rules</i>, of
     Unicode Standard Annex #29, “Unicode Text Segmentation” [<a href="../tr41/tr41-32.html#UAX29">UAX29</a>].</p>
 
@@ -4410,9 +4574,9 @@ quotation mark, even after spaces.</p>
 	implementations are free to override (tailor) the results to meet the
 	requirements of different environments or particular languages as described in
 	<i>Section 4, <a href="#Conformance">Conformance</a></i>. For those
-	who do implement the default breaks as specified in this annex, plus the
+	who do implement the default breaks as specified in this annex<span class="removed">, plus the
         tailoring of numbers described in Example 7 of
-        <i>Section 8.2, <a href="#Examples">Examples of Customization</a></i>, and wish
+        <i>Section 8.2, <a href="#Examples">Examples of Customization</a></i>,</span> and wish
         to check that that their implementation matches that specification, a
 	test file has been made available in [<a href="../tr41/tr41-32.html#Tests14">Tests14</a>].</p>
 	<p>These tests cannot be exhaustive, because of the large number of possible
@@ -4501,8 +4665,26 @@ quotation mark, even after spaces.</p>
 	</div>
 	<p>&nbsp;</p>
 
-<h2>11 <a name="RuleNumbering" href="#RuleNumbering">Rule Numbering Across Versions</a></h2>
+<h2>11 <a name="RuleNumbering"></a><a name="History" href="#History"><span class="changed">History</span><span class="removed">Rule Numbering Across Versions</span></a></h2>
+<div class="changed">
+  <p><a name="Table5"></a>Since its publication in 1999 as part of Unicode
+  Version 3.0.0, the line breaking algorithm has undergone many changes. It
+  started as a set of 29 line breaking classes involved in 23 rules which were
+  representable as a pair table with some special handling for combining marks
+  and spaces.
+  It now encompasses 48 line breaking classes involved in more than 40 rules,
+  many of which rely on extended context several characters removed from the
+  position they govern.</p>
+  <p>As the algorithm grew, rules were split, reordered, added, and removed.
+  In Unicode Version 5.0, the rules were renumbered to reduce the number of
+  alphabetic suffixes on the rule numbers.</p>
+  <p>Please refer to Unicode Technical Note #54, “Annotated Line Breaking
+  Algorithm” [<a href="../tr41/tr41-33.html#UTN54">UTN54</a>], for a
+  complete history of the changes to the text of this document since
+  Unicode Version 3.0.0, and for additonal background on these changes.</p>
+</div>
 
+<div class="removed">
 	<p><i><a href="#Table5">Table 5</a></i> documents changes in the numbering of line breaking rules.
 		A duplicate number indicates that a rule was subsequently
 		split. (In each version, the rules are applied in their numerical
@@ -5216,7 +5398,7 @@ quotation mark, even after spaces.</p>
 			</tr>
 		</table>
 	</center>
-
+</div>
 
 
 <h2><a name="References" href="#References">References</a></h2>
@@ -5249,7 +5431,9 @@ quotation mark, even after spaces.</p>
      Jerry Hall reviewed the sample code. Elika J. Etemad (fantasai)
      reviewed the entire document in an effort to make it easier to reference from
      external standards. Norbert Lindenberg added the Brahmic style of line breaking and provided clarifications
-     on the South East Asian style of line breaking. Many
+     on the South East Asian style of line breaking.<span class="changed">
+     Charlotte Buff and David Corbett provided ample feedback on property
+     assignments and ramifications of the rules.</span> Many
      others provided additional review of the rules and property assignments.</p>
 
 
@@ -5267,6 +5451,32 @@ quotation mark, even after spaces.</p>
     <li>Clarified the text of <a href="#LB9">LB9</a> in response to PRI feedback.</li>
     <li>Clarified regular expressions in <a href="#LB28a">LB28a</a>.</li>
     <li>Corrected the description of line breaking class <a href="#PR">PR</a> to mention unassigned code points in the Currency Symbols block, which are lb=PR since Unicode Version 6.3.</li>
+    <li>Modified <a href="#LB19">LB19</a> and added <a href="#LB19a">LB19a</a>
+    to improve line breaking around quotation marks in Simplified Chinese.</li>
+    <li>Modified <a href="#LB13">LB13</a>, added <a href="#LB15c">LB15c</a> and
+    <a href="#LB15d">LB15d</a>, and modified <a href="#LB25">LB25</a> to
+    improve the handling of numeric expressions.
+    This incorporates the tailoring formerly described in
+    <a href="#Example7">Example 7</a> into the default rules.</li>
+    <li>Added <a href="#LB20a">LB20a</a> to prevent line breaks after word-initial hyphens.</li>
+    <li>Modified <a href="#LB21b">LB21b</a> to restrict its effect to hyphens that separate Hebrew from non-Hebrew.</li>
+    <li><a href="#DescriptionOfProperties">Section 5.1</a>:
+    Removed the parenthetical labels (A), (B), (P), (XA), (XB), (XP) from the
+    descriptions of line breaking classes, as they are no longer sufficient to
+    usefully summarize the behaviour of these classes; added references to the
+    rules that explicitly involve each line breaking class instead.</li>
+    <li>Updated the description of line breaking class <a href="#QU">QU</a> to
+    account for the rule changes made in this version and the previous one.</li>
+    <li>Updated the description of line breaking class <a href="#HL">HL</a> to
+    account for the rule changes made in this version and Unicode Version 8.0.</li>
+    <li>Updated the description of line breaking class <a href="#GL">GL</a> to
+    mention half marks and continuous lining marks.</li>
+    <li>Updated the description of line breaking classes <a href="#IS">IS</a>,
+    <a href="#CL">CL</a>, and <a href="#NS">NS</a> to account for the change in
+    Line_Break assignment of the presentation forms for vertical comma, colon,
+    and semicolon.</li>
+    <li>Changed <a href="#History">Section 11</a> to refer to UTN #54 instead of
+    carrying a table of rule numberings.</li>
   </ul>
 
   <p class="removed"><b>Revision 51:</b></p>
@@ -5285,7 +5495,7 @@ quotation mark, even after spaces.</p>
 
 
   <hr width="50%">
-  <p class="copyright">© 2023 Unicode, Inc. All Rights Reserved.
+  <p class="copyright">© 202<span class="changed">4</span> Unicode, Inc. All Rights Reserved.
 	The Unicode Consortium makes no expressed or implied warranty of any kind,
 	and assumes no liability for errors or omissions. No liability is assumed
 	for incidental and consequential damages in connection with or arising out
