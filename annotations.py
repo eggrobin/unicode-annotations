@@ -1054,4 +1054,11 @@ ISSUES = (
           paragraphs=[
               ParagraphNumber(324, 10),
           ]),
+    # lb=PR defaults in the Currency Symbols block, undocumented for ages.
+    Issue(Version(16, 0, 0),
+          ["133-C26"],
+          paragraphs=[
+              ParagraphNumber(312),
+              ParagraphNumber(596, 77),
+          ]),
 )
