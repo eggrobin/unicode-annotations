@@ -581,6 +581,7 @@ PRESERVED_PARAGRAPHS = {
                       ParagraphNumber(286): "NU:",
                       ParagraphNumber(289): "OP:",
                       ParagraphNumber(292): "PO:",
+                      ParagraphNumber(293): "Characters that usually follow",
                       ParagraphNumber(309): "PR:",
                       ParagraphNumber(310): "Characters that usually precede",
                       ParagraphNumber(319): "QU:",
@@ -679,7 +680,12 @@ JUNK = {
   Version(5, 1, 0): {ParagraphNumber(401, 17): ["after"]},
   Version(15, 1, 0): {},
   Version(16, 0, 0): {ParagraphNumber(12): ["by", "Unicode", "other", "as", "a"],
-                      ParagraphNumber(401, 1): ["any", "break", "CM", "character"]},
+                      ParagraphNumber(401, 1): ["any", "break", "CM", "character"],
+                      ParagraphNumber(104): ["with", "in"],
+                      ParagraphNumber(462, 7): ["]"],
+                      ParagraphNumber(462, 8): ["]"],
+                      ParagraphNumber(587, 3): ["line", "break"],
+                      ParagraphNumber(587, 19): ["in"]},
 }
 
 nontrivial_versions = []
