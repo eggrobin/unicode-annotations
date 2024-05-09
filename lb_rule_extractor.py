@@ -67,7 +67,8 @@ class TR14Parser(HTMLParser):
 
   def handle_starttag(self, tag, attrs):
     attrs = dict(attrs)
-    if "class" in attrs and "removed" in attrs["class"]:
+    if "class" in attrs and ("removed" in attrs["class"] or
+                             "reviewnote" in attrs["class"]):
       self.removed_tag = tag
       return
     if tag == "tr":
@@ -76,7 +77,7 @@ class TR14Parser(HTMLParser):
     if tag == "br":
       self.handle_data("\u2028")
       return
-    if tag == "b":
+    if tag == "b" and not self.removed_tag:
       self.bold = True
     if tag in ("td", "th") and self.line.strip():
       self.line = self.line.rstrip() + '\uE000'
