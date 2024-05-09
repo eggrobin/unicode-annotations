@@ -855,7 +855,7 @@ with open("alba.html", "w", encoding="utf-8") as f:
              "; " + ",".join(
               (f'<a href="https://www.unicode.org/{pri.replace("L2/", "L2/L20").replace("-", "/" + pri[3:5]).replace("@","-pubrev.html#:~:text=")}">{pri}</a>'
                if pri.startswith("L2") else
-               f'<a href="https://www.unicode.org/review/pri{pri.replace("@","/feedback.html#:~:text=")}">PRI-{pri}</a>')
+               f'<a href="https://www.unicode.org/review/pri{pri.replace("@","/feedback.html#:~:text=").replace(" ", "%20")}">PRI-{pri}</a>')
               for pri in issue.pri)) +
             "}",
             file=f)
