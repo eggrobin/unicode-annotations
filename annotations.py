@@ -191,7 +191,7 @@ ISSUES = (
                 "This rule requires extended context."),
         ],
         paragraphs=[
-            ParagraphNumber(596, 0, 0, 0, 1, 12),
+            ParagraphNumber(596, -3, 1, 12),
         ]),
     Issue(
         Version(14, 0, 0),

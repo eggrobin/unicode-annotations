@@ -93,7 +93,10 @@ def get_inserted_paragraph_number(
     prefix = previous_number.main
     offset = 1
   elif next_number.main[-1] == 1:
-    prefix = (*next_number.main[:-1], 0)
+    if len(next_number.main) >= 2 and next_number.main[-2] <= 0:
+      prefix = (*next_number.main[:-2], next_number.main[-2] - 1)
+    else:
+      prefix = (*next_number.main[:-1], 0)
     offset = 1
   else:
     raise IndexError(previous_number, next_number)
