@@ -560,6 +560,7 @@ PRESERVED_PARAGRAPHS = {
                       ParagraphNumber(183): "CL:",
                       ParagraphNumber(193): "CM:",
                       ParagraphNumber(202, 3): "CP:",
+                      ParagraphNumber(202, 4): "This class contains two",
                       ParagraphNumber(203): "CR:",
                       ParagraphNumber(205, 2): "EB:",
                       ParagraphNumber(205, 9): "EM:",
