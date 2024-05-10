@@ -1061,6 +1061,16 @@ ISSUES = (
               ParagraphNumber(312),
               ParagraphNumber(596, 77),
           ]),
+    # Correct the description of the behaviour of line breaking classes PO and
+    # PR when separated from numbers by spaces, so that the description matches
+    # the rules.
+    Issue(Version(16, 0, 0),
+          ["179-A97"],
+          paragraphs=[
+              ParagraphNumber(293),
+              ParagraphNumber(310),
+              ParagraphNumber(596, 88),
+          ]),
     # UTN #54 instead of the renumbering table.
     Issue(Version(16, 0, 0),
           ["175-A67"],
