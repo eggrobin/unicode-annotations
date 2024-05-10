@@ -4214,6 +4214,11 @@ addEventListener('popstate', update_from_query);
 </div>
 <div class="paragraph added-in-6-1-0">
 <div class=paranum><a id=p248.8 href=#p248.8>248.8<del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
+</ins>
+</div>
 <p><ins class="changed-in-6-1-0">When a Hebrew letter is </ins><ins class="changed-in-16-0-0">separated from following non-Hebrew text</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-6-1-0">followed</ins></del><ins class="changed-in-6-1-0"> by a hyphen, there is no break on either side of the hyphen. In this context a hyphen is any character of class HY or class BA. </ins><ins class="changed-in-16-0-0">There is also no break between a solidus and a Hebrew letter. </ins><ins class="changed-in-6-1-0">In other respects, Hebrew letters behave the same as characters of class AL.</ins></p>
 </div>
 <div class="paragraph added-in-6-1-0">
@@ -6341,6 +6346,15 @@ addEventListener('popstate', update_from_query);
 </div>
 <p class=formula><ins class="diff-comment changed-in-5-0-0">Moved from §414.8. </ins><ins class="changed-in-4-1-0">WJ ×</ins></p>
 </div>
+<div class="paragraph added-in-6-1-0">
+<div class=paranum><a id=p401.8.a href=#p401.8.a>401.8.a<ins class="paranum changed-in-6-1-0">/6.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-6-1-0 sources">
+{6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?125-A99">125-A99</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/11-141R">L2/11-141R</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-6-1-0><b>Ramification: </b></ins><ins class="changed-in-6-1-0">Since this is not a “treat as” rule, the WJ remains in the sequence for subsequent rules to see.  In the presence of rules that require extended context, this means that introducing a WJ can paradoxically create break opportunities. For instance, LB21 and LB21a yield HL × HY × AL, but LB21a does not apply in HL × WJ × HY ÷ AL.</ins></p>
+</div>
 <div class="paragraph added-in-5-0-0">
 <div class=paranum><a id=p401.9 href=#p401.9>401.9<del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-5-0-0">/5</ins></a></div>
 <h4><ins class="diff-comment changed-in-5-0-0">Moved from §417.2. </ins><ins class="changed-in-4-1-0">Non-breaking characters:</ins></h4>
@@ -6377,15 +6391,6 @@ addEventListener('popstate', update_from_query);
 </ins>
 </div>
 <p class=formula><ins class="diff-comment changed-in-5-0-0">Moved from §417.4. </ins><ins class="deletion-comment changed-in-5-1-0">This paragraph was moved to §401.18. </ins><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">[^SP] </ins><ins class="changed-in-3-0-0">× GL</ins></del></p>
-</div>
-<div class="paragraph added-in-6-1-0">
-<div class=paranum><a id=p401.11.a href=#p401.11.a>401.11.a<ins class="paranum changed-in-6-1-0">/6.1</ins></a></div>
-<div class=sources>
-<ins class="changed-in-6-1-0 sources">
-{6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?125-A99">125-A99</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/11-141R">L2/11-141R</a>}
-</ins>
-</div>
-<p class=annotation><ins class=changed-in-6-1-0><b>Ramification: </b></ins><ins class="changed-in-6-1-0">Since this is not a “treat as” rule, the WJ remains in the sequence for subsequent rules to see.  In the presence of rules that require extended context, this means that introducing a WJ can paradoxically create break opportunities. For instance, LB21 and LB21a yield HL × HY × AL, but LB21a does not apply in HL × WJ × HY ÷ AL.</ins></p>
 </div>
 <div class="paragraph added-in-5-0-0">
 <div class=paranum><a id=p401.12 href=#p401.12>401.12<ins class="paranum changed-in-5-0-0">/5</ins></a></div>
@@ -6969,6 +6974,9 @@ addEventListener('popstate', update_from_query);
 <ins class="changed-in-6-1-0 sources">
 {6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?125-A99">125-A99</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/11-141R">L2/11-141R</a>}
 </ins>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
+</ins>
 </div>
 <p class=rule><ins class="changed-in-6-1-0">LB21a </ins><ins class="changed-in-16-0-0">Do not</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-6-1-0">Don&#x27;t</ins></del><ins class="changed-in-6-1-0"> break after </ins><ins class="changed-in-16-0-0">the hyphen in </ins><ins class="changed-in-6-1-0">Hebrew + Hyphen</ins><ins class="changed-in-16-0-0"> + non-Hebrew.</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-8-0-0">.</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-6-1-0"></ins></del></p>
 </div>
@@ -6977,6 +6985,9 @@ addEventListener('popstate', update_from_query);
 <div class=sources>
 <ins class="changed-in-6-1-0 sources">
 {6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?125-A99">125-A99</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/11-141R">L2/11-141R</a>}
+</ins>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
 </ins>
 </div>
 <p class=formula><ins class="changed-in-6-1-0">HL (HY | BA) ×</ins><ins class="changed-in-16-0-0"> [^HL]</ins></p>
@@ -7007,6 +7018,15 @@ addEventListener('popstate', update_from_query);
 </ins>
 </div>
 <p class=annotation><ins class=changed-in-6-1-0><b>Ramification: </b></ins><ins class="changed-in-6-1-0">This rule requires extended context.</ins></p>
+</div>
+<div class="paragraph added-in-16-0-0">
+<div class=paranum><a id=p432.2.d href=#p432.2.d>432.2.d<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-16-0-0><b>Ramification: </b></ins><ins class="changed-in-16-0-0">A break is allowed after the hyphen in Hebrew + Hyphen + Hebrew.</ins></p>
 </div>
 <div class="paragraph added-in-8-0-0">
 <div class=paranum><a id=p432.3 href=#p432.3>432.3<del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-8-0-0">/8</ins></del><ins class="paranum changed-in-16-0-0">/16</ins></a></div>
@@ -11663,7 +11683,12 @@ addEventListener('popstate', update_from_query);
 </div>
 <div class="paragraph added-in-16-0-0">
 <div class=paranum><a id=p596.81 href=#p596.81>596.81<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
-<p><ins class="changed-in-16-0-0">• Modified LB21b to restrict its effect to hyphens that separate Hebrew from non-Hebrew.</ins></p>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
+</ins>
+</div>
+<p><ins class="changed-in-16-0-0">• Modified LB21a to restrict its effect to hyphens that separate Hebrew from non-Hebrew.</ins></p>
 </div>
 <div class="paragraph added-in-16-0-0">
 <div class=paranum><a id=p596.82 href=#p596.82>596.82<ins class="paranum changed-in-16-0-0">/16</ins></a></div>

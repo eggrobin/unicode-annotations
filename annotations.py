@@ -428,7 +428,7 @@ ISSUES = (
         ["125-A99"],  # Discussed in https://www.unicode.org/L2/L2011/11116-pre.htm#:~:text=Segmentation%20and%20Linebreak, approved in 129-A147.
         [
             Ramification(
-                (401, 11, 'a'),
+                (401, 8, 'a'),
                 "Since this is not a “treat as” rule, the WJ remains in the sequence"
                 " for subsequent rules to see.  In the presence of rules that require"
                 " extended context, this means that introducing a WJ can paradoxically"
@@ -1070,6 +1070,21 @@ ISSUES = (
               ParagraphNumber(293),
               ParagraphNumber(310),
               ParagraphNumber(596, 88),
+          ]),
+    # Change rule LB21a from HL (HY | BA) × to HL (HY | BA) × [^HL]
+    Issue(Version(16, 0, 0),
+          ["179-A98"],
+          [
+            Ramification(
+                (432, 2, 'd'),
+                "A break is allowed after the hyphen in Hebrew + Hyphen +"
+                " Hebrew."),
+          ],
+          paragraphs=[
+              ParagraphNumber(248, 8),
+              ParagraphNumber(432, 1),
+              ParagraphNumber(432, 2),
+              ParagraphNumber(596, 81),
           ]),
     # UTN #54 instead of the renumbering table.
     Issue(Version(16, 0, 0),
