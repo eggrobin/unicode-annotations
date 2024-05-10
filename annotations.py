@@ -1068,9 +1068,11 @@ ISSUES = (
     # the rules.
     Issue(Version(16, 0, 0),
           ["179-A97"],
+          pri=["446@Tue Apr 5 07:14:53 CDT 2022"],
           paragraphs=[
               ParagraphNumber(293),
               ParagraphNumber(310),
+              ParagraphNumber(595),
               ParagraphNumber(596, 88),
           ]),
     # Changed LB19, added LB19a.
@@ -1128,10 +1130,12 @@ ISSUES = (
                 "A break is allowed after the hyphen in Hebrew + Hyphen +"
                 " Hebrew."),
           ],
+          pri=["335@Sat Apr 29 23:16:48 CDT 2017"],
           paragraphs=[
               ParagraphNumber(248, 8),
               ParagraphNumber(432, 1),
               ParagraphNumber(432, 2),
+              ParagraphNumber(595),
               ParagraphNumber(596, 81),
           ]),
     # LB=CP for closing phonetic brackets.
@@ -1144,8 +1148,10 @@ ISSUES = (
               ParagraphNumber(202, 8),
               ParagraphNumber(202, 9),
               ParagraphNumber(202, 10),
+              ParagraphNumber(595),
               ParagraphNumber(596, 89),
           ]),
+    # lb=GL half marks.
     Issue(Version(16, 0, 0),
           ["179-C29", "179-A105"],
           pri=["335@Sat Apr 29 22:48:11 CDT 2017"],
@@ -1161,6 +1167,7 @@ ISSUES = (
               ParagraphNumber(225, 11),
               ParagraphNumber(225, 12),
               ParagraphNumber(225, 13),
+              ParagraphNumber(595),
               ParagraphNumber(596, 85),
           ]),
     # UTN #54 instead of the renumbering table.
