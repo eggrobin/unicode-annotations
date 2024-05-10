@@ -52,7 +52,7 @@
     </tr>
     <tr>
       <td>Date</td>
-      <td>202<span class="changed">4-05-08</span></td>
+      <td>202<span class="changed">4-05-10</span></td>
     </tr>
     <tr>
       <td>This Version</td>
@@ -2263,22 +2263,47 @@ CJ for small hiragana and katakana<br>SA for complex context scripts<br>JL, JV, 
 
 <h3><b><a name="CP" href="#CP">CP</a></b>: Closing Parenthesis<span class="removed"> (XB)</span></h3>
   <p class="changed"><i><a href="#LB13">LB13</a>, <a href="#LB15b">LB15b</a>, <a href="#LB16">LB16</a>, <a href="#LB25">LB25</a>, <a href="#LB30">LB30</a></i></p>
-   <p>This class contains just two characters, U+0029 RIGHT PARENTHESIS
-        and U+005D RIGHT SQUARE BRACKET.
+   <p>This class contains<span class="removed"> just</span> two <span class="changed">common </span>characters, U+0029 RIGHT PARENTHESIS
+        and U+005D RIGHT SQUARE BRACKET.<span class="changed"> It also contains
+        closing brackets used in phonetic notations.</span>
         Characters of class <a class="charclass" href="#CP">CP</a> differ from those of the
         <a class="charclass" href="#CL">CL</a> (Close Punctuation) class
         in that they will not cause a break opportunity when appearing in contexts like “(s)he.”
         In all other respects the breaking behavior of <a class="charclass" href="#CP">CP</a> and
         <a class="charclass" href="#CL">CL</a> are the same.</p>
 
+        <blockquote class="reviewnote">
+        Review note: The change to the Line_Break property value of the phonetic
+        closing brackets was made after UTC #179 as part of Action Item
+        172-A100.  It has not yet been reviewed nor approved by the Unicode
+        Technical Committee, but is included in Unicode 16.0β to allow for
+        public review.
+        </blockquote>
+
   <table class="noborder">
     <tr>
-      <td class="nb-la">0029</td>
-      <td class="nb-lb">RIGHT PARENTHESIS</td>
+      <td class="nb-la"><span class="changed">0029</span></td>
+      <td class="nb-lb"><span class="changed">RIGHT PARENTHESIS</span></td>
     </tr>
     <tr>
-      <td class="nb-la">005D</td>
-      <td class="nb-lb">RIGHT SQUARE BRACKET</td>
+      <td class="nb-la"><span class="changed">005D</span></td>
+      <td class="nb-lb"><span class="changed">RIGHT SQUARE BRACKET</span></td>
+    </tr>
+    <tr>
+      <td class="nb-la"><span class="changed">2E56</span></td>
+      <td class="nb-lb"><span class="changed">RIGHT SQUARE BRACKET WITH STROKE</span></td>
+    </tr>
+    <tr>
+      <td class="nb-la"><span class="changed">2E58</span></td>
+      <td class="nb-lb"><span class="changed">RIGHT SQUARE BRACKET WITH DOUBLE STROKE</span></td>
+    </tr>
+    <tr>
+      <td class="nb-la"><span class="changed">2E5A</span></td>
+      <td class="nb-lb"><span class="changed">TOP HALF RIGHT PARENTHESIS</span></td>
+    </tr>
+    <tr>
+      <td class="nb-la"><span class="changed">2E5C</span></td>
+      <td class="nb-lb"><span class="changed">BOTTOM HALF RIGHT PARENTHESIS</span></td>
     </tr>
   </table>
 
@@ -5480,6 +5505,8 @@ quotation mark, even after spaces.</p>
     <li>Corrected the description of the behaviour of line breaking classes
     <a href="#PO">PO</a> and <a href="#PR">PR</a>: these may be separated from
     numbers if spaces intervene.</li>
+    <li>Updated the description line breaking class <a href="#CP">CP</a> to
+    account for changes in Line_Break assignment of phonetic brackets.</li>
   </ul>
 
   <p class="removed"><b>Revision 51:</b></p>
