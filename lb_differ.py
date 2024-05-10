@@ -831,7 +831,7 @@ with open("alba.html", "w", encoding="utf-8") as f:
     # Unexplained changes.
     # TODO(egg): Move the printing out of the loop, gather for all versions,
     # print an explanatory line above.
-    if Version(16, 0, 0) in versions_changed and not any(issue.version == Version(15, 1, 0) for issue in paragraph.references):
+    if Version(16, 0, 0) in versions_changed and not any(issue.version == Version(16, 0, 0) for issue in paragraph.references):
       print("              %r," % paragraph_number)
 
     print(f'<div class="paragraph added-in-{version_added.html_class()}{(" removed-in-" + last_changed.html_class()) if paragraph.absent() else ""}">', file=f)
