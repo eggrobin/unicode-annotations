@@ -1135,7 +1135,7 @@ ISSUES = (
     # LB=CP for closing phonetic brackets.
     Issue(Version(16, 0, 0),
           ["172-A100"],  # TODO(egg): Needs consensus at UTC #180.
-          pri="446@Fri Jun 3 19:49:05 CDT 2022",
+          pri=["446@Fri Jun 3 19:49:05 CDT 2022"],
           paragraphs=[
               ParagraphNumber(202, 4),
               ParagraphNumber(202, 7),
