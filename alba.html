@@ -4216,7 +4216,7 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p248.8 href=#p248.8>248.8<del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><ins class="paranum changed-in-16-0-0">/16</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
-{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C25">179-C25</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
 </ins>
 </div>
 <p><ins class="changed-in-6-1-0">When a Hebrew letter is </ins><ins class="changed-in-16-0-0">separated from following non-Hebrew text</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-6-1-0">followed</ins></del><ins class="changed-in-6-1-0"> by a hyphen, there is no break on either side of the hyphen. In this context a hyphen is any character of class HY or class BA. </ins><ins class="changed-in-16-0-0">There is also no break between a solidus and a Hebrew letter. </ins><ins class="changed-in-6-1-0">In other respects, Hebrew letters behave the same as characters of class AL.</ins></p>
@@ -4840,6 +4840,11 @@ addEventListener('popstate', update_from_query);
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p320 href=#p320>320<del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
 <p><ins class="changed-in-3-0-0">Some </ins><ins class="changed-in-5-1-0">quotation</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-3-0-0">paired</ins></del><ins class="changed-in-3-0-0"> characters can be </ins><del class="changed-in-5-1-0"><ins class="changed-in-3-0-0">either </ins></del><ins class="changed-in-3-0-0">opening or closing</ins><ins class="changed-in-5-1-0">, or even both,</ins><ins class="changed-in-3-0-0"> depending on usage. The default is to </ins><ins class="changed-in-16-0-0">use the General_Category values Initial_Punctation and Final_Punctation as a hint, together with context, but to err on the side of </ins><ins class="changed-in-3-0-0">treat</ins><ins class="changed-in-16-0-0">ing</ins><ins class="changed-in-3-0-0"> them as both opening and closing</ins><ins class="changed-in-16-0-0">, thus preventing breaks on either side</ins><ins class="changed-in-3-0-0">.</ins><ins class="changed-in-5-1-0"> This will prevent some breaks that might have been legal for a particular language or usage, such as </ins><ins class="changed-in-16-0-0">outside quotation marks surrounding Latin text within simplified Chinese text.</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-5-1-0">between a closing quote and a following opening punctuation.</ins></del></p>
 </div>
 <div class="paragraph added-in-3-0-0">
@@ -6850,35 +6855,93 @@ addEventListener('popstate', update_from_query);
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p422 href=#p422>422<del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
 <p class=rule><ins class="changed-in-3-0-0"></ins><ins class="changed-in-5-0-0">LB19</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0">LB 14</ins></del><ins class="changed-in-3-0-0"> </ins><ins class="changed-in-4-1-0">Do not</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">Don’t</ins></del><ins class="changed-in-3-0-0"> break before </ins><ins class="changed-in-16-0-0">non-initial unresolved quotation marks, such as ‘ ” ’ </ins><ins class="changed-in-3-0-0">or </ins><ins class="changed-in-16-0-0">‘ &quot; ’, nor </ins><ins class="changed-in-3-0-0">after </ins><ins class="changed-in-16-0-0">non-final unresolved </ins><ins class="changed-in-5-0-0">quotation marks, such as </ins><ins class="changed-in-3-0-0">‘</ins><ins class="changed-in-5-0-0"> </ins><ins class="changed-in-16-0-0">“</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-3-0-0">”</ins></del><ins class="changed-in-5-0-0"> </ins><ins class="changed-in-3-0-0">’</ins><ins class="changed-in-16-0-0"> or ‘ &quot; ’.</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-4-1-0">.</ins></del></p>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p423 href=#p423>423<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
 <p class=formula><ins class="changed-in-3-0-0">× </ins><ins class="changed-in-16-0-0">[ </ins><ins class="changed-in-3-0-0">QU</ins><ins class="changed-in-16-0-0"> - \p{Pi} ]</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-3-0-0"></ins></del></p>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p424 href=#p424>424<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
 <p class=formula><ins class="changed-in-16-0-0">[ </ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-3-0-0"></ins></del><ins class="changed-in-3-0-0">QU </ins><ins class="changed-in-16-0-0">- \p{Pf} ] </ins><ins class="changed-in-3-0-0">×</ins></p>
 </div>
 <div class="paragraph added-in-16-0-0">
 <div class=paranum><a id=p424.0.1 href=#p424.0.1>424.0.1<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
 <p class=rule><ins class="changed-in-16-0-0">LB19a Unless surrounded by East Asian characters, do not break either side of any unresolved quotation marks.</ins></p>
 </div>
 <div class="paragraph added-in-16-0-0">
 <div class=paranum><a id=p424.0.2 href=#p424.0.2>424.0.2<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
 <p class=formula><ins class="changed-in-16-0-0">[^$EastAsian] × QU</ins></p>
 </div>
 <div class="paragraph added-in-16-0-0">
 <div class=paranum><a id=p424.0.3 href=#p424.0.3>424.0.3<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
 <p class=formula><ins class="changed-in-16-0-0">× QU ( [^$EastAsian] | eot )</ins></p>
 </div>
 <div class="paragraph added-in-16-0-0">
 <div class=paranum><a id=p424.0.4 href=#p424.0.4>424.0.4<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
 <p class=formula><ins class="changed-in-16-0-0">QU × [^$EastAsian]</ins></p>
 </div>
 <div class="paragraph added-in-16-0-0">
 <div class=paranum><a id=p424.0.5 href=#p424.0.5>424.0.5<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
 <p class=formula><ins class="changed-in-16-0-0">( sot | [^$EastAsian] ) QU ×</ins></p>
+</div>
+<div class="paragraph added-in-16-0-0">
+<div class=paranum><a id=p424.0.5.a href=#p424.0.5.a>424.0.5.a<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-16-0-0><b>Reason: </b></ins><ins class="changed-in-16-0-0">In some typographic traditions, such as German, initial punctuation can be opening, and final punctuation can be be closing, „like this“.  However, this is not the case in East Asian typographic traditions where (in particular in Simplified Chinese) the lb=QU “” and ‘’ are used.  At the same time, it is these East Asian traditions that most benefit from classifying the quotation marks opening and closing, as, contrary to the Western case, they do not separate the quotation marks from surrounding words by spaces.  Thus, if the context is East Asian, we should treat initial punctuation as opening and final punctuation as closing.  Otherwise, we need to be cautious and disallow breaks on either side.  Having East Asian characters on one side is not enough to establish an East Asian context, as, for instance, a Chinese word could be quoted inside of German text.</ins></p>
+</div>
+<div class="paragraph added-in-16-0-0">
+<div class=paranum><a id=p424.0.5.b href=#p424.0.5.b>424.0.5.b<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-16-0-0><b>Ramification: </b></ins><ins class="changed-in-16-0-0">When non-East Asian text is quoted within Simplified Chinese text and the quotation marks U+2018 and U+2019 are not resolved, the algorithm fails to allow breaks that should be permitted, as outside the “” quotation marks in 2000年获得了《IGN》的“Best Game Boy Strategy”奖。 In that example, breaks are correctly permitted outside 《》 because these are unambiguous, lb=OP and lb=CL.</ins></p>
 </div>
 <div class="paragraph added-in-4-0-0">
 <div class=paranum><a id=p424.1 href=#p424.1>424.1<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-5-0-0">/5</ins></a></div>
@@ -6975,7 +7038,7 @@ addEventListener('popstate', update_from_query);
 {6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?125-A99">125-A99</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/11-141R">L2/11-141R</a>}
 </ins>
 <ins class="changed-in-16-0-0 sources">
-{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C25">179-C25</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
 </ins>
 </div>
 <p class=rule><ins class="changed-in-6-1-0">LB21a </ins><ins class="changed-in-16-0-0">Do not</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-6-1-0">Don&#x27;t</ins></del><ins class="changed-in-6-1-0"> break after </ins><ins class="changed-in-16-0-0">the hyphen in </ins><ins class="changed-in-6-1-0">Hebrew + Hyphen</ins><ins class="changed-in-16-0-0"> + non-Hebrew.</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-8-0-0">.</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-6-1-0"></ins></del></p>
@@ -6987,7 +7050,7 @@ addEventListener('popstate', update_from_query);
 {6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?125-A99">125-A99</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/11-141R">L2/11-141R</a>}
 </ins>
 <ins class="changed-in-16-0-0 sources">
-{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C25">179-C25</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
 </ins>
 </div>
 <p class=formula><ins class="changed-in-6-1-0">HL (HY | BA) ×</ins><ins class="changed-in-16-0-0"> [^HL]</ins></p>
@@ -7023,7 +7086,7 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p432.2.d href=#p432.2.d>432.2.d<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
-{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C25">179-C25</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
 </ins>
 </div>
 <p class=annotation><ins class=changed-in-16-0-0><b>Ramification: </b></ins><ins class="changed-in-16-0-0">A break is allowed after the hyphen in Hebrew + Hyphen + Hebrew.</ins></p>
@@ -11671,6 +11734,11 @@ addEventListener('popstate', update_from_query);
 </div>
 <div class="paragraph added-in-16-0-0">
 <div class=paranum><a id=p596.78 href=#p596.78>596.78<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
 <p><ins class="changed-in-16-0-0">• Modified LB19 and added LB19a to improve line breaking around quotation marks in Simplified Chinese.</ins></p>
 </div>
 <div class="paragraph added-in-16-0-0">
@@ -11685,7 +11753,7 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p596.81 href=#p596.81>596.81<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
-{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C25">179-C25</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>}
 </ins>
 </div>
 <p><ins class="changed-in-16-0-0">• Modified LB21a to restrict its effect to hyphens that separate Hebrew from non-Hebrew.</ins></p>

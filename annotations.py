@@ -1071,9 +1071,55 @@ ISSUES = (
               ParagraphNumber(310),
               ParagraphNumber(596, 88),
           ]),
+    # Changed LB19, added LB19a.
+    # TODO(egg): destination in L2 doc is h.fxg3io80cki1.
+    Issue(Version(16, 0, 0),
+          ["179-C28", "179-A102"],
+          [
+            Reason(
+                (424, 0, 5, 'a'),
+                "In some typographic traditions, such as German, initial"
+                " punctuation can be opening, and final punctuation can be"
+                " be closing, „like this“.  However, this is not the case in"
+                " East Asian typographic traditions where (in particular in"
+                " Simplified Chinese) the lb=QU “” and ‘’ are used."
+                "  At the same time, it is these East Asian traditions that"
+                " most benefit from classifying the quotation marks opening and"
+                " closing, as, contrary to the Western case, they do not"
+                " separate the quotation marks from surrounding words by"
+                " spaces."
+                "  Thus, if the context is East Asian, we should treat initial"
+                " punctuation as opening and final punctuation as closing."
+                "  Otherwise, we need to be cautious and disallow breaks on"
+                " either side."
+                "  Having East Asian characters on one side is not enough to"
+                " establish an East Asian context, as, for instance, a Chinese"
+                " word could be quoted inside of German text."),
+            Ramification(
+                (424, 0, 5, 'b'),
+                "When non-East Asian text is quoted within Simplified Chinese"
+                " text and the quotation marks U+2018 and U+2019 are not"
+                " resolved, the algorithm fails to allow breaks that should be"
+                " permitted, as outside the “” quotation marks in 2000年获得了"
+                "《IGN》的“Best Game Boy Strategy”奖。 In that example, breaks"
+                " are correctly permitted outside 《》 because these are"
+                " unambiguous, lb=OP and lb=CL."),
+          ],
+          paragraphs=[
+              ParagraphNumber(320),
+              ParagraphNumber(422),
+              ParagraphNumber(423),
+              ParagraphNumber(424),
+              ParagraphNumber(424, 0, 1),
+              ParagraphNumber(424, 0, 2),
+              ParagraphNumber(424, 0, 3),
+              ParagraphNumber(424, 0, 4),
+              ParagraphNumber(424, 0, 5),
+              ParagraphNumber(596, 78),
+          ]),
     # Change rule LB21a from HL (HY | BA) × to HL (HY | BA) × [^HL]
     Issue(Version(16, 0, 0),
-          ["179-A98"],
+          ["179-C25", "179-A98"],
           [
             Ramification(
                 (432, 2, 'd'),
