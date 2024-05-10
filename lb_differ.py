@@ -667,6 +667,7 @@ ANCESTRIES = {
                      ParagraphNumber(SECTION_6 + 82, 0, 2): ParagraphNumber(SECTION_6 + 82, 2),
                      ParagraphNumber(SECTION_6 + 82, 0, 3): ParagraphNumber(SECTION_6 + 80, 1),},
   Version(15, 1, 0): {ParagraphNumber(168, 1): ParagraphNumber(169, 1),},
+  Version(16, 0, 0): {ParagraphNumber(412, 9): ParagraphNumber(406, 1),},
 }
 
 JUNK = {
@@ -829,7 +830,7 @@ with open("alba.html", "w", encoding="utf-8") as f:
     # Unexplained changes.
     # TODO(egg): Move the printing out of the loop, gather for all versions,
     # print an explanatory line above.
-    if Version(15, 1, 0) in versions_changed and not any(issue.version == Version(15, 1, 0) for issue in paragraph.references):
+    if Version(16, 0, 0) in versions_changed and not any(issue.version == Version(15, 1, 0) for issue in paragraph.references):
       print("              %r," % paragraph_number)
 
     print(f'<div class="paragraph added-in-{version_added.html_class()}{(" removed-in-" + last_changed.html_class()) if paragraph.absent() else ""}">', file=f)
