@@ -1182,6 +1182,15 @@ ISSUES = (
               ParagraphNumber(279, 4),
               ParagraphNumber(596, 86),
           ]),
+    # LB20a word-initial hyphen.
+    Issue(Version(16, 0, 0),
+          ["179-C32", "179-A111"],
+          paragraphs=[
+              ParagraphNumber(425, 5),
+              ParagraphNumber(425, 6),
+              ParagraphNumber(425, 7),
+              ParagraphNumber(596, 80),
+          ]),
     # UTN #54 instead of the renumbering table.
     Issue(Version(16, 0, 0),
           ["175-A67"],
