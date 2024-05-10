@@ -1132,6 +1132,18 @@ ISSUES = (
               ParagraphNumber(432, 2),
               ParagraphNumber(596, 81),
           ]),
+    # LB=CP for closing phonetic brackets.
+    Issue(Version(16, 0, 0),
+          ["172-A100"],  # TODO(egg): Needs consensus at UTC #180.
+          pri="446@Fri Jun 3 19:49:05 CDT 2022",
+          paragraphs=[
+              ParagraphNumber(202, 4),
+              ParagraphNumber(202, 7),
+              ParagraphNumber(202, 8),
+              ParagraphNumber(202, 9),
+              ParagraphNumber(202, 10),
+              ParagraphNumber(596, 89),
+          ]),
     # UTN #54 instead of the renumbering table.
     Issue(Version(16, 0, 0),
           ["175-A67"],
