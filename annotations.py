@@ -1170,6 +1170,18 @@ ISSUES = (
               ParagraphNumber(595),
               ParagraphNumber(596, 85),
           ]),
+    # LB change of presentation forms for vertical whatever.
+    Issue(Version(16, 0, 0),
+          ["179-C30", "179-A107"],
+          paragraphs=[
+              ParagraphNumber(185, -1, 1),
+              ParagraphNumber(263, 1, 1),
+              ParagraphNumber(263, 1, 2),
+              ParagraphNumber(263, 1, 3),
+              ParagraphNumber(279, 3),
+              ParagraphNumber(279, 4),
+              ParagraphNumber(596, 86),
+          ]),
     # UTN #54 instead of the renumbering table.
     Issue(Version(16, 0, 0),
           ["175-A67"],
