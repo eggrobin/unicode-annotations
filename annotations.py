@@ -1259,6 +1259,24 @@ ISSUES = (
               ParagraphNumber(401, 1),
               ParagraphNumber(596, 75),
           ]),
+    # LB=ID plane 1 range
+    Issue(Version(10, 0, 0),
+          ["147-C25"],
+          paragraphs=[
+              ParagraphNumber(248, 0, 12),
+              ParagraphNumber(248, 0, 13),
+          ]),
+    # LB=ID holes, one from 13.0 missed in documentation.
+    Issue(Version(16, 0, 0),
+          ["177-A115", "177-C47", "162-A67"],
+          l2_docs=["L2/23-234"], # TODO(egg): 5.3
+          paragraphs=[
+              ParagraphNumber(248, 0, 12),
+              ParagraphNumber(248, 0, 13),
+              ParagraphNumber(248, 0, 14),
+              ParagraphNumber(248, 0, 15),
+              ParagraphNumber(596, 73),
+          ]),
     # UTN #54 instead of the renumbering table.
     Issue(Version(16, 0, 0),
           ["175-A67"],
