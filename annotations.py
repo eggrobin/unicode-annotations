@@ -1075,6 +1075,15 @@ ISSUES = (
               ParagraphNumber(595),
               ParagraphNumber(596, 88),
           ]),
+    # Line breaking around quotation marks, follow-up documentation.
+    Issue(Version(16, 0, 0),
+          ["175-C23", "175-A71"],
+          paragraphs=[
+              ParagraphNumber(71),
+              ParagraphNumber(320),
+              ParagraphNumber(596, 83),
+          ],
+          l2_docs=["L2/23-063"]),
     # Changed LB19, added LB19a.
     # TODO(egg): destination in L2 doc is h.fxg3io80cki1.
     Issue(Version(16, 0, 0),
@@ -1124,6 +1133,7 @@ ISSUES = (
               ParagraphNumber(462, 8),  # $EastAsian
               ParagraphNumber(462, 9, 1),  # $EastAsian
               ParagraphNumber(596, 78),
+              ParagraphNumber(596, 83),
           ]),
     # Change rule LB21a from HL (HY | BA) × to HL (HY | BA) × [^HL]
     Issue(Version(16, 0, 0),
@@ -1141,7 +1151,16 @@ ISSUES = (
               ParagraphNumber(432, 2),
               ParagraphNumber(595),
               ParagraphNumber(596, 81),
+              ParagraphNumber(596, 84),
           ]),
+    # LB21b, follow-up documentation.
+    Issue(
+        Version(16, 0, 0),
+        ["137-C9"], # TODO(egg): CLDR ticket CLDR-6116.
+        paragraphs=[
+              ParagraphNumber(248, 8),
+              ParagraphNumber(596, 84),
+        ]),
     # LB=CP for closing phonetic brackets.
     Issue(Version(16, 0, 0),
           ["172-A100"],  # TODO(egg): Needs consensus at UTC #180.
@@ -1187,6 +1206,7 @@ ISSUES = (
               ParagraphNumber(596, 86),
           ]),
     # LB20a word-initial hyphen.
+    # TODO(egg): CLDR and ICU tickets, an annotation.
     Issue(Version(16, 0, 0),
           ["179-C32", "179-A111"],
           paragraphs=[
