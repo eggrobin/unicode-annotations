@@ -1277,6 +1277,18 @@ ISSUES = (
               ParagraphNumber(248, 0, 15),
               ParagraphNumber(596, 73),
           ]),
+    # LB=AS digits.
+    Issue(Version(16, 0, 0),
+          ["177-C46", "177-A113"],
+          l2_docs=["L2/23-234"], # TODO(egg): 5.1
+          paragraphs=[
+              ParagraphNumber(116, 14),
+              ParagraphNumber(116, 14, 1),
+              ParagraphNumber(116, 15, 1),
+              ParagraphNumber(116, 16, 1),
+              ParagraphNumber(116, 19, 1),
+              ParagraphNumber(596, 72),
+          ]),
     # UTN #54 instead of the renumbering table.
     Issue(Version(16, 0, 0),
           ["175-A67"],
