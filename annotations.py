@@ -1289,6 +1289,26 @@ ISSUES = (
               ParagraphNumber(116, 19, 1),
               ParagraphNumber(596, 72),
           ]),
+    # Dictionary usage to the core spec.
+    Issue(Version(16, 0, 0),
+          ["173-A14"],
+          l2_docs=["L2/22-244"], # TODO(egg): Seg7
+          pri=["L2/22-243@Wed Sep 21 02:47:38 CDT 2022"],
+          paragraphs=[
+              ParagraphNumber(352),
+              ParagraphNumber(353),
+              ParagraphNumber(353, 1),
+              ParagraphNumber(354),
+              ParagraphNumber(355),
+              ParagraphNumber(356),
+              ParagraphNumber(357),
+              ParagraphNumber(358),
+              ParagraphNumber(359),
+              ParagraphNumber(360),
+              ParagraphNumber(361),
+              ParagraphNumber(361, 0, 1),
+              ParagraphNumber(596, 74),
+          ]),
     # UTN #54 instead of the renumbering table.
     Issue(Version(16, 0, 0),
           ["175-A67"],
