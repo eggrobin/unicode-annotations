@@ -1250,6 +1250,15 @@ ISSUES = (
               ParagraphNumber(462, 0, 6),
               ParagraphNumber(596, 76),
           ]),
+    # LB9 unclear that the CM|ZWJ vanishes
+    Issue(Version(16, 0, 0),
+          [],  # No action.
+          l2_docs=["L2/24-009R"], # TODO(egg): Section 6.2.
+          pri=["L2/24-008@Tue Nov 07 14:09:48 CST 2023"], # TODO(egg): #ID20231107140948
+          paragraphs=[
+              ParagraphNumber(401, 1),
+              ParagraphNumber(596, 75),
+          ]),
     # UTN #54 instead of the renumbering table.
     Issue(Version(16, 0, 0),
           ["175-A67"],

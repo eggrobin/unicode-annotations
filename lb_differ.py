@@ -848,17 +848,18 @@ with open("alba.html", "w", encoding="utf-8") as f:
     for issue in paragraph.references:
       print(f'<ins class="changed-in-{issue.version.html_class()} sources">', file=f)
       print("{" + str(issue.version) + ": " +
-            ", ".join(f'<a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?{l2ref}">{l2ref}</a>'
-                      for l2ref in issue.l2_refs) +
-            ("" if not issue.l2_refs or not issue.l2_docs else
-             "; " + ",".join(f'<a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?{l2doc}">{l2doc}</a>'
-                             for l2doc in issue.l2_docs)) +
-            ("" if not issue.l2_refs or not issue.pri else
-             "; " + ",".join(
-              (f'<a href="https://www.unicode.org/{pri.replace("L2/", "L2/L20").replace("-", "/" + pri[3:5]).replace("@","-pubrev.html#:~:text=")}">{pri}</a>'
-               if pri.startswith("L2") else
-               f'<a href="https://www.unicode.org/review/pri{pri.replace("@","/feedback.html#:~:text=").replace(" ", "%20")}">PRI-{pri}</a>')
-              for pri in issue.pri)) +
+            "; ".join(
+              (part for part in (
+                ", ".join(f'<a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?{l2ref}">{l2ref}</a>'
+                          for l2ref in issue.l2_refs),
+                ",".join(f'<a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?{l2doc}">{l2doc}</a>'
+                          for l2doc in issue.l2_docs),
+                ",".join(
+                  (f'<a href="https://www.unicode.org/{pri.replace("L2/", "L2/L20").replace("-", "/" + pri[3:5]).replace("@","-pubrev.html#:~:text=")}">{pri}</a>'
+                   if pri.startswith("L2") else
+                   f'<a href="https://www.unicode.org/review/pri{pri.replace("@","/feedback.html#:~:text=").replace(" ", "%20")}">PRI-{pri}</a>')
+                  for pri in issue.pri))
+                if part)) +
             "}",
             file=f)
       print('</ins>', file=f)
