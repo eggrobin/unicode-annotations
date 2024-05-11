@@ -5463,6 +5463,15 @@ addEventListener('popstate', update_from_query);
 </div>
 <p class=annotation><ins class="changed-in-5-1-0">Treat QU as OP in QU [^SP]. (LB19)</ins></p>
 </div>
+<div class="paragraph added-in-16-0-0">
+<div class=paranum><a id=p321.c.1 href=#p321.c.1>321.c.1<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
+<p class=annotation><ins class="changed-in-16-0-0">Except for \p{Pf} in East Asian context. (LB19a)</ins></p>
+</div>
 <div class="paragraph added-in-5-1-0">
 <div class=paranum><a id=p321.d href=#p321.d>321.d<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
 <div class=sources>
@@ -5471,6 +5480,15 @@ addEventListener('popstate', update_from_query);
 </ins>
 </div>
 <p class=annotation><ins class="changed-in-5-1-0">Treat QU as CL in [^SP] QU. (LB19)</ins></p>
+</div>
+<div class="paragraph added-in-16-0-0">
+<div class=paranum><a id=p321.d.1 href=#p321.d.1>321.d.1<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
+<p class=annotation><ins class="changed-in-16-0-0">Except for \p{Pi} in East Asian context. (LB19a)</ins></p>
 </div>
 <div class="paragraph added-in-15-1-0">
 <div class=paranum><a id=p321.e href=#p321.e>321.e<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
@@ -6975,6 +6993,15 @@ addEventListener('popstate', update_from_query);
 </div>
 <p><ins class="changed-in-4-1-0"></ins><ins class="changed-in-5-0-0">where</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0">Where</ins></del><ins class="changed-in-4-1-0"> X is any line break class except </ins><ins class="changed-in-5-0-0">BK, CR, LF, NL, </ins><ins class="changed-in-4-1-0">SP, </ins><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0">BK, CR, LF, NL </ins></del><ins class="changed-in-4-1-0">or ZW.</ins></p>
 </div>
+<div class="paragraph added-in-3-0-0">
+<div class=paranum><a id=p400.1.a href=#p400.1.a>400.1.a</a></div>
+<div class=sources>
+<ins class="changed-in-3-0-0 sources">
+{3.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A67">175-A67</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-3-0-0><b>Ramification: </b></ins><ins class="changed-in-3-0-0">The “do not break” part of these rules does not require extended context, but the “treat as” means that most subsequent rules implicitly have extended context across combining marks.</ins></p>
+</div>
 <div class="paragraph added-in-3-0-0 removed-in-4-0-0">
 <div class=paranum><a id=p401 href=#p401>401<ins class="paranum changed-in-4-0-0">/4</ins></a></div>
 <p class=formula><ins class="deletion-comment changed-in-4-0-0">This paragraph was moved to §396.2. </ins><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">Treat SP CM* as if it were ID</ins></del></p>
@@ -7075,15 +7102,6 @@ addEventListener('popstate', update_from_query);
 </ins>
 </div>
 <p class=formula><ins class="diff-comment changed-in-5-0-0">Moved from §414.7. </ins><ins class="changed-in-4-1-0">× WJ</ins></p>
-</div>
-<div class="paragraph added-in-3-0-0">
-<div class=paranum><a id=p401.7.a href=#p401.7.a>401.7.a</a></div>
-<div class=sources>
-<ins class="changed-in-3-0-0 sources">
-{3.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A67">175-A67</a>}
-</ins>
-</div>
-<p class=annotation><ins class=changed-in-3-0-0><b>Ramification: </b></ins><ins class="changed-in-3-0-0">The “do not break” part of these rules does not require extended context, but the “treat as” means that most subsequent rules implicitly have extended context across combining marks.</ins></p>
 </div>
 <div class="paragraph added-in-5-0-0">
 <div class=paranum><a id=p401.8 href=#p401.8>401.8<del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-5-0-0">/5</ins></a></div>
@@ -7400,6 +7418,51 @@ addEventListener('popstate', update_from_query);
 </div>
 <p class=annotation><ins class=changed-in-15-1-0><b>Ramification: </b></ins><ins class="changed-in-15-1-0">Ramification: This rule requires extended context after the break.</ins></p>
 </div>
+<div class="paragraph added-in-15-1-0">
+<div class=paranum><a id=p412.5.b href=#p412.5.b>412.5.b<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-15-1-0 sources">
+{15.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-C23">175-C23</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A71">175-A71</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-063">L2/23-063</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-15-1-0><b>Reason: </b></ins><ins class="changed-in-15-1-0">In some typographic traditions, such as German, initial punctuation can be opening, and final punctuation can be be closing, „like this“, or »like that«.  In others, such as French and Vietnamese, opening and closing quotation marks are separated from their contents by spaces, « like this ».  These inner spaces must not be broken.  Crucially, these two sets do not intersect (no-one does » this «), so an “isolated” quotation mark, is likely one from the French tradition.</ins></p>
+</div>
+<div class="paragraph added-in-15-1-0">
+<div class=paranum><a id=p412.5.c href=#p412.5.c>412.5.c<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-15-1-0 sources">
+{15.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-C23">175-C23</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A71">175-A71</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-063">L2/23-063</a>}
+</ins>
+</div>
+<p class=annotation><ins class="changed-in-15-1-0">Besides hard line breaks and spaces, the alternatives in LB15a encompass characters that may be expected to occur before a quotation, such as opening parentheses (« like this »), or other quotation marks (for „« nested » quotations”).</ins></p>
+</div>
+<div class="paragraph added-in-15-1-0">
+<div class=paranum><a id=p412.5.c href=#p412.5.c>412.5.c<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-15-1-0 sources">
+{15.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-C23">175-C23</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A71">175-A71</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-063">L2/23-063</a>}
+</ins>
+</div>
+<p class=annotation><ins class="changed-in-15-1-0">ZW is also included, for two reasons. One is technical: some major state-machine based implementations are incapable of considering context across break opportunities, so that the position following ZW is indistinguishable from sot for them. The other is semantic: ZW is an overriding control character that creates a break opportunity; it is similar to a hard line break, and is a strong signal that the following character may begin a line, which suggests it is not a closing quotation mark.</ins></p>
+</div>
+<div class="paragraph added-in-15-1-0">
+<div class=paranum><a id=p412.5.e href=#p412.5.e>412.5.e<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-15-1-0 sources">
+{15.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-C23">175-C23</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A71">175-A71</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-063">L2/23-063</a>}
+</ins>
+</div>
+<p class=annotation><ins class="changed-in-15-1-0">The alternatives in LB15b comprise the closing counterparts, as well as classes encompassing terminal punctuation, for the case of quotations before « commas », or before « full stops ».</ins></p>
+</div>
+<div class="paragraph added-in-15-1-0">
+<div class=paranum><a id=p412.5.f href=#p412.5.f>412.5.f<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
+<div class=sources>
+<ins class="changed-in-15-1-0 sources">
+{15.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-C23">175-C23</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A71">175-A71</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-063">L2/23-063</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-15-1-0><b>Ramification: </b></ins><ins class="changed-in-15-1-0">When text starting with a full stop is quoted within German text and the German quotation marks are not resolved, the algorithm fails to allow breaks that should be permitted, before the „ quotation mark in Die Patrone „.30 Carbine“.</ins></p>
+</div>
 <div class="paragraph added-in-16-0-0">
 <div class=paranum><a id=p412.6 href=#p412.6>412.6<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
 <div class=sources>
@@ -7705,10 +7768,19 @@ addEventListener('popstate', update_from_query);
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
 </ins>
 </div>
-<p class=annotation><ins class=changed-in-16-0-0><b>Reason: </b></ins><ins class="changed-in-16-0-0">In some typographic traditions, such as German, initial punctuation can be opening, and final punctuation can be be closing, „like this“.  However, this is not the case in East Asian typographic traditions where (in particular in Simplified Chinese) the lb=QU “” and ‘’ are used.  At the same time, it is these East Asian traditions that most benefit from classifying the quotation marks opening and closing, as, contrary to the Western case, they do not separate the quotation marks from surrounding words by spaces.  Thus, if the context is East Asian, we should treat initial punctuation as opening and final punctuation as closing.  Otherwise, we need to be cautious and disallow breaks on either side.  Having East Asian characters on one side is not enough to establish an East Asian context, as, for instance, a Chinese word could be quoted inside of German text.</ins></p>
+<p class=annotation><ins class=changed-in-16-0-0><b>Reason: </b></ins><ins class="changed-in-16-0-0">In some typographic traditions, such as German, initial punctuation can be opening, and final punctuation can be be closing, „like this“.  However, this is not the case in East Asian typographic traditions where (in particular in Simplified Chinese) the lb=QU “” and ‘’ are used.  At the same time, these East Asian traditions benefit from classifying the quotation marks opening and closing, as, contrary to the Western case, they do not separate the quotation marks from surrounding words by spaces.  Thus, if the context is East Asian, we should treat initial punctuation as opening and final punctuation as closing.  Otherwise, we need to be cautious and disallow breaks on either side.</ins></p>
 </div>
 <div class="paragraph added-in-16-0-0">
 <div class=paranum><a id=p424.0.5.b href=#p424.0.5.b>424.0.5.b<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=sources>
+<ins class="changed-in-16-0-0 sources">
+{16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
+</ins>
+</div>
+<p class=annotation><ins class=changed-in-16-0-0><b>Ramification: </b></ins><ins class="changed-in-16-0-0">  Having East Asian characters on one side is not enough to establish an East Asian context, as, for instance, a Chinese word could be quoted inside of German text.  For instance, the ‚‘ quotation marks must not be considered to be in East Asian context in the following, as this would incorrectly allow breaks inside the quotation marks: Anmerkung: „White“ bzw. ‚白人‘ – in der Amtlichen Statistik</ins></p>
+</div>
+<div class="paragraph added-in-16-0-0">
+<div class=paranum><a id=p424.0.5.c href=#p424.0.5.c>424.0.5.c<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}

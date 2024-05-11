@@ -161,7 +161,7 @@ ISSUES = (
                 " « quotation marks » if QU has been resolved for French."
                 " See [Suign98]."),
             Ramification(
-                (401, 7, 'a'),
+                (400, 1, 'a'),
                 "The “do not break” part of these rules does not require extended"
                 " context, but the “treat as” means that most subsequent rules"
                 " implicitly have extended context across combining marks."),
@@ -880,6 +880,49 @@ ISSUES = (
                   (412, 5, 'a'),
                   "Ramification: This rule requires extended context after the"
                   " break."),
+              Reason(
+                  (412, 5, 'b'),
+                  "In some typographic traditions, such as German, initial"
+                  " punctuation can be opening, and final punctuation can be"
+                  " be closing, „like this“, or »like that«.  In others, such"
+                  " as French and Vietnamese, opening and closing quotation"
+                  " marks are separated from their contents by spaces, « like"
+                  " this »."
+                  "  These inner spaces must not be broken."
+                  "  Crucially, these two sets do not intersect (no-one does"
+                  " » this «), so an “isolated” quotation mark, is likely one"
+                  " from the French tradition."),
+              Annotation(
+                  (412, 5, 'c'),
+                  "Besides hard line breaks and spaces, the alternatives in"
+                  " LB15a encompass characters that may be expected to occur"
+                  " before a quotation, such as opening parentheses (« like"
+                  " this »), or other quotation marks (for „« nested »"
+                  " quotations”)."),
+              Annotation(
+                  (412, 5, 'c'),
+                  "ZW is also included, for two reasons. One is technical: some"
+                  " major state-machine based implementations are incapable of"
+                  " considering context across break opportunities, so that the"
+                  " position following ZW is indistinguishable from sot for"
+                  " them. The other is semantic: ZW is an overriding control"
+                  " character that creates a break opportunity; it is similar"
+                  " to a hard line break, and is a strong signal that the"
+                  " following character may begin a line, which suggests it is"
+                  " not a closing quotation mark."),
+              Annotation(
+                  (412, 5, 'e'),
+                  "The alternatives in LB15b comprise the closing counterparts,"
+                  " as well as classes encompassing terminal punctuation, for"
+                  " the case of quotations before « commas », or before « full"
+                  " stops »."),
+            Ramification(
+                  (412, 5, 'f'),
+                  "When text starting with a full stop is quoted within German"
+                  " text and the German quotation marks are not resolved, the"
+                  " algorithm fails to allow breaks that should be"
+                  " permitted, before the „ quotation mark in Die Patrone"
+                  " „.30 Carbine“."),
           ],
           paragraphs=[
               ParagraphNumber(411),
@@ -1089,6 +1132,12 @@ ISSUES = (
     Issue(Version(16, 0, 0),
           ["179-C28", "179-A102"],
           [
+            Annotation(
+                (321, 'c', 1),
+                "Except for \p{Pf} in East Asian context. (LB19a)"),
+            Annotation(
+                (321, 'd', 1),
+                "Except for \p{Pi} in East Asian context. (LB19a)"),
             Reason(
                 (424, 0, 5, 'a'),
                 "In some typographic traditions, such as German, initial"
@@ -1096,20 +1145,25 @@ ISSUES = (
                 " be closing, „like this“.  However, this is not the case in"
                 " East Asian typographic traditions where (in particular in"
                 " Simplified Chinese) the lb=QU “” and ‘’ are used."
-                "  At the same time, it is these East Asian traditions that"
-                " most benefit from classifying the quotation marks opening and"
-                " closing, as, contrary to the Western case, they do not"
-                " separate the quotation marks from surrounding words by"
-                " spaces."
+                "  At the same time, these East Asian traditions benefit from"
+                " classifying the quotation marks opening and closing, as,"
+                " contrary to the Western case, they do not separate the"
+                " quotation marks from surrounding words by spaces."
                 "  Thus, if the context is East Asian, we should treat initial"
                 " punctuation as opening and final punctuation as closing."
                 "  Otherwise, we need to be cautious and disallow breaks on"
-                " either side."
-                "  Having East Asian characters on one side is not enough to"
-                " establish an East Asian context, as, for instance, a Chinese"
-                " word could be quoted inside of German text."),
+                " either side."),
             Ramification(
                 (424, 0, 5, 'b'),
+                "  Having East Asian characters on one side is not enough to"
+                " establish an East Asian context, as, for instance, a Chinese"
+                " word could be quoted inside of German text.  For instance,"
+                " the ‚‘ quotation marks must not be considered to be in East"
+                " Asian context in the following, as this would incorrectly"
+                " allow breaks inside the quotation marks:"
+                " Anmerkung: „White“ bzw. ‚白人‘ – in der Amtlichen Statistik"),
+            Ramification(
+                (424, 0, 5, 'c'),
                 "When non-East Asian text is quoted within Simplified Chinese"
                 " text and the quotation marks U+2018 and U+2019 are not"
                 " resolved, the algorithm fails to allow breaks that should be"
