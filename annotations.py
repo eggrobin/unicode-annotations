@@ -922,10 +922,11 @@ ISSUES = (
             Ramification(
                   (412, 5, 'f'),
                   "When text starting with a full stop is quoted within German"
-                  " text and the German quotation marks are not resolved, the"
-                  " algorithm fails to allow breaks that should be"
-                  " permitted, as before the » quotation mark in “12,7 × 99 mm"
-                  " NATO, auch ».50 BMG«”."),
+                  " text using »this style« of quotation mark or within Swedish"
+                  " text, if the quotation marks are not resolved, the"
+                  " algorithm fails to allow breaks that should be permitted,"
+                  " as before the » quotation mark in “12,7 × 99 mm NATO, auch"
+                  " ».50 BMG«”."),
           ],
           paragraphs=[
               ParagraphNumber(411),
