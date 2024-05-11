@@ -882,12 +882,13 @@ ISSUES = (
                   " break."),
               Reason(
                   (412, 5, 'b'),
-                  "In some typographic traditions, such as German, initial"
-                  " punctuation can be opening, and final punctuation can be"
-                  " be closing, „like this“, or »like that«.  In others, such"
-                  " as French and Vietnamese, opening and closing quotation"
-                  " marks are separated from their contents by spaces, « like"
-                  " this »."
+                  "In some typographic traditions, such as German or Swedish,"
+                  " initial punctuation can be opening, and final punctuation"
+                  " can be be closing, „like this“, »like that«, or ”like"
+                  " that”."
+                  "  In others, such as French and Vietnamese, opening and"
+                  " closing quotation marks are separated from their contents"
+                  " by spaces, « like this »."
                   "  These inner spaces must not be broken."
                   "  Crucially, these two sets do not intersect (no-one does"
                   " » this «), so an “isolated” quotation mark, is likely one"
@@ -908,8 +909,10 @@ ISSUES = (
                   " them. The other is semantic: ZW is an overriding control"
                   " character that creates a break opportunity; it is similar"
                   " to a hard line break, and is a strong signal that the"
-                  " following character may begin a line, which suggests it is"
-                  " not a closing quotation mark."),
+                  " a line break can be expected at this position, from which"
+                  " it follows that the preceding character is unlikely to be"
+                  " an opening quotation mark, and the following character"
+                  " is unlikely to be a closing quotation mark."),
               Annotation(
                   (412, 5, 'e'),
                   "The alternatives in LB15b comprise the closing counterparts,"
@@ -921,8 +924,8 @@ ISSUES = (
                   "When text starting with a full stop is quoted within German"
                   " text and the German quotation marks are not resolved, the"
                   " algorithm fails to allow breaks that should be"
-                  " permitted, before the „ quotation mark in Die Patrone"
-                  " „.30 Carbine“."),
+                  " permitted, as before the » quotation mark in “12,7 × 99 mm"
+                  " NATO, auch ».50 BMG«”."),
           ],
           paragraphs=[
               ParagraphNumber(411),

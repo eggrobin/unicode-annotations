@@ -7425,7 +7425,7 @@ addEventListener('popstate', update_from_query);
 {15.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-C23">175-C23</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A71">175-A71</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-063">L2/23-063</a>}
 </ins>
 </div>
-<p class=annotation><ins class=changed-in-15-1-0><b>Reason: </b></ins><ins class="changed-in-15-1-0">In some typographic traditions, such as German, initial punctuation can be opening, and final punctuation can be be closing, „like this“, or »like that«.  In others, such as French and Vietnamese, opening and closing quotation marks are separated from their contents by spaces, « like this ».  These inner spaces must not be broken.  Crucially, these two sets do not intersect (no-one does » this «), so an “isolated” quotation mark, is likely one from the French tradition.</ins></p>
+<p class=annotation><ins class=changed-in-15-1-0><b>Reason: </b></ins><ins class="changed-in-15-1-0">In some typographic traditions, such as German or Swedish, initial punctuation can be opening, and final punctuation can be be closing, „like this“, »like that«, or ”like that”.  In others, such as French and Vietnamese, opening and closing quotation marks are separated from their contents by spaces, « like this ».  These inner spaces must not be broken.  Crucially, these two sets do not intersect (no-one does » this «), so an “isolated” quotation mark, is likely one from the French tradition.</ins></p>
 </div>
 <div class="paragraph added-in-15-1-0">
 <div class=paranum><a id=p412.5.c href=#p412.5.c>412.5.c<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
@@ -7443,7 +7443,7 @@ addEventListener('popstate', update_from_query);
 {15.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-C23">175-C23</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A71">175-A71</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-063">L2/23-063</a>}
 </ins>
 </div>
-<p class=annotation><ins class="changed-in-15-1-0">ZW is also included, for two reasons. One is technical: some major state-machine based implementations are incapable of considering context across break opportunities, so that the position following ZW is indistinguishable from sot for them. The other is semantic: ZW is an overriding control character that creates a break opportunity; it is similar to a hard line break, and is a strong signal that the following character may begin a line, which suggests it is not a closing quotation mark.</ins></p>
+<p class=annotation><ins class="changed-in-15-1-0">ZW is also included, for two reasons. One is technical: some major state-machine based implementations are incapable of considering context across break opportunities, so that the position following ZW is indistinguishable from sot for them. The other is semantic: ZW is an overriding control character that creates a break opportunity; it is similar to a hard line break, and is a strong signal that the a line break can be expected at this position, from which it follows that the preceding character is unlikely to be an opening quotation mark, and the following character is unlikely to be a closing quotation mark.</ins></p>
 </div>
 <div class="paragraph added-in-15-1-0">
 <div class=paranum><a id=p412.5.e href=#p412.5.e>412.5.e<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
@@ -7461,7 +7461,7 @@ addEventListener('popstate', update_from_query);
 {15.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-C23">175-C23</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A71">175-A71</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-063">L2/23-063</a>}
 </ins>
 </div>
-<p class=annotation><ins class=changed-in-15-1-0><b>Ramification: </b></ins><ins class="changed-in-15-1-0">When text starting with a full stop is quoted within German text and the German quotation marks are not resolved, the algorithm fails to allow breaks that should be permitted, before the „ quotation mark in Die Patrone „.30 Carbine“.</ins></p>
+<p class=annotation><ins class=changed-in-15-1-0><b>Ramification: </b></ins><ins class="changed-in-15-1-0">When text starting with a full stop is quoted within German text and the German quotation marks are not resolved, the algorithm fails to allow breaks that should be permitted, as before the » quotation mark in “12,7 × 99 mm NATO, auch ».50 BMG«”.</ins></p>
 </div>
 <div class="paragraph added-in-16-0-0">
 <div class=paranum><a id=p412.6 href=#p412.6>412.6<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
