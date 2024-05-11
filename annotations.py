@@ -883,8 +883,8 @@ ISSUES = (
               Reason(
                   (412, 5, 'b'),
                   "In some typographic traditions, such as German or Swedish,"
-                  " initial punctuation can be opening, and final punctuation"
-                  " can be be closing, „like this“, »like that«, or ”like"
+                  " initial punctuation can be closing, and final punctuation"
+                  " can be be opening, „like this“, »like that«, or ”like"
                   " that”."
                   "  In others, such as French and Vietnamese, opening and"
                   " closing quotation marks are separated from their contents"
@@ -1144,15 +1144,18 @@ ISSUES = (
                 "Except for \p{Pi} in East Asian context. (LB19a)"),
             Reason(
                 (424, 0, 5, 'a'),
-                "In some typographic traditions, such as German, initial"
-                " punctuation can be opening, and final punctuation can be"
-                " be closing, „like this“.  However, this is not the case in"
-                " East Asian typographic traditions where (in particular in"
-                " Simplified Chinese) the lb=QU “” and ‘’ are used."
+                "In some typographic traditions, such as Swedish and German,"
+                " final punctuation can be opening and initial punctuation can"
+                " be closing, ”like this” and „like that“."
+                "  However, this is not the case in East Asian typographic"
+                " traditions where (in particular in Simplified Chinese) the"
+                " lb=QU “” and ‘’ are used."
                 "  At the same time, these East Asian traditions benefit from"
-                " classifying the quotation marks opening and closing, as,"
+                " classifying the quotation marks as opening and closing, as,"
                 " contrary to the Western case, they do not separate the"
-                " quotation marks from surrounding words by spaces."
+                " quotation marks from surrounding words by spaces, so that"
+                " the breaks outside of quotation marks are not supplied by"
+                " LB18."
                 "  Thus, if the context is East Asian, we should treat initial"
                 " punctuation as opening and final punctuation as closing."
                 "  Otherwise, we need to be cautious and disallow breaks on"
@@ -1160,11 +1163,11 @@ ISSUES = (
             Annotation(
                 (424, 0, 5, 'b'),
                 "  Having East Asian characters on one side is not enough to"
-                " establish an East Asian context, as, for instance, a Chinese"
-                " word could be quoted inside of German text.  For instance,"
-                " the ‚‘ quotation marks must not be considered to be in East"
+                " establish an East Asian context, as, e.g., a Chinese word"
+                " could be quoted inside of German text.  For instance,"
+                " the ‘ quotation mark must not be considered to be in East"
                 " Asian context in the following, as this would incorrectly"
-                " allow breaks inside the quotation marks:"
+                " allow a break inside the closing quotation mark:"
                 " Anmerkung: „White“ bzw. ‚白人‘ – in der Amtlichen Statistik"),
             Ramification(
                 (424, 0, 5, 'c'),
