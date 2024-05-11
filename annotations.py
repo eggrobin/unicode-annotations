@@ -1190,9 +1190,9 @@ ISSUES = (
     Issue(Version(16, 0, 0),
           ["179-C32", "179-A111"],
           paragraphs=[
-              ParagraphNumber(425, 5),
-              ParagraphNumber(425, 6),
-              ParagraphNumber(425, 7),
+              ParagraphNumber(424, 5),
+              ParagraphNumber(424, 6),
+              ParagraphNumber(424, 7),
               ParagraphNumber(596, 80),
           ]),
     # LB25, LB13, LB15c, LB15d, numbers.
