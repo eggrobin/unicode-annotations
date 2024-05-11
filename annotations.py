@@ -1153,7 +1153,7 @@ ISSUES = (
                 " punctuation as opening and final punctuation as closing."
                 "  Otherwise, we need to be cautious and disallow breaks on"
                 " either side."),
-            Ramification(
+            Annotation(
                 (424, 0, 5, 'b'),
                 "  Having East Asian characters on one side is not enough to"
                 " establish an East Asian context, as, for instance, a Chinese"
