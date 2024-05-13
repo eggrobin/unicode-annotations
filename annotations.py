@@ -1270,6 +1270,15 @@ ISSUES = (
     # TODO(egg): CLDR and ICU tickets, an annotation.
     Issue(Version(16, 0, 0),
           ["179-C32", "179-A111"],
+          [
+            Reason(
+                (424, 7, 'a'),
+                "Originally added as a Finnish tailoring in CLDR-3029, with the"
+                " example “Mac Pro -tietokone”.  Does not interact adversely"
+                " with other languages, and indeed seems generally beneficial,"
+                " thus made into a root tailoring in ICU-8151 then upstreamed"
+                " to The Unicode Standard."),
+          ],
           paragraphs=[
               ParagraphNumber(424, 5),
               ParagraphNumber(424, 6),
