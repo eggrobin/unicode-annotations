@@ -1572,4 +1572,41 @@ ISSUES = (
               ParagraphNumber(587, 81),
               ParagraphNumber(596, 87),
           ]),
+    # Last-minute LB10 and LB21a changes.
+    Issue(Version(16, 0, 0),
+          ["180-C18", "180-A57"],
+          l2_docs=["L2/24-162"],  # 5.5
+          paragraphs=[
+              ParagraphNumber(102, 0, 1),
+              ParagraphNumber(401, 3),
+              ParagraphNumber(432, 2),
+              ParagraphNumber(596, 81),
+              ParagraphNumber(596, 84),
+          ]),
+    # Reduce documentation of lb=ID defaults.
+    Issue(Version(16, 0, 0),
+          ["180-A59"],
+          l2_docs=["L2/24-162"],  # 5.7
+          paragraphs=[
+              ParagraphNumber(102, 2, -1, 1),
+              ParagraphNumber(104),
+              ParagraphNumber(104, 1),
+              ParagraphNumber(105),
+              ParagraphNumber(106),
+              ParagraphNumber(107),
+              ParagraphNumber(108),
+              ParagraphNumber(109),
+              ParagraphNumber(110),
+              ParagraphNumber(110, 1),
+          ]),
+    # Much ado about lb=AI.
+    Issue(Version(16, 0, 0),
+          ["180-C17", "180-A55"],
+          l2_docs=["L2/24-162"],  # 5.5
+          paragraphs=[
+              ParagraphNumber(112),
+              ParagraphNumber(112, 0, 1),
+              ParagraphNumber(112, 0, 2),
+              ParagraphNumber(112, 4),
+          ]),
 )
