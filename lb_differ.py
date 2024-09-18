@@ -117,7 +117,8 @@ def is_default_junk(w):
 def get_junk_override(version: Version, p: ParagraphNumber):
   if version in JUNK and p in JUNK[version]:
     junk = JUNK[version][p]
-    return lambda w: is_default_junk(w) or w in junk
+    default = "NODEFAULT" not in junk
+    return lambda w: (is_default_junk(w) if default else w.isspace()) or w in junk
   else:
     return None
 
@@ -606,7 +607,10 @@ PRESERVED_PARAGRAPHS = {
                       ParagraphNumber(448, 1, 6): "PR × OP",
                       ParagraphNumber(448, 4): "NU ( SY | IS )* × NU",
                       ParagraphNumber(587, 3): "Example 7",
-                      ParagraphNumber(587, 41): "11 History"},
+                      ParagraphNumber(587, 41): "11 History",
+                      ParagraphNumber(587, 41): "11 History",
+                      ParagraphNumber(598): "© 1999",
+                      ParagraphNumber(599): "Unicode and the Unicode Logo"},
 }
 
 ANCESTRIES = {
@@ -667,7 +671,8 @@ ANCESTRIES = {
                      ParagraphNumber(SECTION_6 + 82, 0, 2): ParagraphNumber(SECTION_6 + 82, 2),
                      ParagraphNumber(SECTION_6 + 82, 0, 3): ParagraphNumber(SECTION_6 + 80, 1),},
   Version(15, 1, 0): {ParagraphNumber(168, 1): ParagraphNumber(169, 1),},
-  Version(16, 0, 0): {ParagraphNumber(412, 9): ParagraphNumber(406, 1),},
+  Version(16, 0, 0): {ParagraphNumber(412, 9): ParagraphNumber(406, 1),
+                      ParagraphNumber(598, 1): ParagraphNumber(598),},
 }
 
 JUNK = {
@@ -686,7 +691,9 @@ JUNK = {
                       ParagraphNumber(462, 7): ["]"],
                       ParagraphNumber(462, 8): ["]"],
                       ParagraphNumber(587, 3): ["line", "break"],
-                      ParagraphNumber(587, 19): ["in"]},
+                      ParagraphNumber(587, 19): ["in"],
+                      ParagraphNumber(598): ["Unicode", "any", "for", "in", "use", "this", "contained"],
+                      ParagraphNumber(598, 1): ["NODEFAULT", ".", ",", "is", "Unicode"],},
 }
 
 nontrivial_versions = []
