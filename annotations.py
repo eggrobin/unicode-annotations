@@ -1580,8 +1580,8 @@ ISSUES = (
               ParagraphNumber(102, 0, 1),
               ParagraphNumber(401, 3),
               ParagraphNumber(432, 2),
-              ParagraphNumber(596, 81),
-              ParagraphNumber(596, 86),
+              ParagraphNumber(596, 93),
+              ParagraphNumber(596, 94),
           ]),
     # Reduce documentation of lb=ID defaults.
     Issue(Version(16, 0, 0),
@@ -1598,15 +1598,17 @@ ISSUES = (
               ParagraphNumber(109),
               ParagraphNumber(110),
               ParagraphNumber(110, 1),
+              ParagraphNumber(596, 89),
           ]),
     # Much ado about lb=AI.
     Issue(Version(16, 0, 0),
-          ["180-C17", "180-A55"],
+          ["180-C17", "180-A55", "180-A56"],
           l2_docs=["L2/24-162"],  # 5.5
           paragraphs=[
               ParagraphNumber(112),
               ParagraphNumber(112, 0, 1),
               ParagraphNumber(112, 0, 2),
               ParagraphNumber(112, 4),
+              ParagraphNumber(596, 83),
           ]),
 )
