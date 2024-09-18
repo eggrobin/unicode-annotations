@@ -861,7 +861,7 @@ ISSUES = (
                   " a line, at the beginning of a parenthetical or quotation,"
                   " or after spaces. (LB15a)"),
               Annotation(
-                  (321, 'e'),
+                  (321, 'f'),
                   "Treat Final Punctuation (gc=Pf) as CL at the end of a line,"
                   " before a prohibited break (including at the end of a"
                   " parenthetical or quotation, as well as before trailing"
@@ -901,7 +901,7 @@ ISSUES = (
                   " this »), or other quotation marks (for „« nested »"
                   " quotations”)."),
               Annotation(
-                  (412, 5, 'c'),
+                  (412, 5, 'd'),
                   "ZW is also included, for two reasons. One is technical: some"
                   " major state-machine based implementations are incapable of"
                   " considering context across break opportunities, so that the"
@@ -1063,7 +1063,7 @@ ISSUES = (
               ParagraphNumber(102, 2),
               ParagraphNumber(596, 31),
           ],
-          l2_docs=["L2/18-009@Fri Nov 10 17:16:01 CST 2017"]),
+          pri=["L2/18-009@Fri Nov 10 17:16:01 CST 2017"]),
     # Character names.
     Issue(Version(11, 0, 0),
           ["155-A26"],

@@ -837,10 +837,10 @@ with open("alba.html", "w", encoding="utf-8") as f:
   print("<tbody>", file=f)
   for i, version in enumerate(nontrivial_versions):
     print("<tr><td>", file=f)
-    print(f'<input type="radio" id="oldest-{version.html_class()}" name="oldest" value="{version.html_class()}"{"checked" if version == Version(5,0,0) else ""}>', file=f)
+    print(f'<input type="radio" id="oldest-{version.html_class()}" name="oldest" value="{version.html_class()}"{" checked" if version == Version(5,0,0) else ""}>', file=f)
     #print(f'<label for="oldest-{version.html_class()}" class="changed-in-{version.html_class()}">Unicode Version {version}</label>', file=f)
     print("</td><td>", file=f)
-    print(f'<input type="radio" id="newest-{version.html_class()}" name="newest" value="{version.html_class()}"{"checked" if i == len(nontrivial_versions) - 1 else ""}>', file=f)
+    print(f'<input type="radio" id="newest-{version.html_class()}" name="newest" value="{version.html_class()}"{" checked" if i == len(nontrivial_versions) - 1 else ""}>', file=f)
     print("</td><td>", file=f)
     print(f'<button class="changed-in-{version.html_class()}" value="{version.html_class()}">Unicode Version {version}</button>', file=f)
     print("</td></tr>", file=f)
