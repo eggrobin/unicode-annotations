@@ -9,7 +9,7 @@ from historical_diff import Version, ParagraphNumber
 SECTION_6 = 361
 
 class Annotation(Paragraph):
-  def __init__(self, number: Tuple[Union[int, str]], text: str):
+  def __init__(self, number: Tuple[Union[int, str], ...], text: str):
     self.contents = text
     self.number = ParagraphNumber(*number)
     if not self.number.annotation:
@@ -1120,7 +1120,7 @@ ISSUES = (
               ParagraphNumber(293),
               ParagraphNumber(310),
               ParagraphNumber(595),
-              ParagraphNumber(596, 88),
+              ParagraphNumber(596, 91),
           ]),
     # Line breaking around quotation marks, follow-up documentation.
     Issue(Version(16, 0, 0),
@@ -1128,7 +1128,7 @@ ISSUES = (
           paragraphs=[
               ParagraphNumber(71),
               ParagraphNumber(320),
-              ParagraphNumber(596, 83),
+              ParagraphNumber(596, 85),
           ],
           l2_docs=["L2/23-063"]),
     # Changed LB19, added LB19a.
@@ -1138,10 +1138,10 @@ ISSUES = (
           [
             Annotation(
                 (321, 'c', 1),
-                "Except for \p{Pf} in East Asian context. (LB19a)"),
+                r"Except for \p{Pf} in East Asian context. (LB19a)"),
             Annotation(
                 (321, 'd', 1),
-                "Except for \p{Pi} in East Asian context. (LB19a)"),
+                r"Except for \p{Pi} in East Asian context. (LB19a)"),
             Reason(
                 (424, 0, 5, 'a'),
                 "In some typographic traditions, such as Swedish and German,"
@@ -1194,7 +1194,7 @@ ISSUES = (
               ParagraphNumber(462, 8),  # $EastAsian
               ParagraphNumber(462, 9, 1),  # $EastAsian
               ParagraphNumber(596, 78),
-              ParagraphNumber(596, 83),
+              ParagraphNumber(596, 85),
           ]),
     # Change rule LB21a from HL (HY | BA) × to HL (HY | BA) × [^HL]
     Issue(Version(16, 0, 0),
@@ -1212,7 +1212,7 @@ ISSUES = (
               ParagraphNumber(432, 2),
               ParagraphNumber(595),
               ParagraphNumber(596, 81),
-              ParagraphNumber(596, 84),
+              ParagraphNumber(596, 86),
           ]),
     # LB21b, follow-up documentation.
     Issue(
@@ -1220,7 +1220,7 @@ ISSUES = (
         ["137-C9"], # TODO(egg): CLDR ticket CLDR-6116.
         paragraphs=[
               ParagraphNumber(248, 8),
-              ParagraphNumber(596, 84),
+              ParagraphNumber(596, 86),
         ]),
     # LB=CP for closing phonetic brackets.
     Issue(Version(16, 0, 0),
@@ -1233,7 +1233,7 @@ ISSUES = (
               ParagraphNumber(202, 9),
               ParagraphNumber(202, 10),
               ParagraphNumber(595),
-              ParagraphNumber(596, 89),
+              ParagraphNumber(596, 92),
           ]),
     # lb=GL half marks.
     Issue(Version(16, 0, 0),
@@ -1252,7 +1252,7 @@ ISSUES = (
               ParagraphNumber(225, 12),
               ParagraphNumber(225, 13),
               ParagraphNumber(595),
-              ParagraphNumber(596, 85),
+              ParagraphNumber(596, 87),
           ]),
     # LB change of presentation forms for vertical whatever.
     Issue(Version(16, 0, 0),
@@ -1264,7 +1264,7 @@ ISSUES = (
               ParagraphNumber(263, 1, 3),
               ParagraphNumber(279, 3),
               ParagraphNumber(279, 4),
-              ParagraphNumber(596, 86),
+              ParagraphNumber(596, 88),
           ]),
     # LB20a word-initial hyphen.
     # TODO(egg): CLDR and ICU tickets, an annotation.
@@ -1570,7 +1570,7 @@ ISSUES = (
               ParagraphNumber(587, 79),
               ParagraphNumber(587, 80),
               ParagraphNumber(587, 81),
-              ParagraphNumber(596, 87),
+              ParagraphNumber(596, 90),
           ]),
     # Last-minute LB10 and LB21a changes.
     Issue(Version(16, 0, 0),
@@ -1581,7 +1581,7 @@ ISSUES = (
               ParagraphNumber(401, 3),
               ParagraphNumber(432, 2),
               ParagraphNumber(596, 81),
-              ParagraphNumber(596, 84),
+              ParagraphNumber(596, 86),
           ]),
     # Reduce documentation of lb=ID defaults.
     Issue(Version(16, 0, 0),
