@@ -1348,7 +1348,7 @@ ISSUES = (
     Issue(Version(16, 0, 0),
           [],  # No action.
           l2_docs=["L2/24-009R"], # TODO(egg): Section 6.2.
-          pri=["L2/24-008@Tue Nov 07 14:09:48 CST 2023"], # TODO(egg): #ID20231107140948
+          pri=["L2/24-008#ID20231107140948"],
           paragraphs=[
               ParagraphNumber(401, 1),
               ParagraphNumber(596, 75),
@@ -1608,7 +1608,7 @@ ISSUES = (
               ParagraphNumber(112),
               ParagraphNumber(112, 0, 1),
               ParagraphNumber(112, 0, 2),
-              ParagraphNumber(112, 4),
+              ParagraphNumber(112, 4, 1),
               ParagraphNumber(596, 83),
           ]),
 )

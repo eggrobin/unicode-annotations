@@ -1,4 +1,5 @@
 ﻿import csv
+import datetime
 from difflib import SequenceMatcher
 from typing import Sequence, Tuple
 import re
@@ -775,6 +776,27 @@ TOL_LIGHT_COLOURS = [
     "#DDDDDD",
 ]
 
+def date_to_id(pri_date : str):
+  return datetime.datetime.strptime(
+    pri_date.replace(' CDT ', ' ').replace(' CST ', ' '),
+    '%a %b %d %H:%M:%S %Y').strftime('ID%Y%m%d%H%M%S')
+
+def pri_link(pri_reference : str):
+  if "@" in pri_reference:
+    head, date = pri_reference.split("@")
+    id = date_to_id(date)
+    anchor = "#:~:text=" + date.replace(" ", "%20")
+  else:
+    head, id = pri_reference.split("#")
+    anchor = "#" + id
+  if head.startswith("L2"):
+    file = f'https://www.unicode.org/{head.replace("L2/", "L2/L20").replace("-", "/" + head[3:5])}-pubrev.html'
+  else:
+    file = f"https://www.unicode.org/review/pri{head}/feedback.html"
+  url = file + anchor
+  document = head if head.startswith("L2") else "PRI-" + head
+  return f'<a href="{url}">{document}#{id}</a>'
+
 with open("alba.html", "w", encoding="utf-8") as f:
   print("<!DOCTYPE html>", file=f)
   print("<html>", file=f)
@@ -860,11 +882,7 @@ with open("alba.html", "w", encoding="utf-8") as f:
                           for l2ref in issue.l2_refs),
                 ",".join(f'<a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?{l2doc}">{l2doc}</a>'
                           for l2doc in issue.l2_docs),
-                ",".join(
-                  (f'<a href="https://www.unicode.org/{pri.replace("L2/", "L2/L20").replace("-", "/" + pri[3:5]).replace("@","-pubrev.html#:~:text=").replace(" ", "%20")}">{pri}</a>'
-                   if pri.startswith("L2") else
-                   f'<a href="https://www.unicode.org/review/pri{pri.replace("@","/feedback.html#:~:text=").replace(" ", "%20")}">PRI-{pri}</a>')
-                  for pri in issue.pri))
+                ",".join(pri_link(pri) for pri in issue.pri))
                 if part)) +
             "}",
             file=f)
