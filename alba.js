@@ -54,7 +54,7 @@ function meow(push_history = true) {
     if (show_deleted_paragraphs) {
       query.push(`show_deleted=${show_deleted_paragraphs}`);
     }
-    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + query.join("&");
+    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?' + query.join("&") + window.location.hash;
     window.history.pushState({ path: newurl }, '', newurl);
   }
   for (var label of document.getElementsByTagName("button")) {
