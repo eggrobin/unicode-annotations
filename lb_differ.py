@@ -661,6 +661,7 @@ ANCESTRIES = {
                      ParagraphNumber(401, 10): ParagraphNumber(SECTION_6 + 56, 3),
                      ParagraphNumber(401, 11): ParagraphNumber(SECTION_6 + 56, 4),
                      ParagraphNumber(401, 12): ParagraphNumber(SECTION_6 + 56, 5),
+                     ParagraphNumber(443, 2): ParagraphNumber(448, 8),
                      ParagraphNumber(SECTION_6 + 82, 3): ParagraphNumber(SECTION_6 + 87, 6),
                      ParagraphNumber(SECTION_6 + 87, 1, 2): ParagraphNumber(SECTION_6 + 87, 5),
                      ParagraphNumber(SECTION_6 + 87, 1, 6): ParagraphNumber(SECTION_6 + 90),
