@@ -160,6 +160,21 @@ for i, (start, duration) in enumerate(UTC):
         if weekday in (6, 7) and utc_number not in (70,):
             raise ValueError(f"UTC #{utc_number} overlaps with a weekend")
 
+def ordinal(n: int) -> str:
+    if n == 1:
+        return "first"
+    if n == 2:
+        return "second"
+    if n == 3:
+        return "third"
+    if n % 10 == 1 and n % 100 != 11:
+        return f"{n}st"
+    if n % 10 == 2 and n % 100 != 12:
+        return f"{n}nd"
+    if n % 10 == 3 and n % 100 != 13:
+        return f"{n}rd"
+    return f"{n}th"
+
 t = date.fromisoformat(sys.argv[1]) if len(sys.argv) > 1 else date.today()
 
 next_utc = next(i for i, (date, duration) in enumerate(UTC) if date > t)
@@ -180,10 +195,7 @@ if days_since_previous_utc < previous_utc_duration:
                 f"day of UTC #{utc_number}")
     else:
         print(t.strftime("%A, ") +
-            (("first " if n == 1 else
-            "second " if n == 2 else
-            "third " if n == 3 else
-            f"{n}th ") if previous_utc_duration > 1 else "") +
+            (ordinal(n) + " " if previous_utc_duration > 1 else "") +
             f"day of UTC #{utc_number}")
 elif days_to_next_utc <= 7:
     print(t.strftime("%A ") + f"before UTC #{OFFSET + next_utc}")
@@ -192,6 +204,6 @@ else:
     start_of_utc_week = date.fromisocalendar(year, week, 1)
     weeks = ((start_of_utc_week - t).days - 1) // 7 + 1
     print(t.strftime("%A, ") +
-        ("last week" if weeks == 1 else
-         f"{weeks} weeks") +
-         f" before UTC #{OFFSET + next_utc}")
+          ("last" if weeks == 1 else
+           ordinal(weeks)) +
+          f" week before UTC #{OFFSET + next_utc}")
