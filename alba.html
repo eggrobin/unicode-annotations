@@ -104,6 +104,10 @@ table.changed-in-15-1-0 { background:#EEDD88; color: black; }
 del.changed-in-16-0-0 { color:#EE8866; text-decoration-thickness: .3ex; }
 ins.changed-in-16-0-0 { background-color:#EE8866; text-decoration: none; color: black; }
 table.changed-in-16-0-0 { background:#EE8866; color: black; }
+.changed-in-17-0-0 { background-color:#FFAABB; }
+del.changed-in-17-0-0 { color:#FFAABB; text-decoration-thickness: .3ex; }
+ins.changed-in-17-0-0 { background-color:#FFAABB; text-decoration: none; color: black; }
+table.changed-in-17-0-0 { background:#FFAABB; color: black; }
 nav {background:white;position:fixed;right:0;top:0; }
 nav table { margin-left:initial; }
 body { margin-right:15em; }
@@ -451,9 +455,16 @@ addEventListener('popstate', update_from_query);
 <tr><td>
 <input type="radio" id="oldest-16-0-0" name="oldest" value="16-0-0">
 </td><td>
-<input type="radio" id="newest-16-0-0" name="newest" value="16-0-0" checked>
+<input type="radio" id="newest-16-0-0" name="newest" value="16-0-0">
 </td><td>
 <button class="changed-in-16-0-0" value="16-0-0">Unicode Version 16.0.0</button>
+</td></tr>
+<tr><td>
+<input type="radio" id="oldest-17-0-0" name="oldest" value="17-0-0">
+</td><td>
+<input type="radio" id="newest-17-0-0" name="newest" value="17-0-0" checked>
+</td><td>
+<button class="changed-in-17-0-0" value="17-0-0">Unicode Version 17.0.0</button>
 </td></tr>
 </tbody>
 </table>
@@ -461,42 +472,42 @@ addEventListener('popstate', update_from_query);
 <label for="show-deleted">Show deleted paragraphs</label></div>
 </nav>
 <div class="paragraph added-in-3-0-0">
-<div class=paranum><a id=p1 href=#p1>1<del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-3-0-1">/3.0.1</ins></del><ins class="paranum changed-in-8-0-0">/8</ins></a></div>
+<div class=paranum><a id=p1 href=#p1>1<del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-3-0-1">/3.0.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-8-0-0">/8</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-3-0-1 sources">
 {3.0.1: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?83-C6">83-C6</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/00-118">L2/00-118</a>}
 </ins>
 </div>
-<h2>Annotated <ins class="changed-in-3-0-0">Unicode</ins><ins class="changed-in-8-0-0">®</ins><ins class="changed-in-3-0-0"> </ins><ins class="changed-in-3-0-1">Standard Annex</ins><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">Technical Report</ins></del><ins class="changed-in-3-0-0"> #14</ins></h2>
+<h2>Annotated <ins class="changed-in-3-0-0"></ins><ins class="changed-in-17-0-0">Proposed Update </ins><ins class="changed-in-3-0-0">Unicode</ins><ins class="changed-in-8-0-0">®</ins><ins class="changed-in-3-0-0"> </ins><ins class="changed-in-3-0-1">Standard Annex</ins><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">Technical Report</ins></del><ins class="changed-in-3-0-0"> #14</ins></h2>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p2 href=#p2>2<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
 <h1>Annotated <ins class="changed-in-3-0-0"></ins><ins class="changed-in-5-1-0">Unicode </ins><ins class="changed-in-3-0-0">Line Breaking </ins><ins class="changed-in-5-1-0">Algorithm</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-3-0-0">Properties</ins></del></h1>
 </div>
 <div class="paragraph added-in-3-0-0">
-<div class=paranum><a id=p3 href=#p3>3<del class="paranum changed-in-3-1-0"><ins class="paranum changed-in-3-0-1">/3.0.1</ins></del><del class="paranum changed-in-3-2-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-2-0">/3.2</ins></del><del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-6-0-0"><ins class="paranum changed-in-5-2-0">/5.2</ins></del><del class="paranum changed-in-6-1-0"><ins class="paranum changed-in-6-0-0">/6</ins></del><del class="paranum changed-in-6-2-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><del class="paranum changed-in-6-3-0"><ins class="paranum changed-in-6-2-0">/6.2</ins></del><del class="paranum changed-in-7-0-0"><ins class="paranum changed-in-6-3-0">/6.3</ins></del><del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-7-0-0">/7</ins></del><del class="paranum changed-in-9-0-0"><ins class="paranum changed-in-8-0-0">/8</ins></del><del class="paranum changed-in-10-0-0"><ins class="paranum changed-in-9-0-0">/9</ins></del><del class="paranum changed-in-11-0-0"><ins class="paranum changed-in-10-0-0">/10</ins></del><del class="paranum changed-in-12-0-0"><ins class="paranum changed-in-11-0-0">/11</ins></del><del class="paranum changed-in-13-0-0"><ins class="paranum changed-in-12-0-0">/12</ins></del><del class="paranum changed-in-14-0-0"><ins class="paranum changed-in-13-0-0">/13</ins></del><del class="paranum changed-in-15-0-0"><ins class="paranum changed-in-14-0-0">/14</ins></del><del class="paranum changed-in-15-1-0"><ins class="paranum changed-in-15-0-0">/15</ins></del><del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-15-1-0">/15.1</ins></del><ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=paranum><a id=p3 href=#p3>3<del class="paranum changed-in-3-1-0"><ins class="paranum changed-in-3-0-1">/3.0.1</ins></del><del class="paranum changed-in-3-2-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-2-0">/3.2</ins></del><del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-6-0-0"><ins class="paranum changed-in-5-2-0">/5.2</ins></del><del class="paranum changed-in-6-1-0"><ins class="paranum changed-in-6-0-0">/6</ins></del><del class="paranum changed-in-6-2-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><del class="paranum changed-in-6-3-0"><ins class="paranum changed-in-6-2-0">/6.2</ins></del><del class="paranum changed-in-7-0-0"><ins class="paranum changed-in-6-3-0">/6.3</ins></del><del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-7-0-0">/7</ins></del><del class="paranum changed-in-9-0-0"><ins class="paranum changed-in-8-0-0">/8</ins></del><del class="paranum changed-in-10-0-0"><ins class="paranum changed-in-9-0-0">/9</ins></del><del class="paranum changed-in-11-0-0"><ins class="paranum changed-in-10-0-0">/10</ins></del><del class="paranum changed-in-12-0-0"><ins class="paranum changed-in-11-0-0">/11</ins></del><del class="paranum changed-in-13-0-0"><ins class="paranum changed-in-12-0-0">/12</ins></del><del class="paranum changed-in-14-0-0"><ins class="paranum changed-in-13-0-0">/13</ins></del><del class="paranum changed-in-15-0-0"><ins class="paranum changed-in-14-0-0">/14</ins></del><del class="paranum changed-in-15-1-0"><ins class="paranum changed-in-15-0-0">/15</ins></del><del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-15-1-0">/15.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-3-0-1 sources">
 {3.0.1: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?83-C6">83-C6</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/00-118">L2/00-118</a>}
 </ins>
 </div>
-<table><tr><td><ins class="changed-in-3-0-0"></ins><ins class="changed-in-3-0-1">Version</ins><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">Revision</ins></del></td><td><ins class="changed-in-5-0-0">Unicode </ins><ins class="changed-in-16-0-0">16</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-15-0-0">15</ins></del><wbr><del class="changed-in-15-0-0"><ins class="changed-in-14-0-0">14</ins></del><wbr><del class="changed-in-14-0-0"><ins class="changed-in-13-0-0">13</ins></del><wbr><del class="changed-in-13-0-0"><ins class="changed-in-12-0-0">12</ins></del><wbr><del class="changed-in-12-0-0"><ins class="changed-in-11-0-0">11</ins></del><wbr><del class="changed-in-11-0-0"><ins class="changed-in-10-0-0">10</ins></del><wbr><del class="changed-in-10-0-0"><ins class="changed-in-9-0-0">9</ins></del><wbr><del class="changed-in-9-0-0"><ins class="changed-in-8-0-0">8</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-7-0-0">7</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-0-0">6</ins></del><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-0-0">5</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-0-0">4</ins></del><del class="changed-in-3-2-0"><ins class="changed-in-3-1-0">Unicode </ins></del><del class="changed-in-4-0-0"><ins class="changed-in-3-0-1">3</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">6</ins></del><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">.</ins><ins class="changed-in-3-2-0">2</ins></del><wbr><del class="changed-in-3-2-0"><ins class="changed-in-3-1-0">1</ins></del><del class="changed-in-5-0-0"><ins class="changed-in-3-1-0">.</ins><ins class="changed-in-4-1-0">1</ins></del><del class="changed-in-6-0-0"><ins class="changed-in-4-1-0">.</ins><ins class="changed-in-5-2-0">2</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">1</ins></del><del class="changed-in-7-0-0"><ins class="changed-in-5-1-0">.</ins><ins class="changed-in-6-3-0">3</ins></del><wbr><del class="changed-in-6-3-0"><ins class="changed-in-6-2-0">2</ins></del><wbr><del class="changed-in-6-2-0"><ins class="changed-in-6-1-0">1</ins></del><del class="changed-in-16-0-0"><ins class="changed-in-6-1-0">.</ins><ins class="changed-in-15-1-0">1</ins></del><ins class="changed-in-15-1-0">.</ins><ins class="changed-in-3-0-0">0</ins><ins class="changed-in-16-0-0">.0</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-15-1-0"></ins></del><wbr><del class="changed-in-15-1-0"><ins class="changed-in-7-0-0">.0</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-1-0"></ins></del><wbr><del class="changed-in-6-1-0"><ins class="changed-in-6-0-0">.0</ins></del><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-1-0"></ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">.0</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0"></ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-0">.</ins><ins class="changed-in-4-0-1">1</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">0</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-1-0"></ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-1">.1</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0"></ins></del></td></tr></table>
+<table><tr><td><ins class="changed-in-3-0-0"></ins><ins class="changed-in-3-0-1">Version</ins><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">Revision</ins></del></td><td><ins class="changed-in-5-0-0">Unicode </ins><ins class="changed-in-17-0-0">17</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">16</ins></del><wbr><del class="changed-in-16-0-0"><ins class="changed-in-15-0-0">15</ins></del><wbr><del class="changed-in-15-0-0"><ins class="changed-in-14-0-0">14</ins></del><wbr><del class="changed-in-14-0-0"><ins class="changed-in-13-0-0">13</ins></del><wbr><del class="changed-in-13-0-0"><ins class="changed-in-12-0-0">12</ins></del><wbr><del class="changed-in-12-0-0"><ins class="changed-in-11-0-0">11</ins></del><wbr><del class="changed-in-11-0-0"><ins class="changed-in-10-0-0">10</ins></del><wbr><del class="changed-in-10-0-0"><ins class="changed-in-9-0-0">9</ins></del><wbr><del class="changed-in-9-0-0"><ins class="changed-in-8-0-0">8</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-7-0-0">7</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-0-0">6</ins></del><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-0-0">5</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-0-0">4</ins></del><del class="changed-in-3-2-0"><ins class="changed-in-3-1-0">Unicode </ins></del><del class="changed-in-4-0-0"><ins class="changed-in-3-0-1">3</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">6</ins></del><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">.</ins><ins class="changed-in-3-2-0">2</ins></del><wbr><del class="changed-in-3-2-0"><ins class="changed-in-3-1-0">1</ins></del><del class="changed-in-5-0-0"><ins class="changed-in-3-1-0">.</ins><ins class="changed-in-4-1-0">1</ins></del><del class="changed-in-6-0-0"><ins class="changed-in-4-1-0">.</ins><ins class="changed-in-5-2-0">2</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">1</ins></del><del class="changed-in-7-0-0"><ins class="changed-in-5-1-0">.</ins><ins class="changed-in-6-3-0">3</ins></del><wbr><del class="changed-in-6-3-0"><ins class="changed-in-6-2-0">2</ins></del><wbr><del class="changed-in-6-2-0"><ins class="changed-in-6-1-0">1</ins></del><del class="changed-in-16-0-0"><ins class="changed-in-6-1-0">.</ins><ins class="changed-in-15-1-0">1</ins></del><ins class="changed-in-15-1-0">.</ins><ins class="changed-in-3-0-0">0</ins><ins class="changed-in-16-0-0">.0</ins><ins class="changed-in-17-0-0"> (draft 3)</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0"></ins></del><wbr><del class="changed-in-16-0-0"><ins class="changed-in-15-1-0"></ins></del><wbr><del class="changed-in-15-1-0"><ins class="changed-in-7-0-0">.0</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-1-0"></ins></del><wbr><del class="changed-in-6-1-0"><ins class="changed-in-6-0-0">.0</ins></del><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-1-0"></ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">.0</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0"></ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-0">.</ins><ins class="changed-in-4-0-1">1</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">0</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-1-0"></ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-1">.1</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0"></ins></del></td></tr></table>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p4 href=#p4>4<del class="paranum changed-in-6-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-13-0-0"><ins class="paranum changed-in-6-0-0">/6</ins></del><del class="paranum changed-in-15-1-0"><ins class="paranum changed-in-13-0-0">/13</ins></del><ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
 <table><tr><td><ins class="changed-in-3-0-0"></ins><ins class="changed-in-6-0-0">Editors</ins><wbr><del class="changed-in-6-0-0"><ins class="changed-in-3-0-0">Authors</ins></del></td><td><ins class="changed-in-15-1-0">Robin Leroy</ins><wbr><del class="changed-in-15-1-0"><ins class="changed-in-13-0-0">Christopher Chapman</ins></del><del class="changed-in-6-0-0"><ins class="changed-in-3-0-0">Asmus Freytag (asmus@unicode.org)</ins><ins class="changed-in-5-1-0">, </ins></del><del class="changed-in-13-0-0"><ins class="changed-in-5-1-0">Andy Heninger</ins></del><ins class="changed-in-5-1-0"> (</ins><ins class="changed-in-15-1-0">eggrobin</ins><wbr><del class="changed-in-15-1-0"><ins class="changed-in-13-0-0">cchapman</ins></del><wbr><del class="changed-in-13-0-0"><ins class="changed-in-5-1-0">andy.heninger</ins></del><ins class="changed-in-5-1-0">@</ins><ins class="changed-in-15-1-0">unicode.org</ins><wbr><del class="changed-in-15-1-0"><ins class="changed-in-13-0-0">adobe</ins></del><wbr><del class="changed-in-13-0-0"><ins class="changed-in-5-1-0">gmail</ins></del><del class="changed-in-15-1-0"><ins class="changed-in-5-1-0">.com</ins></del><ins class="changed-in-5-1-0">)</ins></td></tr></table>
 </div>
 <div class="paragraph added-in-3-0-0">
-<div class=paranum><a id=p5 href=#p5>5<del class="paranum changed-in-3-1-0"><ins class="paranum changed-in-3-0-1">/3.0.1</ins></del><del class="paranum changed-in-3-2-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-2-0">/3.2</ins></del><del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-6-0-0"><ins class="paranum changed-in-5-2-0">/5.2</ins></del><del class="paranum changed-in-6-1-0"><ins class="paranum changed-in-6-0-0">/6</ins></del><del class="paranum changed-in-6-2-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><del class="paranum changed-in-6-3-0"><ins class="paranum changed-in-6-2-0">/6.2</ins></del><del class="paranum changed-in-7-0-0"><ins class="paranum changed-in-6-3-0">/6.3</ins></del><del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-7-0-0">/7</ins></del><del class="paranum changed-in-9-0-0"><ins class="paranum changed-in-8-0-0">/8</ins></del><del class="paranum changed-in-10-0-0"><ins class="paranum changed-in-9-0-0">/9</ins></del><del class="paranum changed-in-11-0-0"><ins class="paranum changed-in-10-0-0">/10</ins></del><del class="paranum changed-in-12-0-0"><ins class="paranum changed-in-11-0-0">/11</ins></del><del class="paranum changed-in-13-0-0"><ins class="paranum changed-in-12-0-0">/12</ins></del><del class="paranum changed-in-14-0-0"><ins class="paranum changed-in-13-0-0">/13</ins></del><del class="paranum changed-in-15-0-0"><ins class="paranum changed-in-14-0-0">/14</ins></del><del class="paranum changed-in-15-1-0"><ins class="paranum changed-in-15-0-0">/15</ins></del><del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-15-1-0">/15.1</ins></del><ins class="paranum changed-in-16-0-0">/16</ins></a></div>
-<table><tr><td><ins class="changed-in-3-0-0">Date</ins></td><td><ins class="changed-in-16-0-0">2024</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-15-1-0">2023</ins></del><wbr><del class="changed-in-15-1-0"><ins class="changed-in-15-0-0">2022</ins></del><wbr><del class="changed-in-15-0-0"><ins class="changed-in-14-0-0">2021</ins></del><wbr><del class="changed-in-14-0-0"><ins class="changed-in-13-0-0">2020</ins></del><wbr><del class="changed-in-13-0-0"><ins class="changed-in-12-0-0">2019</ins></del><wbr><del class="changed-in-12-0-0"><ins class="changed-in-11-0-0">2018</ins></del><wbr><del class="changed-in-11-0-0"><ins class="changed-in-10-0-0">2017</ins></del><wbr><del class="changed-in-10-0-0"><ins class="changed-in-9-0-0">2016</ins></del><wbr><del class="changed-in-9-0-0"><ins class="changed-in-8-0-0">2015</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-7-0-0">2014</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-3-0">2013</ins></del><wbr><del class="changed-in-6-3-0"><ins class="changed-in-6-1-0">2012</ins></del><wbr><del class="changed-in-6-1-0"><ins class="changed-in-6-0-0">2010</ins></del><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-2-0">2009</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">2008</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">2006</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0">2005</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">2004</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">2003</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-2-0">2002</ins></del><wbr><del class="changed-in-3-2-0"><ins class="changed-in-3-0-1">2000</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">1999</ins></del><ins class="changed-in-3-0-0">-</ins><ins class="changed-in-16-0-0">09</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-14-0-0">08</ins></del><wbr><del class="changed-in-14-0-0"><ins class="changed-in-12-0-0">02</ins></del><wbr><del class="changed-in-12-0-0"><ins class="changed-in-11-0-0">05</ins></del><wbr><del class="changed-in-11-0-0"><ins class="changed-in-7-0-0">06</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-2-0">09</ins></del><wbr><del class="changed-in-6-2-0"><ins class="changed-in-6-1-0">01</ins></del><wbr><del class="changed-in-6-1-0"><ins class="changed-in-5-2-0">09</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">03</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-4-1-0">08</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">03</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">04</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-1-0">03</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-1">08</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">11</ins></del><ins class="changed-in-3-0-0">-</ins><ins class="changed-in-16-0-0">02</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-15-1-0">15</ins></del><wbr><del class="changed-in-15-1-0"><ins class="changed-in-15-0-0">16</ins></del><wbr><del class="changed-in-15-0-0"><ins class="changed-in-14-0-0">23</ins></del><wbr><del class="changed-in-14-0-0"><ins class="changed-in-13-0-0">17</ins></del><wbr><del class="changed-in-13-0-0"><ins class="changed-in-12-0-0">15</ins></del><wbr><del class="changed-in-12-0-0"><ins class="changed-in-11-0-0">21</ins></del><wbr><del class="changed-in-11-0-0"><ins class="changed-in-10-0-0">12</ins></del><wbr><del class="changed-in-10-0-0"><ins class="changed-in-8-0-0">01</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-7-0-0">05</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-3-0">20</ins></del><wbr><del class="changed-in-6-3-0"><ins class="changed-in-6-2-0">14</ins></del><wbr><del class="changed-in-6-2-0"><ins class="changed-in-6-1-0">17</ins></del><wbr><del class="changed-in-6-1-0"><ins class="changed-in-6-0-0">27</ins></del><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-2-0">18</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">31</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">22</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0">29</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">30</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">17</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-2-0">15</ins></del><wbr><del class="changed-in-3-2-0"><ins class="changed-in-3-1-0">23</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-1">31</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">15</ins></del></td></tr></table>
+<div class=paranum><a id=p5 href=#p5>5<del class="paranum changed-in-3-1-0"><ins class="paranum changed-in-3-0-1">/3.0.1</ins></del><del class="paranum changed-in-3-2-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-2-0">/3.2</ins></del><del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-6-0-0"><ins class="paranum changed-in-5-2-0">/5.2</ins></del><del class="paranum changed-in-6-1-0"><ins class="paranum changed-in-6-0-0">/6</ins></del><del class="paranum changed-in-6-2-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><del class="paranum changed-in-6-3-0"><ins class="paranum changed-in-6-2-0">/6.2</ins></del><del class="paranum changed-in-7-0-0"><ins class="paranum changed-in-6-3-0">/6.3</ins></del><del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-7-0-0">/7</ins></del><del class="paranum changed-in-9-0-0"><ins class="paranum changed-in-8-0-0">/8</ins></del><del class="paranum changed-in-10-0-0"><ins class="paranum changed-in-9-0-0">/9</ins></del><del class="paranum changed-in-11-0-0"><ins class="paranum changed-in-10-0-0">/10</ins></del><del class="paranum changed-in-12-0-0"><ins class="paranum changed-in-11-0-0">/11</ins></del><del class="paranum changed-in-13-0-0"><ins class="paranum changed-in-12-0-0">/12</ins></del><del class="paranum changed-in-14-0-0"><ins class="paranum changed-in-13-0-0">/13</ins></del><del class="paranum changed-in-15-0-0"><ins class="paranum changed-in-14-0-0">/14</ins></del><del class="paranum changed-in-15-1-0"><ins class="paranum changed-in-15-0-0">/15</ins></del><del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-15-1-0">/15.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="changed-in-3-0-0">Date</ins></td><td><ins class="changed-in-17-0-0">2025</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">2024</ins></del><wbr><del class="changed-in-16-0-0"><ins class="changed-in-15-1-0">2023</ins></del><wbr><del class="changed-in-15-1-0"><ins class="changed-in-15-0-0">2022</ins></del><wbr><del class="changed-in-15-0-0"><ins class="changed-in-14-0-0">2021</ins></del><wbr><del class="changed-in-14-0-0"><ins class="changed-in-13-0-0">2020</ins></del><wbr><del class="changed-in-13-0-0"><ins class="changed-in-12-0-0">2019</ins></del><wbr><del class="changed-in-12-0-0"><ins class="changed-in-11-0-0">2018</ins></del><wbr><del class="changed-in-11-0-0"><ins class="changed-in-10-0-0">2017</ins></del><wbr><del class="changed-in-10-0-0"><ins class="changed-in-9-0-0">2016</ins></del><wbr><del class="changed-in-9-0-0"><ins class="changed-in-8-0-0">2015</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-7-0-0">2014</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-3-0">2013</ins></del><wbr><del class="changed-in-6-3-0"><ins class="changed-in-6-1-0">2012</ins></del><wbr><del class="changed-in-6-1-0"><ins class="changed-in-6-0-0">2010</ins></del><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-2-0">2009</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">2008</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">2006</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0">2005</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">2004</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">2003</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-2-0">2002</ins></del><wbr><del class="changed-in-3-2-0"><ins class="changed-in-3-0-1">2000</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">1999</ins></del><ins class="changed-in-3-0-0">-</ins><ins class="changed-in-17-0-0">05</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">09</ins></del><wbr><del class="changed-in-16-0-0"><ins class="changed-in-14-0-0">08</ins></del><wbr><del class="changed-in-14-0-0"><ins class="changed-in-12-0-0">02</ins></del><wbr><del class="changed-in-12-0-0"><ins class="changed-in-11-0-0">05</ins></del><wbr><del class="changed-in-11-0-0"><ins class="changed-in-7-0-0">06</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-2-0">09</ins></del><wbr><del class="changed-in-6-2-0"><ins class="changed-in-6-1-0">01</ins></del><wbr><del class="changed-in-6-1-0"><ins class="changed-in-5-2-0">09</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">03</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-4-1-0">08</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">03</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">04</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-1-0">03</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-1">08</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">11</ins></del><ins class="changed-in-3-0-0">-</ins><ins class="changed-in-17-0-0">05</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">02</ins></del><wbr><del class="changed-in-16-0-0"><ins class="changed-in-15-1-0">15</ins></del><wbr><del class="changed-in-15-1-0"><ins class="changed-in-15-0-0">16</ins></del><wbr><del class="changed-in-15-0-0"><ins class="changed-in-14-0-0">23</ins></del><wbr><del class="changed-in-14-0-0"><ins class="changed-in-13-0-0">17</ins></del><wbr><del class="changed-in-13-0-0"><ins class="changed-in-12-0-0">15</ins></del><wbr><del class="changed-in-12-0-0"><ins class="changed-in-11-0-0">21</ins></del><wbr><del class="changed-in-11-0-0"><ins class="changed-in-10-0-0">12</ins></del><wbr><del class="changed-in-10-0-0"><ins class="changed-in-8-0-0">01</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-7-0-0">05</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-3-0">20</ins></del><wbr><del class="changed-in-6-3-0"><ins class="changed-in-6-2-0">14</ins></del><wbr><del class="changed-in-6-2-0"><ins class="changed-in-6-1-0">17</ins></del><wbr><del class="changed-in-6-1-0"><ins class="changed-in-6-0-0">27</ins></del><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-2-0">18</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">31</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">22</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0">29</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">30</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">17</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-2-0">15</ins></del><wbr><del class="changed-in-3-2-0"><ins class="changed-in-3-1-0">23</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-1">31</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">15</ins></del></td></tr></table>
 </div>
 <div class="paragraph added-in-3-0-0">
-<div class=paranum><a id=p6 href=#p6>6<del class="paranum changed-in-3-1-0"><ins class="paranum changed-in-3-0-1">/3.0.1</ins></del><del class="paranum changed-in-3-2-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-2-0">/3.2</ins></del><del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-6-0-0"><ins class="paranum changed-in-5-2-0">/5.2</ins></del><del class="paranum changed-in-6-1-0"><ins class="paranum changed-in-6-0-0">/6</ins></del><del class="paranum changed-in-6-2-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><del class="paranum changed-in-6-3-0"><ins class="paranum changed-in-6-2-0">/6.2</ins></del><del class="paranum changed-in-7-0-0"><ins class="paranum changed-in-6-3-0">/6.3</ins></del><del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-7-0-0">/7</ins></del><del class="paranum changed-in-9-0-0"><ins class="paranum changed-in-8-0-0">/8</ins></del><del class="paranum changed-in-10-0-0"><ins class="paranum changed-in-9-0-0">/9</ins></del><del class="paranum changed-in-11-0-0"><ins class="paranum changed-in-10-0-0">/10</ins></del><del class="paranum changed-in-12-0-0"><ins class="paranum changed-in-11-0-0">/11</ins></del><del class="paranum changed-in-13-0-0"><ins class="paranum changed-in-12-0-0">/12</ins></del><del class="paranum changed-in-14-0-0"><ins class="paranum changed-in-13-0-0">/13</ins></del><del class="paranum changed-in-15-0-0"><ins class="paranum changed-in-14-0-0">/14</ins></del><del class="paranum changed-in-15-1-0"><ins class="paranum changed-in-15-0-0">/15</ins></del><del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-15-1-0">/15.1</ins></del><ins class="paranum changed-in-16-0-0">/16</ins></a></div>
-<table><tr><td><ins class="changed-in-3-0-0">This Version</ins></td><td><ins class="changed-in-14-0-0">https</ins><wbr><del class="changed-in-14-0-0"><ins class="changed-in-3-0-0">http</ins></del><ins class="changed-in-3-0-0">://www.unicode.org</ins><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">/unicode</ins></del><ins class="changed-in-3-0-0">/reports/tr14</ins><ins class="changed-in-3-0-1">/tr14</ins><ins class="changed-in-3-0-0">-</ins><ins class="changed-in-16-0-0">53</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-15-1-0">51</ins></del><wbr><del class="changed-in-15-1-0"><ins class="changed-in-15-0-0">49</ins></del><wbr><del class="changed-in-15-0-0"><ins class="changed-in-14-0-0">47</ins></del><wbr><del class="changed-in-14-0-0"><ins class="changed-in-13-0-0">45</ins></del><wbr><del class="changed-in-13-0-0"><ins class="changed-in-12-0-0">43</ins></del><wbr><del class="changed-in-12-0-0"><ins class="changed-in-11-0-0">41</ins></del><wbr><del class="changed-in-11-0-0"><ins class="changed-in-10-0-0">39</ins></del><wbr><del class="changed-in-10-0-0"><ins class="changed-in-9-0-0">37</ins></del><wbr><del class="changed-in-9-0-0"><ins class="changed-in-8-0-0">35</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-7-0-0">33</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-3-0">32</ins></del><wbr><del class="changed-in-6-3-0"><ins class="changed-in-6-2-0">30</ins></del><wbr><del class="changed-in-6-2-0"><ins class="changed-in-6-1-0">28</ins></del><wbr><del class="changed-in-6-1-0"><ins class="changed-in-6-0-0">26</ins></del><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-2-0">24</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">22</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">19</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0">17</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">15</ins></del><ins class="changed-in-4-0-1">.html</ins><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">14</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-2-0">12</ins></del><wbr><del class="changed-in-3-2-0"><ins class="changed-in-3-1-0">10</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-1">7</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">6</ins></del></td></tr></table>
+<div class=paranum><a id=p6 href=#p6>6<del class="paranum changed-in-3-1-0"><ins class="paranum changed-in-3-0-1">/3.0.1</ins></del><del class="paranum changed-in-3-2-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-2-0">/3.2</ins></del><del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-6-0-0"><ins class="paranum changed-in-5-2-0">/5.2</ins></del><del class="paranum changed-in-6-1-0"><ins class="paranum changed-in-6-0-0">/6</ins></del><del class="paranum changed-in-6-2-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><del class="paranum changed-in-6-3-0"><ins class="paranum changed-in-6-2-0">/6.2</ins></del><del class="paranum changed-in-7-0-0"><ins class="paranum changed-in-6-3-0">/6.3</ins></del><del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-7-0-0">/7</ins></del><del class="paranum changed-in-9-0-0"><ins class="paranum changed-in-8-0-0">/8</ins></del><del class="paranum changed-in-10-0-0"><ins class="paranum changed-in-9-0-0">/9</ins></del><del class="paranum changed-in-11-0-0"><ins class="paranum changed-in-10-0-0">/10</ins></del><del class="paranum changed-in-12-0-0"><ins class="paranum changed-in-11-0-0">/11</ins></del><del class="paranum changed-in-13-0-0"><ins class="paranum changed-in-12-0-0">/12</ins></del><del class="paranum changed-in-14-0-0"><ins class="paranum changed-in-13-0-0">/13</ins></del><del class="paranum changed-in-15-0-0"><ins class="paranum changed-in-14-0-0">/14</ins></del><del class="paranum changed-in-15-1-0"><ins class="paranum changed-in-15-0-0">/15</ins></del><del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-15-1-0">/15.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="changed-in-3-0-0">This Version</ins></td><td><ins class="changed-in-14-0-0">https</ins><wbr><del class="changed-in-14-0-0"><ins class="changed-in-3-0-0">http</ins></del><ins class="changed-in-3-0-0">://www.unicode.org</ins><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">/unicode</ins></del><ins class="changed-in-3-0-0">/reports/tr14</ins><ins class="changed-in-3-0-1">/tr14</ins><ins class="changed-in-3-0-0">-</ins><ins class="changed-in-17-0-0">54</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">53</ins></del><wbr><del class="changed-in-16-0-0"><ins class="changed-in-15-1-0">51</ins></del><wbr><del class="changed-in-15-1-0"><ins class="changed-in-15-0-0">49</ins></del><wbr><del class="changed-in-15-0-0"><ins class="changed-in-14-0-0">47</ins></del><wbr><del class="changed-in-14-0-0"><ins class="changed-in-13-0-0">45</ins></del><wbr><del class="changed-in-13-0-0"><ins class="changed-in-12-0-0">43</ins></del><wbr><del class="changed-in-12-0-0"><ins class="changed-in-11-0-0">41</ins></del><wbr><del class="changed-in-11-0-0"><ins class="changed-in-10-0-0">39</ins></del><wbr><del class="changed-in-10-0-0"><ins class="changed-in-9-0-0">37</ins></del><wbr><del class="changed-in-9-0-0"><ins class="changed-in-8-0-0">35</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-7-0-0">33</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-3-0">32</ins></del><wbr><del class="changed-in-6-3-0"><ins class="changed-in-6-2-0">30</ins></del><wbr><del class="changed-in-6-2-0"><ins class="changed-in-6-1-0">28</ins></del><wbr><del class="changed-in-6-1-0"><ins class="changed-in-6-0-0">26</ins></del><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-2-0">24</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">22</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">19</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0">17</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">15</ins></del><ins class="changed-in-4-0-1">.html</ins><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">14</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-2-0">12</ins></del><wbr><del class="changed-in-3-2-0"><ins class="changed-in-3-1-0">10</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-1">7</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">6</ins></del></td></tr></table>
 </div>
 <div class="paragraph added-in-3-0-0">
-<div class=paranum><a id=p7 href=#p7>7<del class="paranum changed-in-3-1-0"><ins class="paranum changed-in-3-0-1">/3.0.1</ins></del><del class="paranum changed-in-3-2-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-2-0">/3.2</ins></del><del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-6-0-0"><ins class="paranum changed-in-5-2-0">/5.2</ins></del><del class="paranum changed-in-6-1-0"><ins class="paranum changed-in-6-0-0">/6</ins></del><del class="paranum changed-in-6-2-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><del class="paranum changed-in-6-3-0"><ins class="paranum changed-in-6-2-0">/6.2</ins></del><del class="paranum changed-in-7-0-0"><ins class="paranum changed-in-6-3-0">/6.3</ins></del><del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-7-0-0">/7</ins></del><del class="paranum changed-in-9-0-0"><ins class="paranum changed-in-8-0-0">/8</ins></del><del class="paranum changed-in-10-0-0"><ins class="paranum changed-in-9-0-0">/9</ins></del><del class="paranum changed-in-11-0-0"><ins class="paranum changed-in-10-0-0">/10</ins></del><del class="paranum changed-in-12-0-0"><ins class="paranum changed-in-11-0-0">/11</ins></del><del class="paranum changed-in-13-0-0"><ins class="paranum changed-in-12-0-0">/12</ins></del><del class="paranum changed-in-14-0-0"><ins class="paranum changed-in-13-0-0">/13</ins></del><del class="paranum changed-in-15-0-0"><ins class="paranum changed-in-14-0-0">/14</ins></del><del class="paranum changed-in-15-1-0"><ins class="paranum changed-in-15-0-0">/15</ins></del><del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-15-1-0">/15.1</ins></del><ins class="paranum changed-in-16-0-0">/16</ins></a></div>
-<table><tr><td><ins class="changed-in-3-0-0">Previous Version</ins></td><td><ins class="changed-in-14-0-0">https</ins><wbr><del class="changed-in-14-0-0"><ins class="changed-in-3-0-0">http</ins></del><ins class="changed-in-3-0-0">://www.unicode.org</ins><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">/unicode</ins></del><ins class="changed-in-3-0-0">/reports/tr14</ins><ins class="changed-in-3-0-1">/tr14</ins><ins class="changed-in-3-0-0">-</ins><ins class="changed-in-16-0-0">51</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-15-1-0">49</ins></del><wbr><del class="changed-in-15-1-0"><ins class="changed-in-15-0-0">47</ins></del><wbr><del class="changed-in-15-0-0"><ins class="changed-in-14-0-0">45</ins></del><wbr><del class="changed-in-14-0-0"><ins class="changed-in-13-0-0">43</ins></del><wbr><del class="changed-in-13-0-0"><ins class="changed-in-12-0-0">41</ins></del><wbr><del class="changed-in-12-0-0"><ins class="changed-in-11-0-0">39</ins></del><wbr><del class="changed-in-11-0-0"><ins class="changed-in-10-0-0">37</ins></del><wbr><del class="changed-in-10-0-0"><ins class="changed-in-9-0-0">35</ins></del><wbr><del class="changed-in-9-0-0"><ins class="changed-in-8-0-0">33</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-7-0-0">32</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-3-0">30</ins></del><wbr><del class="changed-in-6-3-0"><ins class="changed-in-6-2-0">28</ins></del><wbr><del class="changed-in-6-2-0"><ins class="changed-in-6-1-0">26</ins></del><wbr><del class="changed-in-6-1-0"><ins class="changed-in-6-0-0">24</ins></del><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-2-0">22</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">19</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">17</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0">15</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">14</ins></del><ins class="changed-in-4-0-1">.html</ins><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">12</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-2-0">10</ins></del><wbr><del class="changed-in-3-2-0"><ins class="changed-in-3-1-0">7</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-1">6</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">5</ins></del></td></tr></table>
+<div class=paranum><a id=p7 href=#p7>7<del class="paranum changed-in-3-1-0"><ins class="paranum changed-in-3-0-1">/3.0.1</ins></del><del class="paranum changed-in-3-2-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-2-0">/3.2</ins></del><del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-6-0-0"><ins class="paranum changed-in-5-2-0">/5.2</ins></del><del class="paranum changed-in-6-1-0"><ins class="paranum changed-in-6-0-0">/6</ins></del><del class="paranum changed-in-6-2-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><del class="paranum changed-in-6-3-0"><ins class="paranum changed-in-6-2-0">/6.2</ins></del><del class="paranum changed-in-7-0-0"><ins class="paranum changed-in-6-3-0">/6.3</ins></del><del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-7-0-0">/7</ins></del><del class="paranum changed-in-9-0-0"><ins class="paranum changed-in-8-0-0">/8</ins></del><del class="paranum changed-in-10-0-0"><ins class="paranum changed-in-9-0-0">/9</ins></del><del class="paranum changed-in-11-0-0"><ins class="paranum changed-in-10-0-0">/10</ins></del><del class="paranum changed-in-12-0-0"><ins class="paranum changed-in-11-0-0">/11</ins></del><del class="paranum changed-in-13-0-0"><ins class="paranum changed-in-12-0-0">/12</ins></del><del class="paranum changed-in-14-0-0"><ins class="paranum changed-in-13-0-0">/13</ins></del><del class="paranum changed-in-15-0-0"><ins class="paranum changed-in-14-0-0">/14</ins></del><del class="paranum changed-in-15-1-0"><ins class="paranum changed-in-15-0-0">/15</ins></del><del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-15-1-0">/15.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="changed-in-3-0-0">Previous Version</ins></td><td><ins class="changed-in-14-0-0">https</ins><wbr><del class="changed-in-14-0-0"><ins class="changed-in-3-0-0">http</ins></del><ins class="changed-in-3-0-0">://www.unicode.org</ins><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">/unicode</ins></del><ins class="changed-in-3-0-0">/reports/tr14</ins><ins class="changed-in-3-0-1">/tr14</ins><ins class="changed-in-3-0-0">-</ins><ins class="changed-in-17-0-0">53</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">51</ins></del><wbr><del class="changed-in-16-0-0"><ins class="changed-in-15-1-0">49</ins></del><wbr><del class="changed-in-15-1-0"><ins class="changed-in-15-0-0">47</ins></del><wbr><del class="changed-in-15-0-0"><ins class="changed-in-14-0-0">45</ins></del><wbr><del class="changed-in-14-0-0"><ins class="changed-in-13-0-0">43</ins></del><wbr><del class="changed-in-13-0-0"><ins class="changed-in-12-0-0">41</ins></del><wbr><del class="changed-in-12-0-0"><ins class="changed-in-11-0-0">39</ins></del><wbr><del class="changed-in-11-0-0"><ins class="changed-in-10-0-0">37</ins></del><wbr><del class="changed-in-10-0-0"><ins class="changed-in-9-0-0">35</ins></del><wbr><del class="changed-in-9-0-0"><ins class="changed-in-8-0-0">33</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-7-0-0">32</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-3-0">30</ins></del><wbr><del class="changed-in-6-3-0"><ins class="changed-in-6-2-0">28</ins></del><wbr><del class="changed-in-6-2-0"><ins class="changed-in-6-1-0">26</ins></del><wbr><del class="changed-in-6-1-0"><ins class="changed-in-6-0-0">24</ins></del><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-2-0">22</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">19</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">17</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0">15</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">14</ins></del><ins class="changed-in-4-0-1">.html</ins><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">12</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-2-0">10</ins></del><wbr><del class="changed-in-3-2-0"><ins class="changed-in-3-1-0">7</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-1">6</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">5</ins></del></td></tr></table>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p8 href=#p8>8<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-14-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-14-0-0">/14</ins></a></div>
@@ -507,13 +518,13 @@ addEventListener('popstate', update_from_query);
 <table><tr><td><ins class="changed-in-5-2-0">Latest Proposed Update</ins></td><td><ins class="changed-in-14-0-0">https</ins><wbr><del class="changed-in-14-0-0"><ins class="changed-in-5-2-0">http</ins></del><ins class="changed-in-5-2-0">://www.unicode.org/reports/tr14/proposed.html</ins></td></tr></table>
 </div>
 <div class="paragraph added-in-3-0-1">
-<div class=paranum><a id=p8.1 href=#p8.1>8.1<del class="paranum changed-in-3-1-0"><ins class="paranum changed-in-3-0-1">/3.0.1</ins></del><del class="paranum changed-in-3-2-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-2-0">/3.2</ins></del><del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-6-0-0"><ins class="paranum changed-in-5-2-0">/5.2</ins></del><del class="paranum changed-in-6-1-0"><ins class="paranum changed-in-6-0-0">/6</ins></del><del class="paranum changed-in-6-2-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><del class="paranum changed-in-6-3-0"><ins class="paranum changed-in-6-2-0">/6.2</ins></del><del class="paranum changed-in-7-0-0"><ins class="paranum changed-in-6-3-0">/6.3</ins></del><del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-7-0-0">/7</ins></del><del class="paranum changed-in-9-0-0"><ins class="paranum changed-in-8-0-0">/8</ins></del><del class="paranum changed-in-10-0-0"><ins class="paranum changed-in-9-0-0">/9</ins></del><del class="paranum changed-in-11-0-0"><ins class="paranum changed-in-10-0-0">/10</ins></del><del class="paranum changed-in-12-0-0"><ins class="paranum changed-in-11-0-0">/11</ins></del><del class="paranum changed-in-13-0-0"><ins class="paranum changed-in-12-0-0">/12</ins></del><del class="paranum changed-in-14-0-0"><ins class="paranum changed-in-13-0-0">/13</ins></del><del class="paranum changed-in-15-0-0"><ins class="paranum changed-in-14-0-0">/14</ins></del><del class="paranum changed-in-15-1-0"><ins class="paranum changed-in-15-0-0">/15</ins></del><del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-15-1-0">/15.1</ins></del><ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=paranum><a id=p8.1 href=#p8.1>8.1<del class="paranum changed-in-3-1-0"><ins class="paranum changed-in-3-0-1">/3.0.1</ins></del><del class="paranum changed-in-3-2-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-2-0">/3.2</ins></del><del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-6-0-0"><ins class="paranum changed-in-5-2-0">/5.2</ins></del><del class="paranum changed-in-6-1-0"><ins class="paranum changed-in-6-0-0">/6</ins></del><del class="paranum changed-in-6-2-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><del class="paranum changed-in-6-3-0"><ins class="paranum changed-in-6-2-0">/6.2</ins></del><del class="paranum changed-in-7-0-0"><ins class="paranum changed-in-6-3-0">/6.3</ins></del><del class="paranum changed-in-8-0-0"><ins class="paranum changed-in-7-0-0">/7</ins></del><del class="paranum changed-in-9-0-0"><ins class="paranum changed-in-8-0-0">/8</ins></del><del class="paranum changed-in-10-0-0"><ins class="paranum changed-in-9-0-0">/9</ins></del><del class="paranum changed-in-11-0-0"><ins class="paranum changed-in-10-0-0">/10</ins></del><del class="paranum changed-in-12-0-0"><ins class="paranum changed-in-11-0-0">/11</ins></del><del class="paranum changed-in-13-0-0"><ins class="paranum changed-in-12-0-0">/12</ins></del><del class="paranum changed-in-14-0-0"><ins class="paranum changed-in-13-0-0">/13</ins></del><del class="paranum changed-in-15-0-0"><ins class="paranum changed-in-14-0-0">/14</ins></del><del class="paranum changed-in-15-1-0"><ins class="paranum changed-in-15-0-0">/15</ins></del><del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-15-1-0">/15.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-3-0-1 sources">
 {3.0.1: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?83-C6">83-C6</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/00-118">L2/00-118</a>}
 </ins>
 </div>
-<table><tr><td><ins class="changed-in-3-0-1"></ins><ins class="changed-in-4-1-0">Revision</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-3-0-1">Tracking Number</ins></del></td><td><ins class="changed-in-16-0-0">53</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-15-1-0">51</ins></del><wbr><del class="changed-in-15-1-0"><ins class="changed-in-15-0-0">49</ins></del><wbr><del class="changed-in-15-0-0"><ins class="changed-in-14-0-0">47</ins></del><wbr><del class="changed-in-14-0-0"><ins class="changed-in-13-0-0">45</ins></del><wbr><del class="changed-in-13-0-0"><ins class="changed-in-12-0-0">43</ins></del><wbr><del class="changed-in-12-0-0"><ins class="changed-in-11-0-0">41</ins></del><wbr><del class="changed-in-11-0-0"><ins class="changed-in-10-0-0">39</ins></del><wbr><del class="changed-in-10-0-0"><ins class="changed-in-9-0-0">37</ins></del><wbr><del class="changed-in-9-0-0"><ins class="changed-in-8-0-0">35</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-7-0-0">33</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-3-0">32</ins></del><wbr><del class="changed-in-6-3-0"><ins class="changed-in-6-2-0">30</ins></del><wbr><del class="changed-in-6-2-0"><ins class="changed-in-6-1-0">28</ins></del><wbr><del class="changed-in-6-1-0"><ins class="changed-in-6-0-0">26</ins></del><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-2-0">24</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">22</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">19</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0">17</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">15</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">14</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-2-0">12</ins></del><wbr><del class="changed-in-3-2-0"><ins class="changed-in-3-1-0">10</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-1">7</ins></del></td></tr></table>
+<table><tr><td><ins class="changed-in-3-0-1"></ins><ins class="changed-in-4-1-0">Revision</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-3-0-1">Tracking Number</ins></del></td><td><ins class="changed-in-17-0-0">54</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">53</ins></del><wbr><del class="changed-in-16-0-0"><ins class="changed-in-15-1-0">51</ins></del><wbr><del class="changed-in-15-1-0"><ins class="changed-in-15-0-0">49</ins></del><wbr><del class="changed-in-15-0-0"><ins class="changed-in-14-0-0">47</ins></del><wbr><del class="changed-in-14-0-0"><ins class="changed-in-13-0-0">45</ins></del><wbr><del class="changed-in-13-0-0"><ins class="changed-in-12-0-0">43</ins></del><wbr><del class="changed-in-12-0-0"><ins class="changed-in-11-0-0">41</ins></del><wbr><del class="changed-in-11-0-0"><ins class="changed-in-10-0-0">39</ins></del><wbr><del class="changed-in-10-0-0"><ins class="changed-in-9-0-0">37</ins></del><wbr><del class="changed-in-9-0-0"><ins class="changed-in-8-0-0">35</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-7-0-0">33</ins></del><wbr><del class="changed-in-7-0-0"><ins class="changed-in-6-3-0">32</ins></del><wbr><del class="changed-in-6-3-0"><ins class="changed-in-6-2-0">30</ins></del><wbr><del class="changed-in-6-2-0"><ins class="changed-in-6-1-0">28</ins></del><wbr><del class="changed-in-6-1-0"><ins class="changed-in-6-0-0">26</ins></del><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-2-0">24</ins></del><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">22</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">19</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0">17</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">15</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-4-0-0">14</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-2-0">12</ins></del><wbr><del class="changed-in-3-2-0"><ins class="changed-in-3-1-0">10</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-1">7</ins></del></td></tr></table>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p9 href=#p9>9</a></div>
@@ -578,13 +589,13 @@ addEventListener('popstate', update_from_query);
 <h2><ins class="changed-in-3-0-0">Status</ins></h2>
 </div>
 <div class="paragraph added-in-3-0-0">
-<div class=paranum><a id=p12 href=#p12>12<del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-0-1">/3.0.1</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-0">/4</ins></del><ins class="paranum changed-in-4-1-0">/4.1</ins></a></div>
+<div class=paranum><a id=p12 href=#p12>12<del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-0-1">/3.0.1</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-3-0-1 sources">
 {3.0.1: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?83-C6">83-C6</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/00-118">L2/00-118</a>}
 </ins>
 </div>
-<p><ins class="changed-in-3-0-0">This document </ins><ins class="changed-in-3-0-1">has been reviewed by Unicode members and other interested parties, and has been approved </ins><ins class="changed-in-4-1-0">for publication </ins><ins class="changed-in-3-0-1">by the Unicode </ins><ins class="changed-in-4-1-0">Consortium. This is a stable document and may be used</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-3-0-1">Technical Committee</ins></del><ins class="changed-in-3-0-1"> as </ins><ins class="changed-in-4-1-0">reference material or cited as </ins><ins class="changed-in-3-0-1">a </ins><ins class="changed-in-4-1-0">normative</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-3-0-1">Unicode Standard Annex. </ins><ins class="changed-in-4-0-0">This</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-0-1">It</ins></del><del class="changed-in-4-1-0"><ins class="changed-in-3-0-1"> is a stable document and may be used as</ins></del><ins class="changed-in-3-0-1"> reference</ins><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">contains informative</ins></del><ins class="changed-in-3-0-0"> </ins><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">material </ins><ins class="changed-in-3-0-1">or cited as a</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">and</ins></del><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0"> normative </ins></del><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">specifications which have been considered and approved by the Unicode Technical Committee for publication as a Technical Report and as part of the Unicode Standard, Version 3.0. Any </ins></del><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">reference </ins></del><ins class="changed-in-4-0-0">by other specifications.</ins><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-0-1">from another document.</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">to version 3.0 of the Unicode Standard automatically includes this technical report. Please mail corrigenda and other comments to the author.</ins></del></p>
+<p><ins class="changed-in-3-0-0">This </ins><ins class="changed-in-17-0-0">is a draft </ins><ins class="changed-in-3-0-0">document </ins><ins class="changed-in-17-0-0">which may be updated, replaced, or superseded by other documents at any time. Publication does not imply endorsement</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-3-0-1">has been reviewed by Unicode members and other interested parties, and has been approved </ins><ins class="changed-in-4-1-0">for publication</ins></del><ins class="changed-in-4-1-0"> </ins><ins class="changed-in-3-0-1">by the Unicode </ins><ins class="changed-in-4-1-0">Consortium. This is </ins><ins class="changed-in-17-0-0">not </ins><ins class="changed-in-4-1-0">a stable document</ins><ins class="changed-in-17-0-0">; it is inappropriate to cite this document as other than a work in progress.</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-4-1-0"> and may be used</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-3-0-1">Technical Committee</ins></del><del class="changed-in-17-0-0"><ins class="changed-in-3-0-1"> as </ins><ins class="changed-in-4-1-0">reference material or cited as </ins><ins class="changed-in-3-0-1">a </ins><ins class="changed-in-4-1-0">normative</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-3-0-1">Unicode Standard Annex. </ins><ins class="changed-in-4-0-0">This</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-0-1">It</ins></del><del class="changed-in-4-1-0"><ins class="changed-in-3-0-1"> is a stable document and may be used as</ins></del><del class="changed-in-17-0-0"><ins class="changed-in-3-0-1"> reference</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">contains informative</ins></del><del class="changed-in-17-0-0"><ins class="changed-in-3-0-0"> </ins></del><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">material </ins><ins class="changed-in-3-0-1">or cited as a</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">and</ins></del><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0"> normative </ins></del><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">specifications which have been considered and approved by the Unicode Technical Committee for publication as a Technical Report and as part of the Unicode Standard, Version 3.0. Any </ins></del><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">reference </ins></del><del class="changed-in-17-0-0"><ins class="changed-in-4-0-0">by other specifications.</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-0-1">from another document.</ins></del><wbr><del class="changed-in-3-0-1"><ins class="changed-in-3-0-0">to version 3.0 of the Unicode Standard automatically includes this technical report. Please mail corrigenda and other comments to the author.</ins></del></p>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p12.a href=#p12.a>12.a</a></div>
@@ -1178,8 +1189,8 @@ addEventListener('popstate', update_from_query);
 <table><tr><td><ins class="changed-in-4-0-0">B2</ins></td><td><ins class="changed-in-4-0-0">Break Opportunity Before and After</ins></td><td><ins class="changed-in-5-0-0">Em dash</ins></td><td><del class="changed-in-5-0-0"><ins class="changed-in-4-0-0">EM Dash</ins></del></td><td><ins class="changed-in-5-0-0">Provide</ins></td><td><del class="changed-in-5-0-0"><ins class="changed-in-4-0-0">provide</ins></del><ins class="changed-in-4-0-0"> a line break opportunity before and after the character</ins></td></tr></table>
 </div>
 <div class="paragraph added-in-3-0-0">
-<div class=paranum><a id=p64 href=#p64>64<del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><ins class="paranum changed-in-5-2-0">/5.2</ins></a></div>
-<table><tr><td><ins class="changed-in-3-0-0">BA</ins></td><td><ins class="changed-in-3-0-0">Break </ins><del class="changed-in-5-2-0"><ins class="changed-in-3-0-0">Opportunity </ins></del><ins class="changed-in-3-0-0">After</ins></td><td></td><td><ins class="changed-in-3-0-0">Spaces, </ins><ins class="changed-in-5-0-0">hyphens</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0">Hyphens</ins></del></td><td><ins class="changed-in-5-0-0">Generally</ins></td><td><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0">generally</ins></del><ins class="changed-in-3-0-0"> provide a line break opportunity after the character</ins></td></tr></table>
+<div class=paranum><a id=p64 href=#p64>64<del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-5-2-0">/5.2</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="changed-in-3-0-0">BA</ins></td><td><ins class="changed-in-3-0-0">Break </ins><del class="changed-in-5-2-0"><ins class="changed-in-3-0-0">Opportunity </ins></del><ins class="changed-in-3-0-0">After</ins></td><td></td><td><ins class="changed-in-3-0-0">Spaces, </ins><ins class="changed-in-17-0-0">most sentence-terminal punctuation</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-5-0-0">hyphens</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0">Hyphens</ins></del></td><td><ins class="changed-in-5-0-0">Generally</ins></td><td><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0">generally</ins></del><ins class="changed-in-3-0-0"> provide a line break opportunity after the character</ins></td></tr></table>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p65 href=#p65>65<del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><ins class="paranum changed-in-5-2-0">/5.2</ins></a></div>
@@ -1192,6 +1203,10 @@ addEventListener('popstate', update_from_query);
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p67 href=#p67>67<del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><ins class="paranum changed-in-5-0-0">/5</ins></a></div>
 <table><tr><td><ins class="changed-in-3-0-0">HY</ins></td><td><ins class="changed-in-3-0-0">Hyphen</ins></td><td></td><td><ins class="changed-in-5-0-0">HYPHEN</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0">Hyphen</ins></del><ins class="changed-in-3-0-0">-</ins><ins class="changed-in-5-0-0">MINUS</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0">Minus</ins></del></td><td><ins class="changed-in-5-0-0">Provide</ins></td><td><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0">provide</ins></del><ins class="changed-in-3-0-0"> a line break opportunity after the character, except in numeric context</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p67.-1.1 href=#p67.-1.1>67.-1.1<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="changed-in-17-0-0">HH</ins></td><td><ins class="changed-in-17-0-0">Unambiguous Hyphen</ins></td><td><ins class="changed-in-17-0-0">HYPHEN</ins></td><td><ins class="changed-in-17-0-0">Generally provide a line break opportunity after the character, except word-initially.</ins></td></tr></table>
 </div>
 <div class="paragraph added-in-5-0-0">
 <div class=paranum><a id=p67.0.1 href=#p67.0.1>67.0.1<ins class="paranum changed-in-5-0-0">/5</ins></a></div>
@@ -1350,8 +1365,8 @@ addEventListener('popstate', update_from_query);
 <table><tr><td><ins class="changed-in-4-1-0">H3</ins></td><td><ins class="changed-in-4-1-0">Hangul LVT Syllable</ins></td><td><ins class="changed-in-4-1-0">Hangul</ins></td><td><ins class="changed-in-5-0-0">Form</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0">form</ins></del><ins class="changed-in-4-1-0"> Korean syllable blocks</ins></td></tr></table>
 </div>
 <div class="paragraph added-in-6-1-0">
-<div class=paranum><a id=p79.6.1 href=#p79.6.1>79.6.1<ins class="paranum changed-in-6-1-0">/6.1</ins></a></div>
-<table><tr><td><ins class="changed-in-6-1-0">HL</ins></td><td><ins class="changed-in-6-1-0">Hebrew Letter</ins></td><td><ins class="changed-in-6-1-0">Hebrew</ins></td><td><ins class="changed-in-6-1-0">Do not break around a following hyphen; otherwise act as Alphabetic</ins></td></tr></table>
+<div class=paranum><a id=p79.6.1 href=#p79.6.1>79.6.1<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="changed-in-6-1-0">HL</ins></td><td><ins class="changed-in-6-1-0">Hebrew Letter</ins></td><td><ins class="changed-in-6-1-0">Hebrew</ins></td><td><ins class="changed-in-17-0-0">Special rules</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-6-1-0">Do not break</ins></del><ins class="changed-in-6-1-0"> around </ins><ins class="changed-in-17-0-0">hyphens and SOLIDUS</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-6-1-0">a following hyphen</ins></del><ins class="changed-in-6-1-0">; otherwise act as Alphabetic</ins></td></tr></table>
 </div>
 <div class="paragraph added-in-4-1-0">
 <div class=paranum><a id=p79.7 href=#p79.7>79.7<del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-5-0-0">/5</ins></a></div>
@@ -2408,13 +2423,13 @@ addEventListener('popstate', update_from_query);
 <h3><ins class="changed-in-3-0-0">BA</ins><ins class="changed-in-5-0-0">:</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0"> </ins><ins class="changed-in-4-0-1">—</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-3-0-0">-</ins></del><ins class="changed-in-3-0-0"> Break </ins><del class="changed-in-5-2-0"><ins class="changed-in-3-0-0">Opportunity </ins></del><ins class="changed-in-3-0-0">After</ins><ins class="changed-in-16-0-0"></ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-3-0-0"> (A)</ins></del></h3>
 </div>
 <div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p117.1 href=#p117.1>117.1<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=paranum><a id=p117.1 href=#p117.1>117.1<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A110">179-A110</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?162-A45">162-A45</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/24-064">L2/24-064</a>; <a href="https://www.unicode.org/review/pri406/feedback.html#:~:text=Wed%20Dec%204%2015:18:53%20CST%202019">PRI-406#ID20191204151853</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">LB12a, LB21, LB21a</ins></p>
+<p><ins class="changed-in-16-0-0">LB12a, LB21</ins><ins class="changed-in-17-0-0"></ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">, LB21a</ins></del></p>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p118 href=#p118>118<del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-0-0">/4</ins></del><ins class="paranum changed-in-5-0-0">/5</ins></a></div>
@@ -2524,41 +2539,41 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p133.4 href=#p133.4>133.4<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-6-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-6-0-0">/6</ins></a></div>
 <p><ins class="changed-in-4-0-0">SHY </ins><ins class="changed-in-6-0-0">is an invisible format character with no width. It </ins><ins class="changed-in-4-1-0">marks </ins><ins class="changed-in-5-1-0">the place where </ins><ins class="changed-in-4-1-0">an optional </ins><ins class="changed-in-5-1-0">line break may occur inside</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-4-1-0">place where</ins></del><ins class="changed-in-4-1-0"> a </ins><ins class="changed-in-5-1-0">word. It can be used with all scripts. </ins><ins class="changed-in-6-0-0">If a line is broken at an optional line break position marked by a </ins><ins class="changed-in-5-1-0">SHY</ins><ins class="changed-in-6-0-0">, the text at that line break position often</ins><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-1-0"> is rendered invisibly and</ins></del><ins class="changed-in-5-1-0"> has </ins><del class="changed-in-6-0-0"><ins class="changed-in-5-1-0">no width: it merely indicates an optional </ins><ins class="changed-in-4-1-0">line break</ins><ins class="changed-in-5-1-0">. The rendering of the optional line break depends on the script. For the Latin script, rendering the line break typically means displaying</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-4-1-0"> may occur inside</ins></del><del class="changed-in-6-0-0"><ins class="changed-in-4-1-0"> </ins></del><ins class="changed-in-4-1-0">a </ins><ins class="changed-in-6-0-0">modified appearance as described</ins><wbr><del class="changed-in-6-0-0"><ins class="changed-in-5-1-0">hyphen at the end of the line; however, some languages require a change</ins></del><ins class="changed-in-5-1-0"> in </ins><del class="changed-in-6-0-0"><ins class="changed-in-5-1-0">spelling surrounding</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-4-1-0">word. It can be used with all scripts. SHY </ins><ins class="changed-in-4-0-0">is rendered invisibly and has no width</ins><ins class="changed-in-4-1-0">:</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-0">,</ins></del><del class="changed-in-5-1-0"><ins class="changed-in-4-0-0"> it merely indicates</ins></del><del class="changed-in-6-0-0"><ins class="changed-in-4-0-0"> an optional line break. </ins></del><del class="changed-in-5-1-0"><ins class="changed-in-4-0-0">The rendering of the optional line break depends on the script. </ins></del><del class="changed-in-6-0-0"><ins class="changed-in-4-0-0">For </ins></del><del class="changed-in-5-1-0"><ins class="changed-in-4-0-0">the Latin script</ins><ins class="changed-in-4-1-0">,</ins><ins class="changed-in-4-0-0"> rendering the line break typically means displaying a hyphen at the end of the line</ins><ins class="changed-in-5-0-0">;</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-0-0">,</ins></del><del class="changed-in-5-1-0"><ins class="changed-in-4-0-0"> however, some languages require a change in spelling surrounding a line break. For </ins></del><del class="changed-in-6-0-0"><ins class="changed-in-4-0-0">examples</ins><ins class="changed-in-4-1-0">,</ins><ins class="changed-in-4-0-0"> see </ins></del><ins class="changed-in-4-0-0">Section 5.</ins><ins class="changed-in-5-1-0">4</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-4-0-0">3</ins></del><ins class="changed-in-5-0-0">,</ins><ins class="changed-in-4-0-0"> </ins><ins class="changed-in-4-1-0">Use</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-0">Additional Details on use</ins></del><ins class="changed-in-4-0-0"> of Soft Hyphen.</ins></p>
 </div>
-<div class="paragraph added-in-3-0-0">
-<div class=paranum><a id=p134 href=#p134>134</a></div>
-<h3><ins class="changed-in-3-0-0">Breaking Hyphens</ins></h3>
+<div class="paragraph added-in-3-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p134 href=#p134>134<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<h3><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-3-0-0">Breaking Hyphens</ins></del></h3>
 </div>
-<div class="paragraph added-in-3-0-0">
-<div class=paranum><a id=p135 href=#p135>135</a></div>
-<p><ins class="changed-in-3-0-0">Breaking hyphens establish explicit break opportunities immediately after each occurrence.</ins></p>
+<div class="paragraph added-in-3-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p135 href=#p135>135<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was moved to §226.8. </ins><del class="changed-in-17-0-0"><ins class="changed-in-3-0-0">Breaking hyphens establish explicit break opportunities immediately after each occurrence.</ins></del></p>
 </div>
 <div class="paragraph added-in-3-0-0 removed-in-4-0-0">
 <div class=paranum><a id=p136 href=#p136>136<del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><ins class="paranum changed-in-4-0-0">/4</ins></a></div>
 <p><ins class="deletion-comment changed-in-4-0-0">This paragraph was deleted. </ins><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">There are three types of hyphens: Explicit hyphens, conditional hyphens, and dictionary-inserted hyphens (as a result of a hyphenation process). There is no character code for the third kind of hyphen; therefore if it is desired to make the distinction, the</ins><ins class="changed-in-3-1-0"> fact that a hyphen is</ins><ins class="changed-in-3-0-0"> dictionary-inserted </ins></del><del class="changed-in-3-1-0"><ins class="changed-in-3-0-0">hyphens </ins></del><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">must be represented out of band, or </ins><ins class="changed-in-3-1-0">by using</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-0">with</ins></del><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0"> a privately assigned control code</ins><ins class="changed-in-3-1-0"> instead of SHY.</ins></del><wbr><del class="changed-in-3-1-0"><ins class="changed-in-3-0-0">.</ins></del></p>
 </div>
-<div class="paragraph added-in-3-1-0">
-<div class=paranum><a id=p136.1 href=#p136.1>136.1<ins class="paranum changed-in-3-1-0">/3.1</ins></a></div>
-<table><tr><td><ins class="changed-in-3-1-0">058A</ins></td><td><ins class="changed-in-3-1-0">ARMENIAN HYPHEN</ins></td></tr></table>
+<div class="paragraph added-in-3-1-0 removed-in-17-0-0">
+<div class=paranum><a id=p136.1 href=#p136.1>136.1<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="diff-comment changed-in-3-1-0">Moved from §138. </ins><ins class="deletion-comment changed-in-17-0-0">This paragraph was moved to §226.9. </ins><del class="changed-in-17-0-0"><ins class="changed-in-3-0-0">058A</ins></del></td><td><del class="changed-in-17-0-0"><ins class="changed-in-3-0-0">ARMENIAN HYPHEN</ins></del></td></tr></table>
 </div>
-<div class="paragraph added-in-3-0-0">
-<div class=paranum><a id=p137 href=#p137>137</a></div>
-<table><tr><td><ins class="changed-in-3-0-0">2010</ins></td><td><ins class="changed-in-3-0-0">HYPHEN</ins></td></tr></table>
+<div class="paragraph added-in-3-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p137 href=#p137>137<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="deletion-comment changed-in-17-0-0">This paragraph was moved to §226.12. </ins><del class="changed-in-17-0-0"><ins class="changed-in-3-0-0">2010</ins></del></td><td><del class="changed-in-17-0-0"><ins class="changed-in-3-0-0">HYPHEN</ins></del></td></tr></table>
 </div>
 <div class="paragraph added-in-3-0-0 removed-in-3-1-0">
 <div class=paranum><a id=p138 href=#p138>138<ins class="paranum changed-in-3-1-0">/3.1</ins></a></div>
-<table><tr><td><ins class="deletion-comment changed-in-3-1-0">This paragraph was deleted. </ins><del class="changed-in-3-1-0"><ins class="changed-in-3-0-0">058A</ins></del></td><td><del class="changed-in-3-1-0"><ins class="changed-in-3-0-0">ARMENIAN HYPHEN</ins></del></td></tr></table>
+<table><tr><td><ins class="deletion-comment changed-in-3-1-0">This paragraph was moved to §136.1. </ins><del class="changed-in-3-1-0"><ins class="changed-in-3-0-0">058A</ins></del></td><td><del class="changed-in-3-1-0"><ins class="changed-in-3-0-0">ARMENIAN HYPHEN</ins></del></td></tr></table>
 </div>
-<div class="paragraph added-in-3-1-0">
-<div class=paranum><a id=p138.1 href=#p138.1>138.1<ins class="paranum changed-in-3-1-0">/3.1</ins></a></div>
-<table><tr><td><ins class="changed-in-3-1-0">2012</ins></td><td><ins class="changed-in-3-1-0">FIGURE DASH</ins></td></tr></table>
+<div class="paragraph added-in-3-1-0 removed-in-17-0-0">
+<div class=paranum><a id=p138.1 href=#p138.1>138.1<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="deletion-comment changed-in-17-0-0">This paragraph was moved to §226.13. </ins><del class="changed-in-17-0-0"><ins class="changed-in-3-1-0">2012</ins></del></td><td><del class="changed-in-17-0-0"><ins class="changed-in-3-1-0">FIGURE DASH</ins></del></td></tr></table>
 </div>
-<div class="paragraph added-in-3-1-0">
-<div class=paranum><a id=p138.2 href=#p138.2>138.2<del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><ins class="paranum changed-in-4-0-0">/4</ins></a></div>
-<table><tr><td><ins class="changed-in-3-1-0">2013</ins></td><td><ins class="changed-in-3-1-0">EN</ins><ins class="changed-in-4-0-0"> </ins><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-1-0">-</ins></del><ins class="changed-in-3-1-0">DASH</ins></td></tr></table>
+<div class="paragraph added-in-3-1-0 removed-in-17-0-0">
+<div class=paranum><a id=p138.2 href=#p138.2>138.2<del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-4-0-0">/4</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="deletion-comment changed-in-17-0-0">This paragraph was moved to §226.14. </ins><del class="changed-in-17-0-0"><ins class="changed-in-3-1-0">2013</ins></del></td><td><del class="changed-in-17-0-0"><ins class="changed-in-3-1-0">EN</ins><ins class="changed-in-4-0-0"> </ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-1-0">-</ins></del><del class="changed-in-17-0-0"><ins class="changed-in-3-1-0">DASH</ins></del></td></tr></table>
 </div>
-<div class="paragraph added-in-3-0-0">
-<div class=paranum><a id=p139 href=#p139>139<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
-<p><ins class="changed-in-3-0-0">Hyphens are graphic characters with width. </ins><ins class="changed-in-4-1-0">Because</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">Since</ins></del><ins class="changed-in-3-0-0">, unlike spaces, they </ins><ins class="changed-in-5-1-0">are visible</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-3-0-0">print</ins></del><ins class="changed-in-3-0-0">, they are included in the measured part of the preceding line</ins><ins class="changed-in-4-0-0">, except where the layout style allows hyphens to hang into the margins.</ins><ins class="changed-in-5-1-0"> For additional information about how to format line breaks resulting from the presence of hyphens, see Section 5.3, Use of Hyphen.</ins><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0"></ins></del></p>
+<div class="paragraph added-in-3-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p139 href=#p139>139<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was moved to §226.20. </ins><del class="changed-in-17-0-0"><ins class="changed-in-3-0-0">Hyphens are graphic characters with width. </ins><ins class="changed-in-4-1-0">Because</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">Since</ins></del><del class="changed-in-17-0-0"><ins class="changed-in-3-0-0">, unlike spaces, they </ins><ins class="changed-in-5-1-0">are visible</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-3-0-0">print</ins></del><del class="changed-in-17-0-0"><ins class="changed-in-3-0-0">, they are included in the measured part of the preceding line</ins><ins class="changed-in-4-0-0">, except where the layout style allows hyphens to hang into the margins.</ins><ins class="changed-in-5-1-0"> For additional information about how to format line breaks resulting from the presence of hyphens, see Section 5.3, Use of Hyphen.</ins></del><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0"></ins></del></p>
 </div>
 <div class="paragraph added-in-3-0-0 removed-in-4-0-0">
 <div class=paranum><a id=p140 href=#p140>140<ins class="paranum changed-in-4-0-0">/4</ins></a></div>
@@ -2580,9 +2595,9 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p142.1 href=#p142.1>142.1<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-5-2-0">/5.2</ins></a></div>
 <p><ins class="changed-in-4-0-1"></ins><ins class="changed-in-4-1-0">The following are </ins><ins class="changed-in-5-2-0">examples of </ins><ins class="changed-in-4-1-0">other</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">Other</ins></del><ins class="changed-in-4-0-1"> forms of visible word dividers that provide break opportunities</ins><ins class="changed-in-4-1-0">:</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">.</ins></del></p>
 </div>
-<div class="paragraph added-in-5-0-0">
-<div class=paranum><a id=p142.2 href=#p142.2>142.2<ins class="paranum changed-in-5-0-0">/5</ins></a></div>
-<table><tr><td><ins class="changed-in-5-0-0">05BE</ins></td><td><ins class="changed-in-5-0-0">HEBREW PUNCTUATION MAQAF</ins></td></tr></table>
+<div class="paragraph added-in-5-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p142.2 href=#p142.2>142.2<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="deletion-comment changed-in-17-0-0">This paragraph was moved to §226.10. </ins><del class="changed-in-17-0-0"><ins class="changed-in-5-0-0">05BE</ins></del></td><td><del class="changed-in-17-0-0"><ins class="changed-in-5-0-0">HEBREW PUNCTUATION MAQAF</ins></del></td></tr></table>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p143 href=#p143>143</a></div>
@@ -3028,14 +3043,14 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p153.49.1 href=#p153.49.1>153.49.1<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
 <table><tr><td><ins class="changed-in-5-1-0">2E0E..2E15</ins></td><td><ins class="changed-in-5-1-0">EDITORIAL CORONIS..UPWARDS ANCORA</ins></td></tr></table>
 </div>
-<div class="paragraph added-in-5-1-0">
-<div class=paranum><a id=p153.49.2 href=#p153.49.2>153.49.2<del class="paranum changed-in-11-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-11-0-0">/11</ins></a></div>
+<div class="paragraph added-in-5-1-0 removed-in-17-0-0">
+<div class=paranum><a id=p153.49.2 href=#p153.49.2>153.49.2<del class="paranum changed-in-11-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-11-0-0">/11</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-11-0-0 sources">
 {11.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?155-A26">155-A26</a>; <a href="https://www.unicode.org/review/pri376/feedback.html#:~:text=Sat%20Apr%2014%2008:42:52%20CDT%202018">PRI-376#ID20180414084252</a>}
 </ins>
 </div>
-<table><tr><td><ins class="changed-in-5-1-0">2E17</ins></td><td><ins class="changed-in-11-0-0">DOUBLE </ins><ins class="changed-in-5-1-0">OBLIQUE </ins><del class="changed-in-11-0-0"><ins class="changed-in-5-1-0">DOUBLE </ins></del><ins class="changed-in-5-1-0">HYPHEN</ins></td></tr></table>
+<table><tr><td><ins class="deletion-comment changed-in-17-0-0">This paragraph was moved to §226.15. </ins><del class="changed-in-17-0-0"><ins class="changed-in-5-1-0">2E17</ins></del></td><td><del class="changed-in-17-0-0"><ins class="changed-in-11-0-0">DOUBLE </ins><ins class="changed-in-5-1-0">OBLIQUE </ins></del><del class="changed-in-11-0-0"><ins class="changed-in-5-1-0">DOUBLE </ins></del><del class="changed-in-17-0-0"><ins class="changed-in-5-1-0">HYPHEN</ins></del></td></tr></table>
 </div>
 <div class="paragraph added-in-5-1-0">
 <div class=paranum><a id=p153.49.3 href=#p153.49.3>153.49.3<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
@@ -3662,6 +3677,10 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p200 href=#p200>200<del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><ins class="paranum changed-in-4-0-0">/4</ins></a></div>
 <p><ins class="deletion-comment changed-in-4-0-0">This paragraph was deleted. </ins><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">NOTE:</ins><ins class="changed-in-3-1-0"> for the purpose of determining line break opportunities,</ins><ins class="changed-in-3-0-0"> non-initial conjoining Jamos </ins></del><del class="changed-in-3-1-0"><ins class="changed-in-3-0-0">thus </ins></del><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">behave like combining marks, while the initial combining Jamos have the same property as Hangul Syllables.</ins></del></p>
 </div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p200.1 href=#p200.1>200.1<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-17-0-0">In particular, line breaking class CM includes the character U+034F COMBINING GRAPHEME JOINER. This character is used for specialized collation or display; see Unicode Technical Standard #10, “Unicode Collation Algorithm” [UTS10], and Unicode Standard Annex #53, “Unicode Arabic Mark Rendering” [UAX53]. It functions as an invisible combining mark; it should be ignored outside of the few processes that ascribe meaning to it. Assigning it class CM means the line breaking algorithm ignores it.</ins></p>
+</div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p201 href=#p201>201<ins class="paranum changed-in-4-1-0">/4.1</ins></a></div>
 <h3><ins class="changed-in-3-0-0">Control and </ins><ins class="changed-in-4-1-0">Formatting Characters</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">formatting characters</ins></del></h3>
@@ -4154,23 +4173,23 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p219.0.8 href=#p219.0.8>219.0.8<ins class="paranum changed-in-15-1-0">/15.1</ins></a></div>
 <p><ins class="changed-in-15-1-0">These characters participate in shaping behavior. Together with the characters on either side, they form a ligature, quadrat, or cluster, within which there can be no line break. See Section 14.1, Brahmi, Section 11.4, Egyptian Hieroglyphs, and Section 18.12, Khitan Small Script, respectively, of [Unicode].</ins></p>
 </div>
-<div class="paragraph added-in-3-2-0">
-<div class=paranum><a id=p219.1 href=#p219.1>219.1<ins class="paranum changed-in-3-2-0">/3.2</ins></a></div>
+<div class="paragraph added-in-3-2-0 removed-in-17-0-0">
+<div class=paranum><a id=p219.1 href=#p219.1>219.1<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-3-2-0">/3.2</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-3-2-0 sources">
 {3.2.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?83-AI43">83-AI43</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?84-M10">84-M10</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?85-M13">85-M13</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/00-156">L2/00-156</a>}
 </ins>
 </div>
-<table><tr><td><ins class="changed-in-3-2-0">034F</ins></td><td><ins class="changed-in-3-2-0">COMBINING GRAPHEME JOINER</ins></td></tr></table>
+<table><tr><td><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-3-2-0">034F</ins></del></td><td><del class="changed-in-17-0-0"><ins class="changed-in-3-2-0">COMBINING GRAPHEME JOINER</ins></del></td></tr></table>
 </div>
-<div class="paragraph added-in-3-2-0">
-<div class=paranum><a id=p219.2 href=#p219.2>219.2<del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-3-2-0">/3.2</ins></del><ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
+<div class="paragraph added-in-3-2-0 removed-in-17-0-0">
+<div class=paranum><a id=p219.2 href=#p219.2>219.2<del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-3-2-0">/3.2</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-3-2-0 sources">
 {3.2.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?83-AI43">83-AI43</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?84-M10">84-M10</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?85-M13">85-M13</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/00-156">L2/00-156</a>}
 </ins>
 </div>
-<p><ins class="changed-in-3-2-0">This character has no visible glyph and its presence indicates that adjoining characters are to be treated as a graphemic unit, therefore preventing line breaks between them.</ins><ins class="changed-in-5-1-0"> The use of grapheme joiner affects other processes, such as sorting, therefore, U+2060 WORD JOINER should be used if the intent is to merely prevent a line break.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-3-2-0">This character has no visible glyph and its presence indicates that adjoining characters are to be treated as a graphemic unit, therefore preventing line breaks between them.</ins><ins class="changed-in-5-1-0"> The use of grapheme joiner affects other processes, such as sorting, therefore, U+2060 WORD JOINER should be used if the intent is to merely prevent a line break.</ins></del></p>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p220 href=#p220>220</a></div>
@@ -4368,6 +4387,71 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p226.5 href=#p226.5>226.5<del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-5-0-0">/5</ins></a></div>
 <p><ins class="changed-in-4-1-0"></ins><ins class="changed-in-5-0-0">This class includes all</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-1-0">All</ins></del><ins class="changed-in-4-1-0"> characters of Hangul Syllable Type LVT. See also JL, JT, JV</ins><ins class="changed-in-5-0-0">,</ins><ins class="changed-in-4-1-0"> and H2.</ins></p>
 </div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.6 href=#p226.6>226.6<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<h3><ins class="changed-in-17-0-0">HH: Unambiguous Hyphen</ins></h3>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.7 href=#p226.7>226.7<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-17-0-0">LB12a, LB20a, LB21, LB21a</ins></p>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.8 href=#p226.8>226.8<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="diff-comment changed-in-17-0-0">Moved from §135. </ins><ins class="changed-in-3-0-0"></ins><ins class="changed-in-17-0-0">This class consists of break</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-3-0-0">Break</ins></del><ins class="changed-in-3-0-0">ing hyphens</ins><ins class="changed-in-17-0-0">. These characters</ins><ins class="changed-in-3-0-0"> establish explicit break opportunities immediately after each occurrence</ins><ins class="changed-in-17-0-0">, unless they occur word-initally, as when referring to a suffix such as -ing. The hyphens become non-breaking between Hebrew and non-Hebrew.</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-3-0-0">.</ins></del></p>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.9 href=#p226.9>226.9<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="diff-comment changed-in-17-0-0">Moved from §136.1. </ins><ins class="changed-in-3-0-0">058A</ins></td><td><ins class="changed-in-3-0-0">ARMENIAN HYPHEN</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.10 href=#p226.10>226.10<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="diff-comment changed-in-17-0-0">Moved from §142.2. </ins><ins class="changed-in-5-0-0">05BE</ins></td><td><ins class="changed-in-5-0-0">HEBREW PUNCTUATION MAQAF</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.11 href=#p226.11>226.11<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="changed-in-17-0-0">1400</ins></td><td><ins class="changed-in-17-0-0">CANADIAN SYLLABICS HYPHEN</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.12 href=#p226.12>226.12<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="diff-comment changed-in-17-0-0">Moved from §137. </ins><ins class="changed-in-3-0-0">2010</ins></td><td><ins class="changed-in-3-0-0">HYPHEN</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.13 href=#p226.13>226.13<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="diff-comment changed-in-17-0-0">Moved from §138.1. </ins><ins class="changed-in-3-1-0">2012</ins></td><td><ins class="changed-in-3-1-0">FIGURE DASH</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.14 href=#p226.14>226.14<del class="paranum changed-in-4-0-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-4-0-0">/4</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="diff-comment changed-in-17-0-0">Moved from §138.2. </ins><ins class="changed-in-3-1-0">2013</ins></td><td><ins class="changed-in-3-1-0">EN</ins><ins class="changed-in-4-0-0"> </ins><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-1-0">-</ins></del><ins class="changed-in-3-1-0">DASH</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.15 href=#p226.15>226.15<del class="paranum changed-in-11-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-11-0-0">/11</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<div class=sources>
+<ins class="changed-in-11-0-0 sources">
+{11.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?155-A26">155-A26</a>; <a href="https://www.unicode.org/review/pri376/feedback.html#:~:text=Sat%20Apr%2014%2008:42:52%20CDT%202018">PRI-376#ID20180414084252</a>}
+</ins>
+</div>
+<table><tr><td><ins class="diff-comment changed-in-17-0-0">Moved from §153.49.2. </ins><ins class="changed-in-5-1-0">2E17</ins></td><td><ins class="changed-in-11-0-0">DOUBLE </ins><ins class="changed-in-5-1-0">OBLIQUE </ins><del class="changed-in-11-0-0"><ins class="changed-in-5-1-0">DOUBLE </ins></del><ins class="changed-in-5-1-0">HYPHEN</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.16 href=#p226.16>226.16<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="changed-in-17-0-0">2E40</ins></td><td><ins class="changed-in-17-0-0">DOUBLE HYPHEN</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.17 href=#p226.17>226.17<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="changed-in-17-0-0">2E5D</ins></td><td><ins class="changed-in-17-0-0">OBLIQUE HYPHEN</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.18 href=#p226.18>226.18<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="changed-in-17-0-0">10D6E</ins></td><td><ins class="changed-in-17-0-0">GARAY HYPHEN</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.19 href=#p226.19>226.19<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<table><tr><td><ins class="changed-in-17-0-0">10EAD</ins></td><td><ins class="changed-in-17-0-0">YEZIDI HYPHENATION MARK</ins></td></tr></table>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p226.20 href=#p226.20>226.20<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-0">/4</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="diff-comment changed-in-17-0-0">Moved from §139. </ins><ins class="changed-in-3-0-0">Hyphens are graphic characters with width. </ins><ins class="changed-in-4-1-0">Because</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0">Since</ins></del><ins class="changed-in-3-0-0">, unlike spaces, they </ins><ins class="changed-in-5-1-0">are visible</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-3-0-0">print</ins></del><ins class="changed-in-3-0-0">, they are included in the measured part of the preceding line</ins><ins class="changed-in-4-0-0">, except where the layout style allows hyphens to hang into the margins.</ins><ins class="changed-in-5-1-0"> For additional information about how to format line breaks resulting from the presence of hyphens, see Section 5.3, Use of Hyphen.</ins><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0"></ins></del></p>
+</div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p227 href=#p227>227<del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><ins class="paranum changed-in-16-0-0">/16</ins></a></div>
 <div class=sources>
@@ -4391,8 +4475,8 @@ addEventListener('popstate', update_from_query);
 <table><tr><td><ins class="changed-in-3-0-0">002D</ins></td><td><ins class="changed-in-3-0-0">HYPHEN-MINUS</ins></td></tr></table>
 </div>
 <div class="paragraph added-in-3-0-0">
-<div class=paranum><a id=p229 href=#p229>229<del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-5-2-0">/5.2</ins></a></div>
-<p><ins class="changed-in-3-0-0">Some additional context analysis is required to distinguish usage of this character as a hyphen from </ins><ins class="changed-in-5-0-0">its usage</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0">the use</ins></del><ins class="changed-in-3-0-0"> as </ins><ins class="changed-in-5-0-0">a </ins><ins class="changed-in-3-0-0">minus sign (or indicator of numerical range). If used as hyphen, it acts like </ins><ins class="changed-in-5-2-0">U+2010 HYPHEN</ins><wbr><del class="changed-in-5-2-0"><ins class="changed-in-4-0-1">hyphen</ins></del><ins class="changed-in-5-1-0">, which has line break class BA.</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-4-0-1">.</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-3-0-0">HYPHEN.</ins></del></p>
+<div class=paranum><a id=p229 href=#p229>229<del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-5-2-0">/5.2</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-3-0-0">Some additional context analysis is required to distinguish usage of this character as a hyphen from </ins><ins class="changed-in-5-0-0">its usage</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0">the use</ins></del><ins class="changed-in-3-0-0"> as </ins><ins class="changed-in-5-0-0">a </ins><ins class="changed-in-3-0-0">minus sign (or indicator of numerical range). If used as hyphen, it acts like </ins><ins class="changed-in-5-2-0">U+2010 HYPHEN</ins><wbr><del class="changed-in-5-2-0"><ins class="changed-in-4-0-1">hyphen</ins></del><ins class="changed-in-5-1-0">, which has line break class </ins><ins class="changed-in-17-0-0">HH.</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-5-1-0">BA.</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-4-0-1">.</ins></del><wbr><del class="changed-in-4-0-1"><ins class="changed-in-3-0-0">HYPHEN.</ins></del></p>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p230 href=#p230>230<del class="paranum changed-in-4-0-1"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-5-0-0">/5</ins></a></div>
@@ -4671,13 +4755,13 @@ addEventListener('popstate', update_from_query);
 <h3><ins class="changed-in-6-1-0">HL: Hebrew Letter</ins><ins class="changed-in-16-0-0"></ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-6-1-0"> (XB)</ins></del></h3>
 </div>
 <div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p248.6.1 href=#p248.6.1>248.6.1<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=paranum><a id=p248.6.1 href=#p248.6.1>248.6.1<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A110">179-A110</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?162-A45">162-A45</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/24-064">L2/24-064</a>; <a href="https://www.unicode.org/review/pri406/feedback.html#:~:text=Wed%20Dec%204%2015:18:53%20CST%202019">PRI-406#ID20191204151853</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">LB21a, LB21b, LB23, LB24, LB28, LB29, LB30</ins></p>
+<p><ins class="changed-in-16-0-0"></ins><ins class="changed-in-17-0-0">LB20a, </ins><ins class="changed-in-16-0-0">LB21a, LB21b, LB23, LB24, LB28, LB29, LB30</ins></p>
 </div>
 <div class="paragraph added-in-6-1-0">
 <div class=paranum><a id=p248.7 href=#p248.7>248.7<ins class="paranum changed-in-6-1-0">/6.1</ins></a></div>
@@ -5094,14 +5178,14 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p279.2 href=#p279.2>279.2<ins class="paranum changed-in-6-1-0">/6.1</ins></a></div>
 <table><tr><td><ins class="changed-in-6-1-0">30FD..30FE</ins></td><td><ins class="changed-in-6-1-0">KATAKANA ITERATION MARK..KATAKANA VOICED ITERATION MARK</ins></td></tr></table>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p279.3 href=#p279.3>279.3<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p279.3 href=#p279.3>279.3<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C30">179-C30</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A107">179-A107</a>}
 </ins>
 </div>
-<table><tr><td><ins class="changed-in-16-0-0">FE10</ins></td><td><ins class="changed-in-16-0-0">PRESENTATION FORM FOR VERTICAL COMMA</ins></td></tr></table>
+<table><tr><td><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">FE10</ins></del></td><td><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">PRESENTATION FORM FOR VERTICAL COMMA</ins></del></td></tr></table>
 </div>
 <div class="paragraph added-in-16-0-0">
 <div class=paranum><a id=p279.4 href=#p279.4>279.4<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
@@ -6267,8 +6351,8 @@ addEventListener('popstate', update_from_query);
 <p><ins class="changed-in-5-1-0">The rules for treating hyphens in line breaking vary by language. In many instances, these rules are not supported as such in the algorithm, but the correct appearance can be realized by using a non-breaking hyphen.</ins></p>
 </div>
 <div class="paragraph added-in-5-1-0">
-<div class=paranum><a id=p361.0.4 href=#p361.0.4>361.0.4<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
-<p><ins class="changed-in-5-1-0">Some languages and some transliteration systems use a hyphen at the first position in a word. For example, the Finnish orthography uses a hyphen at the start of a word in certain types of compounds of the form xxx yyy -zzz (where xxx yyy is a two-word expression that acts as the first part of a compound noun, with zzz as the second part). Line break after the hyphen is not allowed here; therefore, instead of a regular hyphen, U+2011 NON-BREAKING HYPHEN should be used.</ins></p>
+<div class=paranum><a id=p361.0.4 href=#p361.0.4>361.0.4<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-5-1-0">Some languages and some transliteration systems use a hyphen at the first position in a word. For example, the Finnish orthography uses a hyphen at the start of a word in certain types of compounds of the form xxx yyy -zzz (where xxx yyy is a two-word expression that acts as the first part of a compound noun, with zzz as the second part). Line break after the hyphen is not allowed here</ins><ins class="changed-in-17-0-0"> by rule LB20a.</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-5-1-0">; therefore, instead of a regular hyphen, U+2011 NON-BREAKING HYPHEN should be used.</ins></del></p>
 </div>
 <div class="paragraph added-in-5-1-0">
 <div class=paranum><a id=p361.0.5 href=#p361.0.5>361.0.5<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
@@ -6388,17 +6472,21 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p361.18 href=#p361.18>361.18<del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><ins class="paranum changed-in-5-2-0">/5.2</ins></a></div>
 <p><ins class="changed-in-4-0-1">In some fonts, </ins><ins class="changed-in-5-2-0">notably</ins><wbr><del class="changed-in-5-2-0"><ins class="changed-in-4-0-1">noticeably</ins></del><ins class="changed-in-4-0-1"> Fraktur fonts, it is customary to use a double-stroke form of the hyphen, usually oblique. Such use is </ins><del class="changed-in-5-2-0"><ins class="changed-in-4-0-1">merely </ins></del><ins class="changed-in-4-0-1">a font-based glyph variation and does not affect line breaking in any way. In texts using such a font, automatic hyphenation or SHY would also result in the display of a double-stroke, oblique hyphen.</ins></p>
 </div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p361.18.1 href=#p361.18.1>361.18.1<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-17-0-0">Some modern editions of older German publications use a horizontal double hyphen to transcribe the original Fraktur hyphens, but a single hyphen for modern automatic hyphenation. Such editions can be represented using U+2E40 ⹀ DOUBLE HYPHEN for the double hyphens.</ins></p>
+</div>
 <div class="paragraph added-in-4-0-1">
 <div class=paranum><a id=p361.19 href=#p361.19>361.19<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-5-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-5-2-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-5-2-0">/5.2</ins></a></div>
 <p><ins class="changed-in-4-0-1">In some dictionaries, </ins><ins class="changed-in-4-1-0">such as</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">for example</ins></del><ins class="changed-in-4-0-1"> Webster</ins><ins class="changed-in-5-0-0">’</ins><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-0-1">&#x27;</ins></del><ins class="changed-in-4-0-1">s 3rd New International Dictionary</ins><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1"> cited above</ins></del><ins class="changed-in-4-0-1">, double-stroke, oblique hyphens are used to indicate </ins><ins class="changed-in-5-1-0">an explicit hyphen at the end of the line</ins><ins class="changed-in-5-2-0">;</ins><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">,</ins></del><ins class="changed-in-5-1-0"> in other words, </ins><ins class="changed-in-4-0-1">a hyphen</ins><ins class="changed-in-5-1-0"> that would be retained when the term shown is not line wrapped. </ins><ins class="changed-in-5-2-0">It is not necessary to store a special character in the data to</ins><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">To</ins></del><ins class="changed-in-5-1-0"> support this</ins><ins class="changed-in-5-2-0"> option; one merely needs</ins><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">, it is not necessary</ins></del><ins class="changed-in-5-1-0"> to </ins><ins class="changed-in-5-2-0">substitute the glyph of any ordinary hyphen that winds up at the end of</ins><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">store</ins></del><ins class="changed-in-5-1-0"> a </ins><ins class="changed-in-5-2-0">line. In this example, if the shape of the </ins><ins class="changed-in-5-1-0">special </ins><ins class="changed-in-5-2-0">hyphen matches an existing </ins><ins class="changed-in-5-1-0">character</ins><ins class="changed-in-5-2-0">, such</ins><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0"> in the data; one merely needs to substitute the glyph of any ordinary hyphen that winds up</ins><ins class="changed-in-4-0-1"> at the end of </ins><ins class="changed-in-5-1-0">a</ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-4-0-1">the</ins></del><del class="changed-in-5-2-0"><ins class="changed-in-4-0-1"> line</ins><ins class="changed-in-5-1-0">. For example, if the shape of the special hyphen,</ins></del><ins class="changed-in-5-1-0"> as</ins><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0"> in this case, matches an existing character, such as</ins></del><ins class="changed-in-5-1-0"> U+2E17 DOUBLE OBLIQUE HYPHEN, that character can</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-4-0-1"> that should</ins></del><ins class="changed-in-4-0-1"> be </ins><ins class="changed-in-5-1-0">substituted temporarily for display purposes by the</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-4-0-1">retained when the term shown is not</ins></del><ins class="changed-in-4-0-1"> line </ins><ins class="changed-in-5-1-0">formatter. </ins><ins class="changed-in-5-2-0">With</ins><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0">In</ins></del><ins class="changed-in-5-1-0"> such </ins><ins class="changed-in-5-2-0">a </ins><ins class="changed-in-5-1-0">convention, automatic hyphenation or SHY would result</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-4-0-1">wrapped. It is not necessary to </ins></del><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">actually </ins></del><del class="changed-in-5-1-0"><ins class="changed-in-4-0-1">store a special character</ins></del><ins class="changed-in-4-0-1"> in the </ins><ins class="changed-in-5-1-0">display of an</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-4-0-1">data</ins><ins class="changed-in-5-0-0">; one</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-0-1">,</ins></del><del class="changed-in-5-1-0"><ins class="changed-in-4-0-1"> merely </ins><ins class="changed-in-5-0-0">needs </ins><ins class="changed-in-4-0-1">to substitute the glyph of any</ins></del><ins class="changed-in-4-0-1"> </ins><ins class="changed-in-4-1-0">ordinary </ins><ins class="changed-in-4-0-1">hyphen</ins><del class="changed-in-5-1-0"><ins class="changed-in-4-0-1"> that </ins><ins class="changed-in-5-0-0">winds</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-4-0-1">ends</ins></del><del class="changed-in-5-1-0"><ins class="changed-in-4-0-1"> up at the end of a line. In such convention, automatic hyphenation or SHY would result in the display of an ordinary hyphen</ins></del><ins class="changed-in-4-1-0"> without further substitution.</ins><ins class="changed-in-5-1-0"> (See also Section 5.3, Use of Hyphen).</ins><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">.</ins></del></p>
 </div>
 <div class="paragraph added-in-4-0-1">
-<div class=paranum><a id=p361.20 href=#p361.20>361.20<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><ins class="paranum changed-in-4-1-0">/4.1</ins></a></div>
-<p><ins class="changed-in-4-0-1">Certain linguistic notations make use of a double-stroke, oblique hyphen to indicate specific features. </ins><ins class="changed-in-4-1-0">The U+2E17 DOUBLE OBLIQUE HYPHEN</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">In these cases, the</ins></del><ins class="changed-in-4-0-1"> character </ins><ins class="changed-in-4-1-0">used in this case </ins><ins class="changed-in-4-0-1">is not a hyphen and does not represent a line break opportunity. Automatic hyphenation or SHY would result in the display of an ordinary hyphen.</ins></p>
+<div class=paranum><a id=p361.20 href=#p361.20>361.20<del class="paranum changed-in-4-1-0"><ins class="paranum changed-in-4-0-1">/4.0.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-4-0-1">Certain linguistic notations make use of a double-stroke, oblique hyphen to indicate specific features</ins><ins class="changed-in-17-0-0">, often contrasting with the ordinary hyphen</ins><ins class="changed-in-4-0-1">. </ins><ins class="changed-in-4-1-0">The U+2E17 </ins><ins class="changed-in-17-0-0">⸗ </ins><ins class="changed-in-4-1-0">DOUBLE OBLIQUE HYPHEN</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-1">In these cases, the</ins></del><ins class="changed-in-4-0-1"> character </ins><ins class="changed-in-17-0-0">is </ins><ins class="changed-in-4-1-0">used in this case</ins><ins class="changed-in-17-0-0">.</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-4-1-0"> </ins><ins class="changed-in-4-0-1">is not a hyphen and does not represent a line break opportunity. Automatic hyphenation or SHY would result in the display of an ordinary hyphen.</ins></del></p>
 </div>
 <div class="paragraph added-in-5-1-0">
-<div class=paranum><a id=p361.20.1 href=#p361.20.1>361.20.1<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
-<p><ins class="changed-in-5-1-0">U+30A0 KATAKANA-HIRAGANA DOUBLE HYPHEN is used in scientific notation, for example, to mark the presence of a space that would otherwise have been lost in transcribing text, such as the name of a chemical compound, into Katakana. In such notation, ordinary hyphens are retained.</ins></p>
+<div class=paranum><a id=p361.20.1 href=#p361.20.1>361.20.1<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-5-1-0">U+30A0 </ins><ins class="changed-in-17-0-0">゠ </ins><ins class="changed-in-5-1-0">KATAKANA-HIRAGANA DOUBLE HYPHEN is used in scientific notation, for example, to mark the presence of a space that would otherwise have been lost in transcribing text, such as the name of a chemical compound, into Katakana. In such notation, ordinary hyphens are retained.</ins></p>
 </div>
 <div class="paragraph added-in-4-1-0">
 <div class=paranum><a id=p361.21 href=#p361.21>361.21<del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-4-1-0">/4.1</ins></del><ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
@@ -7270,7 +7358,7 @@ addEventListener('popstate', update_from_query);
 <p class=rule><ins class="diff-comment changed-in-5-1-0">Split from §401.10. </ins><ins class="changed-in-3-0-0"></ins><ins class="changed-in-5-1-0">LB12a</ins><wbr><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">LB12</ins></del><wbr><del class="changed-in-5-0-0"><ins class="changed-in-3-0-0">LB </ins><ins class="changed-in-4-1-0">13</ins></del><ins class="changed-in-4-1-0"> Do not</ins><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-0">11b</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-0-0">13</ins></del><del class="changed-in-4-1-0"><ins class="changed-in-3-0-0"> Don’t</ins></del><ins class="changed-in-3-0-0"> break before </ins><del class="changed-in-5-1-0"><ins class="changed-in-3-0-0">or after </ins></del><ins class="changed-in-3-2-0">NBSP</ins><del class="changed-in-4-1-0"><ins class="changed-in-4-0-0">,</ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-2-0"> or</ins></del><del class="changed-in-4-1-0"><ins class="changed-in-3-2-0"> WORD JOINER</ins></del><ins class="changed-in-4-0-0"> and related characters</ins><ins class="changed-in-5-1-0">, except after spaces and hyphens</ins><ins class="changed-in-5-2-0">.</ins><wbr><del class="changed-in-5-2-0"><ins class="changed-in-5-1-0"></ins></del><wbr><del class="changed-in-5-1-0"><ins class="changed-in-4-1-0">.</ins></del><wbr><del class="changed-in-4-1-0"><ins class="changed-in-4-0-0"></ins></del><wbr><del class="changed-in-4-0-0"><ins class="changed-in-3-2-0"></ins></del><wbr><del class="changed-in-3-2-0"><ins class="changed-in-3-0-0">ZWNBSP</ins></del></p>
 </div>
 <div class="paragraph added-in-5-1-0">
-<div class=paranum><a id=p401.18 href=#p401.18>401.18<del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
+<div class=paranum><a id=p401.18 href=#p401.18>401.18<del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-4-0-0 sources">
 {4.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?92-A64">92-A64</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?93-A96">93-A96</a>}
@@ -7282,16 +7370,16 @@ addEventListener('popstate', update_from_query);
 {5.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?110-C17">110-C17</a>}
 </ins>
 </div>
-<p class=formula><ins class="diff-comment changed-in-5-1-0">Moved from §401.11. </ins><ins class="changed-in-5-0-0">[^SP</ins><ins class="changed-in-5-1-0"> BA HY</ins><ins class="changed-in-5-0-0">] </ins><ins class="changed-in-3-0-0">× GL</ins></p>
+<p class=formula><ins class="diff-comment changed-in-5-1-0">Moved from §401.11. </ins><ins class="changed-in-5-0-0">[^SP</ins><ins class="changed-in-5-1-0"> BA HY</ins><ins class="changed-in-17-0-0"> HH</ins><ins class="changed-in-5-0-0">] </ins><ins class="changed-in-3-0-0">× GL</ins></p>
 </div>
 <div class="paragraph added-in-5-1-0">
-<div class=paranum><a id=p401.19 href=#p401.19>401.19<del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
+<div class=paranum><a id=p401.19 href=#p401.19>401.19<del class="paranum changed-in-5-1-0"><ins class="paranum changed-in-5-0-0">/5</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-5-1-0 sources">
 {5.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?110-C17">110-C17</a>}
 </ins>
 </div>
-<p><ins class="diff-comment changed-in-5-1-0">Moved from §401.13. </ins><ins class="changed-in-5-0-0"></ins><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">Unlike the case for WJ, inserting a SP overrides the non-breaking nature of a GL. </ins></del><ins class="changed-in-5-0-0">The expression [^SP</ins><ins class="changed-in-5-1-0">, BA, HY</ins><ins class="changed-in-5-0-0">] designates any line break class other than SP</ins><ins class="changed-in-5-1-0">, BA or HY</ins><ins class="changed-in-5-0-0">. The symbol ^ is used, instead of !, to avoid confusion with the use of ! to indicate an explicit break.</ins><ins class="changed-in-5-1-0"> Unlike the case for WJ, inserting a SP overrides the non-breaking nature of a GL. Allowing a break after BA or HY matches widespread implementation practice and supports a common way of handling special line breaking of explicit hyphens, such as in Polish and Portuguese. See Section 5.3, Use of Hyphen.</ins></p>
+<p><ins class="diff-comment changed-in-5-1-0">Moved from §401.13. </ins><ins class="changed-in-5-0-0"></ins><del class="changed-in-5-1-0"><ins class="changed-in-5-0-0">Unlike the case for WJ, inserting a SP overrides the non-breaking nature of a GL. </ins></del><ins class="changed-in-5-0-0">The expression [^SP</ins><del class="changed-in-17-0-0"><ins class="changed-in-5-1-0">,</ins></del><ins class="changed-in-5-1-0"> BA</ins><del class="changed-in-17-0-0"><ins class="changed-in-5-1-0">,</ins></del><ins class="changed-in-5-1-0"> HY</ins><ins class="changed-in-17-0-0"> HH</ins><ins class="changed-in-5-0-0">] designates any line break class other than SP</ins><ins class="changed-in-5-1-0">, BA</ins><ins class="changed-in-17-0-0">, HY,</ins><ins class="changed-in-5-1-0"> or </ins><ins class="changed-in-17-0-0">HH</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-5-1-0">HY</ins></del><ins class="changed-in-5-0-0">. The symbol ^ is used, instead of !, to avoid confusion with the use of ! to indicate an explicit break.</ins><ins class="changed-in-5-1-0"> Unlike the case for WJ, inserting a SP overrides the non-breaking nature of a GL. Allowing a break after BA or HY matches widespread implementation practice and supports a common way of handling special line breaking of explicit hyphens, such as in Polish and Portuguese. See Section 5.3, Use of Hyphen.</ins></p>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p402 href=#p402>402</a></div>
@@ -7884,22 +7972,22 @@ addEventListener('popstate', update_from_query);
 <p class=rule><ins class="changed-in-16-0-0">LB20a Do not break after a word-initial hyphen.</ins></p>
 </div>
 <div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p424.6 href=#p424.6>424.6<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=paranum><a id=p424.6 href=#p424.6>424.6<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C32">179-C32</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A111">179-A111</a>}
 </ins>
 </div>
-<p class=formula><ins class="changed-in-16-0-0">( sot | BK | CR | LF | NL | SP | ZW | CB | GL ) ( HY | [\u2010] ) × AL</ins></p>
+<p class=formula><ins class="changed-in-16-0-0">( sot | BK | CR | LF | NL | SP | ZW | CB | GL ) ( HY | </ins><ins class="changed-in-17-0-0">HH</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">[\u2010]</ins></del><ins class="changed-in-16-0-0"> ) × </ins><ins class="changed-in-17-0-0">( </ins><ins class="changed-in-16-0-0">AL</ins><ins class="changed-in-17-0-0"> | HL )</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0"></ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p424.7 href=#p424.7>424.7<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p424.7 href=#p424.7>424.7<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C32">179-C32</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A111">179-A111</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">Note: In the above regular expression, the class [\u2010] contains the single character U+2010 HYPHEN.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">Note: In the above regular expression, the class [\u2010] contains the single character U+2010 HYPHEN.</ins></del></p>
 </div>
 <div class="paragraph added-in-16-0-0">
 <div class=paranum><a id=p424.7.a href=#p424.7.a>424.7.a<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
@@ -7921,6 +8009,10 @@ addEventListener('popstate', update_from_query);
 <div class="paragraph added-in-3-1-0">
 <div class=paranum><a id=p426.1 href=#p426.1>426.1<ins class="paranum changed-in-3-1-0">/3.1</ins></a></div>
 <p class=formula><ins class="diff-comment changed-in-3-1-0">Moved from §428. </ins><ins class="changed-in-3-0-0">× BA</ins></p>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p426.2 href=#p426.2>426.2<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p class=formula><ins class="changed-in-17-0-0">× HH</ins></p>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p427 href=#p427>427</a></div>
@@ -7963,7 +8055,7 @@ addEventListener('popstate', update_from_query);
 <p class=rule><ins class="changed-in-6-1-0">LB21a </ins><ins class="changed-in-16-0-0">Do not</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-6-1-0">Don&#x27;t</ins></del><ins class="changed-in-6-1-0"> break after </ins><ins class="changed-in-16-0-0">the hyphen in </ins><ins class="changed-in-6-1-0">Hebrew + Hyphen</ins><ins class="changed-in-16-0-0"> + non-Hebrew.</ins><wbr><del class="changed-in-16-0-0"><ins class="changed-in-8-0-0">.</ins></del><wbr><del class="changed-in-8-0-0"><ins class="changed-in-6-1-0"></ins></del></p>
 </div>
 <div class="paragraph added-in-6-1-0">
-<div class=paranum><a id=p432.2 href=#p432.2>432.2<del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class=paranum><a id=p432.2 href=#p432.2>432.2<del class="paranum changed-in-16-0-0"><ins class="paranum changed-in-6-1-0">/6.1</ins></del><del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-6-1-0 sources">
 {6.1.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?125-A99">125-A99</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/11-141R">L2/11-141R</a>}
@@ -7975,7 +8067,7 @@ addEventListener('popstate', update_from_query);
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?180-C18">180-C18</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?180-A57">180-A57</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/24-162">L2/24-162</a>}
 </ins>
 </div>
-<p class=formula><ins class="changed-in-6-1-0">HL (HY | </ins><ins class="changed-in-16-0-0">[ </ins><ins class="changed-in-6-1-0">BA</ins><ins class="changed-in-16-0-0"> - $EastAsian ]</ins><ins class="changed-in-6-1-0">) ×</ins><ins class="changed-in-16-0-0"> [^HL]</ins></p>
+<p class=formula><ins class="changed-in-6-1-0">HL (HY | </ins><ins class="changed-in-17-0-0">HH</ins><wbr><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">[ </ins><ins class="changed-in-6-1-0">BA</ins><ins class="changed-in-16-0-0"> - $EastAsian ]</ins></del><ins class="changed-in-6-1-0">) ×</ins><ins class="changed-in-16-0-0"> [^HL]</ins></p>
 </div>
 <div class="paragraph added-in-6-1-0">
 <div class=paranum><a id=p432.2.a href=#p432.2.a>432.2.a<ins class="paranum changed-in-6-1-0">/6.1</ins></a></div>
@@ -10937,9 +11029,9 @@ addEventListener('popstate', update_from_query);
 <div class=paranum><a id=p587.31 href=#p587.31>587.31<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
 <p><ins class="changed-in-5-1-0">• ...</ins></p>
 </div>
-<div class="paragraph added-in-5-1-0">
-<div class=paranum><a id=p587.32 href=#p587.32>587.32<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
-<p><ins class="changed-in-5-1-0">5. LB9 and LB10 are handled as described in Section 9.1, Combining Marks in Regular Expression-Based Implementations, resulting in a transformation of the rules not visible in the tests.</ins></p>
+<div class="paragraph added-in-5-1-0 removed-in-17-0-0">
+<div class=paranum><a id=p587.32 href=#p587.32>587.32<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-5-1-0">/5.1</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-5-1-0">5. LB9 and LB10 are handled as described in Section 9.1, Combining Marks in Regular Expression-Based Implementations, resulting in a transformation of the rules not visible in the tests.</ins></del></p>
 </div>
 <div class="paragraph added-in-5-1-0">
 <div class=paranum><a id=p587.33 href=#p587.33>587.33<ins class="paranum changed-in-5-1-0">/5.1</ins></a></div>
@@ -11422,6 +11514,10 @@ addEventListener('popstate', update_from_query);
 </ins>
 </div>
 <p><ins class="changed-in-16-0-0">Please refer to Unicode Technical Note #54, “Annotated Line Breaking Algorithm” [UTN54], for a complete history of the changes to the text of this document since Unicode Version 3.0.0, and for additonal background on these changes.</ins></p>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p587.82 href=#p587.82>587.82<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-17-0-0">Of particular note is the history of the line breaking assignment of U+034F COMBINING GRAPHEME JOINER. This character was originally meant to merge adjoining characters into a graphemic unit, and the character was accordingly originally documented in Version 3.2 of this annex as having line breaking class GL. However, this behavior of the combining grapheme joiner was made obsolete in Unicode Version 4.0, and the character was repurposed for uses where the line breaking algorithm should ignore it. From that point on, retaining the line breaking assignment GL was a mistake, and changing it to CM would have been appropriate. This was only corrected in Unicode Version 17.0, more than twenty years later. For more on the history of U+034F COMBINING GRAPHEME JOINER, including a mistake in the data files in the other direction between Unicode Version 3.2 and Unicode Version 4.1, see Section 6.3 of UTC document L2/24-224.</ins></p>
 </div>
 <div class="paragraph added-in-3-0-0">
 <div class=paranum><a id=p588 href=#p588>588<ins class="paranum changed-in-3-1-0">/3.1</ins></a></div>
@@ -12801,128 +12897,128 @@ addEventListener('popstate', update_from_query);
 </div>
 <p><ins class="deletion-comment changed-in-16-0-0">This paragraph was deleted. </ins><del class="changed-in-16-0-0"><ins class="changed-in-15-1-0">• Corrected Example 6 in Section 8.2.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.70 href=#p596.70>596.70<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
-<h4><ins class="changed-in-16-0-0">Revision 53:</ins></h4>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.70 href=#p596.70>596.70<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<h4><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">Revision 53:</ins></del></h4>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.71 href=#p596.71>596.71<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
-<p><ins class="changed-in-16-0-0">• Reissued for Unicode 16.0.</ins></p>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.71 href=#p596.71>596.71<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Reissued for Unicode 16.0.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.72 href=#p596.72>596.72<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.72 href=#p596.72>596.72<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?177-C46">177-C46</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?177-A113">177-A113</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-234">L2/23-234</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Updated the description of line breaking class AS to mention that all digits of scripts that use the brahmic style of line breaking are assigned this class.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Updated the description of line breaking class AS to mention that all digits of scripts that use the brahmic style of line breaking are assigned this class.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.73 href=#p596.73>596.73<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.73 href=#p596.73>596.73<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?177-A115">177-A115</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?177-C47">177-C47</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?162-A67">162-A67</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-234">L2/23-234</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Updated the documentation of plane 1 ranges defaulting to lb=ID.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Updated the documentation of plane 1 ranges defaulting to lb=ID.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.74 href=#p596.74>596.74<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.74 href=#p596.74>596.74<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?173-A14">173-A14</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/22-244">L2/22-244</a>; <a href="https://www.unicode.org/L2/L2022/22243-pubrev.html#:~:text=Wed%20Sep%2021%2002:47:38%20CDT%202022">L2/22-243#ID20220921024738</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Moved most of Section 5.2 to the core specification.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Moved most of Section 5.2 to the core specification.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.75 href=#p596.75>596.75<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.75 href=#p596.75>596.75<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/24-009R">L2/24-009R</a>; <a href="https://www.unicode.org/L2/L2024/24008-pubrev.html#ID20231107140948">L2/24-008#ID20231107140948</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Clarified the text of LB9 in response to PRI feedback.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Clarified the text of LB9 in response to PRI feedback.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.76 href=#p596.76>596.76<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.76 href=#p596.76>596.76<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?178-A20">178-A20</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Clarified regular expressions in LB28a.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Clarified regular expressions in LB28a.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.77 href=#p596.77>596.77<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.77 href=#p596.77>596.77<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?133-C26">133-C26</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Corrected the description of line breaking class PR to mention unassigned code points in the Currency Symbols block, which are lb=PR since Unicode Version 6.3.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Corrected the description of line breaking class PR to mention unassigned code points in the Currency Symbols block, which are lb=PR since Unicode Version 6.3.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.78 href=#p596.78>596.78<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.78 href=#p596.78>596.78<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Modified LB19 and added LB19a to improve line breaking around quotation marks in Simplified Chinese.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Modified LB19 and added LB19a to improve line breaking around quotation marks in Simplified Chinese.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.79 href=#p596.79>596.79<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.79 href=#p596.79>596.79<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C35">179-C35</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A116">179-A116</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Modified LB13, added LB15c and LB15d, and modified LB25 to improve the handling of numeric expressions. This incorporates the tailoring formerly described in Example 7 into the default rules.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Modified LB13, added LB15c and LB15d, and modified LB25 to improve the handling of numeric expressions. This incorporates the tailoring formerly described in Example 7 into the default rules.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.80 href=#p596.80>596.80<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.80 href=#p596.80>596.80<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C32">179-C32</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A111">179-A111</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Added LB20a to prevent line breaks after word-initial hyphens.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Added LB20a to prevent line breaks after word-initial hyphens.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.81 href=#p596.81>596.81<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.81 href=#p596.81>596.81<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C25">179-C25</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>; <a href="https://www.unicode.org/review/pri335/feedback.html#:~:text=Sat%20Apr%2029%2023:16:48%20CDT%202017">PRI-335#ID20170429231648</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Modified LB21a to restrict its effect to hyphens that separate Hebrew from non-Hebrew.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Modified LB21a to restrict its effect to hyphens that separate Hebrew from non-Hebrew.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.82 href=#p596.82>596.82<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.82 href=#p596.82>596.82<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A110">179-A110</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?162-A45">162-A45</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/24-064">L2/24-064</a>; <a href="https://www.unicode.org/review/pri406/feedback.html#:~:text=Wed%20Dec%204%2015:18:53%20CST%202019">PRI-406#ID20191204151853</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Section 5.1: Removed the parenthetical labels (A), (B), (P), (XA), (XB), (XP) from the descriptions of line breaking classes, as they are no longer sufficient to usefully summarize the behavior of these classes; added references to the rules that explicitly involve each line breaking class instead.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Section 5.1: Removed the parenthetical labels (A), (B), (P), (XA), (XB), (XP) from the descriptions of line breaking classes, as they are no longer sufficient to usefully summarize the behavior of these classes; added references to the rules that explicitly involve each line breaking class instead.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.83 href=#p596.83>596.83<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.83 href=#p596.83>596.83<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?180-C17">180-C17</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?180-A55">180-A55</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?180-A56">180-A56</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/24-162">L2/24-162</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Updated the description of line breaking class AI to clarify that the statement about the relation with East_Asian_Width is historical.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Updated the description of line breaking class AI to clarify that the statement about the relation with East_Asian_Width is historical.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.84 href=#p596.84>596.84<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
-<p><ins class="changed-in-16-0-0">• Updated the description of line breaking class CJ to no longer claim that normal is the CSS default.</ins></p>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.84 href=#p596.84>596.84<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Updated the description of line breaking class CJ to no longer claim that normal is the CSS default.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.85 href=#p596.85>596.85<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.85 href=#p596.85>596.85<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-C23">175-C23</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A71">175-A71</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/23-063">L2/23-063</a>}
@@ -12931,10 +13027,10 @@ addEventListener('popstate', update_from_query);
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C28">179-C28</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A102">179-A102</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Updated the description of line breaking class QU to account for the rule changes made in this version and the previous one.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Updated the description of line breaking class QU to account for the rule changes made in this version and the previous one.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.86 href=#p596.86>596.86<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.86 href=#p596.86>596.86<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C25">179-C25</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A98">179-A98</a>; <a href="https://www.unicode.org/review/pri335/feedback.html#:~:text=Sat%20Apr%2029%2023:16:48%20CDT%202017">PRI-335#ID20170429231648</a>}
@@ -12943,83 +13039,119 @@ addEventListener('popstate', update_from_query);
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?137-C9">137-C9</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Updated the description of line breaking class HL to account for the rule changes made in this version and Unicode Version 8.0.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Updated the description of line breaking class HL to account for the rule changes made in this version and Unicode Version 8.0.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.87 href=#p596.87>596.87<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.87 href=#p596.87>596.87<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C29">179-C29</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A105">179-A105</a>; <a href="https://www.unicode.org/review/pri335/feedback.html#:~:text=Sat%20Apr%2029%2022:48:11%20CDT%202017">PRI-335#ID20170429224811</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Updated the description of line breaking class GL to mention half marks and continuous lining marks.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Updated the description of line breaking class GL to mention half marks and continuous lining marks.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.88 href=#p596.88>596.88<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.88 href=#p596.88>596.88<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-C30">179-C30</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A107">179-A107</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Updated the description of line breaking classes IS, CL, and NS to account for the change in Line_Break assignment of the presentation forms for vertical comma, colon, and semicolon.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Updated the description of line breaking classes IS, CL, and NS to account for the change in Line_Break assignment of the presentation forms for vertical comma, colon, and semicolon.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.89 href=#p596.89>596.89<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.89 href=#p596.89>596.89<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?180-A59">180-A59</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/24-162">L2/24-162</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• In the description of line breaking class ID, replaced the full list of code point ranges which have that default value with a reference to DerivedLineBreak.txt.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• In the description of line breaking class ID, replaced the full list of code point ranges which have that default value with a reference to DerivedLineBreak.txt.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.90 href=#p596.90>596.90<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.90 href=#p596.90>596.90<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?175-A67">175-A67</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Changed Section 11 to refer to UTN #54 instead of carrying a table of rule numberings.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Changed Section 11 to refer to UTN #54 instead of carrying a table of rule numberings.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.91 href=#p596.91>596.91<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.91 href=#p596.91>596.91<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?179-A97">179-A97</a>; <a href="https://www.unicode.org/review/pri446/feedback.html#:~:text=Tue%20Apr%205%2007:14:53%20CDT%202022">PRI-446#ID20220405071453</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Corrected the description of the behavior of line breaking classes PO and PR: these may be separated from numbers if spaces intervene.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Corrected the description of the behavior of line breaking classes PO and PR: these may be separated from numbers if spaces intervene.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.92 href=#p596.92>596.92<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.92 href=#p596.92>596.92<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?172-A100">172-A100</a>; <a href="https://www.unicode.org/review/pri446/feedback.html#:~:text=Fri%20Jun%203%2019:49:05%20CDT%202022">PRI-446#ID20220603194905</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Updated the description line breaking class CP to account for changes in Line_Break assignment of phonetic brackets.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Updated the description line breaking class CP to account for changes in Line_Break assignment of phonetic brackets.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.93 href=#p596.93>596.93<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.93 href=#p596.93>596.93<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?180-C18">180-C18</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?180-A57">180-A57</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/24-162">L2/24-162</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Updated LB10 to specify what happens to all properties.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Updated LB10 to specify what happens to all properties.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.94 href=#p596.94>596.94<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.94 href=#p596.94>596.94<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
 <div class=sources>
 <ins class="changed-in-16-0-0 sources">
 {16.0.0: <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?180-C18">180-C18</a>, <a href="https://www.unicode.org/cgi-bin/GetL2Ref.pl?180-A57">180-A57</a>; <a href="https://www.unicode.org/cgi-bin/GetMatchingDocs.pl?L2/24-162">L2/24-162</a>}
 </ins>
 </div>
-<p><ins class="changed-in-16-0-0">• Excluded [ BA &amp; $EastAsian ] = [\N{IDEOGRAPHIC SPACE}] from participating in LB21a.</ins></p>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Excluded [ BA &amp; $EastAsian ] = [\N{IDEOGRAPHIC SPACE}] from participating in LB21a.</ins></del></p>
 </div>
-<div class="paragraph added-in-16-0-0">
-<div class=paranum><a id=p596.95 href=#p596.95>596.95<ins class="paranum changed-in-16-0-0">/16</ins></a></div>
-<p><ins class="changed-in-16-0-0">• Updated Section 5 to mention other properties used by this algorithm: General_Category and Extended_Pictographic.</ins></p>
+<div class="paragraph added-in-16-0-0 removed-in-17-0-0">
+<div class=paranum><a id=p596.95 href=#p596.95>596.95<del class="paranum changed-in-17-0-0"><ins class="paranum changed-in-16-0-0">/16</ins></del><ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="deletion-comment changed-in-17-0-0">This paragraph was deleted. </ins><del class="changed-in-17-0-0"><ins class="changed-in-16-0-0">• Updated Section 5 to mention other properties used by this algorithm: General_Category and Extended_Pictographic.</ins></del></p>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p596.96 href=#p596.96>596.96<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<h4><ins class="changed-in-17-0-0">Revision 54:</ins></h4>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p596.97 href=#p596.97>596.97<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-17-0-0">• Proposed Update for Unicode 17.0.</ins></p>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p596.98 href=#p596.98>596.98<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-17-0-0">• Updated the test files to more closely match the rules.</ins></p>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p596.99 href=#p596.99>596.99<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-17-0-0">• Split part of class BA into a new class Unambiguous_Hyphen (HH) and updated rules LB20a and LB21a to use it. Rules LB12a and LB21 treat HH like BA, preserving their old behavior. [181-C53]</ins></p>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p596.100 href=#p596.100>596.100<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-17-0-0">• Updated rule LB20a to treat Hebrew letters (HL) like other alphabetic characters (AL). [181-C53]</ins></p>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p596.101 href=#p596.101>596.101<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-17-0-0">• Updated the descriptions of classes CM and GL to reflect the change to the Line_Break property of U+034F COMBINING GRAPHEME JOINER. Added a discussion of this long-standing mistaken assignment in Section 11, History. [181-C54]</ins></p>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p596.102 href=#p596.102>596.102<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-17-0-0">• Section 5.3, Use of Hyphen: updated for LB20a added in Unicode 16.0. [179-C32]</ins></p>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p596.103 href=#p596.103>596.103<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-17-0-0">• Section 5.5, Use of Double Hyphen: Add a discussion of the actual DOUBLE HYPHEN, based on L2/11-038.</ins></p>
+</div>
+<div class="paragraph added-in-17-0-0">
+<div class=paranum><a id=p596.104 href=#p596.104>596.104<ins class="paranum changed-in-17-0-0">/17</ins></a></div>
+<p><ins class="changed-in-17-0-0">• Section 5.5, Use of Double Hyphen: Corrected confusing statements about U+2E17 DOUBLE OBLIQUE HYPHEN.</ins></p>
 </div>
 <div class="paragraph added-in-3-0-0 removed-in-11-0-0">
 <div class=paranum><a id=p597 href=#p597>597<del class="paranum changed-in-11-0-0"><ins class="paranum changed-in-3-1-0">/3.1</ins></del><ins class="paranum changed-in-11-0-0">/11</ins></a></div>

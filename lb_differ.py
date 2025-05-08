@@ -612,10 +612,13 @@ PRESERVED_PARAGRAPHS = {
                       ParagraphNumber(587, 41): "11 History",
                       ParagraphNumber(598): "© 1999",
                       ParagraphNumber(599): "Unicode and the Unicode Logo"},
+  Version(17, 0, 0): {ParagraphNumber(424, 6): "( sot | BK",
+                      }
 }
 
 ANCESTRIES = {
   Version(3, 1, 0): {
+                     ParagraphNumber(136, 1): ParagraphNumber(138),
                      ParagraphNumber(SECTION_6 + 9, 1): ParagraphNumber(SECTION_6 + 11),
                      ParagraphNumber(SECTION_6 + 21, 3): ParagraphNumber(SECTION_6 + 23),
                      ParagraphNumber(SECTION_6 + 21, 2): ParagraphNumber(SECTION_6 + 24),
@@ -675,6 +678,14 @@ ANCESTRIES = {
   Version(15, 1, 0): {ParagraphNumber(168, 1): ParagraphNumber(169, 1),},
   Version(16, 0, 0): {ParagraphNumber(412, 9): ParagraphNumber(406, 1),
                       ParagraphNumber(598, 1): ParagraphNumber(598),},
+  Version(17, 0, 0): {ParagraphNumber(226, 8): ParagraphNumber(135),
+                      ParagraphNumber(226, 9): ParagraphNumber(136, 1),
+                      ParagraphNumber(226, 10): ParagraphNumber(142, 2),
+                      ParagraphNumber(226, 12): ParagraphNumber(137),
+                      ParagraphNumber(226, 13): ParagraphNumber(138, 1),
+                      ParagraphNumber(226, 14): ParagraphNumber(138, 2),
+                      ParagraphNumber(226, 15): ParagraphNumber(153, 49, 2),
+                      ParagraphNumber(226, 20): ParagraphNumber(139),},
 }
 
 JUNK = {
@@ -687,8 +698,7 @@ JUNK = {
                      ParagraphNumber(SECTION_6 + 98, 15): ["Korean", "are", "for", "line", "break", "class", "ID"]},
   Version(5, 1, 0): {ParagraphNumber(401, 17): ["after"]},
   Version(15, 1, 0): {},
-  Version(16, 0, 0): {ParagraphNumber(12): ["by", "Unicode", "other", "as", "a"],
-                      ParagraphNumber(401, 1): ["any", "break", "CM", "character"],
+  Version(16, 0, 0): {ParagraphNumber(401, 1): ["any", "break", "CM", "character"],
                       ParagraphNumber(104): ["with", "in"],
                       ParagraphNumber(462, 7): ["]"],
                       ParagraphNumber(462, 8): ["]"],
@@ -696,6 +706,8 @@ JUNK = {
                       ParagraphNumber(587, 19): ["in"],
                       ParagraphNumber(598): ["Unicode", "any", "for", "in", "use", "this", "contained"],
                       ParagraphNumber(598, 1): ["NODEFAULT", ".", ",", "is", "Unicode"],},
+  Version(17, 0, 0): {ParagraphNumber(12): ["by", "Unicode", "other", "as", "a"],  # PU status.
+                      },
 }
 
 nontrivial_versions = []
