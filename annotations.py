@@ -1365,10 +1365,16 @@ ISSUES = (
           ["177-A115", "177-C47", "162-A67"],
           l2_docs=["L2/23-234"], # TODO(egg): 5.3
           paragraphs=[
+              ParagraphNumber(247, 2),
+              ParagraphNumber(248, 0, 3),
+              ParagraphNumber(248, 0, 4),
+              ParagraphNumber(248, 0, 5),
+              ParagraphNumber(248, 0, 6),
+              ParagraphNumber(248, 0, 9, 1),
+              ParagraphNumber(248, 0, 10),
+              ParagraphNumber(248, 0, 11),
               ParagraphNumber(248, 0, 12),
               ParagraphNumber(248, 0, 13),
-              ParagraphNumber(248, 0, 14),
-              ParagraphNumber(248, 0, 15),
               ParagraphNumber(596, 73),
           ]),
     # LB=AS digits.
@@ -1610,5 +1616,69 @@ ISSUES = (
               ParagraphNumber(112, 0, 2),
               ParagraphNumber(112, 4, 1),
               ParagraphNumber(596, 83),
+          ]),
+    Issue(Version(16, 0, 0),
+          [],
+          l2_docs=["L2/24-224"],  # 6.2
+          paragraphs=[
+             ParagraphNumber(182, 5),
+          ]),
+    # HH, HL more like AL.
+    Issue(Version(17, 0, 0),
+          ["181-C53", "181-A140"],
+          l2_docs=["L2/24-224"],  # 6.1
+          paragraphs=[
+            # HH:
+              ParagraphNumber(64),
+              ParagraphNumber(67, -1, 1),
+              ParagraphNumber(117, 1),
+              ParagraphNumber(134),
+              ParagraphNumber(135),
+              ParagraphNumber(136, 1),
+              ParagraphNumber(137),
+              ParagraphNumber(138, 1),
+              ParagraphNumber(138, 2),
+              ParagraphNumber(139),
+              ParagraphNumber(142, 2),
+              ParagraphNumber(153, 49, 2),
+              ParagraphNumber(226, 6),
+              ParagraphNumber(226, 7),
+              ParagraphNumber(226, 8),
+              ParagraphNumber(226, 9),
+              ParagraphNumber(226, 10),
+              ParagraphNumber(226, 11),
+              ParagraphNumber(226, 12),
+              ParagraphNumber(226, 13),
+              ParagraphNumber(226, 14),
+              ParagraphNumber(226, 15),
+              ParagraphNumber(226, 16),
+              ParagraphNumber(226, 17),
+              ParagraphNumber(226, 18),
+              ParagraphNumber(226, 19),
+              ParagraphNumber(226, 20),
+              ParagraphNumber(229),
+              ParagraphNumber(401, 18),
+              ParagraphNumber(401, 19),
+              ParagraphNumber(424, 6),
+              ParagraphNumber(424, 7),
+              ParagraphNumber(426, 2),
+              ParagraphNumber(432, 2),
+              ParagraphNumber(596, 99),
+            # HL like AL:
+              ParagraphNumber(79, 6, 1),  # But also 137-C9.
+              ParagraphNumber(248, 6, 1),
+              ParagraphNumber(424, 6),
+              ParagraphNumber(596, 100),
+          ]),
+    # CGJ to CM + long history.
+    Issue(Version(17, 0, 0),
+          ["181-C54", "181-A145"],
+          l2_docs=["L2/24-224"],  # 6.3
+          paragraphs=[
+              ParagraphNumber(200, 1),
+              ParagraphNumber(219, 1),
+              ParagraphNumber(219, 2),
+              ParagraphNumber(587, 82),
+              ParagraphNumber(596, 101),
           ]),
 )

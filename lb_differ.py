@@ -869,12 +869,6 @@ with open("alba.html", "w", encoding="utf-8") as f:
     version_added = paragraph.version_added()
     last_changed = paragraph.last_changed()
 
-    # Unexplained changes.
-    # TODO(egg): Move the printing out of the loop, gather for all versions,
-    # print an explanatory line above.
-    if Version(16, 0, 0) in versions_changed and not any(issue.version == Version(16, 0, 0) for issue in paragraph.references):
-      print("              %r," % paragraph_number)
-
     print(f'<div class="paragraph added-in-{version_added.html_class()}{(" removed-in-" + last_changed.html_class()) if paragraph.absent() else ""}">', file=f)
     for new, old in zip(versions_changed[1:], versions_changed[:-1]):
       if old == Version(3, 0, 0):
@@ -909,3 +903,18 @@ with open("alba.html", "w", encoding="utf-8") as f:
     print("</div>", file=f)
   print("</body>", file=f)
   print("</html>", file=f)
+
+
+for version in nontrivial_versions:
+  if version < Version(16, 0, 0):
+    continue
+  print(f"Unexplained changes in version {version}:")
+  for paragraph_number, paragraph in history.elements:
+    paragraph: SequenceHistory
+    revision_number = ""
+    versions_changed = paragraph.versions_changed()
+    # Unexplained changes.
+    # TODO(egg): Move the printing out of the loop, gather for all versions,
+    # print an explanatory line above.
+    if version in versions_changed and not any(issue.version == version for issue in paragraph.references):
+      print("              %r," % paragraph_number)
