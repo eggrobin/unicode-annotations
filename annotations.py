@@ -1681,4 +1681,17 @@ ISSUES = (
               ParagraphNumber(587, 82),
               ParagraphNumber(596, 101),
           ]),
+    # U+FE10 documentation lagging behind.
+    Issue(Version(17, 0, 0),
+          ["179-C30"],
+          l2_docs=["L2/24-224"],  # 6.6
+          paragraphs=[
+              ParagraphNumber(279, 3),
+          ]),
+    # Lagging documentation for LB20a
+    Issue(Version(17, 0, 0),
+          ["179-C32"],
+          paragraphs=[
+              ParagraphNumber(361, 0, 4),
+          ]),
 )
