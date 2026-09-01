@@ -1712,4 +1712,31 @@ ISSUES = (
               ParagraphNumber(587, 32),
               ParagraphNumber(596, 98),
           ]),
+    Issue(Version(18, 0, 0),
+          ["187-C45"],
+          l2_docs=["L2/26-096"],  # 4.5
+          paragraphs=[
+              ParagraphNumber(133, 2),
+              ParagraphNumber(133, 3),
+              ParagraphNumber(133, 4),
+              ParagraphNumber(153, 0, 1),
+              ParagraphNumber(153, 0, 2),
+              ParagraphNumber(153, 0, 3),
+              ParagraphNumber(226, 13),
+              ParagraphNumber(226, 14),
+              ParagraphNumber(226, 21),
+              ParagraphNumber(226, 22),
+              ParagraphNumber(226, 23),
+              ParagraphNumber(596, 107),
+          ]),
+    Issue(Version(18, 0, 0),
+          ["187-C46"],
+          l2_docs=["L2/26-096"],  # 4.5
+          paragraphs=[
+              ParagraphNumber(117, 1),
+              ParagraphNumber(153, 0, 3),
+              ParagraphNumber(401, 18),
+              ParagraphNumber(401, 19),
+              ParagraphNumber(596, 108),
+          ]),
 )

@@ -613,7 +613,9 @@ PRESERVED_PARAGRAPHS = {
                       ParagraphNumber(598): "© 1999",
                       ParagraphNumber(599): "Unicode and the Unicode Logo"},
   Version(17, 0, 0): {ParagraphNumber(424, 6): "( sot | BK",
-                      }
+                      },
+  Version(18, 0, 0): {ParagraphNumber(587, 27): "2. The rules",
+                      },
 }
 
 ANCESTRIES = {
@@ -686,6 +688,11 @@ ANCESTRIES = {
                       ParagraphNumber(226, 14): ParagraphNumber(138, 2),
                       ParagraphNumber(226, 15): ParagraphNumber(153, 49, 2),
                       ParagraphNumber(226, 20): ParagraphNumber(139),},
+  Version(18, 0, 0): {ParagraphNumber(153, 0, 1): ParagraphNumber(226, 13),
+                      ParagraphNumber(153, 0, 2): ParagraphNumber(226, 14),
+                      ParagraphNumber(226, 21): ParagraphNumber(133, 2),
+                      ParagraphNumber(226, 22): ParagraphNumber(133, 3),
+                      ParagraphNumber(226, 23): ParagraphNumber(133, 4),},
 }
 
 JUNK = {
