@@ -151,6 +151,12 @@ UTC = [
     (date(2025, 4, 22), 3),  # UTC #183
     (date(2025, 7, 22), 3),  # UTC #184
     (date(2025, 10, 27), 3),  # UTC #185
+    (date(2026, 1, 21), 3),  # UTC #186
+    (date(2026, 4, 21), 3),  # UTC #187
+    (date(2026, 7, 28), 3),  # UTC #188
+    (date(2026, 10, 26), 3),  # UTC #189
+    (date(2026, 1, 20), 3),  # UTC #190
+    (date(2026, 4, 13), 3),  # UTC #191
 ]
 
 for i, (start, duration) in enumerate(UTC):

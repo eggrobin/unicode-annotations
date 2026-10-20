@@ -1693,5 +1693,50 @@ ISSUES = (
           ["179-C32"],
           paragraphs=[
               ParagraphNumber(361, 0, 4),
+              ParagraphNumber(596, 102),
+          ]),
+    Issue(Version(17, 0, 0),
+          [],
+          l2_docs=["L2/25-183"],  # 4.2
+          paragraphs=[
+              ParagraphNumber(361, 18, 1),
+              ParagraphNumber(361, 20),
+              ParagraphNumber(361, 20, 1),
+              ParagraphNumber(596, 103),
+              ParagraphNumber(596, 104),
+          ]),
+    # https://github.com/unicode-org/unicodetools/pull/949.
+    Issue(Version(17, 0, 0),
+          [],
+          paragraphs=[
+              ParagraphNumber(587, 32),
+              ParagraphNumber(596, 98),
+          ]),
+    Issue(Version(18, 0, 0),
+          ["187-C45"],
+          l2_docs=["L2/26-096"],  # 4.5
+          paragraphs=[
+              ParagraphNumber(133, 2),
+              ParagraphNumber(133, 3),
+              ParagraphNumber(133, 4),
+              ParagraphNumber(153, 0, 1),
+              ParagraphNumber(153, 0, 2),
+              ParagraphNumber(153, 0, 3),
+              ParagraphNumber(226, 13),
+              ParagraphNumber(226, 14),
+              ParagraphNumber(226, 21),
+              ParagraphNumber(226, 22),
+              ParagraphNumber(226, 23),
+              ParagraphNumber(596, 107),
+          ]),
+    Issue(Version(18, 0, 0),
+          ["187-C46"],
+          l2_docs=["L2/26-096"],  # 4.5
+          paragraphs=[
+              ParagraphNumber(117, 1),
+              ParagraphNumber(153, 0, 3),
+              ParagraphNumber(401, 18),
+              ParagraphNumber(401, 19),
+              ParagraphNumber(596, 108),
           ]),
 )
